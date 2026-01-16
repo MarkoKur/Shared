@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">class FlyweightPattern {
+    int shapeCount = 0;
+
+    enum Color {
+        RED,
+        GREEN,
+        BLUE;
+    }
+
+    abstract class Shape {
+        Color color;
+        abstract void draw();
+    }
+
+    class Circle extends Shape{
+        Circle(Color color){
+            this.color = color;
+            shapeCount++;
+        }
+        @Override
+        public void draw() {
+            System.out.println("Circle." + color);
+        }
+    }
+
+    class Square extends Shape{
+        Square(Color color){
+            this.color = color;
+            shapeCount++;
+        }
+        @Override
+        public void draw() {
+            System.out.println("Square." + color);
+        }
+    }
+
+    class FlyweightFactory {
+        private final Map&lt;String, Shape> shapeCache = new HashMap<>();
+
+        Sprite createSprite(Class<? extends Shape> shape, Color color, Point p){
+            Shape cached  = shapeCache.get(shape.getSimpleName() + color);
+            if (cached == null){
+                switch (shape.getSimpleName()) {
+                    case "Circle" -> {cached = new Circle(color);}
+                    case "Square" -> {cached = new Square(color);}
+                }
+                shapeCache.put(shape.getSimpleName() + color, cached);
+            }
+            return new Sprite(cached, p);
+        }
+    }
+
+    class Sprite {
+        private final Shape shape;
+        private final Point p;
+
+        Sprite(Shape shape, Point p) {
+            this.shape = shape;
+            this.p = p;
+        }
+    }
+
+    void run() {
+        var flyweightFactory = new FlyweightFactory();
+
+        List&lt;Color> colorList = List.of(RED, GREEN, BLUE);
+        List&lt;Class&lt;? extends Shape>> shapeTypeList = List.of(Circle.class, Square.class);
+        List&lt;Sprite> sprites = new LinkedList<>();
+
+        var colorIterator = colorList.iterator();
+        var shapeTypeIterator = shapeTypeList.iterator();
+        Random r = new Random();
+
+        for (int i = 0 ; i < 100; i++) {
+            if (!colorIterator.hasNext()) {
+                colorIterator = colorList.iterator();
+            }
+            if (!shapeTypeIterator.hasNext()) {
+                shapeTypeIterator = shapeTypeList.iterator();
+            }
+
+            Sprite s = flyweightFactory.createSprite(shapeTypeIterator.next(), colorIterator.next(), new Point(r.nextInt(10), r.nextInt(10)));
+            sprites.add(s);
+        }
+
+        System.out.println("Sprites count: " + sprites.size());
+        System.out.println("Unique shapes count: " + shapeCount);
+    }
+
+    public static void main(String[] args) {
+        new FlyweightPattern().run();
+    }
+
+}</code></pre>
+</body>
+</html>

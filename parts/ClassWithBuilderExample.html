@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ClassWithBuilderExample</title>
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<pre><code class="language-java">@Getter
+public class ClassWithBuilder {
+    private final String strProperty;
+    private final int intProperty;
+
+    ClassWithBuilder(Builder builder) {
+        this.strProperty = builder.strProperty;
+        this.intProperty = builder.intProperty;
+    }
+
+    public static class Builder {
+
+        private String strProperty;
+        private int intProperty;
+
+        public Builder withStrProperty(String strProperty) {
+            this.strProperty = strProperty;
+            return this;
+        }
+
+        public Builder withIntProperty(int intProperty) {
+            this.intProperty = intProperty;
+            return this;
+        }
+
+        public ClassWithBuilder build() {
+            return new ClassWithBuilder(this);
+        }
+    }
+
+    public static void main(String[] args) {
+        ClassWithBuilder cwb = new ClassWithBuilder.Builder()
+                .withStrProperty("Java Builder Pattern")
+                .withIntProperty(100)
+                .build();
+    }
+}</code></pre>
+
+</body>
+</html>

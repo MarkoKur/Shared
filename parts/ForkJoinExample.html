@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ForkJoinExample</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<pre><code class="language-java">public class ForkJoinExample {
+    static final int THRESHOLD = 10;
+
+    static class Task extends RecursiveTask&lt;Integer&gt; {
+        private final int start;
+        private final int end;
+
+        Task(int start, int end) {
+            this.start = start;
+            this.end = end;
+        }
+
+        @Override
+        protected Integer compute() {
+            if ((end - start) <= THRESHOLD) {
+                System.out.printf("%s: %s,%s\n", Thread.currentThread().getName(), start, end);
+                return doCalc();
+            }
+            int split = (end - start) / 2;
+
+            Task fork1 = new Task(start, start + split);
+            fork1.fork();
+
+            Task fork2 = new Task(start + split + 1, end);
+
+            return fork2.compute() + fork1.join();
+        }
+
+        private Integer doCalc() {
+            int result = 0;
+            for (int i = start; i <= end; i++) {
+                result += i * i;
+            }
+            return result;
+        }
+    }
+
+    public static void main(String[] args) {
+        ForkJoinPool pool = new ForkJoinPool();
+        Integer result = pool.invoke(new Task(1, 50));
+        System.out.println(result);
+    }
+
+}</code></pre>
+
+</body>
+</html>

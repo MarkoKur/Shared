@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg">
+   <defs>
+    <style>
+      .rect, .interface, .class {
+        width: 140px;
+        height: 80px;
+      }
+      .interface {
+        rx:10;
+        fill: white;
+        stroke: blue;
+      }
+      .class {
+        fill: white;
+        stroke: green;
+      }
+      .line {
+        stroke: black;
+        stroke-width:1;
+        fill: none;
+      }
+      .marker {
+        fill: black
+      }
+      .arrow {
+        marker-end:url(#arrow);
+      }
+      .text, .text14, .text19, .text20, .text22 {
+        white-space: pre;
+        fill: rgb(51,51,51);
+        font-family: Arial, sans-serif;
+      }
+      .text {font-size: 28px;}
+      .text14 {font-size: 14px;}
+      .text19 {font-size: 19px;}
+      .text20 {font-size: 20px;}
+      .text22 {font-size: 22px;}
+
+      #java2,  .java2  tspan {stroke: chartreuse}
+      #java5,  .java5  tspan {stroke: lightgreen}
+      #java6,  .java6  tspan {stroke: green}
+      #java21, .java21 tspan {stroke: red}
+
+      .javaSwitcherRect {
+        width: 20px;
+        height: 20px;
+        fill: white;
+        stroke: black;
+        rx: 2
+      }
+      .javaSwitcherSelected {
+        fill: gray;
+      }
+      .javaSwitcher {
+        cursor: pointer;
+        user-select: none;
+      }
+    </style>
+    <script>
+        var javaVersion = 21;
+        const javaVersions = [2, 5, 6, 21];
+
+        function switchJavaVersion(element) {
+          const clickedVersion = element.id.substring(4);
+
+          if (clickedVersion == javaVersion) {
+            return;
+          }
+
+          const prevRectButton = document.getElementById('java' + javaVersion + 'Rect');
+          prevRectButton.classList.remove("javaSwitcherSelected");
+          javaVersion = parseInt(clickedVersion);
+          const rectClicked = document.getElementById(element.id + 'Rect');
+          rectClicked.classList.add("javaSwitcherSelected");
+
+          for (let version of javaVersions) {
+            let visibility = version > javaVersion ? 'none' : 'block';
+            const gArray = document.getElementsByClassName('java' + version);
+            for (let g of gArray) {
+              g.style.display = visibility;
+            }
+          }
+        }
+    </script>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M 0,0 10,5 0,10 Z" class="line marker"/>
+    </marker>
+  </defs>
+
+  <rect id="JCF" x="10" y="130" width="680" height="750" rx="1" ry="1" style="fill: none; stroke: grey; stroke-dasharray:5,5"/>
+  <text style="white-space: pre; fill: grey; font-family: Arial, sans-serif; font-size: 20px; font-style: italic">
+    <tspan x="25" y="150">Java</tspan>
+    <tspan x="25" y="170">Collections</tspan>
+    <tspan x="25" y="190">Framework</tspan>
+  </text>
+
+  <rect x="385" y="10" id="java2Rect" class="javaSwitcherRect"/>
+  <text x="385" y="25" id="java2" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">1.2</text>
+
+  <rect x="415" y="10" id="java5Rect" class="javaSwitcherRect"/>
+  <text x="415" y="25" id="java5" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">1.5</text>
+
+  <rect x="440" y="10" id="java6Rect" class="javaSwitcherRect"/>
+  <text x="440" y="25" id="java6" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">1.6</text>
+
+  <rect x="465" y="10" id="java21Rect" class="javaSwitcherRect javaSwitcherSelected"/>
+  <text x="468" y="25" id="java21" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">21</text>
+
+  <g class="java5">
+    <rect x="180" y="30" class="interface"/>
+    <text x="205" y="60" class="text">Iterable</text>
+    <text x="185" y="100" class="text14">Since: <tspan>1.5</tspan></text>
+    <line x1="250" y1="145" x2="250" y2="115" class="line arrow" />
+  </g>
+
+  <rect x="180" y="145" class="interface"/>
+  <text x="190" y="175" class="text">Collection</text>
+  <text x="185" y="215" class="text14 java2">Since: <tspan>1.2</tspan></text>
+
+  <polyline points="100,400 100,260 210,260 210,230" class="line arrow" id="ListToCollection"/>
+
+  <line x1="250" y1="400" x2="250" y2="230" class="line arrow" id="ListToSC"/>
+
+  <g class="java21">
+    <rect x="180" y="290" class="interface"/>
+    <text x="185" y="310" class="text14" >SequencedCollection</text>
+    <text x="185" y="360" class="text14" >Since: <tspan>21</tspan></text>
+    <line x1="250" y1="400" x2="250" y2="375" class="line arrow"/>
+  </g>
+
+
+  <rect x="180" y="400" class="interface"/>
+  <text x="225" y="430" class="text">List</text>
+  <text x="185" y="470" class="text14 java2">Since: <tspan>1.2</tspan></text>
+
+
+  <rect x="30" y="290" class="interface"/>
+  <text x="75" y="320" class="text">Set</text>
+  <text x="35" y="360" class="text14 java2">Since: <tspan>1.2</tspan></text>
+
+  <line x1="100" y1="510" x2="100" y2="375" class="line arrow"/>
+  <g class="java21">
+    <rect x="30" y="400" class="interface"/>
+    <text x="35" y="425" class="text20">SequencedSet</text>
+    <text x="35" y="470" class="text14">Since: <tspan>21</tspan></text>
+    <polyline points="170,440 175,440 175,385 200,385 200,375" class="line arrow" id="SequencedSetToSC"/>
+<!--    <polyline points="320,550 323,550 323,390 280,390 280,375" class="line arrow" id="SortedSetToSet"/>-->
+    <polyline points="330,440 326,440 326,385 300,385 300,375" class="line arrow" id="DequeToSC"/>
+    <line x1="100" y1="510" x2="100" y2="485" class="line arrow"/>
+  </g>
+
+  <rect x="30" y="510" class="interface"/>
+  <text x="40" y="540" class="text">SortedSet</text>
+  <text x="35" y="580" class="text14 java2">Since: <tspan>1.2</tspan></text>
+
+  <line x1="100" y1="730" x2="100" y2="595" class="line arrow"/>
+  <g class="java6">
+    <rect x="30" y="620" class="interface"/>
+    <text x="35" y="645" class="text22">NavigableSet</text>
+    <text x="35" y="690" class="text14">Since: <tspan>1.6</tspan></text>
+    <line x1="100" y1="730" x2="100" y2="705" class="line arrow"/>
+  </g>
+
+  <rect x="30" y="730" class="class"/>
+  <text x="45" y="760" class="text">TreeSet</text>
+  <text x="35" y="800" class="text14 java2">Since: <tspan>1.2</tspan></text>
+
+  <!-- Queues -->
+  <g class="java5">
+    <polyline points="400,290 400,260 290,260 290,230" class="line arrow" id="QueueToCollection"/>
+    <rect x="330" y="290" class="interface"/>
+    <text x="355" y="320" class="text">Queue</text>
+    <text x="335" y="360" class="text14">Since: <tspan>1.5</tspan></text>
+  </g>
+
+  <g class="java6">
+    <rect x="330" y="400" class="interface"/>
+    <text x="355" y="430" class="text">Deque</text>
+    <text x="335" y="470" class="text14">Since: <tspan>1.6</tspan></text>
+    <line x1="400" y1="400" x2="400" y2="375" class="line arrow"/>
+  </g>
+
+  <!-- Maps -->
+  <rect x="530" y="290" class="interface"/>
+  <text x="570" y="320" class="text">Map</text>
+  <text x="535" y="360" class="text14 java2">Since: <tspan>1.2</tspan></text>
+  <line x1="600" y1="510" x2="600" y2="375" class="line arrow"/>
+
+  <g class="java21">
+    <rect x="530" y="400" class="interface"/>
+    <text x="535" y="430" class="text19">SequencedMap</text>
+    <text x="535" y="470" class="text14">Since: <tspan>21</tspan></text>
+    <line x1="600" y1="510" x2="600" y2="485" class="line arrow"/>
+  </g>
+
+  <rect x="530" y="510" class="interface"/>
+  <text x="532" y="540" class="text">SortedMap</text>
+  <text x="535" y="580" class="text14 java2">Since: <tspan>1.2</tspan></text>
+
+  <g class="java6">
+    <line x1="600" y1="620" x2="600" y2="595" class="line arrow"/>
+    <rect x="530" y="620" class="interface"/>
+    <text x="535" y="650" class="text20">NavigableMap</text>
+    <text x="535" y="690" class="text14">Since: <tspan>1.6</tspan></text>
+  </g>
+
+</svg>

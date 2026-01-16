@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Bridge Pattern Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">class BridgePattern {
+    public interface Color {
+        String fill();
+    }
+
+    public class Blue implements Color {
+        @Override
+        public String fill() {
+            return "Blue";
+        }
+    }
+
+    public class Red implements Color {
+        @Override
+        public String fill() {
+            return "Red";
+        }
+    }
+
+    public abstract class Shape {
+        protected Color bridgeForColor;
+
+        public Shape(Color color) {
+            bridgeForColor = color;
+        }
+
+        abstract public String draw();
+    }
+
+    public class Square extends Shape {
+        public Square(Color color) {
+            super(color);
+        }
+
+        @Override
+        public String draw() {
+            return "Square " + bridgeForColor.fill();
+        }
+    }
+
+    public class Triangle extends Shape {
+        public Triangle(Color color) {
+            super(color);
+        }
+
+        @Override
+        public String draw() {
+            return "Triangle " + bridgeForColor.fill();
+        }
+    }
+
+    public void run() {
+        Shape square = new Square(new Red());
+        Shape triangle = new Triangle(new Blue());
+        System.out.println(square.draw() + " | " + triangle.draw());
+    }
+
+    public static void main(String[] args) {
+        new BridgePattern().run();
+    }
+}</code></pre>
+</body>
+</html>

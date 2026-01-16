@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">//The "Client"
+class CommandPattern {
+    enum Size {BIG, NORMAL, SMALL};
+    enum Visibility {VISIBLE, INVISIBLE};
+
+    // The "Invoker"
+    class Wizard {
+        private final Deque&lt;Command> undoStack = new LinkedList<>();
+        private final Deque&lt;Command> redoStack = new LinkedList<>();
+
+        public void castSpell(Command command) {
+            command.execute();
+            undoStack.offerLast(command);
+        }
+
+        public void undoLastSpell() {
+            if (!undoStack.isEmpty()) {
+                var previousSpell = undoStack.pollLast();
+                previousSpell.undo();
+                redoStack.offerLast(previousSpell);
+            }
+        }
+
+        public void redoLastSpell() {
+            if (!redoStack.isEmpty()) {
+                var spellToReDo = redoStack.pollLast();
+                spellToReDo.execute();
+                undoStack.offerLast(spellToReDo);
+            }
+        }
+    }
+
+    interface Command {
+        void execute();
+        void undo();
+    }
+
+    abstract class Target {
+        Size size = NORMAL;
+        Visibility visibility = VISIBLE;
+
+        public void changeSize() {
+            size = switch (size) {
+                case BIG -> SMALL;
+                case NORMAL -> BIG;
+                case SMALL -> NORMAL;
+            };
+        }
+
+        public void changeVisibility() {
+            visibility = visibility == INVISIBLE ? VISIBLE : INVISIBLE;
+        }
+    }
+
+    // The "Receiver"
+    class Goblin extends Target {
+    }
+
+    void run() {
+        var wizard = new Wizard();
+        var goblin = new Goblin();
+
+        /* The "Commands" */
+        wizard.castSpell(new Command() {
+            private Size oldSize;
+
+            @Override
+            public void execute() {
+                oldSize = goblin.size;
+                goblin.changeSize();
+            }
+
+            @Override
+            public void undo() {
+                goblin.size = oldSize;
+            }
+        });
+
+        wizard.castSpell(new Command() {
+            private Visibility oldVisibility;
+
+            @Override
+            public void execute() {
+                oldVisibility = goblin.visibility;
+                goblin.changeVisibility();
+            }
+
+            @Override
+            public void undo() {
+                goblin.visibility = oldVisibility;
+            }
+        });
+
+        wizard.undoLastSpell();
+        wizard.undoLastSpell();
+
+        wizard.redoLastSpell();
+        wizard.redoLastSpell();
+    }
+}</code></pre>
+</body>
+</html>

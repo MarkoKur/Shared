@@ -1,0 +1,10 @@
+		:target {
+			animation-name: bg-color;
+			animation-duration: 500ms;
+			animation-iteration-count: 2;
+			animation-direction: alternate;
+		}
+
+		@keyframes bg-color {
+			to {background-color: LightGreen;}
+		}

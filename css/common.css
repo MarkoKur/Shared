@@ -1,0 +1,220 @@
+.java1  {color: Black}
+.java2  {color: ChartReuse; background-color: Grey; border-radius: 3px}
+.java5  {color: LightGreen}
+.java6  {color: Green}
+.java7  {color: LightSeaGreen}
+.java8  {color: Blue}
+.java9  {color: Magenta}
+.java10 {color: Orange}
+.java12 {color: DarkOrange}
+.java16 {color: Red}
+.java21 {color: Red}
+
+.red                {color: Red}       /* Red */
+.tomato             {color: tomato}
+.maroon             {color: maroon}
+.magenta            {color: magenta}
+.dark-red           {color: DarkRed}
+.hot-pink           {color: HotPink}
+.light-pink         {color: LightPink}
+.fire-brick         {color: FireBrick} /* -Red- */
+.green              {color: Green}     /* Green */
+.teal               {color: Teal}
+.light-green        {color: LightGreen}
+.chart-reuse        {color: ChartReuse}
+.dark-green         {color: DarkGreen}
+.lime-green         {color: LimeGreen}
+.medium-aqua-marine {color: MediumAquaMarine} /* -Green- */
+.blue          {color: Blue}                  /* Blue */
+.navy          {color: Navy}
+.sky-blue      {color: SkyBlue}
+.dodger-blue   {color: DodgerBlue}
+.dark-blue     {color: DarkBlue}
+.midnight-blue {color: MidnightBlue}          /* -Blue- */
+.brown    {color: Brown}                      /* Brown */
+.saddle-brown {color: SaddleBrown}
+.orange      {color: Orange}
+.dark-orange {color: DarkOrange}
+.golden-rod  {color: GoldenRod}
+.purple   {color: Purple}
+.dark-magenta  {color: DarkMagenta}
+.grey     {color: Grey}                       /* Grey */
+.dim-grey {color: DimGrey}
+.dark-grey{color: DarkGrey}
+.dark-slate-grey {color: DarkSlateGray}
+.black    {color: Black}
+
+.back-white {background-color: white}
+.back-red {background-color: red}
+.back-pink {background-color: pink}
+.back-green {background-color: green}
+.back-light-green {background-color: LightGreen}
+.back-lime-green {background-color: LimeGreen}
+.back-yellow {background-color: yellow}
+.back-orange {background-color: orange}
+.back-tomato {background-color: tomato}
+.back-sky-blue {background-color: SkyBlue}
+.back-medium-spring-green {background-color: MediumSpringGreen}
+.back-medium-aqua-marine {background-color: MediumAquaMarine}
+.back-bfd {background-color: #BFD}
+.back-gainsboro {background-color: Gainsboro}
+
+
+.border, .border th , .border td, .collapse-border, .collapse-border th, .collapse-border td {
+	border: 1px solid;
+	border-color: LightGray;
+}
+.border-dark-grey, .border-dark-grey th, .border-dark-grey td{
+	border-color: DarkGray;
+}
+.border-grey, .border-grey th, .border-grey td{
+	border-color: grey;
+}
+
+.collapse-border {border-collapse: collapse}
+.padding th , .padding td {
+	padding-left : 5px;
+	padding-right: 5px;
+}
+.padding3, .padding-3 {
+	padding-left : 3px;
+	padding-right: 3px;
+}
+
+.margin-left {margin-left: 1em}
+.margin-left-2 {margin-left: 2em}
+.margin-right-2 {margin-right: 2em}
+.margin {margin: 1em}
+.margin-0 {margin: 0}
+.margin-3, .margin3px {margin: 3px}
+.margin-bottom-3 {margin-bottom: 3px}
+.margin-bottom-0 {margin-bottom: 0}
+.margin-top-3    {   margin-top: 3px}
+.margin-top-0    {   margin-top: 0}
+.margin-top-bottom-3 {margin-top: 3px; margin-bottom: 3px;}
+.margin-top-bottom-0 {margin-top: 0px; margin-bottom: 0px;}
+
+.text-align-center  { text-align: center }
+.text-align-left    { text-align: left }
+.text-align-right   { text-align: right }
+.text-align-initial { text-align:initial}
+.padding-left, .padding-left-1em {padding-left: 1em}
+
+table.td-align-center td { text-align: center }
+
+var {color: DarkGreen}
+.code {color: DarkBlue}
+code {color: DarkSlateGrey}
+.bad-code {color: SaddleBrown}
+.exception {color: FireBrick}
+.code-a code{
+	color: DarkBlue;
+	font-size: 17px;
+}
+.code-i code{
+	color: Blue;
+	font-size: 17px;
+}
+
+.zebra tr:nth-child(even) {
+	background-color: Beige;
+}
+.zebra tr:first-child {
+	background-color: LightBlue;
+}
+
+.indent4 {height: 4px}
+.indent8, .indent {height: 8px}
+
+#toc h1 {margin: 0;}
+#toc td:first-child {vertical-align: top}
+
+.tooltip {
+	color: MidnightBlue;
+}
+
+ul.ulWithMargin > li, ul.ul-with-margin > li {margin: 10px 0;}
+ol.ol-with-margin > li {margin: 10px 0;}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.overlap {
+	position: relative;
+	left: -8px;
+}
+
+/* Content*/
+.warning-sign:before {
+	content: '\26A0';
+}
+.link-sign:before {
+	content: '\1F517';
+}
+.plus-sign:before {
+	content: '\2795';
+}
+.minus-sign:before {
+	content: '\2796';
+}
+.green-check-mark-sign:before {
+	content: '\2705';
+}
+.pause-sign:before {
+	content: '\23F8';
+}
+.join-sign:before {
+	content: '\2A1D';
+}
+.collision-sign:before {
+	content: '\1F4A5';
+}
+
+/* Fonts */
+.fs18 {
+	font-size: 18px;
+}
+.fs20 {
+	font-size: 20px;
+}
+.smaller {font-size: smaller}
+
+.bold,.b {font-weight: bold;}
+.italic, .i {font-style: italic;}
+.bi {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.font-family-math  {font-family: math}
+.strike {text-decoration: line-through}
+/* end Fonts */
+
+.pointer {cursor: pointer}
+.help {cursor: help}
+.get-title { /* functional */
+	cursor: help;
+	color: MidnightBlue;
+}
+
+.width-20     {width: 20px;}
+.width100pct {width: 100%;}
+.width35pct  {width: 35%;}
+.width20pct  {width: 20%;}
+.width5pct   {width: 5%;}
+
+.height-2, height2 {height: 2px;}
+.height-220  {height: 220px}
+.height-300  {height: 300px}
+.height-400  {height: 400px}
+.height-550  {height: 550px}
+.height-570  {height: 570px}
+.height-650  {height: 650px}
+.height-725  {height: 725px}
+
+.display-none {display: none;}
+
+.iframe {width: 98vw;}
+
+.footer {border:0; height: 35px;}

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 380">
+    <style>
+        .branch {
+            stroke: black;
+            stroke-width: 1;
+            fill: none;
+        }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="8" markerHeight="14" refX="0" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+            <line x1="0.5" y1="0.5" x2="7.5" y2="7.5" stroke-width="1.5" stroke="blue"/>
+            <line x1="0" y1="7" x2="6" y2="7" stroke-width="1" stroke="blue"/>
+            <line x1="0.5" y1="13.5" x2="7.5" y2="6.5" stroke-width="1.5" stroke="blue"/>
+        </marker>
+        <marker id="arrowheadTranslucent" markerWidth="8" markerHeight="14" refX="0" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+            <line x1="0.5" y1="0.5" x2="7.5" y2="7.5" stroke-width="1" opacity="1" stroke="blue"/>
+            <line x1="0" y1="7" x2="6" y2="7" stroke-width="1" opacity="1" stroke="blue"/>
+            <line x1="0.5" y1="13.5" x2="7.5" y2="6.5" stroke-width="1" opacity="1" stroke="blue"/>
+        </marker>
+    </defs>
+
+    <g class="root parent" transform="translate(135,40)">
+        <text x="0" y="0" class="svgDataText">F(10)</text>
+    </g>
+    <path d="M 128 49 Q 85 110 85 190 L 85 190 Q 85 265 130 335" color="blue" class="branch" marker-end="url(#arrowheadTranslucent)" stroke-dasharray="5,5"/>
+
+    <g class="root parent" transform="translate(140,95)">
+        <text x="0" y="0" class="svgDataText">F(9)</text>
+        <line x1="15" y1="-20" x2="15" y2="-40" class="branch height13" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <g class="root parent" transform="translate(140,150)">
+        <text x="10" y="0" class="svgDataText">.</text>
+        <text x="10" y="10" class="svgDataText">.</text>
+        <text x="10" y="20" class="svgDataText">.</text>
+        <text x="10" y="30" class="svgDataText">.</text>
+        <line x1="15" y1="-20" x2="15" y2="-40" class="branch height13" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <g class="root parent" transform="translate(140,250)">
+        <text x="0" y="0" class="svgDataText">F(2)</text>
+        <line x1="15" y1="-20" x2="15" y2="-40" class="branch height13" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <g class="root parent" transform="translate(140,305)">
+        <!--<circle cx="170" cy="30" r="20" class="node" />-->
+        <text x="0" y="0" class="svgDataText">F(1)</text>
+        <line x1="15" y1="-20" x2="15" y2="-40" class="branch height13" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <g class="root parent" transform="translate(140,360)">
+        <!--<circle cx="170" cy="30" r="20" class="node" />-->
+        <text x="0" y="0" class="svgDataText">F(0)</text>
+        <line x1="15" y1="-20" x2="15" y2="-40" class="branch height13" marker-end="url(#arrowhead)"/>
+    </g>
+</svg>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Glossary for IT</title>
+	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/glossaryData.js"></script>
+	<script src="js/parseData.js"></script>
+	<style>
+		th {color: DarkSlateGrey; letter-spacing: 0.0625em;}
+		summary {color: DarkSlateGrey;}
+
+		:target {background-color: LightGreen;}
+
+		.svg-logo {
+			vertical-align: middle;
+			height: 15px;
+		}
+		.svg-logo:hover {
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+<a href="all.html" id="sitemap">SiteMap</a>
+<div class="indent"></div>
+
+<label for="search-input"></label>
+<input id="search-input" type="text" title="Enter abbreviation or term" autofocus>
+<button name="Search" onclick="search()">Search</button>
+<div class="indent"></div>
+<div id="search-results" class="display-none"></div>
+<div class="indent"></div>
+<hr>
+
+<div id="content"></div>
+<hr>
+
+<table id="groupsTable" class="collapse-border padding sorted"></table>
+<div class="indent"></div>
+
+<a href="all.html" id="sitemap-footer">SiteMap</a><br>
+<iframe class="footer" src="./footer.html"></iframe>
+
+<script>
+	const contentTag = document.getElementById("content");
+	addContentTables(contentTag, true);
+
+	const groupsTable = document.getElementById("groupsTable");
+
+	// Fetch data from glossaryGroupMap
+	if (typeof glossaryGroupMap !== 'undefined') {
+		parseGroupMap(glossaryGroupMap, groupsTable, glossaryParentGroupMap, groupAliasMap);
+	}
+
+	// Fetch data from rawMap
+	if (typeof rawMap !== 'undefined') parseMap(rawMap, groupsTable, glossaryParentGroupMap, groupAliasMap);
+
+	// fill the tables headers
+	const ths = document.getElementsByTagName("th");
+	Array.from(ths).forEach( th => {
+		if (!th.innerHTML && !th.classList.contains('skip')) th.innerHTML = th.id;
+	});
+
+	// fill the <a> tags
+	const hrefs = document.getElementsByTagName("a");
+	Array.from(hrefs).forEach( link => {
+		if (link.id) return;
+		if (!link.innerHTML) link.innerHTML = link.href.split("#")[1];
+	});
+
+	function sortTable(table) {
+		let switching = true;
+		const rows = table.rows;
+
+		while (switching) {
+			switching = false;
+
+			for (let i = 0; i < (rows.length - 1); i++) {
+				const x = rows[i].getElementsByTagName("TH")[0];
+				const y = rows[i + 1].getElementsByTagName("TH")[0];
+
+				if (x && y && (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())) {
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					break;
+				}
+			}
+		}
+
+		const headers = table.getElementsByClassName("table-head");
+		if (headers.length > 0) {
+			headers[0].parentNode.insertBefore(headers[0], rows[0]);
+		}
+	}
+
+	const tables = document.querySelectorAll("table.sorted");
+	tables.forEach(sortTable);
+
+	// rowSpan the same
+	tables.forEach(table => {
+		const rows = table.rows;
+		if (rows.length === 0) return;
+
+		let upRowTd = rows[0].getElementsByTagName("TD")[1];
+		let index = 1;
+		while (index < rows.length) {
+			let downRowTd = rows[index].getElementsByTagName("TD")[1];
+
+			if (upRowTd && downRowTd && upRowTd.innerHTML === downRowTd.innerHTML) {
+				upRowTd.rowSpan = upRowTd.rowSpan + 1;
+				downRowTd.remove();
+			} else {
+				upRowTd = downRowTd;
+			}
+			index++;
+		}
+	});
+
+	const searchInput = document.getElementById("search-input");
+	const searchResults = document.getElementById("search-results");
+
+	function search() {
+		if (searchInput.value && searchInput.value.trim().length > 0) {
+			const searchStr = searchInput.value.trim().toLowerCase();
+			searchResults.innerHTML = "";
+
+			Array.from(ths).forEach( item => {
+				if (item.innerHTML.toLowerCase().indexOf(searchStr) >= 0 && item.id) {
+					searchResults.appendChild(createHrefLink(item.id, item.innerHTML));
+					searchResults.appendChild(document.createTextNode(" "));
+				}
+			});
+			if (searchResults.innerHTML.length == 0) {
+				searchResults.appendChild(document.createTextNode("Nothing found"));
+				const c = function() {return Math.floor((Math.random() * 255))};
+				searchResults.style.color = "rgb(" + c() + "," + c() + "," + c() +")";
+			}
+			searchResults.style.display = "block";
+		} else {
+			searchResults.style.display = "none";
+		}
+	}
+
+	searchInput.addEventListener("keypress", function(event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			search();
+		}
+	});
+
+	// Hide empty content tables
+	hideEmptyContent();
+</script>
+</body>
+</html>

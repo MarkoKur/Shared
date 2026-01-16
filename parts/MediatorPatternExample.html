@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">class MediatorPattern {
+    interface Worker {
+        void receiveMessage(Object message, String key);
+    };
+
+    interface WoodWorker extends Worker {
+    };
+    class LumberJack implements WoodWorker {
+        private final Mediator mediator;
+        private final String key;
+
+        LumberJack(Mediator mediator, String key) {
+            this.mediator = mediator;
+            this.key = key;
+            mediator.subscribe(this, key);
+        }
+
+        @Override
+        public void receiveMessage(Object message, String key) {
+            if (!this.key.equals(key)) {
+                System.err.println("Unauthorized attempt to send the message to " + this.getClass().getSimpleName());
+                return;
+            }
+            if (message instanceof String s) {
+                System.out.println("LumberJack received '" + s + "'");
+            } else {
+                System.err.println("LumberJack: Send me only Strings!");
+            }
+        }
+
+        public void sendMessage(String message, Class<? extends Worker> workerType) {
+            mediator.sendMessageTo(message, workerType);
+        }
+    }
+
+    interface OfficeWorker extends Worker {
+    };
+    class Director implements OfficeWorker {
+        private final Mediator mediator;
+        private final String key;
+
+        Director(Mediator mediator, String key) {
+            this.mediator = mediator;
+            this.key = key;
+            mediator.subscribe(this, key);
+        }
+
+        @Override
+        public void receiveMessage(Object message, String key) {
+            if (!this.key.equals(key)) {
+                System.err.println("Unauthorized attempt to send the message to " + this.getClass().getSimpleName());
+                return;
+            }
+            if (message instanceof Integer i) {
+                System.out.println("Director gets '" + i + "'");
+            } else {
+                System.err.println("Director: I understand only numbers.");
+            }
+        }
+
+        public void sendMessage(Integer message, Class<? extends Worker> workerType) {
+            mediator.sendMessageTo(message, workerType);
+        }
+    }
+
+    interface Mediator {
+        void subscribe(Worker worker, String key);
+        void sendMessageTo(Object message, Class<? extends Worker> workerType);
+        void sendMessageToAll(Object Message);
+    }
+
+    class MediatorImpl implements Mediator {
+        private final Map&lt;Worker, String> subscribers = new HashMap<>();
+        private final Map&lt;Class<?>, Function&lt;Object, ? extends Object>> messageTypeMap = new HashMap<>();
+
+        MediatorImpl() {
+            Function&lt;Object, String> woodWorkerFormat = message -> String.valueOf(message);
+            messageTypeMap.put(WoodWorker.class, woodWorkerFormat);
+
+            Function&lt;Object, Integer> officeWorkerFormat = message -> Integer.valueOf(message.toString());
+            messageTypeMap.put(OfficeWorker.class, officeWorkerFormat);
+        }
+
+        @Override
+        public void subscribe(Worker worker, String key) {
+            subscribers.put(worker, key);
+        }
+
+        @Override
+        public void sendMessageTo(Object message, Class<? extends Worker> workerType) {
+            boolean atLeastOneRecipient = false;
+            for (Worker worker : subscribers.keySet()) {
+                if (workerType.isInstance(worker)) {
+                    Function&lt;Object, ? extends Object> conversionFunction = messageTypeMap.get(workerType);
+                    if (conversionFunction == null) {
+                        System.out.println("No conversionFunction for " + workerType + " was found");
+                    } else {
+                        try {
+                            Object convertedMessage = conversionFunction.apply(message);
+                            worker.receiveMessage(convertedMessage, subscribers.get(worker));
+                            atLeastOneRecipient = true;
+                        } catch (Exception e) {
+                            System.err.println("Cannot send message to " + worker.getClass().getSimpleName() + " due to it is in an unsupported format.");
+                        }
+                    }
+                }
+            }
+            if (!atLeastOneRecipient) {
+                System.out.println("No message was sent for " + workerType);
+            }
+        }
+
+        @Override
+        public void sendMessageToAll(Object Message) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    void run() {
+        var mediator = new MediatorImpl();
+
+        var jack = new LumberJack(mediator, "Lumper");
+        var ron = new Director(mediator,"RonSwan");
+
+        jack.sendMessage("123", OfficeWorker.class);
+        jack.sendMessage("Jipa!", OfficeWorker.class);
+
+        ron.receiveMessage("Jipa!", "Freebie!"); // Test of direct call, not possible with mediator
+
+        ron.sendMessage(123, WoodWorker.class);
+        ron.sendMessage(777, WoodWorker.class);
+
+        ron.sendMessage(777, Worker.class);
+    }
+}</code></pre>
+</body>
+</html>

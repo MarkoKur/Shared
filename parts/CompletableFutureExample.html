@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">class CompletableFutureExample {
+
+    public static void main(String[] args) {
+        class Result {
+            private String s = "";
+            public String get() {
+                return s.trim();
+            }
+            public synchronized void add(String piece) {
+                s = s + piece + " ";
+            }
+        }
+        Result result = new Result();
+
+        class CFSupplier&lt;Void> implements Supplier&lt;Void> {
+            private final String name;
+
+            public CFSupplier(String name) {
+                this.name = name;
+            }
+
+            @Override
+            public Void get() {
+                Random r = new Random();
+                int delay = r.nextInt(1000);
+                sleep(delay);
+                System.out.println(name + " " +delay + " " + Thread.currentThread().getName());
+                result.add(name);
+                return null;
+            }
+
+            void sleep(int delay) {
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException ex) {
+                }
+            }
+        }
+
+        CompletableFuture&lt;Void> future1 = CompletableFuture.supplyAsync(new CFSupplier("F1"));
+        CompletableFuture&lt;Void> future2 = CompletableFuture.supplyAsync(new CFSupplier("F2"));
+        CompletableFuture&lt;Void> future3 = CompletableFuture.supplyAsync(new CFSupplier("F3"));
+
+        System.out.println("Supplies done");
+        CompletableFuture&lt;Void> combinedFuture = CompletableFuture.allOf(future1, future2, future3);
+        System.out.println("allOf done");
+        combinedFuture.join();
+        System.out.println("join called, Result=" + result.get());
+    }
+}</code></pre>
+</body>
+</html>

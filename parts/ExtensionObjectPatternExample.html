@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">class ExtensionObjectPattern {
+    interface Extension {
+        void doPieceOfWork(Object o);
+    }
+
+    class XMLPrintExtension implements Extension {
+        @Override
+        public void doPieceOfWork(Object o) {
+            if (o instanceof XMLDocument document) {
+                System.out.println("Additional process of '" + document + "'");
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    interface Document {
+        void process();
+    }
+
+    interface XMLDocument extends Document {
+    }
+
+    interface Extendable {
+        &lt;T extends Extension> void addExtension(Class&lt;T> extensionType, T extension);
+        &lt;T extends Extension> T getExtension(Class&lt;T> extensionType);
+    }
+
+    class OKDocument implements XMLDocument, Extendable {
+        private final Map&lt;Class<? extends Extension>, Extension> extensions = new HashMap<>();
+
+        @Override
+        public void process() {
+            System.out.println("Main process of '" + this + "'");
+            extensions.values().forEach(extension -> extension.doPieceOfWork(this));
+        }
+
+        @Override
+        public &lt;T extends Extension> void addExtension(Class&lt;T> extensionType, T extension) {
+            extensions.put(extensionType, extension);
+        }
+
+        @Override
+        public &lt;T extends Extension> T getExtension(Class&lt;T> extensionType) {
+            return (T) extensions.get(extensionType);
+        }
+
+        @Override
+        public String toString() {
+            return "OkayDocument";
+        }
+    }
+
+    class FailDocument implements XMLDocument, Extendable {
+        @Override
+        public void process() {
+            System.out.println("Useless Main process of '" + this + "'");
+        }
+
+        @Override
+        public &lt;T extends Extension> void addExtension(Class&lt;T> extensionType, T extension) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public &lt;T extends Extension> T getExtension(Class&lt;T> extensionType) {
+            return null;
+        }
+
+        @Override
+        public String toString() {
+            return "FailDocument";
+        }
+    }
+
+    class NonExtendableDocument implements Document {
+        @Override
+        public void process() {
+            System.out.println("Main process of '" + this + "'");
+        }
+
+        @Override
+        public String toString() {
+            return "NonExtendableDocument";
+        }
+    }
+
+    void run() {
+        Document[] documents = {new OKDocument(), new FailDocument(), new NonExtendableDocument()};
+
+        for (Document document : documents) {
+            if (document instanceof Extendable extendable) {
+                if (extendable instanceof XMLDocument extendableXmlDocument) {
+                    var extension = extendable.getExtension(XMLPrintExtension.class);
+                    if (extension == null) {
+                        System.out.println("Adding extension to: '" + extendableXmlDocument + "'");
+                        try {
+                            extendable.addExtension(XMLPrintExtension.class, new XMLPrintExtension());
+                        } catch (Exception e) {
+                        }
+                    }
+                    if (extendable.getExtension(XMLPrintExtension.class) != null) {
+                        extendableXmlDocument.process();
+                    } else {
+                        System.out.println("Skipped process for '" + document + "' due to necessary extension is failed to add");
+                    }
+
+                }
+            } else {
+                document.process();
+            }
+            System.out.println("------");
+        }
+    }
+
+    public static void main(String[] args) {
+        new ExtensionObjectPattern().run();
+    }
+}</code></pre>
+</body>
+</html>

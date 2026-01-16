@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Java Notes</title>
+		<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
+		<link rel="stylesheet" href="css/common.css">
+		<script src="js/glossaryData.js"></script>
+		<script src="js/glossary.js" async></script>
+		<script src="js/toc.js"></script>
+
+		<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
+		<script src="3dparty/highligthjs/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+	</head>
+	<body>
+	<div class="indent"></div>
+	<a href="all.html">SiteMap</a>
+
+	<table id="toc">
+			<tr>
+				<td><h1>A</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#atomic" id="atomicUp">Atomic</a></h3>
+						<h3><a href="#arrays" id="arraysUp">Arrays</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>B</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#bigDecimal" id="bigDecimal"><code>BigDecimal Todo</code></a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>C</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2><a href="#classes" id="classesUp">Classes</a></h2>
+							<h3 class="padding-left-1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
+							<h3 class="padding-left-1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
+						<h2><a href="#collections" id="collectionsUP">Collections</a></h2>
+							<h4 class="padding-left-1em"><a href="#comparator" id="comparatorUp">Comparator</a></h4>
+							<h4 class="padding-left-1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
+						<h4><a href="#collector" id="collectorUp">Collector</a>/<a href="#collectors" id="collectorsUp">Collectors</a></h4>
+						<h3><a href="#completableFuture" id="completableFutureUp"><code>CompletableFuture</code></a></h3>
+						<h2><a href="#concurrency" id="concurrencyUp">Concurrency/MultiThreading</a></h2>
+						<h4>Covariant return type</h4>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>D</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#dataRaceCondition" id="data-race-up">Data Race & Race Condition</a></h3>
+						<h3><a href="#diamond" id="diamondUp">Diamond operator</a></h3>
+						<h3><a href="#diamondProblem" id="diamondProblemUp">Diamond problem</a></h3>
+					</details>
+				</td>
+			</tr>
+		<tr>
+			<td><h1>E</h1></td>
+			<td>
+				<details>
+					<summary></summary>
+					<h3><a href="#exceptions" id="exceptionsUp">Exceptions</a></h3>
+					<h3><a href="#executors" id="executorsUp">Executors</a></h3>
+				</details>
+			</td>
+		</tr>
+			<tr>
+				<td><h1>F</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a id="e-final" href="#e-final">Effectively <b>Final</b></a></h3>
+						<h3><a href="#failFast">Fail-Fast mechanism (iterator)</a></h3>
+						<h2><a href="#functionalInterfaces">Functional Interfaces</a></h2>
+						<h3><a href="#forkJoin">Fork/Join</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>G</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2><a id="garbageCollectorUp" href="#garbageCollector">Garbage Collector</a></h2>
+						<h2><a id="genericsUp" href="#generics">Generics</a></h2>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>H</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#happensBefore" id="happensBeforeUp">Happens-before relationship</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>I</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#instanceof" id="instanceofUp" class="code-a"><code>instanceof</code> operator</a></h3>
+						<h3><a href="#interface" id="interfaceUp" class="code-a"><code>interface</code></a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>J</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2><a href="#java" id="javaUp">Java</a></h2>
+						<h3><a href="#jsp" id="jspUp">Jakarta(Java) Server Pages</a></h3>
+						<h3><a href="#servlets" id="servletsUp">Jakarta(Java) Servlets</a></h3>
+						<h3><a href="#filters"  id="filtersUp" >Jakarta(Java) Filters</a></h3>
+						<h2><a href="#jm" id="jmUp">JVM Memory Structure / Run-Time Data Areas</a></h2>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>L</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2><a href="#lambdas">Lambda Expressions</a></h2>
+						<h3 class="padding-left-1em"><a href="#lambdas-basis">Basis</a></h3>
+						<h3 class="padding-left-1em"><a href="#lambdas-mr">Method references</a></h3>
+						<h3><a href="#loops" id="loopsUp">Loops</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>M</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#methodSignature" id="methodSignatureUp">Method signature</a></h3>
+						<h2><a href="#modules" id="modulesUp">Modules</a></h2>
+
+						<h2><a href="#concurrency" id="multiThreadingUp">MultiThreading/Concurrency</a></h2>
+					</details>
+				</td>
+			</tr>
+
+			<tr>
+				<td><h1>N</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2><a href="#nesting">Nesting of classes</a></h2>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>O</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#optional"><code>Optional</code> <small>class</small></a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>R</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#dataRaceCondition"><span id="raceConditionUp">Race Condition</span> <small>& Data Race</small></a></h3>
+						<h3><a href="#record" id="recordUp">Record</a></h3>
+						<h3><a href="#referenceType" id="referenceTypeUp">Reference Type</a></h3>
+						<h3><a href="#jm" id="rtdaUp">Run-Time Data Areas</a></h3>
+						<h3><a href="#rtti" id="rttiUp">Runtime Type Identification (RTTI)</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>S</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#sealed" id="sealedUp">Sealed classes</a></h3>
+						<h2><a href="#streams" id="streamsUp">Streams</a></h2>
+						<h3><a href="#servlets">Servlets</a></h3>
+						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
+						<h3><a href="#methodSignature" id="signatureMethodUp">Signature of a Method</a></h3>
+						<h3 class="code-a"><a href="#spliterator" id="spliteratorUp"><code>Spliterator</code></a></h3>
+						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
+						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
+						<h4><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+						<h4>Shallow copy / deep copy todo</h4>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>T</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#thread" id="threadUp" class="code-a"><code>Thread</code></a></h3>
+						<h3><a href="#threadLocal" id="threadLocalUp" class="code-a"><code>ThreadLocal</code></a></h3>
+						<h3><a href="#try" id="tryUp">Try catch finally</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>V</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#volatile" class="code-a" id="volatile-up"><code>volatile</code></a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>W</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#weakly">Weakly consistence (iterator)</a></h3>
+						<h4>WeakHashMap todo</h4>
+					</details>
+				</td>
+			</tr>
+		</table>
+
+		<hr class="height2">
+
+		<div id="atomic">
+			<h3 class="margin-bottom-3">Atomic operations <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			An <em>atomic</em> action is one that effectively happens all at once.<br>
+			An atomic action cannot stop in the middle: it either happens completely, or it doesn't happen at all.<br>
+			No side effects of an atomic action are visible until the action is complete.<br>
+			Atomic actions:
+			<ul class="margin-top-3">
+				<li>
+					Reads and writes for <a href="#referenceType" class="brown">reference</a> and <span class="navy">primitive</span> variables, <span class="red">except</span> <code class="code">long</code> and <code class="code">double</code>.<br>
+				</li>
+				<li>
+					Reads and writes for <b>all</b> variables declared <a href="#volatile"><code>volatile</code></a>
+				</li>
+			</ul>
+			Atomic actions cannot be interleaved, so they can be used without fear of thread interference.
+			However, this does not eliminate all needs to synchronize atomic actions, because memory consistency errors are still possible.
+			Using <a href="#volatile"><code>volatile</code></a> variables reduces the risk of memory consistency errors.
+			<div class="indent"></div>
+			The <code class="code">java.util.concurrent.atomic</code> package defines classes that support atomic operations on single variables.
+			These classes hold an inner <a href="#volatile"><code>volatile</code></a> <code>value</code> variable to operate.
+			The atomic <code class="code">compareAndSet()</code> method has <i>memory consistency</i> features,
+			calling the <code class="code">native</code> OS method, that exploit low-level atomic machine instructions such as compare-and-swap (CAS), to ensure data integrity.
+			<br>CAS: This algorithm implies checking that the <span class="green">old value</span> of a <code class="code">variable</code> <small>(known to the <span class="light-green">current thread</span>)</small> is still <span class="green">the same</span> to be able to set a <span class="hot-pink">new value</span>.
+			If the <span class="green">old value</span> is <span class="red">not equal</span> to the <span class="blue">current value</span> of a <code class="code">variable</code>, then it means that some <span class="dodger-blue">other thread</span> has already <span class="blue">changed</span> the value of a <code class="code">variable</code>
+			and setting the <span class="hot-pink">new value</span> in the <span class="light-green">current thread</span> <span class="red">does not make sense</span> since it is already <span class="brown">outdated</span>.
+
+			<div class="indent"></div>
+			For simple classes <a href="#synchronized"><code>synchronized</code></a> blocks/methods are an acceptable solution.
+			But for more complicated classes there may be a need to avoid the liveness impact of unnecessary synchronization.
+			Replacing the fields with an <code class="code">Atomic</code> variant allows preventing thread interference without resorting to synchronization.
+
+			<div class="indent"></div>
+			<span class="orange">
+				<span class="warning-sign fs20"></span>
+				Question: are long and double are atomic by default on a 64 bit JVM?
+			</span>
+			<br>
+			Gpt answer:
+			<ul class="margin-top-3">
+				<li>On <strong><span class="java8">8+</span> <small>(or 11+ for GraalVM)</small> 64-bit JVMs</strong>, this is generally not an issue — they often perform 64-bit atomic access</li>
+				<li>
+					But <strong class="grey">the <span class="get-title">JMM</span> does not guarantee</strong> atomicity for <code class="code">long</code> and <code class="code">double</code>, so portable code <strong>should not rely on it</strong>
+				</li>
+			</ul>
+		</div>
+		<hr>
+
+		<div id="arrays">
+			<h3><a href="#arraysUp">Arrays</a></h3>
+			Max array size is <code class="code">Integer.MAX_VALUE</code>.<br>
+			<code class="code">boolean[] ba = new boolean[-200];</code> will compile, but will return <code class="fire-brick">NegativeArraySizeException</code> at Runtime.
+		</div>
+		<hr>
+
+		<div id="classes">
+			<h2><a href="#classesUp">Classes</a></h2>
+			Top level classes <span class="tomato">cannot</span> be <code class="code">static</code>.<br>
+			<code>abstract</code> classes <span class="tomato">cannot</span> be <code>final</code>, <small>that is logical</small>.
+		</div>
+		<hr>
+
+		<div id="class">
+			<h3 class="margin-bottom-3"><code class="code">.class</code> literal</h3>
+			The <code class="code">.class</code> literal returns an <code class="code">java.lang.Class</code> instance of requested <span class="brown">type</span>.<br>
+			It's part of <i>Java Reflections</i>.
+			Works for class-like definitions (classes, interfaces, arrays, enums, records etc.) and also for <span class="dark-green">primitive types</span> and <code class="code">void</code>.<br>
+			<code>Class c1 = Object.class;</code><br>
+			<code>Class&lt;?&gt; c2 = <span class="dark-green">boolean</span>.class;</code><br>
+			<code>Class&lt;Void&gt; c3 = <span class="code">void</span>.class;</code>
+			<div class="indent4"></div>
+			Useful methods:<br>
+			<code class="code">boolean isInstance(Object obj)</code> - the dynamic equivalent of the Java language <code>instanceof</code> operator,
+			cause <code>instanceof</code> works only with reference types.<br>
+			<span class="warning-sign fs20 blue"></span>
+			Don't use it this way: <code class="bad-code">someInstance.getClass().isInstance(String.class)</code>
+			- it will always return <code class="code">false</code>, because the type of <code class="code">String.class</code> is not <code class="code">java.lang.String</code>, it is <code class="code">java.lang.Class</code>.<br>
+			Correct way:<br>
+			<code>String s1= "s1";</code><br>
+			<code>String s2= "s2";</code><br>
+			<code class="code">s1.getClass().isInstance(s2);</code>
+		</div>
+		<hr>
+
+		<div id="collections">
+			<h2><a href="#collectionsUP">Collections</a> <small class="java2">(Since 1.2)</small></h2>
+			<object width="700" data="svg/Collections.svg"></object>
+			<table class="border">
+				<tr><th>Feature <small>(according to the contract)</small></th><th>List</th><th>Set</th></tr>
+				<tr><td>Remembers the elements' order</td><td>&#x2705;</td><td>&#x274C;</td></tr>
+				<tr><td>Can have duplicates</td><td>&#x2705;</td><td>&#x274C;</td></tr>
+			</table>
+			<br>
+			<em><b>Notes:</b></em> Methods <code>addAll, removeAll, retainAll </code> etc.,
+			are <b>not</b> <em>transactional</em> by contract. It returns <code>true</code> if this collection has been modified by this call.
+			Getting a <code>true</code> value does <b>not</b> mean that all the elements of the other collection have been applied;
+			it means that <b>at least one</b> has been applied.
+			<br><br>
+
+			<code><b>ArrayList</b></code>:
+			The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>,
+			<code>iterator</code>, and <code>listIterator</code> operations run in constant time.
+			The <code>add</code> operation runs in <i>amortized constant time</i> - adding <i>n</i> elements requires O(n) time.
+			All of the other operations run in linear time (roughly speaking).
+			The constant factor is low compared to that for the <code>LinkedList</code> implementation.<br>
+			<code>contains</code> requires <var>O(n)</var> time. It uses the <code>indexOf(object)</code> method to check if the object is in the list.
+			That means it should iterate all elements in a worse case.<br>
+			The <code>iterator</code> and <code>listIterator</code> methods are <a href="#failFast">fail-fast</a>.<br>
+
+			<code class="b">ArrayList</code> vs <code class="b">LinkedList</code><br>
+			What was true for linked lists when computing was invented in the 60's does not hold anymore,
+			and the capacity of linked lists to outperform arrays on insertion and deletion operations is greatly diminished by modern hardware, <span class="get-title">CPU</span> caches, and pointer chasing.
+			Iterating over the elements of an <code>ArrayList</code> is much faster that over the elements of a <code>LinkedList</code>,
+			mainly due to pointer chasing and <span class="get-title">CPU</span> cache misses.<br>
+			There are still cases where a linked list is faster than an array.
+			A doubly-linked list (<code>LinkedList</code>) can access its first and last element faster than an <code>ArrayList</code> can.
+			So if your application needs a <span class="get-title">LIFO</span>/stack, or a <span class="get-title">FIFO</span> waiting queue, then choosing a <code>LinkedList</code> is probably your best choice.
+
+			<br><br>
+			<code><b>HashSet</b></code>: <code>contains</code> and <code>add</code>, <code>remove</code>, <code>size</code>
+			requires <var>O(1)</var> time <small>(the case 1 element in the bucket)</small>.
+			Because under the hood <code>HashSet</code> is using a <a href="#hashMap"><code>HashMap</code></a> (only the keys' part).
+
+			<br><br>
+			<b class="i">SubList & SubSet</b><br>
+			<code>list.subList(start, end)</code> & <code>set.subSet(from, to)</code><br>
+			Note that the returned list/set is a <em>view</em> on the main list/set. Thus, any modification operation on the sub-collection is reflected on the main collection and vice versa.
+			<br><br>
+
+			<code id="hashMap"><b>HashMap</b></code>
+			is based on "buckets" array: <code>Node&lt;K,V>[] table</code>. The array cells contain only the first <code>Node</code>s of the buckets.
+			The Nodes form the linked list<small class="grey">(not the <code>java.util.LinkedList</code>)</small>.
+			<span class="nowrap">Since <span class="java8">Java 1.8</span> in case bucket size is > <b>8</b>,</span>
+			the bucket is being rebuilt with <code>TreeNode</code>, forming the <a href="ConnectedNotes.html#redBlackTree">RBT</a>.<br>
+			The array index for the <code>key</code> is calculated using <em>hash</em>,
+			so, in other words, the index of a key is always known and there is no need to iterate through the <em>array</em> to find the <em>bucket</em>.<br>
+			Thus, the <code>get(key)</code> operation takes <var>O(1)</var> time (in case of <b>1</b> element in the bucket),
+			otherwise it's called a <em class="tomato">collision</em>:
+			<var>O(n)</var> for linked list and <var>O(log n)</var> for RBT.<br>
+			<pre>	table[0] → Node(key1).next → Node(key2).next → ...
+	table[1] → Node(keyM) // no collision
+	table[2] → TreeNode(key3) → [TreeNode(key4) → [...], TreeNode(key5) → [...])]
+	table[3] → null</pre>
+			Default <em>load-factor</em> is 0.75, and <em>initialCapacity</em> is 16,
+			thus, by default you can hold 12<small>(16*0.75)</small> entries in the <code>HashMap</code>.
+			<em>Capacity</em> is the <code>length</code> of the inner array table.
+
+			<div class="indent4"></div>
+			<code><b>TreeMap</b></code> is based on a <a href="ConnectedNotes.html#redBlackTree">RBT</a>
+
+			<br><br>
+			<code><b>EnumMap</b></code> and <code><b>EnumSet</b></code> should be used if keys are of the enum type, for more efficiency.
+
+			<br><br>
+			<em><b>Notes:</b></em> For Maps & Sets: Using <span class="red">mutable key</span> is an <span class="red">antipattern</span>, and you should definitely avoid doing that.
+
+			<br><br>
+			<em id="failFast"><b>Fail-fast</b></em>:
+				if a collection is structurally modified at any time after the iterator is created,
+				in any way except through the iterator's own <code>remove</code> or <code>add</code> methods, the iterator will throw a <code>ConcurrentModificationException</code>.
+			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.
+			<div class="indent"></div>
+			<em id="weakly"><b>Weakly consistent</b></em><small>(fail-safe)</small> traversal of Iterators and <a href="#spliterator" id="spliteratorCollections">Spliterators</a> (in opposition to <a href="#failFast"><i>Fail-Fast</i></a>):<br>
+			<ul class="margin-top-0">
+				<li>they may proceed concurrently with other operations</li>
+				<li>they will <span class="green">never</span> throw <code class="code">ConcurrentModificationException</code></li>
+				<li>they are guaranteed to traverse elements as they existed upon construction exactly once, and may (but are not guaranteed to) reflect any modifications subsequent to construction</li>
+			</ul>
+
+			<table class="border padding">
+				<caption><b>Collections</b> static helper class </caption>
+				<tr><th>Group</th><th>Method</th><th>Description</th></tr>
+
+				<tr>
+					<td rowspan="4">add<br>copy<br>fill</td>
+					<td><code class="code">@SafeVarargs boolean <b>addAll</b>(Collection&lt;T> c, T... elements)</code></td>
+					<td>
+						Returns: <code class="code">true</code> - if the collection changed as a result of the call
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>copy</b>(List&lt;? super T> destination, List&lt;? extends T> source)</code></td>
+					<td>Copies all of the elements from one list into another</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>fill</b>(List&lt;T> list, T object)</code></td>
+					<td>Replaces all of the elements of the specified list with the specified element</td>
+				</tr>
+				<tr>
+					<td><code class="code">List&lt;T> <b>nCopies</b>(int n, T o)</code></td>
+					<td>Returns an immutable list consisting of <code class="code">n</code> copies of the specified object</td>
+				</tr>
+
+				<tr>
+					<td>asLifoQueue</td>
+					<td><code class="code">Queue&lt;T> asLifoQueue(Deque&lt;T> deque)</code></td>
+					<td>
+						Returns a view of a <code class="code">Deque</code> as a <span class="get-title">LIFO</span> <code class="code">Queue</code>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="5">Search like operations</td>
+					<td><code class="code">int <b>binarySearch</b>(List&lt;T> list, T key[, Comparator&lt;T> c])</code></td>
+					<td>Searches the specified list for the specified object using the binary search algorithm</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean <b>disjoint</b>(Collection&lt;?> c1, Collection&lt;?> c2)</code></td>
+					<td>Returns <code class="code">true</code> if the two specified collections have no elements in common</td>
+				</tr>
+				<tr>
+					<td><code class="code">int <b>frequency</b>(Collection&lt;?> c, Object o)</code></td>
+					<td>Returns the number of elements in the specified collection equal to the specified object</td>
+				</tr>
+				<tr>
+					<td><code class="code">int <b>indexOfSubList</b>(List&lt;?> source, List&lt;?> target)</code></td>
+					<td rowspan="2">Returns the starting position of the first/last occurrence of the specified target list within the specified source list</td>
+				</tr>
+				<tr>
+					<td><code class="code">int <b>lastIndexOfSubList</b>(List&lt;?> source, List&lt;?> target)</code></td>
+				</tr>
+
+				<tr>
+					<td>checked*</td>
+					<td><code class="code">Collection, Set, List, Map, Queue etc</code></td>
+					<td>
+						Returns a dynamically typesafe view of the specified collection.<br>
+						Purpose: debugging: will fail with <code class="code">ClassCastException</code> at the moment an incorrectly typed element is trying to be added,
+						and not further somewhere in the code
+					</td>
+				</tr>
+				<tr>
+					<td>empty*</td>
+					<td><code class="code">Enumeration, Iterator, ListIterator, List, Set, Map etc</code></td>
+					<td>Returns a structure that has no elements</td>
+				</tr>
+				<tr>
+					<td>enumeration</td>
+					<td><code class="code">Enumeration&lt;T> enumeration(Collection&lt;T> c)</code></td>
+					<td>Returns an enumeration over the specified collection</td>
+				</tr>
+				<tr>
+					<td>list</td>
+					<td><code class="code">ArrayList&lt;T> list(Enumeration&lt;T> e)</code></td>
+					<td>Returns an array list containing the elements returned by the specified enumeration in the order they are returned by the enumeration</td>
+				</tr>
+
+				<tr>
+					<td>min/max</td>
+					<td><code class="code nowrap">min/max(Collection&lt;T> collection[, Comparator&lt;T> comparator])</code></td>
+					<td>Returns the min/max element of the given collection, according to the natural ordering of its elements or the given Comparator</td>
+				</tr>
+
+				<tr>
+					<td rowspan="6">Modifications</td>
+					<td><code class="code">boolean <b>replaceAll</b>(List&lt;T> list, T old, T new)</code></td>
+					<td>Replaces all occurrences of one specified value in a list with another</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>reverse</b>(List&lt;?> list)</code></td>
+					<td>Reverses the order of the elements in the specified list</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>rotate</b>(List&lt;?> list, int distance)</code></td>
+					<td>Rotates the elements in the specified list by the specified distance</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>shuffle</b>(List&lt;?> list[, Random rnd])</code></td>
+					<td>Randomly permute the specified list using the default/specified source of randomness</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>sort</b>(List&lt;T> list[, Comparator&lt;T> c])</code></td>
+					<td>
+						Sorts the specified list into [ascending] order, according to the <em>natural ordering</em> of its elements or
+						by the specified comparator. If comparator is not specified, then <code>T</code> should implement <code>Comparable</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>swap</b>((List&lt;?> list, int i, int j)</code></td>
+					<td>Swaps the elements at the specified positions in the specified list</td>
+				</tr>
+
+				<tr>
+					<th><a href="#comparator">Comparator</a></th>
+					<td><code class="code">Comparator&lt;T> <b id="collectionsReverseOrder">reverseOrder</b>([Comparator&lt;T> cmp])</code></td>
+					<td>
+						Returns a comparator that imposes the reverse of the <em>natural ordering</em> on a collection of objects that implement the <code class="code">Comparable</code> interface. OR<br>
+						Returns a comparator that imposes the reverse ordering of the specified comparator
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="3">Singleton</td>
+					<td><code class="code">Set&lt;T> singleton(T o)</code></td>
+					<td rowspan="3">Returns an immutable collection/map containing only the specified object/KV.</td>
+				</tr>
+				<tr>
+					<td><code class="code">List&lt;T> singletonList(T o)</code></td>
+				</tr>
+				<tr>
+					<td><code class="code">Map&lt;K,V> singletonMap(K key, V value)</code></td>
+				</tr>
+
+				<tr>
+					<td><a href="#synchronizedCollections">Synchronized*</a></td>
+					<td><code class="code">synchronizedCollection</code></td>
+					<td>Returns a synchronized "thread-safe" collection backed by the specified collection</td>
+				</tr>
+				<tr>
+					<td>Unmodifiable*</td>
+					<td><code class="code">unmodifiableCollection</code></td>
+					<td>Returns an unmodifiable view of the specified collection</td>
+				</tr>
+
+			</table>
+			<div class="indent"></div>
+
+			<table class="collapse-border padding" id="comparator">
+				<caption><a href="#comparatorUp">Comparator</a>&lt;T> interface <small class="java2">Since 1.2</small></caption>
+				<tr>
+					<td><code class="code pointer i" title="static">naturalOrder()</code></td>
+					<td>Returns a comparator that compares <code class="code">Comparable</code> objects in natural order</td>
+				</tr>
+				<tr>
+					<td><code class="code pointer i" title="static">reverseOrder()</code></td>
+					<td>
+						Returns a comparator that imposes the <b class="grey">reverse</b> of the <em>natural ordering</em><br>
+						Actually, it is a link to the <span class="code">Collections.<i><a href="#collectionsReverseOrder">reverseOrder</a></i>()</span>
+					</td>
+				</tr>
+			</table>
+			<div class="indent"></div>
+
+			<table class="border">
+				<caption>SequencedCollection <span class="java21">(since 21)</span></caption>
+				<tr>
+					<th>SequencedCollection</th>
+					<th>List</th>
+					<th>LinkedHashSet</th>
+				</tr>
+				<tr>
+					<td><code>getFirst()</code></td>
+					<td><code>list.get(0)</code></td>
+					<td>
+						<code>set.iterator().next()</code><br>
+						<code>set.stream().findFirst()</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code>getLast()</code></td>
+					<td><code>list.get(list.size()-1)</code></td>
+					<td><code></code></td>
+				</tr>
+				<tr>
+					<td><code>addFirst addLast removeFirst removeLast reversed()</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+
+			<h4 id="synchronizedCollections" class="margin-bottom-0">Synchronized Collections <a class="link-sign" href="#concurrency">Concurrency</a></h4>
+			The <span class="code-a"><code>Collections</code></span> class provides several static methods
+			to create synchronized <i>(thread-safe)</i> collections using a wrapper pattern.
+			It simply makes a source collection to be an internal <i>mutex</i> and adds a <code class="code">synchronized (mutex)</code> block
+			to the every method of a new collection.<br>
+			<code class="code">synchronizedCollection</code>,
+			<code class="code">synchronizedList</code>,
+			<code class="code">synchronizedSet</code>,
+			<code class="code">synchronizedMap</code>,<br>
+			<code class="code">synchronizedSortedSet</code>, <code class="code">synchronizedSortedMap</code>,<br>
+			<span class="java8">(Since 1.8)</span>
+			<code class="code">synchronizedNavigableSet</code>, <code class="code">synchronizedNavigableMap</code><br>
+			Pay attention to that the <i>synchronized</i> collection does <span class="red"><b>not</b></span> mean they are <span class="red"><b>concurrent</b></span>.<br>
+			They are <i>thread-safe</i> and in case of concurrency their <span class="brown">performance</span> is expected to be very <span class="brown">low</span>.<br>
+			Moreover, despite they being called <i>tread-safe</i> they may fall into a <a href="#dataRaceCondition">race condition</a> or non-deterministic behavior in case of using it "as is".<br>
+			<i>Javadoc:</i> It is imperative that the user manually synchronize on the returned list when traversing it via <code class="code">Iterator</code>, <code class="code">Spliterator</code> or <code class="code">Stream</code>:
+			<pre class="margin-top-0">
+	List list = Collections.synchronizedList(new ArrayList());
+	<span class="code">synchronized</span> (list) {
+		Iterator i = list.iterator(); // Must be in synchronized block
+		while (i.hasNext()) foo(i.next());
+	}</pre>
+
+			<h4 id="concurrentCollections" class="margin-bottom-0">Concurrent Collections <a class="link-sign" href="#concurrency">Concurrency</a></h4>
+			Concurrent collections are also <i>thread-safe</i> as the <i>synchronized</i> collections, but not governed by a single exclusion lock.
+			<table class="border padding text-align-center">
+				<tr>
+					<th>Group</th>
+					<th>Base Interface</th>
+					<th><small>Base Collection/Map</small></th>
+					<th>Concurrent interface</th>
+					<th>Concurrent analog</th>
+					<th>Description</th>
+					<th>Since</th>
+				</tr>
+				<tr>
+					<td>List</td>
+					<td class="code-i"><code>List</code></td>
+					<td class="code-a"><code>ArrayList</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>CopyOnWriteArrayList</code></td>
+					<td class="text-align-initial">
+						A thread-safe variant of <code class="code">ArrayList</code> in which all mutative operations (<code>add</code>, <code>set</code>, and so on) are implemented by making a fresh copy of the underlying array.<br>
+						Element-changing operations on iterators themselves (<code>remove</code>, <code>set</code>, and <code>add</code>) are <span class="red">not supported</span>.
+						These methods throw <code class="code">UnsupportedOperationException</code>.
+						<div class="indent"></div>
+						All elements are permitted, including <code>null</code>.
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td rowspan="2">Set</td>
+					<td class="code-i"><code>SortedSet</code><br><code>NavigableSet</code></td>
+					<td class="code-a"><code>TreeSet</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>ConcurrentSkipListSet</code></td>
+					<td class="text-align-initial">
+						A scalable concurrent <code class="code">NavigableSet</code> implementation based on a <code class="code">ConcurrentSkipListMap</code>.<br>
+						Expected average <i>log(n)</i> time cost for the <code>contains</code>, <code>add</code>, and <code>remove</code> operations and their variants.<br>
+						Insertion, removal, and access operations safely execute concurrently by multiple threads.<br>
+						<div class="indent"></div>
+						Beware that, unlike in most collections, the <code>size</code> method is <em>not</em> a constant-time operation.
+						Because of the asynchronous nature of these sets, determining the current number of elements requires a traversal of the elements
+					</td>
+					<td class="java6">1.6</td>
+				</tr>
+				<tr>
+					<td class="code-i"><code>Set</code></td>
+					<td class="code-a"><code>-</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>CopyOnWriteArraySet</code></td>
+					<td class="text-align-initial">
+						A <code class="code">Set</code> that uses an internal <code class="code">CopyOnWriteArrayList</code> for all of its operations
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td rowspan="4">Queue</td>
+					<td class="code-i" rowspan="3"><code>Queue</code></td>
+					<td class="code-a"><code>-</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>ConcurrentLinkedQueue</code></td>
+					<td class="text-align-initial">
+						Supplies an efficient scalable thread-safe non-blocking <span class="get-title">FIFO</span> queue.<br>
+						An unbounded thread-safe queue based on linked nodes.<br>
+						<div class="indent"></div>
+						Iterators and spliterators are <a href="#weakly"><i>weakly consistent</i></a>.
+						<div class="indent"></div>
+						Beware that, unlike in most collections, the <code>size</code> method is <i>not</i> a constant-time operation.
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td class="code-a">
+						<code>-</code><br>
+						<code>-</code><br>
+						<code>-</code><br>
+						<code>PriorityQueue</code><br>
+						<code>-</code><br>
+					</td>
+					<td class="code-i"><code>BlockingQueue</code></td>
+					<td class="code-a">
+						<code>LinkedBlockingQueue</code><br>
+						<code>ArrayBlockingQueue</code><br>
+						<code>SynchronousQueue</code><br>
+						<code>PriorityBlockingQueue</code><br>
+						<code>DelayQueue</code><br>
+					</td>
+					<td class="text-align-initial">
+						Cover the most common usage contexts for producer-consumer, messaging, parallel tasking, and related concurrent designs<br>
+						<table class="border collapse-border">
+							<caption><small>Summary of BlockingQueue methods</small></caption>
+							<tbody>
+							<tr class="text-align-center italic">
+								<th></th>
+								<td>Throws exception if fail</td>
+								<td>Returns true/false</td>
+								<td class="text-align-center italic">Blocks</td>
+								<td>Times out</td>
+							</tr>
+							<tr>
+								<td class="bold italic">Insert</td>
+								<td><code>add(e)</code></td>
+								<td><code>offer(e)</code></td>
+								<td><code>put(e)</code></td>
+								<td><code>offer(e, time, unit)</code></td>
+							</tr>
+							<tr>
+								<td><b><i>Remove <small>(and retrieve)</small></i></b></td>
+								<td><code>remove()</code></td>
+								<td><code>poll()</code></td>
+								<td><code class="code pointer" title=".. the head of this queue, waiting if necessary until an element becomes available">take()</code></td>
+								<td><code>poll(time, unit)</code></td>
+							</tr>
+							<tr>
+								<td><b><i>Examine</i></b></td>
+								<td><code>element()</code></td>
+								<td><code>peek()</code></td>
+								<td><small class="grey italic">not applicable</small></td>
+								<td><small class="grey italic">not applicable</small></td>
+							</tr>
+							</tbody>
+						</table>
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td class="code-a">
+						<code>-</code>
+					</td>
+					<td class="code-i">
+						<code>BlockingQueue</code><br>
+						<code>TransferQueue</code>
+					</td>
+					<td class="code-a">
+						<code> LinkedTransferQueue</code><br>
+					</td>
+					<td class="text-align-initial">
+						An unbounded <code>TransferQueue</code> based on linked nodes.<br>
+						introduce a synchronous <code>transfer</code> method (along with related features) in which a producer may optionally block awaiting its consumer.<br>
+						Beware that, unlike in most collections, the <code>size</code> method is <i>not</i> a constant-time operation.
+					</td>
+					<td class="java7">1.7</td>
+				</tr>
+
+				<tr>
+					<td class="code-i"><code>Deque</code></td>
+					<td class="code-a"><code>-</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>ConcurrentLinkedDeque</code></td>
+					<td class="text-align-initial">
+						Similar to <code>ConcurrentLinkedQueue</code>
+					</td>
+					<td class="java7">1.7</td>
+				</tr>
+
+				<tr>
+					<td rowspan="2">Map</td>
+					<td class="code-i"><code>Map</code></td>
+					<td class="code-a"><code>HashMap</code></td>
+					<td class="code-i"><code>ConcurrentMap</code></td>
+					<td class="code-a"><code>ConcurrentHashMap</code></td>
+					<td class="text-align-initial">
+						A hash table supporting full concurrency of retrievals and high expected concurrency for updates.<br>
+						Like <code>Hashtable</code> but unlike <code>HashMap</code>, this class does <span class="red">not</span> allow <code>null</code> to be used as a key or value.
+						<div class="indent"></div>
+						When many threads are expected to access a given collection,
+						a <code class="code">ConcurrentHashMap</code> is normally preferable to a synchronized <code class="code">HashMap</code>.
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td class="code-i"><code>SortedMap</code><br><code>NavigableMap</code></td>
+					<td class="code-a"><code>TreeMap</code></td>
+					<td class="code-i"><code>ConcurrentNavigableMap</code></td>
+					<td class="code-a"><code>ConcurrentSkipListMap</code></td>
+					<td class="text-align-initial">
+						A scalable concurrent <code class="code">ConcurrentNavigableMap</code> implementation.
+						The map is sorted according to the <i>natural ordering</i> of its keys, or by a <code class="code">Comparator</code> provided at map creation time, depending on which constructor is used.<br>
+						This class implements a concurrent variant of <i>SkipLists</i> providing expected average <i class="brown">O(log n)</i> time cost for the <code>containsKey</code>, <code>get</code>, <code>put</code> and <code>remove</code> operations and their variants.
+						<div class="indent"></div>
+						Iterators and spliterators are <a href="#weakly"><i>weakly consistent</i></a>.
+						<div class="indent"></div>
+						When many threads are expected to access a given collection,
+						a <code class="code">ConcurrentSkipListMap</code> is normally preferable to a synchronized <code class="code">TreeMap</code>.
+					</td>
+					<td class="java6">1.6</td>
+				</tr>
+			</table>
+		</div>
+		<hr>
+
+		<div id="completableFuture">
+			<h2 class="margin-bottom-3"><code class="code"><a href="#completableFutureUp">CompletableFuture</a></code> <small class="java8">(Since 1.8)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h2>
+			<code class="code">public class CompletableFuture&lt;T> implements Future&lt;T>, CompletionStage&lt;T></code><br>
+			<span class="warning-sign orange"></span>
+			Unlike <code class="code">FutureTask</code>, <b>CF</b> <span class="tomato"> has no direct control over the computation</span> that causes it to be completed, cancellation is treated as just another form of exceptional completion.<br>
+			<b>CF</b>s can be <i class="b">combined</i>, <i class="b">chained</i> or <i class="b">transformed</i> in any order.<br>
+			<code class="code">cfInstance.thenAccept().thenAppy().thenCombine().thenCompose().thenRun()...</code>
+
+			<div class="indent"></div>
+			The old <code class="grey">get()</code> method is from the <code class="code">Future</code> interface for compatibility,
+			the new <code class="code b">join()</code> method is supposed to be used in new code.
+
+			<div class="indent4"></div>
+			For the cases then the <em class="b">executor</em> is not specified explicitly, the <span class="b dark-green">ForkJoinPool.commonPool()</span> is used.
+			<div class="indent4"></div>
+			<table class="border padding">
+				<tr>
+					<th>Group</th><th class="width20pct">Method</th><th>Base Interface</th><th colspan="2">Description</th><th>Since</th>
+				</tr>
+				<tr><th colspan="6">Static methods</th></tr>
+
+				<tr>
+					<td>allOf</td>
+					<td><code class="code">CompletableFuture&lt;Void> allOf(CompletableFuture&lt;?>... cfs)</code></td>
+					<td colspan="3">Returns a new CompletableFuture that is completed when <b>all</b> of the given CompletableFutures complete</td>
+					<td rowspan="7" class="java8">1.8</td>
+				</tr>
+				<tr>
+					<td>anyOf</td>
+					<td><code class="code nowrap">CompletableFuture&lt;Object> anyOf(CompletableFuture&lt;?>... cfs)</code></td>
+					<td colspan="3">Returns a new CompletableFuture that is completed when <b>any</b> of the given CompletableFutures complete, with the result of that completed CF</td>
+				</tr>
+				<tr>
+					<td>completedFuture</td>
+					<td><code class="code">&lt;U> CompletableFuture&lt;U> completedFuture(U value)</code></td>
+					<td colspan="3">Returns a new CompletableFuture that is already completed with the given value</td>
+				</tr>
+				<tr>
+					<td rowspan="2">runAsync</td>
+					<td><code class="code">CompletableFuture&lt;Void> runAsync(Runnable runnable)</code></td>
+					<td colspan="3" rowspan="2">
+						Runs the runnable task asynchronously <i>in the given executor</i>, then returns <b class="grey">completed</b> CF.<br>
+						<span class="warning-sign blue"></span> The task execution starts right after <em>runAsync/supplyAsync</em> method call,
+						it does not wait for <em>get/join</em> methods invocations to start working on the task
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">CompletableFuture&lt;Void> runAsync(Runnable r, Executor e)</code></td>
+				</tr>
+
+				<tr>
+					<th rowspan="2">supplyAsync</th>
+					<td><code class="code">&lt;U> CompletableFuture&lt;U> supplyAsync(Supplier&lt;U> supplier)</code></td>
+					<td colspan="3" rowspan="2">The same as <i>runAsync</i>, but returned with the value obtained by calling the given Supplier</td>
+				</tr>
+				<tr>
+					<td><code class="code nowrap">&lt;U> CompletableFuture&lt;U> supplyAsync(Supplier&lt;U> s, Executor e)</code></td>
+				</tr>
+
+				<tr><th colspan="6">Instance methods</th></tr>
+
+				<tr>
+					<th rowspan="2" class="grey">get</th>
+					<td>
+						<code class="code">T get()</code>
+						<code>throws InterruptedException, ExecutionException</code>
+					</td>
+					<td><code class="code">Future</code></td>
+					<td rowspan="4" class="width5pct"><span class="warning-sign orange"></span> This is <span class="red b nowrap">blocking operation</span>!</td>
+					<td>
+						Waits if necessary for this future to complete and then returns its result.<br>
+						Throws <span class="tomato">checked</span> exceptions. <b class="grey">Obsolete</b>, use <b class="green">join</b> instead
+					</td>
+					<td rowspan="9" class="java8">1.8</td>
+				</tr>
+				<tr>
+					<td>
+						<code class="code">T get(long timeout, TimeUnit unit)</code>
+						<code class="nowrap">throws InterruptedException, ExecutionException, TimeoutException</code>
+					</td>
+					<td><code class="code">Future</code></td>
+					<td>
+						Waits if necessary for at most the given time for this future to complete, and then returns its result, if available.<br>
+						Throws <code class="code">TimeoutException</code>
+					</td>
+				</tr>
+				<tr>
+					<th rowspan="2" class="green">join</th>
+					<td><code class="code">T getNow(T valueIfAbsent)</code></td>
+					<td></td>
+					<td>
+						Returns the result value (or throws any encountered exception) if completed, else returns the given <i>valueIfAbsent</i>.
+						Throws <span class="green">unchecked</span> exceptions
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code b">T join()</code></td>
+					<td></td>
+					<td>
+						Do the same as <b class="grey">get</b>, but call private <code>waitingGet(interruptible)</code> with <i>interruptible = false</i> parameter.<br>
+						Throws <span class="green">unchecked</span> exceptions
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="8" class="i">completion</td>
+					<td><code class="code">boolean complete(T value)</code></td>
+					<td></td>
+					<td rowspan="3" class="width5pct"><span class="dark-orange">If not already completed</span></td>
+					<td colspan="1">
+						Sets the <span class="dark-green">CF's result value</span> to the given value
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean completeExceptionally(Throwable ex)</code></td>
+					<td></td>
+					<td colspan="1">
+						Returns a new CF that is completed when this CF completes.<br>
+						Returns:<br>
+						<code class="code">true</code> - if this invocation caused this CF to transition to a completed state<br>
+						<code class="code">false</code> - if not
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean cancel(boolean hasNoEffectInCF)</code></td>
+					<td><code class="code">Future</code></td>
+					<td>
+						Completes <span class="green">this CF</span> with a <code class="dark-red">CancellationException</code>.
+						Dependent CFs that have not already completed will also complete exceptionally,
+						with a <code class="dark-red">CompletionException</code> caused by this <code class="dark-red">CancellationException</code><br>
+						Returns:<br>
+						<code class="code">true</code> - if this task is now cancelled
+					</td>
+				</tr>
+
+				<tr>
+					<td><code class="code">void obtrude(T value)</code></td>
+					<td></td>
+					<td rowspan="2" class="width5pct"><span class="dark-red">Whether or not already completed</span></td>
+					<td colspan="1">
+						Forcibly sets or resets the value of <span class="green">this CF</span>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">void obtrudeException(Throwable ex)</code></td>
+					<td></td>
+					<td colspan="1">
+						Forcibly completes <span class="green">this CF</span> to throw an <i>exception</i> when <em>get/join</em> is invoked
+					</td>
+				</tr>
+
+				<tr>
+					<td><code class="code">CompletableFuture&lt;T> completeAsync(Supplier&lt;T> supplier)</code></td>
+					<td></td>
+					<td colspan="2" rowspan="2">
+						Completes <span class="green">this CF</span> with the result of the given Supplier function invoked from an asynchronous task using <em>the given executor</em>.
+					</td>
+					<td rowspan="2" class="java9 text-align-center">9</td>
+				</tr>
+				<tr>
+					<td><code class="code">CompletableFuture&lt;T> completeAsync(Supplier&lt;T> s, Executor e)</code></td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td><code class="code">CompletableFuture&lt;T> exceptionally(Function&lt;Throwable, T> fn)</code></td>
+					<td><code class="code">CompletionStage</code></td>
+					<td colspan="2">
+						Returns a <span class="blue">new CF</span> that is completed when <span class="green">this CF</span> completes.<br>
+						If <span class="green">this CF</span> completes <span class="dark-green">normally</span>, then the <span class="blue">returned CF</span> also completes normally, with the value of <span class="green">this CF</span>.<br>
+						If <span class="green">this CF</span> completes <span class="tomato">exceptionally</span>, the <em>exception</em> is passed to the provided <em>Function</em>,
+						then the <span class="blue">returned CF</span> completes with the result value of that <em>Function</em>
+					</td>
+					<td rowspan="11" class="java8 text-align-center">1.8</td>
+				</tr>
+
+				<tr>
+					<td rowspan="3">is*</td>
+					<td><code class="code">boolean isDone()</code></td>
+					<td><code class="code">Future</code></td>
+					<td colspan="2">Returns <code class="code">true</code> if completed in any fashion: normally, exceptionally, or via cancellation</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean isCancelled()</code></td>
+					<td><code class="code">Future</code></td>
+					<td colspan="2">Returns <code class="code">true</code> if this CompletableFuture was cancelled before it completed normally</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean isCompletedExceptionally()</code></td>
+					<td></td>
+					<td colspan="2">Returns <code class="code">true</code> if this CompletableFuture completed exceptionally, in any way</td>
+				</tr>
+
+				<tr>
+					<td rowspan="5">then*</td>
+					<td><code class="code nowrap">CompletableFuture&lt;Void> then<b>Accept</b>(Consumer&lt;T>)</code></td>
+					<td rowspan="5"><code class="code">CompletionStage</code></td>
+					<td rowspan="5">
+						The methods are created just to fit arguments as <code class="code">Function</code>, <code class="code">Consumer</code> or <code class="code">Runnable.</code>
+						They all have an <em>Async</em> form and with <em>executor</em>.
+						Trigger condition: <span class="green">this CF</span> completes normally
+					</td>
+					<td colspan="1">The CF's result goes as an argument to the Consumer</td>
+				</tr>
+				<tr>
+					<td><code class="code nowrap">CompletableFuture&lt;U> then<b>Apply</b>(Function&lt;T,U>)</code></td>
+					<td colspan="1">
+						The CF's result goes as an argument to the Function.<br>
+						Usage: Transformation of the result of a <code>CompletableFuture</code> call.<br>
+						Analogous of <code class="code">stream.map()</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code nowrap">CompletableFuture&lt;V> then<b>Combine</b>(CompletionStage&lt;U>, BiFunction&lt;T,U,V>)</code></td>
+					<td colspan="1">
+						The analog of the <em>Apply</em> method, but with the <code class="code">BiFunction</code>.<br>
+						The CF's result and the result of provided CF go to the arguments of the <code class="code">BiFunction</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code nowrap">CompletableFuture&lt;U> then<b>Compose</b>(Function&lt;T, CompletionStage&lt;U>>)</code></td>
+					<td colspan="1">
+						<span class="green">This CF</span> goes as an argument to the Function.<br>
+						Usage: <em class="b">Chaining</em> of <code class="code">CompletableFuture</code> methods.<br>
+						Analogous of <code class="code">stream.flatMap()</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code nowrap">CompletableFuture&lt;Void> then<b>Run</b>(Runnable action)</code></td>
+					<td>Executes the given action</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><code class="code">int getNumberOfDependents()</code></td>
+					<td></td>
+					<td colspan="2">Returns the estimated number of CFs, whose completions are awaiting completion of this CF</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><code class="code">CompletableFuture&lt;T> toCompletableFuture()</code></td>
+					<td><code class="code">CompletionStage</code></td>
+					<td colspan="2">The purpose of the method is to get the <b><i>CF</i></b> instance from the CompletionStage</td>
+				</tr>
+			</table>
+
+			<div class="indent4"></div>
+			<details>
+				<summary>Example</summary>
+				<iframe src="parts/CompletableFutureExample.html" class="iframe height-550"></iframe>
+			</details>
+		</div>
+		<hr>
+
+		<div id="concurrency">
+			<h2 class="margin-bottom-3"><a href="#concurrencyUp">Concurrency</a>/<a href="#multiThreadingUp">MultiThreading</a></h2>
+			A concurrent application's ability to execute in a timely manner is known as its <em>liveness</em>.<br>
+			Most common liveness problems:
+			<ul class="margin-top-3">
+				<li>
+					<b>Deadlock</b><br>
+					is a situation where two or more threads are blocked forever, waiting for each other.<br>
+					See also <a href="ConnectedNotes.html#dbDeadlocks">Database Deadlocks</a>
+					<details>
+						<summary>Deadlock Example</summary>
+						<iframe id="deadlock" src="parts/DeadLockExample.html" class="iframe height-400"></iframe>
+					</details>
+				</li>
+				<li>
+					<b>Livelock</b><br>
+					Example: threads are too busy with communication to each other, so they cannot do their main jobs.<br>
+					But in the same time they are <span class="green">not blocked</span> like in a <i>deadlock</i>.
+					<details>
+						<summary>Livelock Example</summary>
+						<iframe src="parts/LiveLockExample.html" class="iframe height-650"></iframe>
+					</details>
+				</li>
+				<li>
+					<b>Starvation</b><br>
+					Starvation is a situation where a thread is unable to gain regular access to shared resources and is unable to make progress.<br>
+					Example: some thread cannot get a lock on an object to do their job, because other threads uses synchronized methods of this object constantly,
+					so the thread cannot get a chance to acquire the lock.
+				</li>
+			</ul>
+			Related links:
+			<ul class="margin-top-3">
+				<li><a href="#atomic">Atomic</a></li>
+				<li><a href="#completableFuture" class="code-a"><code>CompletableFuture</code></a></li>
+				<li><a href="#executors">Executors</a></li>
+				<li><a href="#forkJoin">Fork/Join</a></li>
+				<li><a href="#happensBefore">Happens-before relationship</a></li>
+				<li><a href="#synchronized" class="code-a"><code>synchronized</code></a></li>
+				<li><a href="#synchronizedCollections">Synchronized Collections</a></li>
+				<li><a href="#concurrentCollections"  >Concurrent Collections</a></li>
+				<li><a href="#dataRaceCondition">Data Race & Race Condition</a></li>
+				<li><a href="#thread" class="code-a"><code>Thread</code></a></li>
+				<li><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></li>
+				<li><a href="#volatile" class="code-a"><code>volatile</code></a></li>
+			</ul>
+		</div>
+		<hr>
+
+		<div id="dataRaceCondition">
+			<h3 class="margin-bottom-3"><a href="#data-race-up">Data Race</a> & <a href="#raceConditionUp">Race Condition</a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<table class="collapse-border padding">
+				<tr>
+					<th>Data Race</th>
+					<td>
+						Two or more threads access shared data <span class="tomato">concurrently</span>,
+						and at least one of them tries to modify that data at the same time
+					</td>
+				</tr>
+				<tr>
+					<th>Race Condition</th>
+					<td>
+						Behavior depends on relative timing or interleaving of multiple threads or processes
+					</td>
+				</tr>
+			</table>
+			<div class="indent4"></div>
+			Pure Theory: <em>Data Race (DR)</em> and <em>Race Condition (RC)</em> are not subset of each other, there are all possible variants of intersection:
+			DR & RC, DR but not CR, CR but not DR.<br>
+			ChatGPT: In Java every Data Race is a Race Condition due to <span class="get-title">JMM</span> architecture,
+			but still <span class="tomato">not</span> every RC is a DR.
+
+			<div class="indent4"></div>
+			<h4 class="margin-top-bottom-3">Date Race</h4>
+			Unlike race conditions, a data race on a particular platform has a strict definition that is not dependent on program semantics.
+			This provides the ability to detect data races automatically using tools.
+
+			<div class="indent4"></div>
+			<h4 class="margin-top-bottom-3">Race Condition</h4>
+			<h5 class="margin-0">Race condition types:</h5>
+			<ul class="margin-top-bottom-3">
+				<li><b class="dim-grey">Check-Then-Act</b> produces <em>time-of-check to time-of-use</em> bugs</li>
+				<li><b class="grey">Read-Modify-Write</b></li>
+			</ul>
+			<h5 class="margin-0">Approaches to prevent race conditions:</h5>
+			<ul class="margin-top-bottom-3">
+				<li><em>Avoiding shared state:</em> Immutable objects, <a href="#threadLocal">Thread-local variables</a>, etc.</li>
+				<li><em>Using synchronizations and atomic operations:</em> Lock, mutex, <a href="#atomic">Atomic</a> </li>
+			</ul>
+			<div class="indent4"></div>
+			<details class="margin-top-3">
+				<summary>Data Race & Race Condition <small>(Read-Modify-Write)</small> Example</summary>
+				<iframe src="parts/DataRaceExample.html" class="iframe height-300"></iframe>
+			</details>
+		</div>
+		<hr>
+
+		<div id="diamondProblem">
+			<h3><a href="#diamondProblemUp">Diamond problem</a></h3>
+			Occurs with <span class="bi">multiple inheritance</span> of classes with the same method signatures.<br>
+			Was not an issue in Java <span class="java8">before 1.8</span>.
+			Now can occur because of <code>default</code> methods in <a href="#interface">interfaces</a>.
+			Needs explicit override to resolve.
+		</div>
+		<hr>
+
+		<div id="exceptions">
+			<h3 class="margin-bottom-3"><a href="#exceptionsUp">Exceptions</a></h3>
+			<code>Throwable -> [Error, Exception ->[Checked, RuntimeException -> [UnChecked]]]</code><br>
+
+			<div class="indent"></div>
+			<span class="warning-sign fs20 orange"></span> <code class="exception">IOException</code>,
+			<code class="exception">FileNotFoundException</code>,
+			<code class="exception">MalformedURLException</code> etc. are the <b class="red">checked</b> exceptions,
+			because they extend <code class="exception">Exception</code>, not <code class="grey">RuntimeException</code>.
+
+			<div class="indent"></div>
+			<code class="exception">NoClassDefFoundError</code> - if the <span class="get-title">JVM</span> or a <code>ClassLoader</code> tries to load the definition of a class,
+			that was available at compile time, but no longer available at Runtime.<br>
+
+			<code class="exception">ClassNotFoundException</code> - when an application tries to load a class through its string name using <em>Reflections</em>.
+		</div>
+		<hr>
+
+		<div id="executors">
+			<h3 class="margin-bottom-3"><a href="#executorsUp">Executors</a> <small class="java5">(Since 1.5)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+
+			<code class="code">interface <b>Executor</b> {execute(Runnable)}</code><br>
+			<code class="code">interface <b>ExecutorService</b> extends Executor, AutoCloseable {invokeAll(); invokeAny(); <span class="dark-green">awaitTermination(timeout, unit);</span> shutdown[Now](); Future submit(Runnable/Callable); is*()}</code><br>
+			<code class="code">abstract class <b>AbstractExecutorService</b> implements ExecutorService</code><br>
+			<br>
+			<code class="code">class <b>ThreadPoolExecutor</b> extends AbstractExecutorService</code><br>
+			<code class="code">class <b>ScheduledThreadPoolExecutor</b> extends ThreadPoolExecutor implements ScheduledExecutorService</code><br>
+			<code class="code">class <b>ForkJoinPool</b> extends AbstractExecutorService</code><br>
+			<br>
+			<code class="code b">Executors</code> static helper class, provides executors with default or given ThreadFactory:<br>
+			<code>callable(Runnable)</code><br>
+			<code>defaultThreadFactory()</code><br>
+			<code>newCachedThreadPool(ThreadFactory)</code><br>
+			<code>newFixedThreadPool(int nThreads, ThreadFactory)</code><br>
+			<code>newScheduledThreadPool(int corePoolSize, ThreadFactory)</code><br>
+			<code>newSingleThreadExecutor(ThreadFactory)</code><br>
+			<code>newSingleThreadScheduledExecutor(ThreadFactory)</code><br>
+			<code>newThreadPerTaskExecutor(ThreadFactory)</code><br>
+			<code>newVirtualThreadPerTaskExecutor()</code><br>
+			<code>newWorkStealingPool()/(int parallelism)</code><br>
+			<code>unconfigurableExecutorService(ExecutorService)</code><br>
+			<code>unconfigurableScheduledExecutorService(ScheduledExecutorService)</code><br>
+		</div>
+		<hr>
+
+		<div id="functionalInterfaces">
+			<h2 class="margin-bottom-3">Functional Interfaces <small class="java8">(Since 1.8)</small></h2>
+			The <i>ootb</i> functional interfaces are annotated with <code><b>@FunctionalInterface</b></code>.
+			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.<br>
+			<i>Ootb</i> functional interfaces are located not only in <code class="code">java.util.function</code> package,
+			for e.g. <code class="code">java.lang.Runnable</code>
+			<table class="border padding">
+				<caption><code class="code">java.util.function</code></caption>
+				<tr>
+					<th>Group</th><th colspan="2">Interface</th><th>Methods</th><th>Example</th><th>Description</th><th>Since</th>
+				</tr>
+				<tr>
+					<td rowspan="4" class="text-align-center"><span class="blue">Function</span></td>
+					<td colspan="2"><code>Function&lt;T,R&gt;</code></td>
+					<td>
+						<code class="nowrap">R apply(T t)</code><hr>
+						<code class="nowrap tooltip" title="static">Function.identity()</code>
+					</td>
+					<td>
+						<code>string -&gt; string.length()</code><hr>
+						<code>Function&lt;String,String&gt; f = Function.identity();</code><br>
+						<code>String s = f.apply("TheSame"); // s = "TheSame"</code>
+					</td>
+					<td>
+						Represents a function that accepts one argument and produces a result<hr>
+						Returns a function that always returns its input argument. <i>F(x) = x</i>
+						<a href="#functionIdentityStreamCollectorsCounting">example</a>
+					</td>
+					<td rowspan="11" class="java8">1.8</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><code>UnaryOperator&lt;T&gt;</code></td>
+					<td><code class="nowrap">T apply(T t)</code></td>
+					<td><code>string -&gt; string.toUpperCase()</code></td>
+					<td>
+						<code>extends Function&lt;T,T&gt;</code><br>
+						Represents an operation on a single operand that produces a result of the same type as its operand.
+						This is a specialization of <code>Function</code> for the case where the operand and result are of the same type
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BiFunction&lt;T,T2,R&gt;</code></td>
+					<td><code class="nowrap">R apply(T t, T2 t2)</code></td>
+					<td><code>BiFunction &lt;String, Integer, Object[]&gt; bf = <span class="nowrap">(string, integer) -> new Object[] {string, integer};</span></code></td>
+					<td>Represents a function that accepts two arguments and produces a result. This is the <b>two-arity</b> specialization of <code>Function</code></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><code>BinaryOperator&lt;T&gt;</code></td>
+					<td><code class="nowrap">T apply(T t, T t2)</code></td>
+					<td><code>(string1,string2) -&gt; string1 + string2</code></td>
+					<td>
+						<code>extends BiFunction&lt;T,T,T&gt;</code><br>
+						Represents an operation upon two operands of the same type, producing a result of the same type as the operands.
+						This is a specialization of <code>BiFunction</code> for the case where the operands and the result are of the same type
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="text-align-center"><span class="brown">Consumer</span></td>
+					<td colspan="2"><code>Consumer&lt;T&gt;</code></td>
+					<td><code class="nowrap">void accept(T t)</code></td>
+					<td><code>Consumer&lt;String&gt; consumer = System.out::println;<br>consumer.accept("String");</code></td>
+					<td>
+						Represents an operation that accepts a single input argument and returns no result.
+						Unlike most other functional interfaces, <code>Consumer</code> is <span class="green">expected</span> to operate via <span class="red">side-effects</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BiConsumer&lt;T,T2&gt;</code></td>
+					<td><code class="nowrap">void accept(T t, T2 t2)</code></td>
+					<td><code class="nowrap">BiConsumer&lt;String,Integer&gt; bc = (s, i) -> System.out.println(s + i);</code></td>
+					<td>
+						Represents an operation that accepts two input arguments and returns no result.
+						This is the <b>two-arity</b> specialization of <code>Consumer</code>.
+						Unlike most other functional interfaces, <code>BiConsumer</code> is <span class="green">expected</span> to operate via <span class="red">side-effects</span>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="text-align-center"><span class="green">Supplier</span></td>
+					<td colspan="2"><code>Supplier&lt;T&gt;</code></td>
+					<td><code class="nowrap">T get()</code></td>
+					<td><code>Supplier&lt;LocalDateTime&gt; supplier = () -> LocalDateTime.now();<br>LocalDateTime time = supplier.get();</code></td>
+					<td>Represents a supplier of results. In other words it just returns something without any input parameters</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BooleanSupplier</code></td>
+					<td><code class="nowrap">boolean getAsBoolean()</code></td>
+					<td><code>() -&gt; Math.random() &gt; 0.5</code></td>
+					<td>Represents a supplier of <b>boolean</b>-valued results. This is the <b>boolean</b>-producing primitive specialization of <code><b>Supplier</b></code></td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="text-align-center"><span class="magenta">Predicate</span></td>
+					<td colspan="2"><code>Predicate&lt;T&gt;</code></td>
+					<td><code class="nowrap">boolean test(T t)</code></td>
+					<td><code>Predicate&lt;String&gt; p = String::isEmpty;</code></td>
+					<td>Represents a predicate (boolean-valued function) of one argument</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BiPredicate&lt;T,T2&gt;</code></td>
+					<td><code class="nowrap">boolean test(T t, T2 t2)</code></td>
+					<td><code>BiPredicate&lt;String,Integer&gt; bp = (s, i) -> s.isEmpty() && i == 0;</code></td>
+					<td>Represents a predicate (boolean-valued function) of 2 arguments. This is the <b>two-arity</b> specialization of <code><b>Predicate</b></code></td>
+				</tr>
+				<tr>
+					<td class="text-align-center">Other</td>
+					<td colspan="5">Combinations of base 4 groups for Int*, Long*, Double*, Obj*, To*</td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="text-align-center tomato">Thread</td>
+					<td colspan="2"><code>Runnable</code></td>
+					<td><code class="nowrap">void run()</code></td>
+					<td><code>() -&gt; java.awt.Toolkit.getDefaultToolkit().beep()</code></td>
+					<td>Similar to <code class="code">Supplier</code>, but with <code class="code">void</code> return type</td>
+					<td>1.0</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>Callable&lt;V></code></td>
+					<td><code class="nowrap code">V call() throws Exception</code></td>
+					<td><code class="code"></code></td>
+					<td>Similar to <code class="code">Supplier</code>, but can throw a checked exception</td>
+					<td class="java5">1.5</td>
+				</tr>
+			</table>
+		</div>
+		<hr>
+
+		<div id="forkJoin">
+			<h3 class="margin-bottom-3">Fork/Join <span class="java7">(Since 1.7)</span> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			The fork/join framework is an implementation of the <code class="code">ExecutorService</code> interface that helps you take advantage of multiple processors.<br>
+			It is designed for work that can be broken into smaller pieces recursively.<br>
+			The goal is to use all the available processing power to enhance the performance of your application.
+			<div class="indent"></div>
+			As with any <code class="code">ExecutorService</code> implementation, the fork/join framework distributes tasks to worker threads in a <em>thread pool</em>.<br>
+			The fork/join framework uses a <em>work-stealing</em> algorithm.<br>
+			Worker threads that run out of <span class="green">things to do</span>, <span class="red">can steal tasks</span> from other threads that are <span class="dark-red">still busy</span>.
+			<div class="indent"></div>
+			The center of the fork/join framework is the <code class="code">ForkJoinPool</code> class,
+			it implements the core work-stealing algorithm and can execute <code class="code">ForkJoinTask</code> entities.<br>
+			The <code class="code">ForkJoinTask</code> has 2 <i class="brown">ootb</i> extension classes:
+			<code class="code">RecursiveTask</code><small> ,which can return a <span class="green">result</span></small>
+			and <code class="code">RecursiveAction</code>.
+			<div class="indent"></div>
+			<details>
+				<summary>Fork/Join Example</summary>
+				<embed type="text/html" src="parts/ForkJoinExample.html" class="iframe height-725">
+			</details>
+		</div>
+		<hr>
+
+		<div id="garbageCollector">
+			<h2><a href="#garbageCollectorUp">Garbage Collector (GC)</a></h2>
+			GC cleans <a href="#heapMemory">Heap memory</a>.<br>
+			Characteristics:
+			<ul class="margin-top-0">
+				<li><b>Footprint</b> - the memory the Java app is using, the goal of GC is to reduce it</li>
+				<li><b>Throughput</b> - <span class="get-title">CPU</span> time spent on GC</li>
+				<li><b>Latency</b> - the pause times</li>
+			</ul>
+			Types:
+			<ul class="ul-with-margin margin-top-0">
+				<li>
+					<b>Serial GC</b> uses a single thread to perform all garbage collection work.<br>
+					Best-suited to single processor machines.<br>
+					Selected by default on certain HW and OS configurations.<br>
+					<span class="green">Minimal Footprint</span>, good Throughput, <span class="red">highest Latency</span>
+					<code class="code">-XX:+UseSerialGC</code>
+				</li>
+				<li>
+					<b>Parallel GC</b> similar to Serial, but has multiple threads used to speed up GC.<br>
+					Intended for applications with medium-sized to large-sized data sets that are run on multiprocessor or multithreaded HW.<br>
+					<span class="black">Modest Footprint</span>, <span class="red">top Throughput</span>, <span class="tomato">high Latency</span>
+					<code class="code">-XX:+UseParallelGC</code>
+				</li>
+				<li>
+					<b>G1GC</b> <em>Garbage-First</em>. Is the default collector.<br>
+					Targeted for multiprocessor machines scaling to a large amount of memory.
+					G1 is a generational, incremental, parallel, mostly concurrent, stop-the-world, and evacuating GC.
+					Similar to other collectors, G1 splits the heap into (virtual) young and old generations.<br>
+					<span class="black">Moderate Footprint</span>, <span class="blue">moderate Throughput</span>, <span class="green">low Latency</span>
+					<code class="code">-XX:+UseG1GC</code><br>
+					<code class="code">-XX:MaxGCPauseMillis=<i>ms</i></code> - target max GC pause time (in ms)
+				</li>
+				<li>
+					<b>ZGC</b> scalable low latency garbage collector.<br>
+					Performs all expensive work concurrently, without stopping the execution of application threads for more than a few <i>ms</i>.<br>
+					Suitable for applications which require low latency. Supports heap sizes from 8MB to 16TB.<br>
+					<span class="blue">Sizeable Footprint</span>, <span class="blue">moderate Throughput</span>, <span class="lime-green">ultra-low Latency</span>
+					<code class="code">-XX:+UseZGC</code>
+				</li>
+			</ul>
+			<code class="code">-XX:+PrintGCDetails</code>
+		</div>
+		<hr>
+
+		<div id="generics">
+			<h2><a href="#genericsUp">&uarr;</a><a href="#genericsUp">Generics</a><a href="#genericsJava">&darr;</a> <small class="java5">(Since 1.5)</small></h2>
+			<ul class="ulWithMargin">
+			<li> The reason why Generics were added to the Java language — to enforce type safety at compile time</li>
+			<li>
+				<code>
+					class Foo&lt;T&gt; {} // T is the <b>type parameter</b><br>
+					new Foo&lt;String&gt;() // String is the <b class="dark-blue">type argument</b>
+				</code>
+			</li>
+			<li>
+				Bounded Type Parameters:<br>
+				<code>&lt;T&gt;</code><br>
+				<code>&lt;T extends Class1&gt;</code><br>
+				<code>&lt;T extends Class1 & Interface1 & InterfaceN&gt; // if class type is present, it should be the first</code><br>
+				<code>&lt;T extends Interface1 & ... & InterfaceN&gt;</code><br>
+				P.S. No form with <em>super</em> keyword can be applied there -- compile error
+			</li>
+			<li>
+				<code id="genericsWildcards">
+					Foo&lt;?&gt; // <b class="peru">unbounded</b> wildcard<br>
+					Foo&lt;? extends Class&gt; // <b class="green">upper</b> bounded wildcard<br>
+					Foo&lt;? super Class&gt; // <b class="brown">lower</b> bounded wildcard
+				</code><br>
+				<span class="get-title">PECS</span>
+			</li>
+			<li>
+				<h3 id="diamond" class="margin-bottom-0"><b>&lt;&gt;</b><a href="#diamondUp">Diamond operator</a></h3>
+				<samp class="java7">Since 1.7</samp>: <code>List&lt;String&gt; list = new ArrayList<b>&lt;&gt;</b>();</code><br>
+				<samp class="java9">Since &nbsp;&nbsp;9</samp>: <code>List&lt;String&gt; list = new List<b>&lt;&gt;</b>() {...}; // added support of anonymous classes</code>
+			</li>
+			<li>
+				<table class="border padding">
+					<caption><b>Types</b></caption>
+					<tr>
+						<th>Type</th>
+						<th>Examples</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>Reifiable</td>
+						<td><code class="green">int</code><br>
+							<code class="dark-green">Integer</code><br>
+							<code class="blue">List</code> <code>//considering the class is List&lt;T&gt;</code><br>
+							<code class="dark-blue">List&lt;?&gt;</code>
+						</td>
+						<td>A <em>reifiable</em> type is a type whose type information is fully available at runtime.<br>
+							This includes <span class="green">primitives</span>,
+							<span class="dark-green">non-generic types</span>,
+							<span class="blue">raw types</span>,
+							and invocations of <span class="dark-blue">unbound wildcards</span>
+						</td>
+					</tr>
+					<tr>
+						<td>Non-Reifiable</td>
+						<td><code>
+							List&lt;Number&gt;<br>
+							List&lt;? extends Number&gt;<br>
+							List&lt;? super Number&gt;
+							</code>
+						</td>
+						<td><em>Non-reifiable</em> types are types where information has been removed at compile-time by type erasure.<br>
+							A non-reifiable type does not have all of its information available at runtime.<br>
+							The JVM cannot tell the difference between these types at runtime
+						</td>
+					</tr>
+				</table>
+			</li>
+
+			<li>
+				<h4 class="margin-bottom-0">Heap pollution</h4>
+				Heap pollution occurs when a variable of a parameterized type refers to an object that is not of that parameterized type<br>
+				Heap pollution occurs when mixing raw types and parameterized types or when performing unchecked casts
+			</li>
+
+			<li>
+			<code id="safevarargs">@SafeVarargs</code>
+			<div class="indent"></div>
+			<span class="java7">Since: 1.7</span><br>
+			If you declare a varargs method that has parameters of a parameterized type, 
+			and you ensure that the body of the method does not throw a <code>ClassCastException</code> 
+			or other similar exception due to improper handling of the varargs formal parameter, 
+			you can prevent the warning that the compiler generates for these kinds of varargs methods 
+			by adding the annotation to method declarations:
+			<div class="indent"></div>
+			<samp class="java7">Since 1.7</samp>: static methods, final instance methods and constructors.<br>
+			<samp class="java9">Since &nbsp;&nbsp;9</samp>: private instance methods also.
+			</li>
+			</ul>
+		</div>
+		<hr>
+
+		<div id="instanceof">
+			<h3 class="margin-bottom-3 code-a"><a href="#instanceofUp"><code>instanceof</code></a> <small>operator</small></h3>
+			The <code>instanceof</code> operator compares an object to a specified type.<br>
+			Keep in mind that <code>null</code> is not an instance of anything.<br>
+			<span class="java16">Since 16</span> <i>pattern matching</i> was added:<br>
+			<code>if (obj instanceof String <b>s</b>) int i = <b>s</b>.length();</code>
+		</div>
+		<hr>
+
+		<div id="interface">
+			<h3 class="margin-bottom-3"><a href="#interfaceUp" class="code-a"><code>interface</code></a></h3>
+			Interface can have:<br>
+			- public abstract methods (they are public and abstract by default) <br>
+			- <code>public static final</code> fields (they are "psf" by default)<br>
+			<span class="java8">Since 1.8</span>:<br>
+			- Can have <code>default</code> instance methods and static methods<br>
+			<span class="java9">Since 9</span>:<br>
+			- Can have private instance methods
+		</div>
+		<hr>
+
+		<div id="java">
+			<h2 class="margin-bottom-3"><a href="#javaUp">Java</a></h2>
+			Is <b class="dim-grey">Multi-paradigm</b>: <em class="get-title">OOP</em><small>(by its organizational model)</small>,
+			<a href="ConnectedNotes.html#imperative">Imperative</a> <small>(by its execution model, but <span class="tomato">not</span> <em>Procedural</em> in its paradigm)</small>,
+			<a href="ConnectedNotes.html#functional">Functional</a> <small>(despite it is <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>)</small>,
+				<a id="genericsJava" href="#generics">Generic</a>,
+				<a href="#concurrency">Concurrent</a>,
+				<em>Reflective</em>, <em>Dynamic</em><br>
+			and <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>,
+				<a href="ConnectedNotes.html#reactive">Reactive</a>,
+				<em>Distributed</em>, <em>Logic</em>, <em>Pipeline</em>, <em>Visual</em> <small>and</small> <em>Rule-based</em><br>
+			The fact that Java supports primitive types makes it <span class="tomato">not pure</span> <em class="get-title">OOP</em>.<br>
+			Type System: <b class="dim-grey">Static</b> and <b class="dim-grey">Strong</b><br>
+			Data is strictly <em>passed by value</em> <small class="grey">(not by reference)</small>
+
+			<div class="indent"></div>
+			Java 17:
+			Release features:
+			1) Sealed classes. Constraints:<br>
+				All permitted subclasses must belong to the same module as the sealed class.<br>
+				Every permitted subclass must explicitly extend the sealed class.<br>
+				Every permitted subclass must define a modifier: final, sealed, or non-sealed.<br>
+			2) New macOS Rendering Pipeline and other macOS features<br>
+			3) Enhanced Pseudo-Random Number Generators:<br>
+			Legacy random classes, such as java.util.Random, SplittableRandom and SecureRandom now extend the new RandomGenerator interface<br>
+			4) Foreign Function & Memory API (Incubator):<br>
+			efficiently invoking foreign functions (i.e., code outside the JVM), and by safely accessing foreign memory (i.e., memory not managed by the JVM)<br>
+			Replace the Java Native Interface (JNI)<br>
+			<br>
+			Removals:<br>
+			1) Strongly Encapsulate JDK Internals, with exceptions for such as sun.misc.Unsafe<br>
+			2) The Remote Method Invocation (RMI) Activation mechanism has been removed.<br>
+			3) Remove the Experimental AOT(Ahead of Time) and JIT Compiler.<br>
+			<br>
+			Preview:<br>
+			1) Pattern Matching for switch (Preview).
+
+		</div>
+		<hr>
+
+		<div id="jm">
+			<h2><a href="#jmUp">JVM Memory Structure</a> / <a href="#rtdaUp">Run-Time Data Areas</a></h2>
+			<object width="1100" data="svg/JavaMemory.svg"></object>
+			<h4 class="margin-bottom-3">Stack memory</h4>
+			Execution of a thread. It is called <em>Stack</em> (<small class="get-title">LIFO</small>) because it consists of method execution <em>frames</em>, organized in a Stack,
+			but the data inside each <em>frame</em> can be accessed on demand.<br>
+			It contains primitive values that are specific to a method and references to objects referred from the method that are in a heap.<br>
+			Whenever we call <span class="green">a new method</span>, <span class="dark-green">a new <em>frame</em></span> is created on top of the stack.<br>
+			When the method finishes execution, its corresponding stack frame is flushed, the flow goes back to the calling method, and space becomes available for the next method.
+			<ul class="margin-top-3">
+				<li>It grows and shrinks as new methods are called and returned, respectively</li>
+				<li>Variables inside the stack exist only as long as the method that created them is running</li>
+				<li>It’s automatically allocated and deallocated when the method finishes execution</li>
+				<li>If this memory is full, Java throws <code class="code">java.lang.StackOverFlowError</code></li>
+				<li>Access to this memory is fast when compared to heap memory</li>
+				<li>This memory is threadsafe, as each thread operates in its own stack</li>
+			</ul>
+
+			<h4 class="margin-bottom-3" id="heapMemory">Heap memory</h4>
+			Keeps the static members.<br>
+			Keeps the classes' instances.<br>
+			From Java 7 the String Pool is stored in the Heap<br>
+			<code class="code">java.lang.OutOfMemoryError</code><br>
+			<code class="code">-Xms512m</code> -- minimum Heap size<br>
+			<code class="code">-Xmx2048m</code> -- maximum Heap size<br>
+
+			<h4 class="margin-bottom-3">Metaspace</h4>
+			<small class="gray">Old <em>PermGen</em> space is replaced by Metaspace since Java 8.</small><br>
+			Only stores the class metadata.<br>
+			Lives in native memory.<br>
+			Metadata contains information about the objects in the heap - class definitions, method tables, and <em>related information</em><br>
+			The Metaspace is not fixed in size and can grow dynamically.<br>
+			<code class="code">-XX:MetaspaceSize=128m</code> -- to avoid early garbage collections induced for class metadata.<br>
+			<code class="code">-XX:MaxMetaspaceSize=512m</code> -- if not specified, then it is limited by physical memory.<br>
+		</div>
+		<hr>
+
+		<div id="jsp">
+			<h3 class="margin-bottom-3"><a href="#jspUp">Java Server Pages</a> / <em>Jakarta</em> Server Pages</h3>
+			Is a collection of technologies to create dynamically generated web pages based on <span class="get-title">HTML</span>, <span class="get-title">XML</span>, <span class="get-title">SOAP</span> or other document types.<br>
+			Architecturally, <span class="get-title">JSP</span> may be viewed as a high-level abstraction of <a href="#servlets">Jakarta(Java) Servlets</a>.<br>
+			Each <span class="get-title">JSP</span> servlet is cached and re-used until the original <span class="get-title">JSP</span> is modified.<br>
+			<div class="indent"></div>
+			Jakarta Server Pages can be used independently or as the <b>View</b> component of a server-side <a href="DesignPatterns.html#mvc">MVC</a> <span class="get-title">DP</span>.<br>
+			This is a type of <a href="https://en.wikipedia.org/wiki/JSP_model_2_architecture">Jsp Model 2</a> architectural <span class="get-title">DP</span>.
+			<div class="indent"></div>
+
+			The JSP <code class="code">useBean</code> tag allows to access and create a Javabean.<br>
+			Scopes:
+			<ul>
+				<li>
+					The <code class="code">page</code> scope implies that the bean is located in the implicitly defined <code class="code">PageContext</code> object, and is only available for the current page. By <b>default</b>, all beans have a scope of <code class="code">page</code>.
+				</li>
+				<li>
+					The <code class="code">request</code> scope implies that the bean can be found in the <code class="code">HttpServletRequest</code> object. This bean can be accessed by all other JSPs and servlets that have access to the current <code class="code">request</code> object.</li>
+				<li>
+					The <code class="code">session</code> scope implies that the bean can be found in the <code class="code">HttpSession</code> object. This bean can be accessed by all other JSPs and servlets that have access to the specified <code class="code">HttpSession</code> object.
+				</li>
+				<li>
+					The <code class="code">application</code> scope implies that the bean can be found in the <code class="code">ServletContext</code> object. This bean can be accessed by all other JSPs and servlets that have access to the specified <code class="code">ServletContext</code> object.
+				</li>
+			</ul>
+			Expression Language (EL) syntax: <code class="code">${javabean.variable}</code>.
+			<div class="indent"></div>
+			Jsp Tag libraries:<br>
+			<code class="code">&lt;%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %></code> Core <code>&lt;c:set var="name"/&gt;</code> etc<br>
+			<code class="code">&lt;%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %></code> i18n<br>
+			<code class="code">&lt;%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %></code> Strings
+			<div class="indent"></div>
+			To deploy and run Jakarta Server Pages, a compatible <em>web server</em> with a <em>servlet container</em>, such as <em>Apache Tomcat</em> is required.
+			<div class="indent"></div>
+			JSP Life cycle:
+			<ul class="margin-top-3">
+				<li>
+					Compilation
+					<ul>
+						<li>Parsing the JSP</li>
+						<li>Turning the JSP into a servlet</li>
+						<li>Compiling the servlet</li>
+					</ul>
+				</li>
+				<li>Initialization - <code class="code">jspInit()</code></li>
+				<li>Execution - <code class="code">_jspService()</code></li>
+				<li>Cleanup (Shutdown) - <code class="code">jspDestroy()</code></li>
+			</ul>
+		</div>
+		<hr>
+
+		<div id="servlets">
+			<h3 class="margin-bottom-3"><a href="#servletsUp">Jakarta(Java) Servlets</a></h3>
+			A Jakarta Servlet, <small>formerly Java Servlet</small> is a <em>Java software component</em> that extends the capabilities of a <em>server</em>.<br>
+			In principle, any servlets can extend the abstract <code class="code">GenericServlet implements <span class="midnight-blue" title="service(ServletRequest,ServletResponse)">Servlet</span></code> class; however, realistically speaking, all servlets extend the <code class="code">abstract HttpServlet</code> class.<br>
+			For applications using the servlet 3.0 specification or later, the <code class="code">@WebServlet</code> annotation can be used to map any servlet to one or more <span class="tooltip" title="Uniform Resource Locator">URL</span> patterns.<br>
+			<div class="indent4"></div>
+			<code class="code">void init(ServletConfig config) throws ServletException</code> -
+			Called <small>(exactly once after instantiating the servlet)</small> by the servlet container to indicate to a servlet that the servlet is being placed into service.<br>
+			The servlet container cannot place the servlet into service if the <code>init</code> method:
+			<ol class="margin-top-bottom-0">
+				<li>Throws a <code>ServletException</code></li>
+				<li>Does not return within a time period defined by the Web server</li>
+			</ol>
+
+			<div class="indent4"></div>
+			<code class="code">void service(ServletRequest,ServletResponse) <small>throws ServletException,IOException</small></code> -
+			Can be called only after the servlet's <code>init()</code> method has completed successfully.
+
+			<div class="indent4"></div>
+			<code class="code">void destroy()</code> -
+			Called by the servlet container to indicate to a servlet that the servlet is being taken out of service.<br>
+			After the servlet container calls this method, it will not call the <code>service</code> method again on this servlet.<br>
+			This method gives the servlet an opportunity to clean up any resources that are being held.
+
+			<div class="indent4"></div>
+			<h5 class="margin-top-bottom-0">Threading Model</h5>
+			<ul class="margin-top-0">
+				<li>Each incoming request runs in <b>its own thread</b></li>
+				<li>Servlets must be <b>thread-safe</b></li>
+				<li>Shared resources must be <em>synchronized</em></li>
+			</ul>
+		</div>
+		<div id="filters">
+			<h3 class="margin-bottom-3"><a href="#filtersUp">Jakarta(Java) Filters</a></h3>
+			Purpose: modifying request and response, but <em>not</em> processing the request,
+			because request processing is on the <em>servlet</em> responsibility.<br>
+			Filters are chained in the same order as they described in <code>web.xml</code>.<br>
+			Note the reverse order during the response processing.<br>
+			Request -> F1(request) -> F2(request) -> ... -> Fn(request) -> <b>Servlet(r,r)</b> -> Fn(response) -> ... -> F2(response) -> F1(response) -> Response
+			<div class="indent4"></div>
+			<em>Spring Security</em> is based on <em>filters</em>.<br>
+			<div class="indent4"></div>
+			Filter interface:<br>
+			<code class="code">void init(ServletConfig config) throws ServletException</code><br>
+			<code class="code">void doFilter(ServletRequest,ServletResponse,<b>FilterChain</b>)</code><br>
+			<code class="code">void destroy()</code>
+			<div class="indent4"></div>
+			web.xml:<br>
+			<pre>
+			&lt;web-app>
+				&lt;filter>...&lt;/filter>
+				&lt;filter-mapping>...&lt;/filter-mapping>
+				&lt;servlet>...&lt;/servlet>
+				&lt;servlet-mapping>...&lt;/servlet-mapping>
+			&lt;/web-app></pre>
+		</div>
+		<hr>
+
+		<div id="lambdas">
+			<h2>λ Lambda Expressions <small class="java8">(Since 1.8)</small></h2>
+			<div class="padding-left">
+			<h3 id="lambdas-basis" class="margin-bottom-0">Basis</h3>
+			<p class="margin-top-3">Syntax: <code class="dark-blue">() <b>-&gt;</b> {}</code>
+				or <code class="dark-blue">ClassNameOrInstance<b>::</b>methodName</code><br>
+
+				Technically <em>lambda</em> expression becomes an anonymous method of an enclosing class.
+			</p>
+			<pre>
+	class LambdaExample {
+		void methodOne(int number) {
+			Function&lt;String,String&gt; f = value -&gt; value + number;
+			f.apply("str");
+		}
+	}
+			</pre>
+			Bytecode form:
+			<pre>
+	class LambdaExample {
+		...
+		private java.lang.String lambda$methodOne$0(int, java.lang.String);
+	}
+			</pre>
+			The <code>int</code> parameter is a parameter <b>captured</b> from the <code>methodOne()</code>
+			</div>
+
+			<h3 id="lambdas-mr" class="padding-left margin-bottom-0">Method references</h3>
+			<table class="withCounter border margin-left">
+				<caption>Kinds of method references</caption>
+				<tbody>
+					<tr>
+						<th class="width-20">#</th>
+						<th>Kind</th>
+						<th>Syntax</th>
+						<th>Description</th>
+					</tr>
+
+					<tr>
+						<td class="text-align-center">#</td>
+						<td>Reference to a static method</td>
+						<td><code><em>ClassName</em>::<em>staticMethodName</em></code></td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<td class="text-align-center">#</td>
+							<td>Reference to an instance method of a particular object</td>
+							<td><code><em>classInstance</em>::<em>instanceMethodName</em></code></td>
+							<td><code>this::toString<br>super::toString</code></td>
+					</tr>
+
+					<tr>
+						<td class="text-align-center">#</td>
+						<td class="back-orange">Reference to an instance method of an arbitrary object of a particular type</td>
+								<td><code><em>ClassName</em>::<em>instanceMethodName</em></code></td>
+								<td><code>Arrays.sort(stringArray, String::compareToIgnoreCase)</code><br>
+										where <code>static &lt;T&gt; void sort(T[] array, Comparator&lt;? <a href="#genericsWildcards">super</a> T&gt; c)</code><br>
+										<em>Comparator</em> is a Functional interface with method <code>int compare(<span class="back-green">T o1, T o2</span>)</code>,<br>
+										while <em>String</em> <code>int compareToIgnoreCase(<span class="back-red">String str</span>)</code><br>
+									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span class="back-sky-blue">formal parameter list</span> <code class="back-light-green nowrap">(String a, String b)</code>.
+									The method reference would invoke the method <code>a.compareToIgnoreCase(b)</code>.
+								</td>
+					</tr>
+
+					<tr>
+								<td class="text-align-center">#</td>
+									<td>Reference to a constructor</td>
+									<td><code><em>ClassName</em>::new</code></td>
+									<td><code>HashSet::new</code></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<hr>
+
+		<div id="loops">
+			<h3><a href="#loopsUp">Loops</a></h3>
+			<code class="code">for(;;) // infinite loop</code>
+		</div>
+		<hr>
+
+		<div id="methodSignature">
+			<h3 class="margin-bottom-3"><a href="#methodSignatureUp">Method</a> <a href="#signatureMethodUp">signature</a></h3>
+			<em>Method signature</em> is a combination of the <b>name</b> and <b>parameter types</b>.<br>
+			<span class="red">Not</span> the modifiers, return type, parameter names exception list and body.
+		</div>
+		<hr>
+
+		<div id="modules">
+			<h2><a href="#modulesUp">Modules</a></h2>
+			A Module is a group of closely related packages and resources along with a new module descriptor file.<br>
+			<em>module-info.java</em><br>
+			<code class="code">
+				<span class="help navy" title="allows reflection of private types">[open]</span> <b>module</b> com.example.module.name {<br>
+				<span class="margin-left">requires [<span class="help navy" title="force downstream">transitive</span>/<span class="help navy" title="compile-time-only dependency">static</span>] moduleName;</span><br>
+				<span class="margin-left">exports packageName [to moduleName [, moduleNameN]];</span><br>
+				<span class="margin-left help navy" title="allows reflection of private types">opens packageName [to moduleName [, moduleNameN]];</span><br>
+				<span class="margin-left">uses TypeName;</span><br>
+				<span class="margin-left">provides TypeName with ImplName [, ImplNameN]; // implementations</span><br>
+				}
+			</code>
+
+			<div class="indent4"></div>
+			<span class="warning-sign fs20 blue"></span> JAR file can contain <span class="red">only <b>1</b></span> module.<br>
+			By default, a module doesn’t expose any of its API to other modules -- strong encapsulation.<br>
+
+			<div class="indent4"></div>
+
+			The <em>unnamed module</em> concept is similar to the default package. Therefore, it’s not considered a real module, but can be viewed as the default module.
+			If a class is not a member of a named module, then it will be automatically considered as part of this unnamed module.
+
+			<div class="indent4"></div>
+			<code>java --list-modules</code>
+		</div>
+		<hr>
+
+		<div id="nesting">
+			<h2 class="margin-bottom-3">Nesting of classes</h2>
+			<table class="withCounter collapse-border margin-left padding">
+				<caption>Nesting</caption>
+				<tbody>
+					<tr>
+						<th class="width-20">#</th>
+						<th colspan="2">Kind</th>
+						<th>Syntax</th>
+						<th>Description</th>
+						<th class="width35pct" colspan="2">When to use</th>
+						<th>Since</th>
+					</tr>
+
+					<tr>
+						<td class="text-align-center">#</td>
+						<td colspan="2"><span class="saddle-brown">Local class</span></td>
+						<td><code>public <span class="grey">[static]</span> void methodName {<br>
+										&nbsp;&nbsp;<b>class LocalClassName {}</b> <br>
+									}
+							</code>
+						</td>
+						<td>Local classes are classes that are defined in a <em>block</em>. I.e. inside <b>{}</b><br>
+							Local classes are similar to <span class="dark-red">inner classes</span> because they cannot define or declare any static members
+						</td>
+						<td colspan="2">Use it if you need to create more than one instance of a class, access its constructor, 
+							or introduce a new, named type (because, for example, you need to invoke additional methods later).<br>
+							<span class="grey">And as it stems from its form: use local classes when you don't need of reuse it outside the <em>block</em></span>
+						</td>
+						<td class="java1">1.1</td>
+					</tr>
+
+					<tr>
+						<td class="text-align-center">#</td>
+						<td colspan="2"><span class="green">Anonymous class</span></td>
+							<td><code>
+								<span class="nowrap">new ExistingClassName() {//implementation}</span><br>
+								<span class="nowrap">new ExistingInterfaceName() {//implementation}</span><br>
+								</code>
+							</td>
+							<td>Anonymous classes are a convenient short form of <span class="dark-red">inner classes</span> that have no name, only an implementation</td>
+							<td colspan="2">Use it if you need to declare fields or additional methods.</td>
+							<td class="java1">1.1</td>
+					</tr>
+
+					<tr>
+						<td class="text-align-center">#</td>
+						<td colspan="2"><a class="blue" href="#lambdas">Lambda</a></td>
+						<td><code>() <b>-&gt;</b> {}<br>ClassNameOrInstance<b>::</b>methodName</code></td>
+						<td>Extension of idea of <span class="green">anonymous classes</span> in a more convenient way</td>
+						<td colspan="2">
+							<ul>
+								<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>
+								<li>Use it if you need a simple instance of a functional interface and none of the preceding criteria apply (for example, you do not need a constructor, a named type, fields, or additional methods)</li>
+							</ul>
+						</td>
+						<td><span class="java8">1.8</span></td>
+					</tr>
+
+					<tr>
+						<td class="text-align-center">#</td>
+						<td rowspan="2"><span class="red">Nested</span></td>
+						<td><span class="dark-red">Inner class <small class="nowrap">(non-static nested class)</small></span></td>
+						<td rowspan="2"><code>class OuterClass {<br>
+																		&nbsp;&nbsp; ...<br>
+																&nbsp;&nbsp;class InnerClass {<br>
+																	&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+																&nbsp;&nbsp;}<br>
+																&nbsp;&nbsp;static class StaticNestedClass {<br>
+																		&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+																	&nbsp;&nbsp;}<br>
+														}
+										</code>
+						</td>
+						<td></td>
+						<td rowspan="2">Use it if your requirements are similar to those of a local class, you want to make the type more widely available, and you don't require access to local variables or method parameters</td>
+						<td>Use an inner class if you require access to an enclosing instance's non-public fields and methods</td>
+						<td>1.1</td>
+					</tr>
+
+					<tr>
+									<td class="text-align-center">#</td>
+									<td class="magenta nowrap">Static nested class</td>
+									<td></td>
+									<td>Use a static nested class if you <b>don't</b> require access to an enclosing instance's non-public fields and methods</td>
+									<td>1.1</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<hr>
+
+		<div id="optional">
+			<h3 class="margin-bottom-5"><code>Optional</code> <small>class <span class="java8">(Since 1.8)</span></small></h3>
+			A container object which may or may not contain a non-<code>null</code> value.
+			If a value is present, <code>isPresent()</code> returns <code>true</code>.
+			If no value is present, the object is considered <i>empty</i> and <code>isPresent()</code> returns <code>false</code>.<br>
+			<span class="warning-sign fs20 blue"></span>
+			The initial method to retrieve value was <code class="code">get()</code>,
+			but in <span class="java10">java 10</span> the <code class="code">orElseThrow()</code>
+			method was added with the same code as in <code class="code">get()</code>.
+			The <i>Deprecated</i> annotation is not added to <code class="code">get()</code>,
+			<i>apiNote</i> was added instead with note to use <code class="code">orElseThrow()</code>.
+			<div class="indent"></div>
+			<code class="code">orElseGet(Supplier&lt;T&gt; supplier)</code> method is preferable to use instead of <code class="code">orElse(T resultIfEmpty)</code>,
+			because in case <i>Optional</i> instance is <b>not</b> empty, it will not build <code>resultIfEmpty</code>. For e.g.<br>
+			<code class="code">optional.orElse("NullObject")</code> will create an instance of "NullObject" String anyway, while <br>
+			<code class="code">optional.orElseGet(() -&gt; "NullObject")</code> will not.
+			<div class="indent"></div>
+			<code class="code">OptionalInt</code>, <code class="code">OptionalLong</code> and <code class="code">OptionalDouble</code>
+			classes are available <i>ootb</i> for respective primitive types.
+		</div>
+		<hr>
+
+		<div id="record">
+			<h3 class="margin-bottom-3"><a href="#recordUp">Record</a></h3>
+			<code class="code">record Triangle&lt;C extends Coordinate> (C top, C left, C right) implements Shape {</code><br>
+			<code class="code margin-left">Triangle {</code><br>
+			<code class="code margin-left-2">// compact constructor</code><br>
+			<code class="code margin-left">	}}</code><br>
+			<code class="code">new Triangle(c1, c2, c3);</code>
+			<div class="indent"></div>
+			Implicitly final<br>
+			Methods: <code class="code">equals</code> & <code class="code">hashCode</code> <small>(based on their components’ values, not object identity)</small>, <code class="code">toString</code>. Getters without "get", no setters.<br>
+			Compact constructor. <small>The purpose of <em>CC</em> is to reduce boilerplate of constructor parameters.</small><br>
+			Can use <a href="#generics">Generics</a>.<br>
+			Can implement interfaces.<br>
+			We <b>cannot</b> add the <em>extends</em> clause to the declaration since every record class implicitly extends the <code class="code">abstract class <b>Record</b></code>, and Java doesn’t allow multiple inheritance.
+			Can have static variables and initializers, but not instance.
+			Records can be inner and local.
+		</div>
+		<hr>
+
+		<div id="referenceType">
+			<h3 class="margin-bottom-3">Reference Type</h3>
+			Java <span class="brown">Reference Type</span> stores an <em>8-byte identifier</em>.
+			This identifier refers to the location of an <b>object</b> stored in the <em class="dark-red">heap</em> memory.
+			<small>(Or in <em class="dark-red">stack</em> memory, if it is a local variable)</small><br>
+			The <b>object</b> itself stored in the <em class="dark-red">heap</em>.
+			<div class="indent"></div>
+			<table class="zebra border padding" data-source="https://medium.com/@3eid">
+				<caption>Reference Types vs Pointers</caption>
+				<tr>
+					<th>Feature</th>
+					<th>Reference Types (Java)</th>
+					<th>Pointers (C/C++)</th>
+				</tr>
+				<tr>
+					<th>Storage</th>
+					<td>8-byte identifier, <b>not</b> a memory address</td>
+					<td>Memory address (pointer)</td>
+				</tr>
+				<tr>
+					<th>Direct memory access</th>
+					<td>No direct memory access</td>
+					<td>Direct access via memory address</td>
+				</tr>
+				<tr>
+					<th>Security</th>
+					<td><span class="green">High</span>, since direct memory manipulation is limited</td>
+					<td><span class="dark-red">Lower</span>, allows manipulation of arbitrary memory</td>
+				</tr>
+				<tr>
+					<th>Platform Dependence</th>
+					<td>Platform independent <small>(managed by JVM)</small></td>
+					<td>Platform-dependent</td>
+				</tr>
+				<tr>
+					<th>Null Check</th>
+					<td>Automatically handled by JVM <code class="dark-red">(NullPointerException)</code></td>
+					<td>Programmer's responsibility</td>
+				</tr>
+			</table>
+		</div>
+		<hr>
+
+		<div id="rtti">
+			<h3 class="margin-bottom-3">RTTI</h3>
+			Java does <span class="red">NOT have</span> Runtime Type Identification, it is from C++, Object Pascal, Delphi and etc<br>
+			Java has <em><b>Type introspection</b></em> implemented by <a href="#instanceof"><code>instanceof</code></a> operator
+		</div>
+		<hr>
+
+		<div id="spliterator">
+			<h3 class="code-a margin-bottom-3"><a href="#spliteratorCollections">&uarr;</a><a href="#spliteratorUp"><code>Spliterator</code></a><a href="#spliterator">&darr;</a> <span class="java8">(Since 1.8)</span></h3>
+			<code>public interface Spliterator&lt;T&gt;</code><br>
+			An object for traversing and partitioning elements of a source.<br>
+			A <code class="code">Spliterator</code> may traverse elements individually <code class="code">tryAdvance()</code> or sequentially in bulk <code class="code">forEachRemaining()</code>.<br>
+			Used in <a href="#streams">Streams</a> under the hood.
+			<table class="border padding">
+				<tr>
+					<th>Method</th>
+					<th>Simplified Signature</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td><code class="code">tryAdvance()</code></td>
+					<td><code>boolean tryAdvance(Consumer&lt;T&gt; action)</code></td>
+					<td>
+						If a remaining element exists, performs the given action on it, returning <code>true</code>, else returns <code>false</code>.<br>
+						This is <b>not</b> <i>foreach</i> method.
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">forEachRemaining()</code></td>
+					<td><code class="nowrap">default void forEachRemaining(Consumer&lt;T&gt; action)</code></td>
+					<td>
+						Performs the given action for each remaining element, sequentially in the current thread, until all elements have been processed or the action throws an exception.
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">trySplit()</code></td>
+					<td><code>Spliterator&lt;T&gt; trySplit()</code></td>
+					<td>
+						Splits <code>this</code> spliterator into <b>two</b> if possible.
+						One part of elements stays in <code>this</code> spliterator, another part goes to the <i>returned</i> one.<br>
+						Returns <code>null</code> if this spliterator cannot be split.
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">characteristics()</code></td>
+					<td><code>int characteristics()</code></td>
+					<td>Can be <b>8</b> characteristics in OR conjunction:<br>
+						<code>ORDERED, DISTINCT, SORTED, SIZED, NONNULL, IMMUTABLE, CONCURRENT, SUBSIZED</code><br>
+						A top-level Spliterator <span class="red">should not</span> report both <code>CONCURRENT</code> and <code>IMMUTABLE</code>, since they are mutually exclusive.<br>
+						Sub-spliterators <span class="green">may report</span> <code>IMMUTABLE</code> <span class="green">and</span> <code>CONCURRENT</code>.
+						<div class="indent"></div>
+						Since it's an <code class="code">int</code> value, the check of particular <i>characteristic</i> should look like:<br>
+						<code>(characteristics() & CONCURRENT) == CONCURRENT</code>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		<hr>
+
+		<div id="sealed">
+			<h3><a href="#sealedUp">Sealed classes/interfaces</a></h3>
+			<code>sealed ... permits ...</code><br>
+			Then the extending/implementing class should be <code>final</code>, <code>sealed</code> or <code>non-sealed</code>.<br>
+			Records can extend/implement sealed classes, and they don't need the modifier because they are already <code>final</code>.
+		</div>
+		<hr>
+
+		<div id="streams">
+			<h2 class="margin-bottom-3"><a href="#streamsUp">Streams</a> <small class="java8">(Since 1.8)</small></h2>
+			Definition: The <em>Stream <span class="get-title">API</span></em> provides an implementation of the well-known <em>map-filter-reduce</em> algorithm to the <span class="get-title">JDK</span>.
+			<div class="indent"></div>
+			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
+			A stream is an object that does not store any data.<br>
+			The Stream <span class="get-title">API</span> has been designed in such a way that as long as you <span class="navy">do not create any non-stream object</span>
+			<small class="light-green">(means creating stream objects)</small> in a stream pattern,
+			<span class="navy">no computation</span> of your data is conducted.<br>
+			<span class="warning-sign fs20 orange"></span>
+			There are several exceptions to previous rule.<br>
+			<code>distinct()</code> and <code>sorted()</code> method needs to store the elements of your stream.
+			It does so in an internal <code>Set</code>.
+			<br>
+			<ul>
+				<li>
+					An operation that returns another stream is called an <span class="golden-rod">intermediate operation</span>.<br>
+					Every time you call an intermediate operation on an existing stream, you create a new stream
+				</li>
+				<li>An operation that returns something else, including void, is called a <span class="green">terminal operation</span></li>
+			</ul>
+			Stream execution begins when the <span class="green"><b>terminal operation</b></span> is <span class="dark-green">invoked</span>,
+			and <span class="red">ends</span> when the <span class="green"><b>terminal operation</b></span> <span class="dark-red">completes</span>.
+			(Except for the escape-hatch operations <code>iterator()</code> and <code>spliterator()</code>).<br>
+			<b>Non-interference</b> <small>(for most data sources)</small> means ensuring that the data source is <i class="green">not modified at all</i> during the execution of the stream pipeline.<br>
+			<b>Associativity</b>. An operator or function (&#x058E;) is associative if the following holds:
+			<span class="code-a">
+				<code>(a</code> &#x058E; <code>b)</code> &#x058E; <code>c == a</code> &#x058E; <code>(b</code> &#x058E; <code>c)</code>
+			</span><br>
+			<b>Stateless</b> function is a function whose result <span class="red">does not depend</span> on any state which might change during the execution of the stream pipeline.<br>
+			<b>Mutable reduction</b>. A <i>mutable reduction operation</i> accumulates input elements into a mutable result container.
+			<div class="indent"></div>
+			The Stream API gives <b>4</b> interfaces: <code>Stream</code>, <code>IntStream</code>, <code>LongStream</code> and <code>DoubleStream</code>.<br>
+			Last three streams use primitive types for numbers instead of the wrapper types to avoid boxing and unboxing.<br>
+			They have some terminal operations that do not exist in <code>Stream</code>:
+			<code class="pointer" title="min() max() are w/o comparators">sum min() max() average summaryStatistics</code>.<br>
+			<code>IntStream</code> and <code>LongStream</code> have also static <code>range(from, toExclusive)</code> and <code>rangeClosed(from, to)</code> helper methods.<br>
+			<em>Short-circuiting</em> methods in the Stream API can produce a result without having to process all the elements of your stream.<br>
+
+			<h4 class="margin-bottom-0">Good practice</h4>
+			<ul class="margin-top-0">
+				<li>A stream is an object connected to a source. This source should not be modified by the stream itself.
+					Doing so will lead to unspecified results</li>
+				<li>Writing an operation that modifies some variables or fields outside the stream itself is a bad idea that can always be avoided.
+					A stream should not have any <em>side effects</em></li>
+				<li>Putting a <span class="red">stream in a loop</span> is <b>not</b> a very nice pattern of code</li>
+				<li>
+					<code class="dark-magenta">peek()</code> The purpose of this method is <span class="dark-green">debugging</span>.
+					You should not use this method in your production code, because it may produce <i>side effects</i>
+				</li>
+				<li id="avoidStreamReduce">
+					<b>Avoid</b> using a <code class="dark-orange"><a href="#streamReduce">reduce</a>/<a href="#collectorsReducing">reducing</a></code> method.
+					You need to make sure that the binary operator you provide is associative, then you need to know if it has an identity element.
+					You need to check many points to make sure your code is correct and produces the results you expect.
+					If you can avoid using the <code>reduce()</code> method, then you definitely should, because it's very easy to make mistakes with it.<br>
+					In fact, you should use a <code>reduce()</code> method as a last resort, only if you have no other solution
+				</li>
+				<li>Do filter as early as possible</li>
+			</ul>
+			<span class="java9">(Since 9)</span> <code>dropWhile(predicate)</code> and <code>takeWhile(predicate)</code> work as "one-off" semaphore,
+			that means from the time <em>predicate</em> result is switched their value, there is no effect of switching its value back.
+			Moreover, for example for <code>dropWhile</code> you need to start predicate result equals <i>true</i>,
+			otherwise there will no 'dropping' actions occur at all. The next piece of code will result the same list as it was at start,
+			without dropping effect:<br>
+			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().dropWhile(i -> i > 5).toList()</code><br>
+			The <code>takeWhile</code> works in the same way but opposite. For e.g.<br>
+			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().takeWhile(i -> i > 5).toList()</code> will return empty list.
+			<div class="indent"></div>
+			<code class="tooltip" title="static">Stream.concat()</code> vs <code>flatMap()</code>: <code>concat</code> takes only 2 parameters, but produces a <code>SIZED</code> stream.
+			While a <code>flatMap</code> may create an unknown number of elements to be processed in the resulting stream.
+			The Stream API loses track of the number of elements that will be processed in the resulting stream.
+
+			<h5 class="margin-bottom-0">Stateful operations</h5>
+			<code class="code">limit()</code>, <code class="code">skip()</code>, <code class="code">sorted()</code>, <code class="code">distinct()</code>
+			need to remember in what order the elements of the stream are processed and need to count the elements to produce a correct result.
+			Thus, they are called <em>stateful operations</em>, because they need to carry an internal state to work.
+
+			<br><br>
+			<table class="border padding">
+				<caption>Stream <small>interface</small></caption>
+				<tr>
+					<th>Method/Group</th>
+					<th>Simplified signature</th>
+					<th>Example</th>
+					<th>Description</th>
+					<th>Since</th>
+				</tr>
+				<tr><td colspan="5" class="text-align-center">static</td></tr>
+				<tr>
+					<td><code class="tooltip" title="static">Stream.of</code></td>
+					<td><code><span class="code">Stream</span>&lt;T&gt; of(<span class="code">T</span>... values)</code></td>
+					<td>
+						<code>Stream.of(new <span class="code">Integer</span>[] {1,2,3})</code><br>
+						<code class="strike">Stream.of(new <span class="red b">int</span>[] {1,2,3})</code>
+					</td>
+					<td>
+						<span class="warning-sign dark-orange"></span>
+						Pay attention to that arrays based on a primitive types will be considered as a single object.<br>
+						So use either a <em>Wrapper</em> classes arrays or <code class="code">IntStream.of()</code> or <code class="code">Arrays.stream(primitive/&lt;T> array)</code>
+					</td>
+					<td rowspan="27" class="java8">1.8</td>
+				</tr>
+				<tr>
+					<td><code class="tooltip" title="static">Stream.generate</code></td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T&gt; generate(<span class="code">Supplier</span>&lt;T&gt; supplier)</code></td>
+					<td><code>generate(<span class="code">Math</span>::random)</code></td>
+					<td>
+						Returns an <b>infinite</b> sequential unordered stream where each element is generated by the provided <code>Supplier</code>.
+						That means it actually require an "end" condition like
+						<code class="code">limit()</code>, <code class="code">findFirst()</code>,<code class="code">findAny()</code> methods etc.
+						The same is true also for <code class="code">iterate()</code> methods
+					</td>
+				</tr>
+				<tr>
+					<td><code class="tooltip" title="static">Stream.concat</code></td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T&gt; concat(<span class="code">Stream</span>&lt;T&gt; s1, <span class="code">Stream</span>&lt;T&gt; s2)</code></td>
+					<td></td>
+					<td>
+						Creates a <b class="dim-grey">lazily</b> concatenated stream, whose elements are all the elements of the first stream followed by all the elements of the second stream
+					</td>
+				</tr>
+
+				<tr><td colspan="4" class="text-align-center">instance</td></tr>
+				<tr>
+					<td rowspan="2"><code>map</code></td>
+					<td><code><span class="code">Stream</span>&lt;R&gt; map(<span class="code">Function</span>&lt;T,R&gt; mapper)</code></td>
+					<td><code>map(<span class="code">String</span>::length)</code></td>
+					<td>Making a new stream of values returned by <em>mapper</em> function</td>
+				</tr>
+				<tr>
+					<td><code> mapToInt mapToDouble mapToLong</code></td>
+					<td colspan="2"></td>
+				</tr>
+
+				<tr>
+					<td><code>flatMap</code></td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;R&gt; flatMap(<span class="code">Function</span>&lt;T, <span class="code">Stream</span>&lt;R&gt;&gt; mapper)</code></td>
+					<td><code>flatMap(<span class="code">String</span>::lines)</code></td>
+					<td><em>Flattering</em>. It just concats the streams returned by <i>mapper</i> function</td>
+				</tr>
+				<tr>
+					<td><code class="warning-sign dark-orange" id="streamReduce"> reduce</code></td>
+					<td>
+						<code class="nowrap"><span class="code">Optional</span>&lt;R&gt; reduce(<span class="code">BinaryOperator</span>&lt;R&gt; combiner)</code><br>
+						<code class="nowrap">R reduce(R identity, <span class="code">BinaryOperator</span>&lt;R&gt; combiner)</code><br>
+						<code class="nowrap">R reduce(<br>
+							<span class="margin-left-2">R identity,</span><br>
+							<span class="code margin-left-2">BiFunction</span>&lt;R,T,R&gt; accumulator,<br>
+							<span class="code margin-left-2">BinaryOperator</span>&lt;R&gt; combiner)</code>
+					</td>
+					<td><code>reduce(0, <span class="nowrap">(r, string) -> r + string.length()</span>, Integer::sum)</code></td>
+					<td>
+						<a class="warning-sign dark-orange" href="#avoidStreamReduce"> Reduce is not considered as a best practice</a><br>
+						Performs a reduction on the elements of this stream.
+						<div class="indent"></div>
+						<code>identity</code> - the identity value for the <code>combiner</code> function.
+						For all <code>r</code>, <code>combiner(identity, r) == r</code><br>
+						<code>accumulator</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function for incorporating an additional element into a result<br>
+						<code>combiner</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function for combining two values
+						<small>(which must be compatible with the accumulator function if any)</small>
+						<small><code class="nowrap">combiner.apply(r, accumulator.apply(identity, t)) == accumulator.apply(r, t)</code></small><br>
+						<div class="indent4"></div>
+						See also <a href="#collectorsReducing"><code>Collectors.reducing()</code></a>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2"><code>collect</code></td>
+					<td><code class="nowrap"><b>R</b> collect(<span class="code">Collector</span>&lt;T,A,<b>R</b>&gt; collector)</code></td>
+					<td><code>collect(Collectors.toList())</code></td>
+					<td>Performs a <i>mutable reduction</i> operation on the elements of this stream using a <code class="code">Collector</code></td>
+				</tr>
+				<tr>
+					<td>
+						<code class="nowrap black"><b>R</b> collect(<br>
+							<span class="code margin-left-2">Supplier</span>&lt;<b>R</b>&gt; supplier,<br>
+							<span class="code margin-left-2">BiConsumer</span>&lt;<b>R</b>,T&gt; accumulator,<br>
+							<span class="code margin-left-2">BiConsumer</span>&lt;<b>R</b>,<b>R</b>&gt; combiner)
+						</code>
+					</td>
+					<td><code>collect(ArrayList::new, ArrayList::add, ArrayList::addAll)</code></td>
+					<td>
+						Performs a <i>mutable reduction</i> operation on the elements of this stream.<br>
+						<code class="code">collect</code> operations can be parallelized without requiring additional synchronization.
+						<div class="indent"></div>
+						<code><b>R</b></code> - it is implied that <code><b>R</b></code> is a mutable result container, like an <code>ArrayList</code>.<br>
+						<code class="code">supplier</code> - a function that creates a new mutable result container. For a parallel execution, this function may be called multiple times and must return a fresh value each time.<br>
+						<code class="code">accumulator</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function that must <b>add</b> <small>(fold)</small> an element into a result container.<br>
+						<code class="code">combiner</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function that accepts two partial result containers and merges them, which must be compatible with the accumulator function.
+						<small>The combiner function must fold the elements from the second result container into the first result container.</small>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="3"><code>match</code></td>
+					<td><code class="nowrap">boolean allMatch(<span class="code">Predicate</span>&lt;T&gt; predicate)</code></td>
+					<td><code></code></td>
+					<td>Returns <code>true</code> if all elements of this stream match the provided predicate</td>
+				</tr>
+				<tr>
+					<td><code class="nowrap">boolean anyMatch(<span class="code">Predicate</span>&lt;T&gt; predicate)</code></td>
+					<td><code></code></td>
+					<td>Returns <code>true</code> if any element of this stream match the provided predicate</td>
+				</tr>
+				<tr>
+					<td><code class="nowrap">boolean noneMatch(<span class="code">Predicate</span>&lt;T&gt; predicate)</code></td>
+					<td><code></code></td>
+					<td>Returns <code>true</code> if no elements of this stream match the provided predicate</td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"><code>find</code></td>
+					<td><code class="nowrap"><span class="code">Optional</span>&lt;T&gt; findAny()</code></td>
+					<td><code></code></td>
+					<td rowspan="2">
+						This is a short-circuiting terminal operation.<br>
+						<code>findAny</code> is explicitly nondeterministic. For maximal performance in parallel operations.<br>
+						<code>findFirst</code> is for stable result, <span class="dim-grey bold">not stateful</span>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="nowrap"><span class="code">Optional</span>&lt;T&gt; findFirst()</code></td>
+					<td><code></code></td>
+				</tr>
+
+				<tr>
+					<td rowspan="1"><code>count</code></td>
+					<td><code class="nowrap">long count()</code></td>
+					<td><code></code></td>
+					<td>Returns the count of elements in this stream</td>
+				</tr>
+
+				<tr>
+					<td rowspan="6">
+						operations<br>
+						<small>(all of them are intermediate)</small>
+					</td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> distinct()</code></td>
+					<td><code></code></td>
+					<td>according to <code>Object.equals(Object)</code></td>
+				</tr>
+				<tr>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> filter(<span class="code">Predicate</span>&lt;T&gt; predicate)</code></td>
+					<td><code>filter(Objects::nonNull)</code></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> limit(long maxSize)</code></td>
+					<td></td>
+					<td>truncated to be no longer than <code>maxSize</code> in length</td>
+				</tr>
+				<tr>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> skip(long n)</code></td>
+					<td></td>
+					<td>Returns a stream consisting of the remaining elements of this stream after <b class="dim-grey">discarding the first</b> <code><b>n</b></code> elements of the stream</td>
+				</tr>
+				<tr>
+					<td><code class="nowrap black"><span class="code">Stream</span>&lt;T> <b>sorted()</b></code></td>
+					<td></td>
+					<td rowspan="2">
+						sorted according to natural order or to the provided <code>Comparator</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="nowrap black"><span class="code">Stream</span>&lt;T> <b>sorted</b>(<span class="code">Comparator</span>&lt;T&gt; comparator)</code></td>
+					<td>
+						<code class="dim-gray">record Person(String name, int age) {}</code>
+						<div class="indent4"></div>
+						<code class="black smaller">stream.sorted(Comparator.comparingInt(Person::age).<span class="code">thenComparing</span>(Person::name))</code>
+					</td>
+				</tr>
+
+				<tr>
+					<td>min/max</td>
+					<td><code class="nowrap"><span class="code">Optional</span>&lt;T> min/max(<span class="code">Comparator</span>&lt;T&gt; comparator)</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>foreach</td>
+					<td><code class="nowrap">void forEach/forEachOrdered(<span class="code">Consumer</span>&lt;T&gt; comparator)</code></td>
+					<td></td>
+					<td><code>forEachOrdered</code> - in the encounter order of the stream if the stream has a defined encounter order</td>
+				</tr>
+				<tr>
+					<td class="dark-grey">peek</td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> peek(<span class="code">Consumer</span>&lt;T&gt; action)</code></td>
+					<td><code>peek(e -><br>System.out.println(<span class="nowrap">"Value: " + e))</span></code></td>
+					<td>
+						Additionally performs the provided <code>action</code> on each element.<br>
+						<span class="warning-sign blue"></span>
+						<span class="grey">This method exists mainly to support debugging, where you want to see the elements as they flow past a certain point in a pipeline</span>
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"><code>toArray</code></td>
+					<td><code class="nowrap"><span class="code">Object</span>[] toArray()</code></td>
+					<td><code></code></td>
+					<td rowspan="2"></td>
+				</tr>
+				<tr>
+					<td><code class="nowrap"><b>A</b>[] toArray(<span class="code">IntFunction</span>&lt;<b>A</b>[]> generator)</code></td>
+					<td><code>toArray(Person[]::new)</code></td>
+				</tr>
+				<tr>
+					<td><code>toList</code></td>
+					<td><code class="nowrap">default <span class="code">List</span>&lt;T> toList()</code></td>
+					<td></td>
+					<td></td>
+					<td class="java16">16</td>
+				</tr>
+			</table>
+			<div class="indent"></div>
+
+			<table class="collapse-border padding" id="collector">
+				<caption><a href="#collectorUp">Collector</a>&lt;T,A,R> interface</caption>
+				<tr>
+					<th><code class="code">supplier()</code></th>
+					<td>Creation of a new <span class="green">result container</span></td>
+				</tr>
+				<tr>
+					<th><code class="code">accumulator()</code></th>
+					<td>Incorporating a <span class="blue">new data element</span> into a <span class="green">result container</span></td>
+				</tr>
+				<tr>
+					<th><code class="code">combiner()</code></th>
+					<td>Combining two <span class="lime-green">result containers</span> into one <span class="green">result container</span></td>
+				</tr>
+				<tr>
+					<th><code class="code">finisher()</code></th>
+					<td class="grey">Performing an optional final transform on the <span class="green">result container</span></td>
+				</tr>
+			</table>
+			<div class="indent"></div>
+
+			<table class="border padding" id="collectors">
+				<caption><a href="#collectorsUp"><b>Collectors</b></a> static helper class [all methods return a <code class="code">Collector</code> instance]</caption>
+				<tr><th>Group</th><th>Method/Example</th><th>Description</th><th>Since</th></tr>
+				<tr>
+					<td>Collecting with <em>finisher</em></td>
+					<td>
+						<code class="code nowrap">&lt;T,A,RR> collectingAndThen(Collector&lt;T,A,R> downstream, Function&lt;R,RR> <em>finisher</em>)</code>
+						<div class="indent4"></div>
+						<code>collectingAndThen(Collectors.toList(), Collections::unmodifiableList)</code> <a href="#collectingAndThenWithMaxBy">example</a>
+					</td>
+					<td>Adapts a <code class="code">Collector</code> to perform an additional finishing transformation</td>
+					<td rowspan="14" class="java8">1.8</td>
+				</tr>
+				<tr>
+					<td rowspan="4">to*</td>
+					<td><code class="code">&lt;T,?,Set&lt;T>> <b>toSet()</b></code></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><code class="code">&lt;T,?,List&lt;T>> <b>toList()</b></code></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><code class="code">&lt;T,?,C> toCollection(Supplier&lt;C> collectionFactory)</code></td>
+					<td>..in encounter order. <code>C extends Collection&lt;T></code></td>
+				</tr>
+				<tr>
+					<td>
+						<code class="code">&lt;T,?,Map&lt;K,U>> toMap(Function&lt;T,K> keyMapper, Function&lt;T,U> valueMapper)</code><br>
+						<code class="code nowrap">&lt;T,?,Map&lt;K,U>> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mergeFunction)</code><br>
+						<code class="code nowrap" >&lt;T,?,M> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mf, Supplier&lt;M> map)</code><br>
+						and the same for <code class="code">toConcurrentMap(..)</code>
+					</td>
+					<td>mergeFunction - a merge function, used to resolve collisions between values associated with the same key, as supplied to <code>Map.merge(Object v1, Object v2, BiFunction bf)</code></td>
+				</tr>
+
+				<tr>
+					<th rowspan="1">groupingBy</th>
+					<td>
+						<code class="code">&lt;T,?,<b>Map</b>&lt;K,<b>List</b>&lt;T>>> groupingBy(Function&lt;T,K> classifier)</code><br>
+						<code class="code">&lt;T,?,<b>Map</b>&lt;K,D>> groupingBy(Function&lt;T,K> classifier, Collector&lt;T,A,D> downstream)</code><br>
+						<div class="indent"></div>
+						<code class="code">&lt;T,K,D,A,M extends <b>Map</b>&lt;K,D>><br> Collector&lt;T,?,M> groupingBy(Function&lt;T,K> classifier, Supplier&lt;M> <b>mapFactory</b>, Collector&lt;T,A,D> downstream)</code><br>
+						<div class="indent4"></div>
+						and the same for <code class="code">groupingByConcurrent(..)</code>
+						<div class="indent4"></div>
+						<code>Map&lt;Character, Set&lt;String>> result = Stream.of({"Zhaba", "Anton", "Ajax"})</code><br>
+						<code class="nowrap">.collect(<b>groupingBy</b>(<span class="blue">item -> item.charAt(0)</span>, <span class="green">() -> new TreeMap&lt;>(Collections.reverseOrder())</span>, <span class="teal">toSet()</span>));</code><br>
+						<span class="smaller font-family-math dim-grey">Result: {Z=[Zhaba], A=[Anton, Ajax]}</span>
+					</td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">counting</td>
+					<td><code class="code">&lt;T,?,<b>Long</b>> counting()</code> <a href="#functionIdentityStreamCollectorsCounting">example</a></td>
+					<td>..counts the number of input elements</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">joining</td>
+					<td>
+						<code class="code">&lt;CharSequence,?,String> joining()</code><br>
+						<code class="code">&lt;CharSequence,?,String> joining(CharSequence delimiter)</code><br>
+						<code class="code">&lt;CharSequence,?,String> joining(CharSequence delimiter, CharSequence prefix, CharSequence suffix)</code><br>
+					</td>
+					<td>Returns a <code class="code">Collector</code> that concatenates the input elements into a <code class="code">String</code>, in encounter order</td>
+				</tr>
+				<tr>
+					<td rowspan="1">mapping</td>
+					<td>
+						<code class="code">&lt;T,?,R> mapping(Function&lt;T,U> mapper, Collector&lt;U,A,R> downstream)</code><br>
+						<div class="indent4"></div>
+						<code>mapping(Person::getLastName, toSet())</code>
+					</td>
+					<td><b class="grey">Adapts</b> a <code class="code">Collector</code> accepting elements of type <code class="code">U</code> to one accepting elements of type <code class="code">T</code> by applying a <em>mapper</em> to each input element before accumulation</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">min/max</td>
+					<td><code class="code">&lt;T,?,Optional&lt;T>> minBy/maxBy(Comparator&lt;T> comparator)</code> <a href="#collectingAndThenWithMaxBy">example</a></td>
+					<td>Returns a <code class="code">Collector</code> that produces the <em>min/max</em> element according to a given <code class="code">Comparator</code></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2">partitioning</td>
+					<td><code class="code">&lt;T,?,<b>Map</b>&lt;<b>Boolean</b>,List&lt;T>>> partitioningBy(Predicate&lt;T> predicate)</code></td>
+					<td>
+						Returns a <code class="code">Collector</code> which partitions the input elements according to a <code class="code">Predicate</code>, and organizes them into a <code class="code">Map&lt;Boolean, List&lt;T>></code>.<br>
+						<span class="warning-sign grey smaller"> The map keys will only be true/false due to Predicate returns primitive boolean, so no <code>null</code> key is possible</span>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">&lt;T,?,<b>Map</b>&lt;<b>Boolean</b>,D>> partitioningBy(Predicate&lt;T> predicate, Collector&lt;T,A,D> downstream)</code></td>
+					<td>..reduces the values in each partition according to another <code class="code">Collector</code>, and organizes them into a <code class="code">Map&lt;Boolean,D></code> whose values are the result of the downstream reduction</td>
+				</tr>
+
+				<tr>
+					<td class="warning-sign dark-orange" id="collectorsReducing"> reducing</td>
+					<td>
+						<code class="code">&lt;T,?,Optional&lt;T>> reducing(BinaryOperator&lt;T> o)</code><br>
+						<code class="code">&lt;T,?,T> reducing(T identity, BinaryOperator&lt;T> o)</code><br>
+						<code class="code">&lt;T,?,U> reducing(T identity, Function&lt;T,U> mapper, BinaryOperator&lt;T> o)</code><br>
+						<div class="indent4"></div>
+						<code>Collectors.<i>reducing</i>("", String::<i>valueOf</i> , (a,b) -> a + b)</code>
+					</td>
+					<td>
+						<a class="warning-sign dark-orange" href="#avoidStreamReduce"> Reducing is not considered as a best practice</a><br>
+						Analogous to <code class="code"><a href="#streamReduce">stream.reduce()</a></code>.<br>
+						Returns a <code class="code">Collector</code> which performs a reduction of its input elements under a specified <code class="code">BinaryOperator</code>.<br>
+						Or with using provided identity.<br>
+						Or with using provided identity and mapper function<br>
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">math</td>
+					<td><code class="code">averaging* <span class="dim-grey pointer" title="statistics">summarizing*</span> summing* with Double, Int, Long</code></td>
+					<td>Mathematical</td>
+				</tr>
+
+				<tr>
+					<td>filtering</td>
+					<td></td>
+					<td></td>
+					<td rowspan="2" class="java9">9</td>
+				</tr>
+				<tr>
+					<td>flatMapping</td>
+					<td></td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td>toUnmodifiable*</td>
+					<td>List/Set/Map</td>
+					<td></td>
+					<td rowspan="1" class="java10">10</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">teeing</td>
+					<td><code class="code">teeing(Collector downstream1, Collector downstream2, BiFunction merger)</code></td>
+					<td>
+						Returns a Collector that is a composite of two downstream collectors.<br>
+						Every element passed to the resulting collector is processed by both downstream collectors, then their results are merged using the specified merge function into the final result
+					</td>
+					<td class="java12">12</td>
+				</tr>
+
+
+			</table>
+			<div class="indent"></div>
+
+			<em class="dark-blue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
+			<code>List&lt;String&gt; list = stream.collect(Collectors.collectingAndThen(<b>Collectors.toList()</b>, Collections::unmodifiableList));</code><br>
+			The <code><b>Collectors.toList()</b></code> is a <em>Downstream collector</em>.<br><code>Collections::unmodifiableList</code> is a <i>finisher</i>.<br>
+
+			<div class="indent"></div>
+			<details>
+				<summary id="collectingAndThenWithMaxBy"><code>collectingAndThen</code> & <code>maxBy</code> example</summary>
+				<pre><code class="language-java">		record Employee(String name, String department, double salary) {}
+		Collector&lt;Employee, ?, Optional&lt;Employee>> downstream = Collectors.maxBy(Comparator.comparingDouble(Employee::salary));
+		Collector&lt;Employee, ?, Double> downstreamFinished = Collectors.collectingAndThen(downstream, o -> o.orElseThrow().salary);
+
+		Map&lt;String, Double> result =
+			employees.stream().collect(Collectors.groupingBy(Employee::department, HashMap::new, downstreamFinished));
+		// {Finance=58000.0, HR=50000.0, IT=70000.0}</code></pre>
+			</details>
+
+			<div class="indent"></div>
+			<details>
+				<summary id="functionIdentityStreamCollectorsCounting"><code>Function.identity()</code> & <code>Collectors.counting()</code></summary>
+				<pre><code class="language-java">		List&lt;String> words = Arrays.asList("apple", "banana", "apple", "cherry", "banana", "apple");
+
+		Map&lt;String, Long> wordFrequency = words.stream()
+			.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));</code></pre>
+			</details>
+
+			<div class="indent"></div>
+			<details>
+				<summary>Stating Some Rules to Use Parallel Streams Properly</summary>
+				<p><strong>Rule #1</strong> Do not optimize because it's fun; optimize because you have requirements, and you do not meet them</p>
+				<p><strong>Rule #2</strong> Choose your source of data with caution</p>
+				<p><strong>Rule #3</strong> Do not modify external state, and do not share mutable state</p>
+				<p><strong>Rule #4</strong> Do not guess; measure the performance of your code</p>
+			</details>
+		</div>
+		<hr>
+
+		<div id="synchronized">
+			<h3 class="code-a"><code>synchronized</code> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			Synchronization is built around an internal entity known as the <i>intrinsic lock</i> or <i>monitor lock</i>.<br>
+			There are 2 types of usage:
+			<ul class="ulWithMargin">
+				<li>
+					Synchronized methods:<br>
+					<code>public <span class="grey">[static]</span> <span class="code">synchronized</span> void method() { print("String"); }</code><br>
+					When a thread invokes a synchronized method, it automatically acquires the <i>intrinsic lock</i> for <b>that method's object</b>
+					and releases it when the method returns (including if the return was caused by an uncaught exception).<br>
+					For the static methods the thread acquires the <i>intrinsic lock</i> for the <span class="code-a"><code>Class</code></span> object associated with the class.
+				</li>
+				<li>
+					Synchronized statements(blocks):
+					<pre class="margin-top-0">public void method(String name) {
+	<span class="code">synchronized</span>(<span class="dark-green">object</span>) {
+		<span class="dark-green">object</span>.setName(name);
+	}
+	print(<span class="dark-green">object</span>.getName());
+}</pre>
+					where <span class="dark-green">object</span> is the object that provides the <i>intrinsic lock</i>,
+					it can be an instance or class field, or <span class="code">this</span> object.
+				</li>
+			</ul>
+
+			Two threads <b class="red">cannot</b> access two different <code>synchronized</code> methods of the same object at the same time,
+			as wel as <code>synchronized</code> blocks for the same object.<br>
+			But for the <code>synchronized</code> methods of the two different instances of the <span class="brown">class</span> there is no <em>concurrency</em> <small>(which is logical)</small>.
+
+			<div class="indent4"></div>
+			<code class="code">object.wait()</code> can temporarily release the monitor and give other threads a chance to acquire the monitor.<br>
+			In this way, the object <em>lock</em> can be lost <b class="dim-grey">inside</b> the <code>synchronized</code> code,
+			and then can be re-acquired when another thread will call <code>object.notify()/notifyAll()</code>.
+
+			<pre>
+class ClassOne {
+	private String <span class="red">monitor</span> = "Monitor";
+
+	void methodOne() {
+		synchronized(<span class="red">monitor</span>) {
+			doSomethingSynchronized();
+		}
+	}
+}
+			</pre>
+			In this example the <code class="red">monitor</code> string it is just the object that plays a role of the <em>monitor lock</em> or <em class="get-title">mutex</em>.
+			It can be any type and according to the best practice it should be <code class="code">final</code> to avoid consequences in case monitor object is rewritten.
+
+			<h4 id="happensBefore" class="margin-bottom-0"><a href="#happensBeforeUp"><em>Happens-before relationship</em></a></h4>
+			<i>Happens-before relationship</i> means that if it is established (between threads) on a <span class="dark-red">variable</span>,
+			then the <span class="red">changes</span> on a <span class="dark-red">variable</span> will be visible to the other threads
+			only if the <code class="code">write</code> operation in <span class="blue">one thread</span>
+			<i>happens before</i> the <code class="code">read</code> operation in <span class="green">another thread</span>.<br>
+			The <code class="code">synchronized</code> and <code class="code"><a href="#volatile">volatile</a></code> constructs, as well as the <code class="code">Thread.start()</code> and <code class="code">Thread.join()</code> methods, can form <em>happens-before</em> relationships.
+			<h5 class="margin-bottom-0">Reentrant Synchronization</h5>
+			Recall that a thread cannot acquire a lock owned by another thread. But a thread can acquire a lock that it already owns.
+			Allowing a thread to acquire the same lock more than once enables <i>reentrant synchronization</i>.
+			This describes a situation where synchronized code, directly or indirectly, invokes a method that also contains synchronized code, and both sets of code use the same lock.
+			Without reentrant synchronization, synchronized code would have to take many additional precautions to avoid having a thread cause itself to block.
+		</div>
+		<hr>
+
+		<div id="thread">
+			<h3 class="code-a margin-bottom-3"><a href="#threadUp" class="code-a"><code>Thread</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<code>public class <b>Thread</b> implements <b>Runnable</b></code><br>
+			<code>Thread.State</code>:<br>
+			<ul class="margin-top-0">
+				<li><code class="b">NEW</code> - not yet started</li>
+				<li><code class="b">RUNNABLE</code> - started, running</li>
+				<li><code class="b">BLOCKED</code> - blocked waiting for a monitor lock</li>
+				<li><code class="b">WAITING</code></li>
+				<li><code class="b">TIMED_WAITING</code></li>
+				<li><code class="b">TERMINATED</code> - <span class="red"> cannot be restarted</span></li>
+			</ul>
+
+			Thread <code>interrupt()</code> - only marks thread with the "interrupted" status if thread is working normally
+			(not blocked, wait, sleep, join etc.)<br>
+		</div>
+		<hr>
+
+		<div id="threadLocal">
+			<h3 class="code-a margin-bottom-3"><a href="#threadLocalUp"><code>ThreadLocal</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<code class="code">java.lang.ThreadLocal&lt;T></code><br>
+			Variable that has independently initialized <em><b class="dim-grey">copy</b></em> of its generic type <code>&lt;T></code> for each <code class="code">Thread</code>.<br>
+			If the variable has no value for the current thread, and <code class="code">get()</code> method called, then <code class="code">initialValue()</code> is invoked for initialization first.
+			<pre><code class="language-java">        ThreadLocal&lt;String> threadLocalVar = new ThreadLocal&lt;>();
+
+        Thread thread1 = new Thread( () -> {
+            System.out.println("Setting T1");
+            threadLocalVar.set("T1");
+            sleep(100);
+            System.out.println("Getting value for T1: " + threadLocalVar.get()); // always return T1
+        });
+
+        Thread thread2 = new Thread( () -> {
+            System.out.println("Setting T2");
+            threadLocalVar.set("T2");
+            System.out.println("Getting value for T2: " + threadLocalVar.get()); // always return T2
+        });
+
+        thread1.start();
+        thread2.start();</code></pre>
+		</div>
+		<hr>
+
+		<div id="try">
+			<h3><a href="#tryUp">Try catch finally</a></h3>
+			<code class="code">finally</code> will not be executed if <code class="code">System.exit()</code>,
+			fatal errors like <code class="code">java.lang.StackOverFlowError</code>, Memory access error, etc.
+		</div>
+		<hr>
+
+		<div id="volatile">
+			<h3 class="code-a margin-bottom-3"><a href="#volatile-up"><code>volatile</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<code>public <span class="grey">[static]</span> <b>volatile</b> long longVar = 1L;</code><br>
+			<code>longVar++; //but this is still <span class="tomato">not</span> <a href="#atomic">Atomic</a></code><br>
+			<code>private <span class="grey">[static]</span> <b>volatile</b> String string;</code>
+			<div class="indent"></div>
+			Changes to a <code class="code">volatile</code> variable are always visible to other threads.<br>
+			Any write to a <code class="code">volatile</code> variable establishes a <a href="#happensBefore">happens-before</a> relationship with subsequent reads of that same variable.<br>
+			It also means, that when a thread reads a <code class="code">volatile</code> variable, it sees not just the latest change to the <code class="code">volatile</code>, but also the side effects of the code that led up the change.<br>
+			Using <code class="code">volatile</code> variables reduces the risk of memory consistency errors.
+			<div class="indent4"></div>
+			<span class="warning-sign fs20 orange"></span> While technically we can declare arrays and collections as <code>volatile</code>,
+			it does not make sense, due to <a href="#happensBefore">happens-before</a> relationship will be established only to the reference variable,
+			but not to the cells of the container.
+		</div>
+
+		<hr class="height2">
+		Tools used: <a href="https://highlightjs.org/">highlight.js</a><br>
+		Sources: Wikipedia, Oracle®, dev.java, Baeldung<br>
+
+		<div class="indent"></div>
+		<a href="all.html">SiteMap</a>
+		<div class="indent"></div>
+
+		UserAgent: <span id="userAgent"></span><br>
+		<iframe class="footer" src="./footer.html"></iframe>
+
+		<script>
+		const tables = document.getElementsByTagName('table');
+
+		Array.from(tables).forEach( (table) => {
+				if (table.classList.contains('withCounter')) {
+					const rows = table.getElementsByTagName('tr'),
+						  text = 'textContent' in document ? 'textContent' : 'innerText';
+
+					for (let i = 1, len = rows.length; i < len; i++) {
+						rows[i].children[0][text] = " " + i + " ";
+					}
+				}
+			}
+		);
+
+		// UserAgent
+		const userAgent = navigator.userAgent;
+		const userAgentSpan = document.getElementById('userAgent');
+		userAgentSpan.textContent = userAgent;
+		if (userAgent.includes('Chrome')) {
+			if (userAgent.includes('Android') || userAgent.includes('Mobile')) {
+				alert('Markup can be broken for this userAgent, sorry.');
+			}
+		}
+	</script>
+
+	</body>
+</html>

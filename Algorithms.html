@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Algorithms</title>
+	<link rel="stylesheet" href="css/common.css">
+
+	<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
+	<script src="3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<a href="all.html">SiteMap</a>
+	<div class="indent"></div>
+
+	<table id="toc">
+		<tr>
+			<td>
+				<details open>
+					<summary><h1 id="dpUp"><a href="#dp">Dynamic programming</a></h1></summary>
+				</details>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<details open>
+					<summary><h1>Sorting</h1></summary>
+					<h2 class="margin-top-bottom-3">Comparison:</h2>
+					<h3 class="padding-left-1em margin-top-bottom-3"><a href="#selection">Selection</a></h3>
+					<h3 class="padding-left-1em margin-top-bottom-3"><a href="#bubble">Bubble</a></h3>
+					<h3 class="padding-left-1em margin-top-bottom-3"><a href="#insertion">Insertion</a></h3>
+					<h3 class="padding-left-1em margin-top-bottom-3"><a href="#merge">Merge</a></h3>
+					<h3 class="padding-left-1em margin-top-bottom-3"><a href="#heap">Heap</a></h3>
+					<h3 class="padding-left-1em margin-top-bottom-3"><a href="#quick">Quick</a></h3>
+					<h2 class="margin-top-bottom-3">Non-Comparison:</h2>
+				</details>
+			</td>
+		</tr>
+	</table>
+
+	<hr class="height2">
+
+	<div id="dp">
+		<h2><a href="#dpUp">Dynamic programming</a></h2>
+		1) Memoization == top-down == recursive:<br>
+			Fibonacci <var>f(n) = f(n-1) + f(n-2)</var><br>
+		<img src="svg/TopDown.svg" alt="td">
+		<pre><code class="language-java">    int f(int n) {
+        if (memo[n] > 0 ) return memo[n];
+        if (n &lt; 2) return n;
+        return memo[n] = f(n - 1) + f(n - 2);
+    }</code></pre>
+
+		2) Tabulation == bottom-up == non-recursive<br>
+		<img src="svg/BottomUp.svg" alt="bu" height="300"><br>
+		<pre><code class="language-java">    int bottomUp(int n) {
+        if (n &lt; 2) return n;
+
+        int tabulation[] = new int[n + 1];
+        tabulation[0] = 0;
+        tabulation[1] = 1;
+        for (int i = 2; i &lt; n + 1; i++) {
+            tabulation[i] = tabulation[i - 2] + tabulation[i - 1];
+        }
+
+        return tabulation[n];
+    }</code></pre>
+
+		3) Counting Paths in a 2D Array<br>
+		<pre><code class="language-java">    boolean[][] mapMatrix = {
+                {true, false, false},
+                {true, false, false},
+                {true, true, true}
+        };
+
+    routeExists(0, 0, 2, 2, mapMatrix);
+
+    boolean routeExists(int fromRow, int fromColumn, int toRow, int toColumn, boolean[][] mapMatrix) {
+        if (!mapMatrix[toRow][toColumn]) return false;
+
+        int maxRow = mapMatrix.length;
+        int maxCol = mapMatrix[0].length;
+        boolean[][] visited = new boolean[maxRow][maxCol];
+
+        return tryCell(fromRow, fromColumn, toRow, toColumn, mapMatrix, visited);
+    }
+
+    boolean tryCell(int row, int col,  int toRow, int toCol, boolean[][] matrix, boolean[][] visited) {
+        if (row == toRow && col == toCol) return true;
+
+        if (row >= 0 && col >= 0 && row &lt; matrix.length && col &lt; matrix[0].length && !visited[row][col]) {
+            visited[row][col] = true;
+            if (!matrix[row][col]) return false;
+            if (tryCell(row + 1, col, toRow, toCol, matrix, visited)) return true;
+            if (tryCell(row, col + 1, toRow, toCol, matrix, visited)) return true;
+            if (tryCell(row - 1, col, toRow, toCol, matrix, visited)) return true;
+            if (tryCell(row, col - 1, toRow, toCol, matrix, visited)) return true;
+        }
+        return false;
+    }</code></pre>
+
+		4) 0 1 Knapsack
+	</div>
+	<hr>
+
+	<div id="selection">
+		<h3 class="margin-bottom-3">Selection</h3>
+		Time [Best <code class="back-pink border padding3">Ω(n²)</code>
+		Average <code class="back-pink border padding3">Θ(n²)</code>
+		Worst <code class="back-pink border padding3">O(n²)</code>]
+		Space <small>Worst</small> [<code class="back-lime-green border padding3">O(1)</code>]<br>
+
+		Stable <code class="back-pink border padding3">No</code>
+		In-place <code class="back-lime-green border padding3">Yes</code><br>
+
+		Find min/max and put it to the left, bit by bit, swapping<br>
+		<pre><code class="language-java">        for (int i = 0; i &lt; array.length - 1; i++) {
+            int minIndex = i;
+            for(int j = i + 1; j &lt; array.length; j++) {
+                if (array[j] &lt; array[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            swap(array, i, minIndex);
+        }</code></pre>
+	</div>
+	<hr>
+
+	<div id="bubble">
+		<h3 class="margin-bottom-3">Bubble</h3>
+		Time [Best <code class="back-yellow border padding3">Ω(n)</code>
+			Average <code class="back-pink border padding3">Θ(n²)</code>
+			Worst <code class="back-pink border padding3">O(n²)</code>]
+		Space <small>Worst</small> [<code class="back-lime-green border padding3">O(1)</code>]<br>
+
+		Stable <code class="back-lime-green border padding3">Yes</code>
+		In-place <code class="back-lime-green border padding3">Yes</code><br>
+
+		Iterate array over and over, swaping adjacent elements until it sorted<br>
+		<pre><code class="language-java">        while(!sorted) {
+            sorted = true;
+            for (int i = 0; i &lt; array.length - 1 ; i++) {
+                if (array[i] > array[i + 1]) {
+                    swap(array, i, i + 1);
+                    sorted = false;
+                }
+            }
+        }</code></pre>
+	</div>
+	<hr>
+
+	<div id="insertion">
+		<h3 class="margin-bottom-3">Insertion</h3>
+		Usage: Widely used for <small>small</small> data sets.<br>
+		Time [Best <code class="back-yellow border padding3">Ω(n)</code>
+		Average <code class="back-pink border padding3">Θ(n²)</code>
+		Worst <code class="back-pink border padding3">O(n²)</code>]
+		Space <small>Worst</small> [<code class="back-lime-green border padding3">O(1)</code>]<br>
+
+		Stable <code class="back-lime-green border padding3">Yes</code>
+		In-place <code class="back-lime-green border padding3">Yes</code><br>
+
+		Consistently searches place where to insert current element.<br>
+		<div style="height: 105px; overflow: hidden;">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" alt="insertion">
+		</div>
+		<pre><code class="language-java">        for (int i = 1; i &lt; array.length; i++) {
+            int x = array[i];
+            int j = i;
+            for (; j > 0 && array[j-1] > x; j--) {
+                array[j] = array[j-1];
+            }
+            array[j] = x;
+        }</code></pre>
+	</div>
+	<hr>
+
+	<div id="merge">
+		<h3 class="margin-bottom-3">Merge</h3>
+
+		Time [Best <code class="back-orange border padding3">Ω(n·log(n))</code>
+		Average <code class="back-orange border padding3">Θ(n·log(n))</code>
+		Worst <code class="back-orange border padding3">O(n·log(n))</code>]
+		Space <small>Worst</small> [<code class="back-yellow border padding3">O(n)</code>]<br>
+
+		Stable <code class="back-lime-green border padding3">Yes</code>
+		In-place <code class="back-pink border padding3">No</code><br>
+
+		<div class="indent4"></div>
+		"Divide-and-conquer" approach. Divides array into arrays with 1 element in each,
+		then comparing them and merging piece by piece.<br>
+		Can be parallelized.<br>
+		Ways: <em>Top-down</em> - recursive<small>(examples below)</small>. <em>Bottom-up</em> - iterative, non-recursive.<br>
+		<img height="200" src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Merge_sort_algorithm_diagram.svg" alt="merge">
+		<pre><code class="language-java">    int[] divideThenSortAndMerge(int[] array) {
+        if (array.length > 1) {
+            int mid = array.length / 2;
+            int[] leftHalf = Arrays.copyOfRange(array, 0, mid);
+            int[] rightHalf = Arrays.copyOfRange(array, mid, array.length);
+
+            int[] sortedLeft = divideThenSortAndMerge(leftHalf);
+            int[] sortedRight = divideThenSortAndMerge(rightHalf);
+
+            array = sortAndMerge(sortedLeft, sortedRight);
+        }
+        return array;
+    }
+
+    int[] sortAndMerge(int[] left, int[] right) {
+        int[] result = new int[left.length + right.length];
+        int i = 0, j = 0, k = 0;
+
+        while (i &lt; left.length && j &lt; right.length) {
+            result[k++] = left[i] &lt; right[j] ? left[i++] : right[j++]; // comparison is here
+        }
+        while (i &lt; left.length) {
+            result[k++] = left[i++];
+        }
+        while (j &lt; right.length) {
+            result[k++] = right[j++];
+        }
+
+        return result;
+    }</code></pre>
+	</div>
+	<hr>
+
+	<div id="heap">
+		<h3 class="margin-bottom-3">Heap</h3>
+
+		Time [Best <code class="back-orange border padding3">Ω(n·log(n))</code>
+		Average <code class="back-orange border padding3">Θ(n·log(n))</code>
+		Worst <code class="back-orange border padding3">O(n·log(n))</code>]
+		Space <small>Worst</small> [<code class="back-lime-green border padding3">O(1)</code>]<br>
+
+		Stable <code class="back-pink border padding3">No</code>
+		In-place <code class="back-lime-green border padding3">Yes</code><br>
+
+		<div class="indent4"></div>
+		Based on <a href="ConnectedNotes.html#binaryHeap">Binary Heap</a>.<br>
+		It views an input array as a <em>Binary Heap</em> from the start and performs self-balancing.<br>
+		For array: <code class="code">6,4,9,2,5,8,10,1,3,7,6</code>, the initial heap is:<br>
+		<img height="200" src="svg/HeapSort.svg" alt="heap"><br>
+		Phases:
+		<ol class="margin-top-bottom-0">
+			<li>Making the Max<small>(min)</small> heap</li>
+			<li>Sorting the array by moving the max<small>(min)</small> elements to the end of array, consistently reducing the heap</li>
+		</ol>
+		<pre class="margin-top-0"><code class="language-java">    int[] heapSort(int[] array) {
+        int n = array.length;
+
+        // Build the "Max-heap"
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(array, n, i);
+        }
+
+        // The sorting: move the root(that is the max value) to the end of array,
+        // consistently reducing the heap
+        for (int i = n - 1; i > 0; i--) {
+            swap(array, 0, i);
+            heapify(array, i, 0);
+        }
+
+        return array;
+    }
+
+    void heapify(int[] array, int n, int root) {
+        int largest = root;
+        int left = 2 * root + 1;
+        int right = 2 * root + 2;
+
+        if (left &lt; n && array[left] > array[largest]) {
+            largest = left;
+        }
+
+        if (right &lt; n && array[right] > array[largest]) {
+            largest = right;
+        }
+
+        if (largest != root) {
+            swap(array, root, largest);
+            heapify(array, n, largest);
+        }
+    }</code></pre>
+
+	</div>
+	<hr>
+
+	<div id="quick">
+		<h3 class="margin-bottom-3">Quick</h3>
+
+		Time [Best <code class="back-orange border padding3">Ω(n·log(n))</code>
+		Average <code class="back-orange border padding3">Θ(n·log(n))</code>
+		Worst <code class="back-pink border padding3">O(n²)</code>]
+		Space <small>Worst</small> [<code class="back-light-green border padding3">O(log(n))</code>]<br>
+
+		Stable <code class="back-pink border padding3">No</code>
+		In-place <code class="back-lime-green border padding3">Yes</code><br>
+
+		<div class="indent4"></div>
+		"Divide-and-conquer" approach.
+		It works by selecting a <em>pivot</em> element <small>from the array</small> and partitioning the other elements into two sub-arrays around the <em>pivot</em>.
+		The <em>pivot</em> by default is taken from the last element, but can be chosen randomly.
+		<div class="indent4"></div>
+		Slightly faster than <a href="#merge">merge</a> sort and <a href="#heap">heapsort</a> for randomized data, particularly on larger distributions.
+
+		<pre><code class="language-java">    // quickSortRange(array, 0, array.length - 1)
+    static void quickSortRange(int[] array, int start, int end) {
+        if (start &lt; end) {
+            int pivotIndex = makePartition(array, start, end);
+
+            quickSortRange(array, start, pivotIndex - 1);
+            quickSortRange(array, pivotIndex + 1, end);
+        }
+    }
+
+    static int makePartition(int[] array, int start, int end) {
+        int pivot = array[end];
+        int i = start;
+
+        for (int j = start; j &lt; end; j++) {
+            if (array[j] &lt;= pivot) {
+                swap(array, i++, j);
+            }
+        }
+
+        swap(array, i, end);
+
+        return i;
+    }</code></pre>
+	</div>
+	<hr>
+
+	<a href="all.html">SiteMap</a><br>
+	<iframe class="footer" src="./footer.html"></iframe>
+</body>
+</html>

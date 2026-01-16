@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HibernateJPA</title>
+	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/toc.js"></script>
+	<script src="js/glossaryData.js"></script>
+	<script src="js/glossary.js"></script>
+</head>
+<body>
+<a href="all.html">SiteMap</a>
+<div class="indent"></div>
+
+<table id="toc">
+	<tr>
+		<td><h1>C</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="compositePKUp"><a href="#compositePK">Composite Primary Keys</a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>G</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="generatedValueUp"><a href="#generatedValue"><code>@GeneratedValue</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>H</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2 id="lifecycleUp"><a href="#lifecycle">Hibernate/JPA Entity Lifecycle</a></h2>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>M</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="mapsIdUp"><a href="#mapsId"><code>@MapsId</code></a></h3>
+				<h3 id="mappedByUp"><a href="#mappedByUp"><code>mappedBy Todo</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>O</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2 id="lockingUp"><a href="#locking">Optimistic/Pessimistic Locking</a></h2>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>T</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="temporalUp"><a href="#temporal"><code>@Temporal</code></a></h3>
+				<h3 id="transactionalUp"><a href="#transactional"><code>@Transactional</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>U</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="DesignPatterns.html#UoW">Unit of Work</a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>V</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="versionUp"><a href="#version"><code>@Version</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+</table>
+
+<hr class="height2">
+
+<div id="compositePK">
+	<h2><a href="#compositePKUp">Composite Primary Keys</a></h2>
+	Package: <code>jakarta.persistence</code><br>
+	<div class="indent4"></div>
+	<code>@IdClass</code><br>
+	<pre>		@Entity
+		<b>@IdClass</b>(EmployeePK.class)
+		public class Employee {
+			<b>@Id</b> // 1
+			String empName;
+			<b>@Id</b> // 2
+			Date birthDay;
+		}
+
+		public record EmployeePK(String empName, Date birthDay) {
+			// - non-abstract class or record
+			// - public or protected constructor with no parameters (if not record)
+			// - correct equals() and hashCode() methods
+		}
+	</pre>
+
+	<code>@EmbeddedId</code><br>
+	<pre>		@Entity
+		public class Employee {
+			@Id long empId;
+			String name;
+		}
+
+		@Embeddable
+		public class DependentId {
+			String name;
+			long empid; // corresponds to primary key type of Employee
+		}
+
+		@Entity
+		public class Dependent {
+			<b>@EmbeddedId</b> DependentId id;
+
+			<a href="#mapsId">@MapsId</a>("empid") // will throw empid value from the Employee through the DependentId class
+			@ManyToOne Employee emp;
+		}</pre>
+</div>
+<hr>
+
+<div id="generatedValue">
+	<h3><a href="#generatedValueUp"><code>@GeneratedValue</code></a></h3>
+	<code>package jakarta.persistence</code>
+	<div class="indent4"></div>
+	<code>
+		@Id<br>
+		@GeneratedValue // @GeneratedValue(strategy = GenerationType.AUTO)<br>
+		private Long id;<br>
+	</code>
+
+	<h4 class="margin-bottom-0">Strategies</h4>
+	<ul class="ul-with-margin margin-top-0">
+		<li>
+			<b class="dark-green">GenerationType.AUTO</b> - the default, it will try to use sequence strategy at the DB level,
+			and it actually depends on DB.
+			<div class="indent4"></div>
+			<code>
+				@Id<br>
+				@GeneratedValue<br>
+				private UUID id;<br>
+			</code>
+			In this case Hibernate will use its own class <small>(not annotation)</small> <code>org.hibernate.id.UUIDGenerator</code> to generate UUID
+		</li>
+		<li><b class="grey">GenerationType.UUID</b><br>
+			<code>
+				@Id<br>
+				@GeneratedValue(strategy = GenerationType.UUID) // <span class="get-title">RFC</span> 4122, since Jakarta EE 10 (JPA 3.1)<br>
+				private java.util.UUID id;<br>
+			</code>
+			<div class="indent"></div>
+			<code>
+				@Id<br>
+				@org.hibernate.annotations.UuidGenerator // Since Hibernate 6.0<br>
+				private UUID/String id;
+			</code>
+		</li>
+		<li><b class="tomato">GenerationType.IDENTITY</b> - simplest, relies on an auto-incremented database column,
+			but not the best for performance, in particular for Hibernate
+		</li>
+		<li>
+			<b class="green">GenerationType.SEQUENCE</b> - the best choice for performance.
+			<code>
+				@Id<br>
+				@GeneratedValue(strategy = GenerationType.SEQUENCE)<br>
+				private Long id;<br>
+			</code>
+			If nothing is specified, Hibernate will request the next value from its default sequence.<br>
+			Use <code>@SequenceGenerator</code> and <code>generator</code> property in <code>@GeneratedValue</code> if you need custom.
+		</li>
+		<li>
+			<b class="red">GenerationType.TABLE</b> - outdated.
+			It simulates a sequence by storing and updating its current value in a database table which requires the use of <a href="#locking" class="red">pessimistic locks</a>.<br>
+			It slows down the application.<br>
+			<code>@TableGenerator</code> and <code>generator</code> property of <code>@GeneratedValue</code> for customization.
+		</li>
+	</ul>
+
+
+</div>
+<hr>
+
+<div id="lifecycle">
+	<h2><a href="#lifecycleUp">Hibernate/JPA Entity Lifecycle</a></h2>
+
+	<h4 class="margin-bottom-3">Transient <small>(new)</small></h4>
+	An <em>entity</em> object that has <b>no</b> representation in the persistent store(DB) and is not managed by any <em>Session/EM</em>.<br>
+	<code>em.persist(entity)</code>
+
+	<h4 class="margin-bottom-3">Managed</h4>
+	A <em>managed entity</em> is a representation of a database table row <small>(can bew a new that does not yet exist in DB)</small>.<br>
+	This is managed by the currently running <em>Session</em> or <em>Entity Manager</em>.<br>
+	Every change made on it will be tracked to the <em>persistence context</em> as a <em>Dirty Entity</em>.<br>
+	It will be Propagated to the database automatically depending on the <code>FlushMode</code>.
+
+	<h4 class="margin-bottom-3">Detached</h4>
+	A <em>detached entity</em> is just an ordinary entity <span class="get-title">POJO</span>,
+	not tracked anymore by any <em>persistence context</em>.<br>
+	The main difference from the <em>transient</em> entity is that detached entity <b>has</b> representation in the persistent store(DB).<br>
+	If we have a <span class="get-title">POJO</span> entity without an <em>Id</em>, we can make a conclusion that it is a <em>transient</em> entity,
+	but not vice versa.
+
+	<h4 class="margin-bottom-3">Deleted</h4>
+
+</div>
+<hr>
+
+<div id="mapsId">
+	<h3><a href="#mapsIdUp"><code>@MapsId</code></a></h3>
+	Package: <code>jakarta.persistence</code><br>
+	Purpose: to pass PK value from the parent entity to the child PK.<br>
+	for <code>@OneToOne</code> and <code>@ManyToOne</code> relations.<br>
+	PK can be <a href="#compositePK">composite</a>.<br>
+	<div class="indent4"></div>
+
+	<pre>		@Entity
+		public class Person {
+			@Id private int id;
+			@OneToOne(mappedBy = "person")
+			private Address address;
+		}
+
+		@Entity
+		public class Address {
+			@Id private int id;
+			<b>@MapsId</b> @OneToOne private Person person;
+		}</pre>
+
+</div>
+<hr>
+
+<div id="locking">
+	<h2><a href="#lockingUp">Optimistic/Pessimistic Locking</a></h2>
+	<code>jakarta.persistence.LockModeType</code><br>
+	<code>LockModeType.NONE</code> - default, if not specified.<br>
+
+	<code id="version"><a href="#versionUp">@jakarta.persistence.Version</a></code> - <small>should be mapped to the primary table of the entity.</small><br>
+	<span class="warning-sign fs20 orange"></span>
+	Version field itself and all the related versioned entities like <code>ManyToOne</code> etc should not fall into
+	<code class="exception">NullPointerException</code> for the <code>@Version</code> field.
+	Otherwise, not obvious exceptions can occur. Check the Version fields in DB, it should have values by default.
+
+	<div class="indent4"></div>
+	<pre>
+		@Entity
+		class Entity {
+			@Id private Long id;
+			private String name;
+
+			@Version
+			private long version;
+		}</pre>
+
+	OPTIMISTIC and PESSIMISTIC modes prevent from <a href="ConnectedNotes.html#dirtyReads">Dirty reads</a> and <a href="ConnectedNotes.html#nonRepeatableReads">Non-repeatable read</a>.<br>
+	OPTIMISTIC modes are not required to be supported on non-versioned objects by the provider
+	<code class="exception smaller">(PersistenceException)</code>.<br>
+	The persistence implementation must support <code>PESSIMISTIC_READ</code> and <code>PESSIMISTIC_WRITE</code> with non-versioned entities as well as with versioned entities.
+
+	<ul class="ul-with-margin">
+		<li>
+			<code class="b">OPTIMISTIC</code> <small>(<code>READ</code> old name)</small> -
+			Assumes there will be no conflict.<br>
+			If the entity is changed by the transaction, when the <code>@Version</code> is updated and vise versa.<br>
+			If, at the time of transaction <b>T1</b> commit, <code>@Version</code> is changed by another transaction <b>T2</b>,
+			then an <code class="exception">OptimisticLockException</code> is thrown and <b>T1</b> is marked for rollback.
+		</li>
+		<li>
+			<code class="b">OPTIMISTIC_FORCE_INCREMENT</code> <small>(<code>WRITE</code> old name)</small> -
+			the same as <code>OPTIMISTIC</code>, but increments <code>@Version</code> even if entity is not changed by the <b>T1</b>.<br>
+			This is <em>signalling</em> behaviour, it shows to other transactions that something is changed overall in the data.
+		</li>
+		<li>
+			<code class="b">PESSIMISTIC_READ</code> - <em>PESSIMISTIC</em> modes are used to immediately obtain long-term database locks.<br>
+			Used <b class="red">only</b> to read data! But in the same time <span class="green">does not block</span> other transaction to read the same entity.
+			And prevents from <em>update</em> or <em>delete</em> operations on the entity.
+		</li>
+		<li>
+			<code class="b">PESSIMISTIC_WRITE</code> - used to write data.
+			<b class="red">Prevents</b> other transaction from <em>read</em>, <em>update</em> or <em>delete</em> data on the entity.
+		</li>
+		<li>
+			<code class="b">PESSIMISTIC_FORCE_INCREMENT</code> - the same as <code>PESSIMISTIC_WRITE</code>,
+			but in addition forces the <code>@Version</code> increment.
+		</li>
+	</ul>
+
+	<code>org.hibernate.LockMode</code> have additional non-JPA types:
+	<ul class="ul-with-margin">
+		<li>
+			<code class="b">UPGRADE_NOWAIT</code> - Oracle-style: tries to obtain <code>PESSIMISTIC_WRITE</code> immediately,
+			throws an <code class="exception">Exception</code> if cannot obtain.
+		</li>
+		<li>
+			<code class="b">UPGRADE_SKIPLOCKED</code> - Oracle-style: tries to obtain <code>PESSIMISTIC_WRITE</code> immediately,
+			does not throw an exception if cannot obtain, but requested row is <b class="red">not</b> returned from the database.
+		</li>
+	</ul>
+
+</div>
+<hr>
+
+<div id="temporal">
+	<h3><a href="#temporalUp"><code>@Temporal</code></a></h3>
+	Mapping for <code>java.util.Date</code> and <code>java.util.Calendar</code>
+	<div class="indent4"></div>
+	<code>
+		@Temporal([DATE/TIME/TIMESTAMP])<br>
+		java.util.Date startDate;
+	</code>
+</div>
+<hr>
+
+<div id="transactional">
+	<h3><a href="#transactionalUp"><code>@Transactional</code></a></h3>
+	<code>@javax.transaction.Transactional</code><br>
+	<code>@org.springframework.transaction.annotation.Transactional</code><br>
+	Hibernate does not have its own <code>Transactional</code>
+	<div class="indent"></div>
+
+	Spring supports the <code>@javax.transaction.Transactional</code>
+
+	<p><span class="warning-sign fs20 orange"></span> Pay attention to that <code>@Transactional</code> methods called from the same instance
+		will not be treated as <code>@Transactional</code>
+	</p>
+
+	<div class="indent"></div>
+	<table class="collapse-border padding border-grey td-align-center dark-slate-grey">
+		<tr class="black">
+			<th>Propagation</th>
+			<th>No running Tx</th>
+			<th>Tx Exists</th>
+		</tr>
+		<tr><th>REQUIRED</th><td class="plus-sign"></td><td><span class="join-sign"></span></td></tr>
+		<tr><th>REQUIRES_NEW</th><td class="plus-sign"></td><td class="pause-sign"></td></tr>
+		<tr><th>SUPPORTS</th><td class="minus-sign"></td><td class="join-sign"></td></tr>
+		<tr><th>NOT_SUPPORTED</th><td class="minus-sign"></td><td class="pause-sign"></td></tr>
+		<tr><th>MANDATORY</th><td class="collision-sign"></td><td class="join-sign"></td></tr>
+		<tr><th>NEVER</th><td class="minus-sign"></td><td class="collision-sign"></td></tr>
+		<tr><td colspan="3"> Spring specific</td></tr>
+		<tr><th class="help" title="Creates Savepoint">NESTED</th><td class="plus-sign"></td><td class="join-sign"></td></tr>
+	</table>
+</div>
+<hr>
+
+<a href="all.html">SiteMap</a><br>
+<iframe class="footer" src="./footer.html"></iframe>
+
+</body>
+</html>

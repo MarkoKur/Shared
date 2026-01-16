@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Interface Segregation Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<pre><code class="language-java">class ISP {
+
+    interface Device {
+        void turnOn();
+        void turnOff();
+    }
+    interface Restartable {
+        void restart();
+    }
+
+    interface MobilePhone extends Device, Restartable {
+        void insertSim(Object sim);
+        void removeSim(Object sim);
+    }
+
+    interface Laptop extends Device, Restartable {
+        void openLid();
+        void closeLid();
+    }
+
+    interface PC extends Device, Restartable {
+        void insertDevice(Device device);
+        void removeDevice(Device device);
+    }
+
+    /* --- */
+
+    class AcerE39 implements MobilePhone {
+        static final byte simCount = 3;
+        public void turnOn() {}
+        public void turnOff() {}
+        public void insertSim(Object sim) {}
+        public void removeSim(Object sim) {}
+        public void restart() {}
+    }
+
+    class HPEnvy17 implements Laptop {
+        static final Device leapMotion = new Device() {
+            public void turnOn() {}
+            public void turnOff() {}
+        };
+        public void turnOn() {}
+        public void turnOff() {}
+        public void restart() {}
+        public void openLid() {}
+        public void closeLid() {}
+    }
+
+    class VideoCard implements Device {
+        public void turnOn() {}
+        public void turnOff() {}
+    }
+
+    class MSI9000 implements PC {
+        public void turnOn() {}
+        public void turnOff() {}
+        public void restart() {}
+        public void insertDevice(Device device) {}
+        public void removeDevice(Device device) {}
+    }
+
+    public static void main(String[] args) {
+        var isp = new ISP();
+        var s3 = isp.new VideoCard();
+        var myPC = isp.new MSI9000();
+        myPC.insertDevice(s3);
+        myPC.turnOn();
+        /* ... */
+        myPC.turnOff();
+    }
+
+}</code></pre>
+
+</body>
+</html>

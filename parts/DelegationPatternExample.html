@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">class DelegationPattern {
+    interface Shape {
+        void create();
+    }
+
+    interface Color {
+        void paint();
+    }
+
+    class Square implements Shape {
+        @Override
+        public void create() {
+            System.out.print("Square.");
+        }
+    }
+
+    class Circle implements Shape {
+        @Override
+        public void create() {
+            System.out.print("Circle.");
+        }
+    }
+
+    class Red implements Color {
+        @Override
+        public void paint() {
+            System.out.print("Red");
+        }
+    }
+
+    class Green implements Color {
+        @Override
+        public void paint() {
+            System.out.print("Green");
+        }
+    }
+
+    class ThingyMaker {
+        Shape shapeDelegate;
+        Color colorDelegate;
+
+        ThingyMaker(Shape shapeDelegate, Color colorDelegate) {
+            this.shapeDelegate = shapeDelegate;
+            this.colorDelegate = colorDelegate;
+        }
+
+        void delegateSomethingToDo() {
+            shapeDelegate.create();
+            colorDelegate.paint();
+            System.out.println();
+        }
+    }
+
+    void run() {
+        new ThingyMaker(new Square(), new Red()).delegateSomethingToDo();
+        new ThingyMaker(new Circle(), new Green()).delegateSomethingToDo();
+    }
+
+    public static void main(String[] args) {
+        new DelegatePattern().run();
+    }
+}</code></pre>
+</body>
+</html>

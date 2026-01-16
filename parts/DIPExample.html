@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dependency Inversion Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<pre><code class="language-java">public class DIP {
+
+    interface Interface {
+        void method();
+    }
+
+    class ClassI implements Interface{ // OK
+        Interface i;
+
+        public void method() {};
+
+        ClassI(Interface i) {
+            this.i = i; // OK
+        }
+
+        ClassI() {
+            this.i = new Interface() {public void method() {} }; // Violation DIP#1
+        }
+    }
+
+    abstract class ABS {
+        abstract void method(Interface i); // OK
+        abstract void method(ABS i); // OK
+        abstract void method(ClassI i); // Violation DIP#2
+    }
+
+    class ClassImpl extends ABS { // OK
+        void method(Interface i){}
+        void method(ABS i){}
+        void method(ClassI i){}
+    }
+
+    class ClassIsOK7 extends ClassImpl {} // OK, it is just an inheritance ?
+}</code></pre>
+
+</body>
+</html>

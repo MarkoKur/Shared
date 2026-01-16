@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Open-Closed Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<pre><code class="language-java">class OCP {
+    /**
+     * Wrong way
+     */
+    class ViolativeDiscountCalculator {
+        double calculateDiscount(String customerType, double amount) {
+            if (customerType.equals("Regular"))
+                return amount * 0.05;
+            else if (customerType.equals("Premium"))
+                return amount * 0.10;
+            else
+                return 0;
+        }
+    }
+
+    /**
+     * Proper way
+     */
+    interface DiscountStrategy {
+        double calculateDiscount(double amount);
+    }
+
+    class RegularCustomerDiscount implements DiscountStrategy {
+        public double calculateDiscount(double amount) {
+            return amount * 0.05;
+        }
+    }
+
+    class PremiumCustomerDiscount implements DiscountStrategy {
+        public double calculateDiscount(double amount) {
+            return amount * 0.10;
+        }
+    }
+
+    class OCPDiscountCalculator {
+        private final DiscountStrategy discountStrategy;
+
+        OCPDiscountCalculator(DiscountStrategy discountStrategy) {
+            this.discountStrategy = discountStrategy;
+        }
+
+        double calculate(double amount) {
+            return discountStrategy.calculateDiscount(amount);
+        }
+    }
+
+    public static void main(String[] args) {
+        var ocp = new OCP();
+        DiscountStrategy strategy = ocp.new PremiumCustomerDiscount(); // or RegularCustomerDiscount
+        OCPDiscountCalculator calculator = ocp.new OCPDiscountCalculator(strategy);
+
+        calculator.calculate(7);
+    }
+}</code></pre>
+
+</body>
+</html>

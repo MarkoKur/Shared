@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Design Patterns</title>
+	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
+	<script src="js/glossaryData.js"></script>
+	<script src="js/glossary.js"></script>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/animatedTarget.css">
+
+	<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
+	<script src="3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<a href="all.html">SiteMap</a>
+	<div class="indent"></div>
+
+	<h3 id="monolith-microservices-up"><a href="#monolith-microservices">Monolith vs Microservices</a></h3>
+
+	<p>
+		<b><em>Design pattern</em></b> is a general, <i>reusable</i> solution to a commonly occurring problem in many contexts in <i>software design</i>.
+	</p>
+
+
+	<details>
+		<summary><b>Creational</b> patterns are for object creation</summary>
+		<table class="collapse-border padding margin" >
+			<tr>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+			</tr>
+			<tr>
+				<td id="builderUp"><a href="#builder">Builder</a></td>
+				<td>
+					Separates the construction of a complex object from its representation.<br>
+					Gives more readability in Java code
+				</td>
+				<td>When need to create different representations of a complex object <small>(with the same construction process) </small></td>
+			</tr>
+			<tr>
+				<td id="diUp"><a href="#DI">Dependency injection</a></td>
+				<td>
+					DI is a programming technique in which an object or function <span class="green">receives</span> other objects or functions that it requires, as opposed to <span class="tomato">creating</span> them internally.<br>
+					DI aims to <em>separate the concerns</em> of constructing objects and using them, leading to <em>loosely coupled</em> programs
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a id="lazyInitialization" href="#lazyInitialization">Lazy initialization</a></td>
+				<td>Tactic of delaying the creation of an object, the calculation of a value, or some other expensive process until needed for the first time</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td id="objectPoolUp"><a href="#objectPool">Object Pool</a></td>
+				<td>
+					Uses a set of initialized objects kept ready to use – a "pool" – rather than allocating and destroying them on demand.<br>
+					<small>
+						A client of the pool will request an object from the pool and perform operations on the returned object.
+						When the client has finished, it returns the object to the pool rather than destroying it.
+					</small>
+				</td>
+				<td>
+					Object pools are primarily used for performance: in some circumstances, object pools significantly improve performance.<br>
+					<small>
+						Object pooling can offer a significant performance boost in situations where the cost of initializing a class instance is high and the rate of instantiation and destruction of a class is high – in this case objects can frequently be reused, and each reuse saves a significant amount of time.
+					</small>
+				</td>
+			</tr>
+			<tr>
+				<td><a id="RAII" href="#RAII">Resource acquisition is initialization</a></td>
+				<td>
+					RAII<br>
+					In Java it is <code class="code">try‑with‑resources</code>, in opposite to old <code class="code">try-finally</code>
+				</td>
+				<td></td>
+			</tr>
+
+			<tr><td colspan="3"><hr></td></tr>
+			<tr>
+				<td><a id="factoryMethod" href="#factoryMethod">Factory method</a></td>
+				<td>
+					Define an interface for creating a <i><b>single</b></i> object, but let subclasses decide which class to instantiate.
+					Factory Method lets a class defer instantiation to subclasses
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td id="abstractFactoryUp"><a href="#abstractFactory">Abstract factory</a></td>
+				<td>Provide an interface for creating <i><b>families</b></i> of related or dependent objects without specifying their concrete classes</td>
+				<td></td>
+			</tr>
+			<tr><td colspan="3"><hr></td></tr>
+			<tr>
+				<td><a href="#singleton" id="singleton-up">Singleton</a></td>
+				<td>Ensure a class has only one instance and provide a global point of access to it</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#lazySingleton">Lazy-loaded Singleton</a></td>
+				<td><b>Initialization-on-demand holder</b></td>
+				<td>
+					While the implementation is an efficient thread-safe "singleton" cache without synchronization overhead,
+					and better performing than uncontended synchronization,
+					the idiom can <span class="red">only be used</span> when the construction of <code class="code">Something</code> is <span class="green">guaranteed to not fail</span>.
+					In most JVM implementations, if construction of <code class="code">Something</code> fails,
+					subsequent attempts to initialize it from the same class-loader will result in a <code class="code">NoClassDefFoundError</code> failure.
+				</td>
+			</tr>
+			<tr>
+				<td id="multitonUp"><a href="#multiton">Multiton</a></td>
+				<td>Ensure a class has only named instances and provide a global point of access to them</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#prototype" id="prototype-up">Prototype</a></td>
+				<td>The technique of creation new objects by cloning the existing one, to improve instantiation time and process</td>
+				<td>
+					When the types of <em>objects</em> to create are determined by a <em>prototypical instance</em>, which is cloned to produce new objects.<br>
+					When we have an instance of the class (prototype) and we’d like to create new objects by just copying the prototype
+				</td>
+			</tr>
+
+			<tr><td colspan="3"><hr></td></tr>
+		</table>
+	</details>
+
+	<details>
+		<summary><b>Structural</b> patterns ease the design by identifying a simple way to realize relationships among entities</summary>
+		<table class="collapse-border padding margin">
+			<tr>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+			</tr>
+			<tr>
+				<td id="adapterUp"><a href="#adapter">Adapter <small>(Wrapper, or Translator)</small></a></td>
+				<td>
+					Allows the interface of an existing class to be used as another interface.<br>
+					An adapter allows two incompatible interfaces to work together, so it changes the interface.
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#bridge" id="bridgeUp">Bridge</a></td>
+				<td>Decouple an <span class="medium-aqua-marine">abstraction</span> from its <span class="dark-green">implementation</span> allowing <b><i>them</i></b> to vary independently</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#composite" id="compositeUp">Composite</a></td>
+				<td>
+					Is a <em>partitioning</em> DP.
+					The composite pattern describes a group of objects that are treated the same way as a single instance of the same type of object.
+					The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
+				</td>
+				<td>Tree-like structures</td>
+			</tr>
+			<tr>
+				<td><a href="#decorator" id="decoratorUp">Decorator</a></td>
+				<td>Allows behavior to be added to an individual object, dynamically, without affecting the behavior of the other instances of the same class.</td>
+				<td>The decorator pattern can be used to extend <em>(decorate)</em> the functionality of a certain object</td>
+			</tr>
+			<tr>
+				<td><a href="#delegation" id="delegationUp">Delegation</a></td>
+				<td>Extend a class by composition instead of subclassing</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#extensionObject" id="extensionObjectUp">Extension object</a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Facade</td>
+				<td>
+					Facade encapsulates a complex subsystem behind a simple interface.<br>
+					It hides much of the complexity and makes the subsystem easy to use.<br>
+					Serves as a front-facing interface masking more complex underlying or structural code
+				</td>
+				<td>
+					<ul>
+						<li>improve the readability and usability of a <em>software library</em> by masking interaction with more complex components behind a single (and often simplified) <span class="get-title">API</span></li>
+						<li>provide a context-specific interface to more generic functionality (complete with context-specific input validation)</li>
+						<li>serve as a launching point for a broader <em>refactor</em> of <em>monolithic</em> or tightly-coupled systems in favor of more <em>loosely-coupled</em> code</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><a href="#flyweight" id="flyweightUp">Flyweight</a></td>
+				<td>Use sharing to support large numbers of similar objects efficiently</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#frontController" id="frontControllerUp">Front Controller</a></td>
+				<td>Use a controller as the initial point of contact for handling a request.
+					The controller manages the handling of the request, including invoking security services such as authentication and authorization, delegating business processing, managing the choice of an appropriate view, handling errors, and managing the selection of content creation strategies
+				</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#marker" id=marker>Marker</a></td>
+				<td>
+					A <b>class</b> implements a <em>marker interface</em> <small>(tagging interface)</small>, which is an empty interface, and methods that interact with instances of that class test for the existence of the interface.<br>
+					<code class="code">public interface Serializable {}</code>
+				</td>
+				<td>
+					Used with languages that provide run-time type information about objects.
+					It provides a means to associate metadata with a class where the language does not have explicit support for such metadata
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#module" id="moduleUp">Module</a></td>
+				<td>
+					Group several related elements, such as classes, singletons, methods, globally used, into a single conceptual entity.
+				</td>
+				<td>
+					Used to implement the concept of <em>software modules</em>, defined by <em>modular programming</em>, in a <i class="brown">programming language</i> with incomplete direct support for the concept.<br>
+					This pattern can be implemented in several ways depending on the host programming language, such as the <a href="#singleton">Singleton</a> DP
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#proxy" id="proxyUp">Proxy</a></td>
+				<td>
+					A <em>proxy</em>, in its most general form, is a class functioning as an interface to something else.<br>
+					In short, a proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes.<br>
+					Proxy does NOT change the interface.
+				</td>
+				<td>
+					Use of the proxy can simply be <em>forwarding</em> to the real object or can provide additional logic.
+					In the proxy, extra functionality can be provided, for example, caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+					For the client, usage of a proxy object is similar to using the real object because both implement the same interface.
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#twin" id="twinUp">Twin</a></td>
+				<td>
+					Allows model <em>multiple inheritance</em> in programming languages that do not support multiple inheritance.<br>
+					This pattern avoids many of the problems with multiple inheritance.
+				</td>
+				<td>
+					To model multiple inheritance in languages that don't support it.<br>
+					To avoid some problems of multiple inheritance.
+				</td>
+			</tr>
+
+		</table>
+	</details>
+
+	<details>
+		<summary><b>Behavioral</b> patterns identify common communication patterns among objects</summary>
+		<table class="collapse-border padding margin">
+			<tr>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+			</tr>
+			<tr>
+				<td><a href="#CoR" id="CoR">Chain-of-responsibility</a></td>
+				<td></td>
+				<td>Example: ATG Pipeline and ATG Servlet Pipeline</td>
+			</tr>
+
+			<tr>
+				<td><a href="#command" id="commandUp">Command</a></td>
+				<td>An object is used to <em>encapsulate</em> all information needed to perform an action or trigger an event at a later time.
+					This information includes the method name, the object that owns the method and values for the method parameters.</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#fluentInterface" id="fluentInterfaceUp">Fluent Interface</a></td>
+				<td>
+					Relies extensively on <em>method chaining</em>.
+					Its goal is to increase code legibility by creating a <span class="get-title" data-id="2">DSL</span>.<br>
+					Note that a "fluent interface" means more than just method cascading via chaining;
+					it entails designing an interface that reads like a <span class="get-title" data-id="2">DSL</span>
+				</td>
+				<td>
+					To reduce the amount of code and make it more readable through creating the <span class="get-title" data-id="2">DSL</span>
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#interpreter" id="interpreterUp">Interpreter</a></td>
+				<td>
+					Defines a way to interpret and evaluate language grammar or expressions.
+					It provides a mechanism to evaluate sentences in a language by representing their grammar as a set of classes.
+					Each class represents a rule or expression in the grammar, and the pattern allows these classes to be composed hierarchically to interpret complex expressions
+				</td>
+				<td>
+					<ul>
+						<li><b>When dealing with <span class="get-title" data-id="2">DSL</span></b> - If you need to interpret and execute expressions or commands in a DSL</li>
+						<li><b>When you have a grammar to interpret</b> - f you have a well-defined grammar for expressions or commands that need to be interpreted, the Interpreter pattern can help parse and evaluate these structures efficiently</li>
+						<li><b>When you want to avoid complex grammar parsers</b> - the Interpreter pattern offers a simpler alternative for interpreting expressions directly</li>
+					</ul>
+					When <b><i>not</i></b> to use
+					<ul>
+						<li>For simple computations</li>
+						<li>When performance is critical</li>
+						<li>When the grammar is too complex</li>
+						<li>When there's no need for extensibility</li>
+					</ul>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Iterator</td>
+				<td>
+					Is used to traverse a <em>container</em> and access the container's elements.
+					The iterator pattern decouples <em>algorithms</em> from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled
+				</td>
+				<td><code class="code">hasNext(), next()</code></td>
+			</tr>
+
+			<tr>
+				<td><a href="#mediator" id="mediatorUp">Mediator</a></td>
+				<td>
+					With the mediator pattern, communication between objects is encapsulated within a mediator object.<br>
+					Objects no longer communicate directly with each other but instead communicate through the mediator.<br>
+					This reduces the dependencies between communicating objects, thereby reducing coupling.
+				</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#nullObject" id="nullObjectUp">Null Object</a></td>
+				<td>An <em>object</em> with no referenced value or with defined neutral <em>(null)</em> behavior</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Servant</td>
+				<td>
+					Defines common functionality for a group of classes.<br>
+					The servant pattern is also frequently called <em>helper</em> class or <em>utility</em> class implementation for a given set of classes.
+					The <em>helper</em> classes generally have no objects, hence they have all <em><b>static methods</b></em> that act upon different kinds of class objects
+				</td>
+				<td>
+					Similar to <a href="#commandUp">Command</a>, but <em>Servant</em> offers some functionality to the <em>objects</em>,
+					and <em>Command</em> modifies <em>objects</em> with some functionality
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#specification" id="specificationUp">Specification</a></td>
+				<td><em>Business rules</em> can be recombined by chaining the business rules together using <em>boolean logic</em></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#state" id="stateUp">State</a></td>
+				<td>
+					Allows an object to alter its behavior when its internal state changes.<br>
+					This pattern is close to the concept of <em>finite-state machines</em>.<br>
+					The <i>State</i> pattern can be interpreted as a <a href="#strategyUp">Strategy</a> pattern
+				</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td id="strategyUp">Strategy</td>
+				<td>
+					Enables selecting an <em>algorithm</em> at runtime.
+					Instead of implementing a single algorithm directly, code receives runtime instructions as to which in a family of algorithms to use
+				</td>
+				<td><span class="get-title" data-case>aka</span> the <em>policy pattern</em></td>
+			</tr>
+
+			<tr>
+				<td>Visitor</td>
+				<td>
+					Separates the algorithm from the object structure.<br>
+					New operations can be added to existing object structures without modifying the structures.<br>
+					It is one way to follow the <span class="get-title">OCP</span>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td id="UoW">Unit of Work</td>
+				<td>
+					- Tracks all changes to objects during a business operation<br>
+					- Knows what to insert / update / delete<br>
+					- Flushes them together as one coordinated action<br>
+					<div class="indent"></div>
+					In JPA/Hibernate:<br>
+					- The <em>Persistence Context</em> / <em>EntityManager</em> / <em>Session</em> is the <b>Unit of Work</b><br>
+					- Managed entities are tracked automatically<br>
+					- Dirty checking happens at flush time
+					<div class="indent"></div>
+					The Unit of Work answers: <i>What changed during this business operation?</i><br>
+					Defines a transactional boundary for a set of operations on persistent objects.
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	</details>
+	<details open>
+		<summary><b>Concurrency</b> patterns deal with the multi-threaded programming paradigm</summary>
+		<table class="collapse-border padding margin">
+			<tr>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+			</tr>
+			<tr>
+				<td><a href="#activeObject" id="activeObjectUp">ActiveObject</a></td>
+				<td>
+					Decouples method execution from method invocation for objects that each reside in their own thread of control.<br>
+					The goal is to introduce <em>concurrency</em>,
+					by using <em>asynchronous method invocation</em> and a <em>scheduler</em><small>(<code class="code">BockingQueue</code>)</small> for handling requests
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	</details>
+	<details>
+		<summary><b>Architectural</b> patterns</summary>
+		<ul>
+			<li id="mvc">MVC
+Old:<pre>
+User → Controller → Model
+            ↘        ↑
+              View ←─┘</pre><br>
+				New:<br>
+				User → Controller → Model → Controller → View
+			</li>
+		</ul>
+	</details>
+
+	<hr class="height2">
+
+	<div>
+		<h3 id="monolith-microservices"><a href="#monolith-microservices-up">Monolith vs Microservices</a></h3>
+		<table class="collapse-border padding">
+			<tr>
+				<th colspan="2">Characteristics</th>
+				<th>Monolith</th>
+				<th>Microservices</th>
+			</tr>
+			<tr>
+				<th rowspan="3" class="grey">Development</th>
+				<th class="grey">Complexity</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Complex</td>
+			</tr>
+			<tr>
+				<th class="grey">Speed</th>
+				<td class="back-pink">Slow</td>
+				<td class="back-light-green">Fast</td>
+			</tr>
+			<tr>
+				<th class="grey">Debugging</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Hard</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Testing</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Complex</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Performance</th>
+				<td class="back-light-green">Faster</td>
+				<td class="back-pink">Slower</td>
+			</tr>
+			<tr>
+				<th rowspan="3" class="grey">Deployment</th>
+				<th class="grey">Complexity</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Complex</td>
+			</tr>
+			<tr>
+				<th class="grey">Continuous</th>
+				<td class="back-pink">No</td>
+				<td class="back-light-green">Yes</td>
+			</tr>
+			<tr>
+				<th class="grey">Unit Independence</th>
+				<td class="back-pink">No</td>
+				<td class="back-light-green">Yes</td>
+			</tr>
+			<tr>
+				<th class="grey">Scalability</th>
+				<th class="grey">Components</th>
+				<td class="back-pink">No</td>
+				<td class="back-light-green">Yes</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Reliability</th>
+				<td class="back-pink">Low</td>
+				<td class="back-light-green">High</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Flexibility</th>
+				<td class="back-pink">Bad</td>
+				<td class="back-light-green">Good</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Technology adoption</th>
+				<td class="back-pink">Bad</td>
+				<td class="back-light-green">Good</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Agility</th>
+				<td class="back-pink">Bad</td>
+				<td class="back-light-green">Good</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Infrastructure costs</th>
+				<td class="back-light-green">Linear</td>
+				<td class="back-pink">Exponential</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Organizational overhead</th>
+				<td class="back-light-green">No</td>
+				<td class="back-pink">Yes</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Standardization</th>
+				<td class="back-light-green">Good</td>
+				<td class="back-pink">Lack</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Clear ownership</th>
+				<td class="back-light-green">Yes</td>
+				<td class="back-pink">Lack</td>
+			</tr>
+		</table>
+	</div>
+	<hr>
+
+	<h2>Creational</h2>
+
+	<div id="abstractFactory">
+		<h3><a href="#abstractFactoryUp">Abstract factory</a></h3>
+		<a href="https://refactoring.guru/design-patterns/abstract-factory/java/example">Java example</a>
+		<details>
+			<summary>UML</summary>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Abstract_factory_UML.svg" alt="Abstract Factory">
+		</details>
+	</div>
+	<hr>
+
+	<div id="builder">
+		<h3><a href="#builderUp">Builder</a></h3>
+		Example 1: (Pay attention to that <code class="code">ClassWithBuilder</code> does not have setters)
+		<iframe src="parts/ClassWithBuilderExample.html" style="width:-webkit-fill-available; height:615px;"></iframe>
+
+		Example 2: Java class <code class="code">StringBuilder</code> and Java <i>Streams</i>
+		<div class="indent"></div>
+		Example 3: Since Java 1.8 there's been possible to construct <i>GenericBuilder</i> using lambda expressions
+		(like at <i>Baeldung</i>), but in this case base class will need to have public setters.
+	</div>
+	<hr>
+
+	<div id="DI">
+		<h3><a href="#diUp">Dependency injection</a></h3>
+	</div>
+	<hr>
+
+	<div id="objectPool">
+		<h3><a href="#objectPoolUp">Object Pool</a></h3>
+		Java supports <a href="#threadPool">thread pooling</a> via <code class="code">java.util.concurrent.ExecutorService</code> and other related classes.
+	</div>
+	<hr>
+
+	<div id="threadPool">
+		<h3>Thread Pool</h3>
+	</div>
+	<hr>
+
+	<div id="singleton">
+		<h3><a href="#singleton-up">Singleton</a></h3>
+		<h5 class="margin-bottom-3">Downside/Drawbacks</h5>
+		In case <code class="code">Singleton</code> is creating instance of itself — it violates <b class="get-title">SRP</b>.<br>
+		Makes unit testing far more difficult, as it introduces <em>global state</em> into an application.<br>
+
+		<div class="indent8"></div>
+		<b>Examples of creation:</b> Java Enum Singleton - it has <b class="i">serialization and thread-safety</b> guaranteed by the enum implementation itself, which ensures internally that only the single instance is available.
+	</div>
+	<hr>
+
+	<div id="lazySingleton">
+		<h3>Lazy-loaded Singleton</h3>
+		The static class definition <code class="code">LazyHolder</code> within it <span class="green">is not initialized</span>
+		until the <span class="get-title">JVM</span> determines that <code class="code">LazyHolder</code> must be executed.
+		The static class <code class="code">LazyHolder</code> is only executed when the static method <code class="code">getInstance</code> is invoked on the class <code class="code">Something</code>,
+		and the first time this happens the <span class="get-title">JVM</span> will load and initialize the <code class="code">LazyHolder</code> class.
+		This is <span class="green">Thread-safe</span> and <span class="dark-green">Concurrent</span>.
+		<div class="indent8"></div>
+		<iframe src="parts/LazyLoadedSingletonExample.html" class="iframe height-220"></iframe>
+	</div>
+	<hr>
+
+	<div id="multiton">
+		<h3><a href="#multitonUp">Multiton</a></h3>
+		Generalizes the <em>Singleton</em> pattern.
+		Whereas the <em>singleton</em> allows only one instance of a class to be created,
+		the multiton pattern allows for the controlled creation of multiple instances,
+		which it manages through the use of a <b>map</b>.<br>
+		<code class="code">public getInstance(type)</code>
+
+		<h5>Downside/Drawbacks</h5>
+		Makes unit testing far more difficult, as it introduces <em>global state</em> into an application.
+		<small>(Just like Singleton)</small><br>
+		<small>With garbage collected languages it may become a source of memory leaks as it introduces global strong references to the objects.</small>
+	</div>
+	<hr>
+
+	<div id="prototype">
+		<h3><a href="#prototype-up">Prototype</a></h3>
+		Implement method <code class="code">clone()</code>/<code class="code">copy()</code>
+	</div>
+	<hr>
+
+
+	<h2>Structural</h2>
+
+	<div id="adapter">
+		<h3><a href="#adapterUp">Adapter</a></h3>
+		Example: the <span class="get-title">DOM</span>.
+
+		<ul class="ulWithMargin">
+			<li>
+				<b>Object adapter pattern</b><br>
+				In this adapter pattern, the adapter contains an instance of the class it wraps
+			</li>
+			<li><b>Class adapter pattern</b></li>
+		</ul>
+
+		The <em>Wrapper</em> pattern can be used to <em>wrap</em> third-party library,
+		and in case the interface of that library is changed in the future,
+		there will be only one (or fixed) place to change the behavior in the source code
+	</div>
+	<hr>
+
+	<div id="bridge">
+		<h3><a href="#bridgeUp">Bridge</a></h3>
+		<iframe src="parts/BridgePatternExample.html" style="width:-webkit-fill-available; height:420px;"></iframe>
+		<details>
+			<summary>Bridge visualization</summary>
+			<img src="webp/BridgePattern.webp" alt="Bridge">
+		</details>
+	</div>
+	<hr>
+
+	<div id="composite">
+		<h3><a href="#compositeUp">Composite</a></h3>
+		<ul class="ulWithMargin">
+			<li><b>Component</b> - the base interface for all the objects in the composition</li>
+			<li><b>Leaf</b> - implements the <i>Component</i>, <span class="red">cannot have</span> child components</li>
+			<li><b>Composite</b> - implements the <i>Component</i>, <span class="green">can have</span> child components (leaves or other composites)</li>
+		</ul>
+		<details>
+			<summary>Wiki UML</summary>
+			<img src="svg/CompositeUML.svg" alt="Bridge">
+		</details>
+	</div>
+	<hr>
+
+	<div id="decorator">
+		<h3><a href="#decoratorUp">Decorator</a></h3>
+		<details>
+			<summary>Decorator visualization</summary>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Decorator_UML_class_diagram.svg" alt="Decorator">
+		</details>
+		<details>
+			<summary>Decorator example</summary>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/UML2_Decorator_Pattern.png" alt="Decorator Example">
+		</details>
+	</div>
+	<hr>
+
+	<div id="delegation">
+		<h3><a href="#delegationUp">Delegation</a></h3>
+		<details>
+			<summary>Delegation example</summary>
+			<iframe src="parts/DelegationPatternExample.html" style="width:-webkit-fill-available; height:650px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="extensionObject">
+		<h3><a href="#extensionObjectUp">Extension Object</a></h3>
+		<details>
+			<summary>Extension Object example</summary>
+			<iframe src="parts/ExtensionObjectPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="flyweight">
+		<h3><a href="#flyweightUp">Flyweight</a></h3>
+		<details>
+			<summary>Flyweight examples</summary>
+			<code class="code">String.intern()</code>
+			<div class="indent4"></div>
+			<iframe src="parts/FlyweightPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="frontController">
+		<h3><a href="#frontControllerUp">Front Controller</a></h3>
+		The controller provides a centralized entry point that controls and manages Web request handling.
+		By centralizing decision points and controls, the controller also helps reduce the amount of Java code, called <em>scriptlets</em>, embedded in the <span class="get-title">JSP</span>.<br>
+		The <em>controller</em> is the initial contact point for handling all requests in the system. The controller may delegate to a helper to complete authentication and authorization of a user or to initiate contact retrieval.<br>
+		<img src="jpg/OracleFrontController.jpg" alt="Front Controller">
+	</div>
+	<hr>
+
+	<div id="module">
+		<h3><a href="#moduleUp">Module</a></h3>
+		<em>Java</em> supports <em>packaging</em>, that is a reduced version of <em>module</em>.<br>
+		Java 9 introduces <em>modules</em> as is.<br>
+		<code class="code">import module jep476mod2;</code>
+	</div>
+	<hr>
+
+	<div id="proxy">
+		<h3><a href="#proxyUp">Proxy</a></h3>
+		<ul>
+			<li>The access to an object should be controlled.</li>
+			<li>Additional functionality should be provided when accessing an object.</li>
+		</ul>
+		Possible usage scenarios:<br>
+		<h5 class="margin-top-bottom-3">Protection proxy</h5>
+		A protection proxy might be used to control access to a resource based on access rights.
+		<div class="indent"></div>
+		Usage examples: <a href="ConnectedNotes.html#aop" class="get-title">AOP</a>, Lazy loading in Hibernate
+	</div>
+	<hr>
+
+	<div id="twin">
+		<h3><a href="#twinUp">Twin</a></h3>
+		Instead of having a single class which is derived from two super-classes,
+		have two separate sub-classes each derived from one of the two super-classes.
+		These two sub-classes are closely coupled, so both can be viewed as a Twin object having two ends.
+		<pre class="code">
+	public class BallItem {
+		BallThread <b>twin</b>;
+
+		public void start() {
+			twin.start();
+		}
+
+		public void pause() {
+			twin.suspend();
+		}
+
+		public void resume() {
+			twin.resume();
+		}
+
+		public void draw() {}
+	}
+
+	public class BallThread extends Thread {
+		BallItem <b>twin</b>;
+
+		public void run() {
+			while (true) {
+				twin.draw();
+			}
+		}
+	}</pre>
+	</div>
+	<hr>
+
+	<div id="command">
+		<h3><a href="#commandUp">Command</a></h3>
+		<ul class="ulWithMargin">
+			<li>
+				<b class="red">command</b> - knows about <span class="green">receiver</span> and invokes a method of the <span class="green">receiver</span>.
+				Values for parameters of the <span class="green">receiver</span> method are stored in the <span class="red">command</span>.
+				The <span class="green">receiver</span> object is also stored in the <span class="red">command</span> object by <em>aggregation</em>
+			</li>
+			<li>
+				<b class="green">receiver</b> - does the work when the <code class="code">execute()</code> method in <span class="red">command</span> is called.
+				The <span class="green">receiver</span> is typically also the <span class="dark-green">target</span> object
+			</li>
+			<li>
+				<b class="blue">invoker</b> - knows how to execute a <span class="red">command</span>, and optionally does bookkeeping about the <span class="red">command</span> execution.
+				The <span class="blue">invoker</span> does not know anything about a concrete <span class="red">command</span>, it knows only about the <span class="red">command</span> <em>interface</em>
+			</li>
+			<li>
+				<b class="grey">client</b> - holds <span class="blue">invoker</span>, <span class="red">command</span> and <span class="green">receiver</span> objects.
+				The <span class="grey">client</span> decides which <span class="green">receiver</span> objects it assigns to the <span class="red">command</span> objects, and which <span class="red">commands</span> it assigns to the <span class="blue">invoker</span>.
+				The <span class="grey">client</span> decides which <span class="red">commands</span> to execute at which points.
+				To execute a <span class="red">command</span>, <span class="grey">it</span> passes the <span class="red">command</span> object to the <span class="blue">invoker</span> object
+			</li>
+		</ul>
+		<details>
+			<summary>Command example</summary>
+			<iframe src="parts/CommandPatternExample.html" style="width:-webkit-fill-available; height:650px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="fluentInterface">
+		<h3><a href="#fluentInterfaceUp">Fluent Interface</a></h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>Collection mockCollection = EasyMock.createMock(Collection.class);
+EasyMock
+    .expect(mockCollection.remove(null))
+    .andThrow(new NullPointerException())
+    .atLeastOnce();
+
+/* === Swing example === */
+GridBagLayout gl = new GridBagLayout();
+JPanel p = new JPanel();
+p.setLayout( gl );
+
+JLabel l = new JLabel("Name:");
+JTextField nm = new JTextField(10);
+
+/* Old style boilerplate */
+GridBagConstraints gc = new GridBagConstraints();
+gc.gridx = 0;
+gc.gridy = 0;
+gc.fill = GridBagConstraints.NONE;
+p.add( l, gc );
+
+gc.gridx = 1;
+gc.fill = GridBagConstraints.HORIZONTAL;
+gc.weightx = 1;
+p.add( nm, gc );
+
+/* Fluent Interface DP */
+Packer pk = new Packer( p );
+pk.pack( l ).gridx(0).gridy(0);
+pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
+		</pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="interpreter">
+		<h3><a href="#interpreterUp">Interpreter</a></h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>class Client {
+    public static void main(String[] args) {
+        // Input expression
+        String expression = "2 + 3 * 4";
+
+        // Create interpreter
+        Context context = new Context();
+        Interpreter interpreter = new Interpreter(context);
+
+        // Interpret expression
+        int result = interpreter.interpret(expression);
+        System.out.println("Result: " + result);
+    }
+}</code></pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="mediator">
+		<h3><a href="#mediatorUp">Mediator</a></h3>
+		<details>
+			<summary>Mediator example</summary>
+			<iframe src="parts/MediatorPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="nullObject">
+		<h3><a href="#nullObjectUp">Null Object</a></h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>class NullObjectPattern {
+    public interface Feature {
+        void doWork();
+    }
+
+    public class WorkFeature implements Feature {
+        @Override
+        public void doWork() {
+            System.out.println("Worked");
+        }
+    }
+
+    public class NullFeature implements Feature {
+        @Override
+        public void doWork() {
+            // do Nothing
+        }
+    }
+}</code></pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="specification">
+		<h3><a href="#specificationUp">Specification</a></h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>
+	Criteria criteria = new SearchCriteriaBuilder()
+	.withPrice()
+	.being(lessThan).value(3000)
+	.and()
+	.withSize()
+	.being(largetThan).value(12.1)
+	.build();
+
+	List&lt;Product> searchResult = productService.satisfies(criteria);</code></pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="state">
+		<h3><a href="#stateUp">State</a></h3>
+		<ul>
+			<li>An object should change its behavior when its internal state changes</li>
+			<li>State-specific behavior should be defined <b>independently</b>. That is, adding new states should not affect the behavior of existing states</li>
+		</ul>
+		<details>
+			<summary>Example</summary>
+			<iframe src="parts/StatePatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="activeObject">
+		<h3><a href="#activeObjectUp">Active Object</a></h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>	private double val;
+	private final ForkJoinPool fjp = new ForkJoinPool(/*thread-count*/ 1, defaultForkJoinWorkerThreadFactory, null, /*async*/ true);
+	public void doValOne() { fjp.execute(() -> { val = 1.0; });}
+	public void doValTwo() { fjp.execute(() -> { val = 2.0; });}</code></pre>
+		</details>
+	</div>
+	<hr>
+
+	<div class="indent"></div>
+	<a href="all.html">SiteMap</a><br>
+	<iframe class="footer" src="./footer.html"></iframe>
+</body>
+</html>

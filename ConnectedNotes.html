@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Java Connected Notes</title>
+    <link rel="icon" type="image/x-icon" href="ico/favicon.ico">
+    <script src="js/glossaryData.js"></script>
+    <script src="js/glossary.js"></script>
+    <script src="js/toc.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/animatedTarget.css">
+</head>
+<body>
+<a href="all.html">SiteMap</a>
+<div class="indent"></div>
+
+<table id="toc">
+	<tr>
+		<td><h1>A</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#aop" id="aop-up">Aspect Oriented Programming</a></h2>
+				<h4>active-passive vs active-active Todo</h4>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>B</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#binarySearchTree">Binary Search Tree</a></h2>
+				<h2><a href="#binaryTree">Binary Tree</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>C</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#case-types" id="case-types-up">Case Types</a></h2>
+				<h4><a href="#composition" id="compositionUp">Composition</a></h4>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>D</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#dbDeadlocks" id="dbDeadlocksUp">Database Deadlocks</a></h3>
+				<h2><a href="#dbNormalForms" id="dbNormalFormsUp">Database normal forms</a></h2>
+				<h2>Data Structures</h2>
+					<h3 class="padding-left-1em"><a href="#tree-data-structures">Tree Data Structures</a></h3>
+				<h3><a href="#diamondProblem" id="diamondProblemUp">Diamond problem</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>E</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#EHE" id="EHE-up">Encoding·Hashing·Encrypting</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>F</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#fd">Functional Dependency</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>G</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2>Git</h2>
+					<h3 class="padding-left-1em"><a href="#gitCredentials" id="gitCredentialsUp">Git Credentials</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>H</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#headlessCommerce" id="headlessCommerceUp">Headless commerce</a></h3>
+				<h3><a href="#highCohesion" id="highCohesionUp">High Cohesion</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>J</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#jd">Join Dependency</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>L</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#looseCoupling" id="looseCouplingUp">Loose Coupling</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>O</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#oop" id="oopUp">Object-Oriented Programming</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>P</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#privacyByDesign" id="privacyByDesignUp">Privacy by Design</a></h2>
+				<h2><a href="#programming" id="programmingUp">Programming</a></h2>
+				<h3><a href="#proxy" id="proxyUp">Proxy</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>R</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#reactive" id="reactiveUp">Reactive programming</a></h3>
+				<h2><a href="#redBlackTree">Red Black Tree</a></h2>
+				<h2><a href="#REST">REST (Representational State Transfer)</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>S</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#solid" id="solidUp">SOLID</a></h2>
+				<h2><a href="#sql" id="sqlUp">SQL</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>T</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#transactionIsolation" id="transactionIsolationUp">Transaction Isolation</a></h2>
+				<h2><a href="#tree-data-structures">Tree Data Structures</a></h2>
+			</details>
+		</td>
+	</tr>
+</table>
+
+<hr class="height2">
+
+<div id="aop">
+	<h2><a href="#aop-up">Aspect Oriented Programming</a></h2>
+	<h4>Core</h4>
+	<ul class="ulWithMargin">
+		<li>
+			<b class="green">Join point</b><br>
+			A (point)/(the java method) in program execution where <span class="blue">advice</span> can be applied
+		</li>
+		<li>
+			<b class="brown">Pointcut</b><br>
+			An expression that selects <span class="green">join points</span> where <span class="blue">advice</span> should run.<br>
+			<span class="brown">Pointcuts</span> use expressions based on method names in Java.
+		</li>
+		<li>
+			<b class="blue">Advice</b>
+			The (code)/(method) to execute at a <span class="green">join point</span>.<br>
+			There are different types of advice:
+			<ul>
+				<li>Before: Run before the <span class="green">join point</span></li>
+				<li>After: Run after the <span class="green">join point</span></li>
+				<li>Around: Run before and after the <span class="green">join point</span></li>
+			</ul>
+		</li>
+		<li>
+			<b class="tomato">Aspect</b>
+			A class containing <span class="blue">advices</span> and <span class="brown">pointcuts</span> related to a <span class="red">cross-cutting concern</span>, like <em>logging</em>, <em>security</em> etc.
+		</li>
+		<li>
+			<b class="black">Weaving</b>
+			The process of applying <span class="blue">advice</span> at <span class="green">join points</span> selected by <span class="brown">pointcuts</span>.<br>
+			It is done by the <span class="get-title">AOP</span> framework.
+		</li>
+	</ul>
+	<pre class="code">
+		class Aspect {
+
+			@Pointcut("execution(public * *(..))")
+			public void advice1() {} // the pointcut signature
+
+			@Pointcut("within(com.xyz.trading..*)")
+			public void advice2() {}
+
+			@Pointcut("advice1() && advice2()") // condition reuse, not methods
+			public void advice3() {}
+		}
+
+		package com.xyz.trading;
+		class Some {
+			int methodJoinPoint() {return 0;}
+		}
+	</pre>
+</div>
+<hr>
+
+<div id="binaryHeap">
+	<h2 class="margin-bottom-3">
+		Binary Heap <a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
+	<code class="code">PriorityQueue</code> is based on <em>Binary Heap</em>.
+	<div class="indent4"></div>
+	<em>Binary Heap</em> is a <a href="#binaryTree">Binary Tree</a> with 2 constraints:
+	<ul class="margin-top-0">
+		<li><b>Shape:</b> Binary Heap is a <em>Complete Binary Tree</em></li>
+		<li>
+			<b>Heap:</b> choose<br>
+			<em>max-heap</em>: the key stored in each node &gt;= the keys in the node's children<br>
+			<em>min-heap</em>: the key stored in each node &lt;= the keys in the node's children
+		</li>
+	</ul>
+	Used in <a href="Algorithms.html#heap">Heap sort</a>
+</div>
+<hr>
+
+<div id="binarySearchTree">
+	<h2 class="margin-bottom-3">
+		Binary Search Tree <a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
+	<em>Binary Search Tree</em> is a <a href="#binaryTree">Binary Tree</a> with constraints:<br>
+	Each key is greater than any key to the node's left subtree AND less than in its right subtree
+</div>
+<hr>
+
+<div id="binaryTree">
+	<h2 class="margin-bottom-3">
+		Binary Tree <a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
+	<em>Rooted</em> tree DS in which each <em>node</em> can have maximum 2 child nodes: <em>left</em> and <em>right</em><br>
+
+	Binary Tree can be:
+	<ul class="margin-top-0">
+		<li>
+			<b>Full</b> — every node has either 0 or 2 children
+			<img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Full_binary.svg" alt="Full BT" width="100">
+		</li>
+		<li>
+			<b>Complete</b> — every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible
+			<img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Complete_binary2.svg" alt="Complete BT" width="100">
+		</li>
+		<li><b>Perfect</b> — always <em><b>Full</b></em> and <em><b>Complete</b></em></li>
+		<li><b>Balanced</b></li>
+		<li><b>Degenerate</b></li>
+	</ul>
+</div>
+<hr>
+
+<div id="case-types">
+	<div class="indent"></div>
+	<table class="collapse-border padding">
+		<caption><small><a href="#case-types-up">Case Types</a></small></caption>
+		<tr class="margin">
+			<th>Snake</th>
+			<td>&#x1F40D;</td>
+			<td>one_two_three</td>
+		</tr>
+		<tr>
+			<th>Kebab</th>
+			<td>&#x1F361;</td>
+			<td>one-two-three</td>
+		</tr>
+		<tr>
+			<th>Camel</th>
+			<td>&#x1F42B;</td>
+			<td>oneTwoThree</td>
+		</tr>
+		<tr>
+			<th>Pascal</th>
+			<td>&#x1F56E;</td>
+			<td>OneTwoThree</td>
+		</tr>
+	</table>
+</div>
+<hr>
+
+<div id="dbDeadlocks">
+	<h3><a href="#dbDeadlocksUp">Database Deadlocks</a></h3>
+	Occurs when:<br>
+	Transaction <em class="b">T1</em> has already locked the row <em class="b grey">R1</em> and tries to get lock for row <em class="b grey">R2</em>,
+	but it is already locked by transaction <em class="b">T2</em>, which, in turn, tries to get lock for row <em class="b grey">R1</em>.
+	<div class="indent"></div>
+	Ways to prevent/reduce:
+	<ul class="margin-top-bottom-3">
+		<li>Some DBMS have internal mechanisms to detect the db deadlocks</li>
+		<li>Create an Application-level mechanism to detect deadlocks</li>
+		<li>Use an <a href="HibernateJPA.html#locking">Optimistic Locking</a></li>
+		<li>Reduce the transactions time</li>
+		<li>Optimize queries</li>
+		<li>Use <a href="#readCommitedIsolation">READ COMMITTED</a> transaction <a href="#transactionIsolation">isolation level</a> - reduces possibility</li>
+	</ul>
+</div>
+<hr>
+
+<div id="dbNormalForms">
+	<h2><a href="#dbNormalFormsUp">Database normal forms</a></h2>
+	Brief:<br>
+	<ul class="margin-top-0">
+		<li><span>1NF requires each column to hold atomic values and no repeating groups, + PK</span></li>
+		<li><span>2NF no partial dependence on a composite key — every non-key must depend on the whole key</span></li>
+		<li><span>3NF no transitive dependencies — non-keys depend only on the key, not on other non-keys</span></li>
+		<li><span>BCNF for every <a href="#fd">functional dependency</a> X→Y, X must be a candidate key (fixes edge cases like overlapping keys)</span></li>
+		<li><span>4NF removes multi-valued dependencies</span></li>
+		<li><span>5NF (PJNF) eliminates join dependencies, decomposing so tables can be losslessly recombined without spurious(pseudo) tuple</span></li>
+	</ul>
+
+	<em>Terminology</em>:<br>
+	<div class="indent"></div>
+	Table is a <i>Relation</i>.
+	<div class="indent"></div>
+
+	<em class="light-pink" id="elementary-key">Elementary key</em> - Can be composite. <em><b>[Def. 1]</b></em> Is a key that uniquely determines at most one <i class="green">non-key</i> attribute.
+	<em><b>[Def. Hugo Kornelis]</b></em> All other columns depend on the <em>key</em>, and none of these is a <i class="brown">cheater</i> <a href="#fd">FD</a>.
+	Example: <code class="code">{ABC} → XYZ</code>, where <code class="code">{ABC}</code> is an <i>elementary key</i>, than there <span class="red">should not be</span> <a href="#fd">FDs</a> like <code class="code">B → Y</code>, <code class="code">A → X</code> etc.<br>
+	<em class="light-pink margin" id="elementary-key-attr">Elementary key attribute</em> - an attribute of an <i>elementary key</i>, always single and atomic.<br>
+	<div class="indent4"></div>
+
+	<em class="hot-pink" id="super-key">Super Key</em> – a set<small>(superset)</small> of attributes that uniquely identifies a record, but it may include extra attributes that are not necessary for uniqueness.<br>
+	<div class="indent"></div>
+
+	<em class="dark-red" id="c-key">Candidate Key</em> <small>(or just the <i><b>key</b></i>)</small> - <em><b>[Def. 1]</b></em> Any set of columns that has a unique combination of values in each row.
+		<em><b>[Def. 2]</b></em> A minimal set of attributes that uniquely identifies a record in a <i>Relation</i>. It contains no unnecessary attributes.
+	<em><b>[Def. Hugo Kornelis]</b></em> All other columns depend on the <i>key</i>.<br>
+	<div class="indent"></div>
+
+	<em class="fire-brick" id="p-key">Primary Key</em> – a selected <i class="dark-red">candidate key</i> used as the main identifier for records in a <i>Relation</i>.<br>
+
+	<div class="indent"></div>
+	<em class="medium-aqua-marine" id="non-prime-attribute">Non-prime attribute</em> - an attribute that is not a part of any <i class="dark-red">candidate key</i>.<br>
+	<em class="green" id="non-key-attribute">Non-key attribute</em> - an attribute that is not part of the <i class="fire-brick">primary key</i>, but may still be part of an alternate (non-primary) <i class="dark-red">candidate key</i>.<br>
+
+	<div class="indent"></div>
+	<em class="purple">Foreign Key</em> – a field in one table that refers to the <i class="fire-brick">primary key</i> in another table, establishing a relationship between tables.<br>
+	<br>
+	Each next <i>normal form</i> complies with the previous normal form <small>(except 6NF)</small>.
+	<ul>
+		<li>
+			<h4 class="margin-bottom-3">1NF <small>⚓ Color set</small></h4>
+			Each field contains a single value.
+			Field should not contain a set of values or a nested record. (Scalar columns)<br>
+			All rows are unique<br>
+			<span class="warning-sign fs18 blue"></span>
+			<span class="fire-brick">Primary key</span> <span class="red">should</span> be present.<br>
+			And therefore all rows should be unique.
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th><th>Colors</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Red;Green;Blue</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObjectColor</small></caption>
+							<tr><th>Name</th><th>Color</th></tr>
+							<tr><td>Object-1</td><td>Red</td></tr>
+							<tr><td>Object-1</td><td>Green</td></tr>
+							<tr><td>Object-1</td><td>Blue</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">2NF <small>⚓ Shape & Price</small></h4>
+			It does <b>not</b> have any <i class="medium-aqua-marine">non-prime attribute</i>
+			that is <a href="#fd">functionally dependent</a> on any <i>proper subset</i> of any <i class="dark-red">candidate key</i>.
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th class="dark-blue">Name</th><th>Type</th><th class="dark-blue">Shape</th><th>Price</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Circle</td><td>50</td></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Square</td><td>45</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td><td>Triangle</td><td>55</td></tr>
+						</table>
+						"Type" depends only on the Object's <b class="dark-blue">Name</b>; therefore, it does not comply with 2NF
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObjectPrice</small></caption>
+							<tr><th class="dark-blue">Name</th><th class="dark-blue">Shape</th><th>Price</th></tr>
+							<tr><td>Object-1</td><td>Circle</td><td>50</td></tr>
+							<tr><td>Object-1</td><td>Square</td><td>45</td></tr>
+							<tr><td>Object-2</td><td>Triangle</td><td>55</td></tr>
+						</table>
+						The <i>Price</i> depends on a whole <i>{Name & Shape}</i> combination, but not on <i>Name</i> or <i>Shape</i> separately.
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">3NF <small>⚓ Manufacturer & Country; Non-transitive FD</small></h4>
+			Every <i class="medium-aqua-marine">non-prime attribute</i> of a <i>Relation</i> is <a href="#transitive-fd">non-transitively</a> dependent on each <i class="dark-red">candidate key</i>.<br>
+			But <i>key/prime</i> attributes <span class="green">can</span> be <a href="#transitive-fd">transitively</a> dependent on any <i class="dark-red">candidate key</i>.<br>
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<small>The transitive dependency is</small>:
+						Object → <span class="dark-blue">Manufacturer</span> → <span class="blue">Manufacturer Country</span>
+						<div class="indent"></div>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th><th class="dark-blue">Manufacturer</th><th class="blue">Manufacturer Country</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Honda</td><td>Japan</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td><td>Philips</td><td>NL</td></tr>
+							<tr><td>Object-3</td><td>Complex</td><td>Honda</td><td>Japan</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th><th class="dark-blue">Manufacturer</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Honda</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td><td>Philips</td></tr>
+							<tr><td>Object-3</td><td>Complex</td><td>Honda</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Manufacturer</small></caption>
+							<tr><th>Name</th><th>Country</th></tr>
+							<tr><td>Honda</td><td>Japan</td></tr>
+							<tr><td>Philips</td><td>NL</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">EKNF <small>⚓ TELEPHONE (PLACE, AREA, NUMBER)</small></h4>
+			<em class="dodger-blue">Elementary Key Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Carlo Zaniolo <small>(the author)</small>]</b></em><br>
+			1) For every elementary <a href="#fd">FD</a> <code class="code">X → A</code>, <code class="code">X</code> is a <i>key</i> <em><b>or</b></em> <code class="code">A</code> is an <a href="#elementary-key-attr">elementary key attribute</a><br>
+			2) For every non-trivial <a href="#fd">FD</a> <code class="code">X → A</code>, <code class="code">X</code> is a <a href="#super-key">super-key</a> <em><b>or</b></em> <code class="code">A</code> is an <a href="#elementary-key-attr">elementary key attribute</a><br>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			All <span class="dark-green">non-elementary-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+			Highest normal form that is <span class="green">guaranteed</span> possible.
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2">
+						<table class="collapse-border padding">
+							<caption><small>Telephone <i>by Carlo Zaniolo</i></small></caption>
+							<tr><th>Place</th><th>Area</th><th>Number</th></tr>
+							<tr><td>Los-Alamos</td><td>51</td><td>555-35-55</td></tr>
+							<tr><td>Denver</td><td>52</td><td>555-35-55</td></tr>
+							<tr><td>Los-Cheetos</td><td>51</td><td>555-35-11</td></tr>
+						</table>
+						<div class="indent4"></div>
+						<i>FD-1</i>: (AREA, NUMBER) → PLACE<br>
+						<i>FD-2</i>: PLACE → AREA<br>
+						<div class="indent4"></div>
+						(AREA, NUMBER) is a <i>key</i>, so in <a href="#fd">FD</a> <code>PLACE → AREA</code>, the <code>Place</code> in not the <i>key</i>, but <code>Area</code> is an <a href="#elementary-key-attr">elementary key attribute</a>
+ 					</td>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small><i>by Hugo Kornelis</i></small></caption>
+							<tr><th>Day</th><th>Speaker</th><th>City</th><th>Topic</th></tr>
+							<tr><td>Monday</td><td>Hugo Kornelis</td><td>London</td><td>Execution plans</td></tr>
+							<tr><td>Monday</td><td>Kendra Large</td><td>London</td><td>Women in tech</td></tr>
+							<tr><td>Tuesday</td><td>Grant Friskey</td><td>Manchester</td><td>Extended Events</td></tr>
+							<tr><td>Tuesday</td><td>Hugo Kornelis</td><td>Manchester</td><td>Query Store</td></tr>
+							<tr><td>Wednesday</td><td>Kendra Large</td><td>Leicester</td><td>Query Store</td></tr>
+							<tr><td>Wednesday</td><td>Rie Scottish</td><td>Leicester</td><td>Community</td></tr>
+						</table>
+						<div class="indent4"></div>
+						<a href="#fd">FDs</a>: <code>Day → City</code> and <code>City → Day</code><br>
+						<i>Candidate key 1</i>: <code>{Day,Speaker} → City(<i class="brown">cheater</i>),Topic</code><br>
+						<i>Candidate key 2</i>: <code>{City,Speaker} → Day(<i class="brown">cheater</i>),Topic</code><br>
+						So, none of these <a href="#c-key">candidate keys</a> is <a href="#elementary-key">elementary</a> and therefore the <i>Relation</i> is not in <i class="dodger-blue">EKNF</i>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th class="text-align-center" colspan="2">Key</th><th></th></tr>
+							<tr><th>Speaker</th><th>City</th><th>Topic</th></tr>
+							<tr><td>Hugo Kornelis</td><td>London</td><td>Execution plans</td></tr>
+							<tr><td>Kendra Large</td><td>London</td><td>Women in tech</td></tr>
+							<tr><td>Grant Friskey</td><td>Manchester</td><td>Extended Events</td></tr>
+							<tr><td>Hugo Kornelis</td><td>Manchester</td><td>Query Store</td></tr>
+							<tr><td>Kendra Large</td><td>Leicester</td><td>Query Store</td></tr>
+							<tr><td>Rie Scottish</td><td>Leicester</td><td>Community</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Day</th><th>City</th></tr>
+							<tr><td>Monday</td><td>London</td></tr>
+							<tr><td>Tuesday</td><td>Manchester</td></tr>
+							<tr><td>Wednesday</td><td>Leicester</td></tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2">
+						<table class="collapse-border padding">
+							<caption><small><i>by Hugo Kornelis</i></small></caption>
+							<tr><th>Track</th><th>Session#</th><th>Room</th><th>StartTime</th><th>SessionName</th></tr>
+							<tr><td>AD</td><td>205</td><td>Blue</td><td>10:00</td><td>Connections 101</td></tr>
+							<tr><td>AD</td><td>207</td><td>Blue</td><td>12:45</td><td>Execution plans</td></tr>
+							<tr><td>BI</td><td>205</td><td>605</td><td>16:00</td><td>Dashboards</td></tr>
+							<tr><td>DBA</td><td>305</td><td>Grand</td><td>16:00</td><td>Execution plans</td></tr>
+							<tr><td>PD</td><td>203</td><td>Grand</td><td>14:30</td><td>Personal growth</td></tr>
+						</table>
+						<i>FD</i>: Track → Room<br>
+						<i>Candidate key 1</i>: <code>{Track,Session#} → Room(<i class="brown">cheater</i>),StartTime,SessionName</code><br>
+						<i>Candidate key 2</i>: <code>{Track,StartTime} → Session#,Room(<i class="brown">cheater</i>),SessionName</code><br>
+						<i>Candidate key 3</i>: <code>{Room,StartTime} → Track,Session#,SessionName</code><br>
+						So, <i>Candidate keys 1 & 2</i> are not <a href="#elementary-key">elementary</a> and <i>Candidate key 3</i> is an <a href="#elementary-key">elementary</a>,
+						and therefore the <i>Relation</i> <span class="green">is</span> in <i class="dodger-blue">EKNF</i>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">BCNF (3.5NF)<small>⚓ TELEPHONE decomposition: (place,area) & (place,number)</small></h4>
+			<em class="dodger-blue">Boyce Codd Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			For everyone <a href="#fd">FDs</a> <code class="code">X → Y</code>, it's a <i>trivial</i> FD <b>or</b> <code class="code">X</code> is a <a href="#super-key">super-key</a>.
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			All columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+			This form <span class="red">cannot</span> always be achieved.
+			<div class="indent"></div>
+
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						<table class="collapse-border padding">
+							<caption><small>Telephone <i>by Carlo Zaniolo</i> (EKNF)</small></caption>
+							<tr><th>Place</th><th>Area</th><th>Number</th></tr>
+							<tr><td>Los-Alamos</td><td>51</td><td>555-35-55</td></tr>
+							<tr><td>Denver</td><td>52</td><td>555-35-55</td></tr>
+							<tr><td>Los-Cheetos</td><td>51</td><td>555-35-11</td></tr>
+						</table>
+						<div class="indent4"></div>
+						<i>FD-1</i>: (AREA, NUMBER) → PLACE<br>
+						<i>FD-2</i>: PLACE → AREA<br>
+						<div class="indent4"></div>
+						For FD-1 the conditions are met, because this FD is not trivial, but <code>(AREA, NUMBER)</code> is a <i>super-key</i>.<br>
+						For RD-2 the conditions are not met, because it's not trivial and <code>PLACE</code> is not a <i>super-key</i>, <br>
+						so the <i>Relation</i> is not <i>BCNF</i>.
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Place</th><th>Area</th></tr>
+							<tr><td>Los-Alamos</td><td>51</td></tr>
+						</table>
+						<div class="indent4"></div>
+						The <i>key</i> is <code>Place</code>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Place</th><th>Number</th></tr>
+							<tr><td>Los-Alamos</td><td>555-35-55</td></tr>
+						</table>
+						<div class="indent4"></div>
+						The <i>key</i> is <code>(Place,Number)</code>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">But this schema is <span class="red">not</span> satisfactory according to the representation principle.</td>
+				</tr>
+
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">4NF<small>⚓ Pizza Variety</small></h4>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			For every one of its non-trivial multivalued <a href="#fd">FDs</a> <code class="code">X ↠ Y</code>, <code class="code">X</code> is a <a href="#super-key">super-key</a>.
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						<table class="collapse-border padding">
+							<caption><small>Pizza <i>by Wiki</i></small></caption>
+							<tr><th>Restaurant</th><th>PizzaVariety</th><th>DeliveryArea</th></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td><td>Springfield</td></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td><td>Shelbyville</td></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td><td>Capital City</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td><td>Springfield</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td><td>Shelbyville</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td><td>Capital City</td></tr>
+							<tr><td>Elite Pizza</td><td>Thin Crust</td><td>Capital City</td></tr>
+							<tr><td>Elite Pizza</td><td>Stuffed Crust</td><td>Capital City</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thick Crust</td><td>Springfield</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thick Crust</td><td>Shelbyville</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thin Crust</td><td>Springfield</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thin Crust</td><td>Shelbyville</td></tr>
+						</table>
+						<div class="indent4"></div>
+						FDs:<br>
+						<code class="code">{Restaurant} ↠ {PizzaVariety}</code><br>
+						<code class="code">{Restaurant} ↠ {DeliveryArea}</code><br>
+						<div class="indent4"></div>
+						The only <i>candidate key</i> is <code class="code">{Restaurant, PizzaVariety, DeliveryArea}</code><br>
+						<div class="indent4"></div>
+						So the <i>Relation</i> meets up to <i>BCNF</i>.
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Varieties by restaurant</small></caption>
+							<tr><th>Restaurant</th><th>PizzaVariety</th></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td></tr>
+							<tr><td>Elite Pizza</td><td>Thin Crust</td></tr>
+							<tr><td>Elite Pizza</td><td>Stuffed Crust</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thick Crust</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thin Crust</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Delivery areas by restaurant</small></caption>
+							<tr><th>Restaurant</th><th>Delivery area</th></tr>
+							<tr><td>A1 Pizza</td><td>Springfield</td></tr>
+							<tr><td>A1 Pizza</td><td>Shelbyville</td></tr>
+							<tr><td>A1 Pizza</td><td>Capital City</td></tr>
+							<tr><td>Elite Pizza</td><td>Capital City</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Springfield</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Shelbyville</td></tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						Now, due to the <i>Relation</i> was decomposed, the multivalued FDs become just standard non-trivial FDs:<br>
+						<code class="code">{Restaurant} → {PizzaVariety}</code><br>
+						<code class="code">{Restaurant} → {DeliveryArea}</code><br>
+						<div class="indent4"></div>
+						The keys are {Restaurant,PizzaVariety} & {Restaurant,DeliveryArea},
+						and due to the schema does not have the multivalued <a href="#fd">FDs</a>, it complies with 4NF.
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">ETNF<small>⚓ S supplier, P part, J project</small></h4>
+			<em class="dodger-blue">Essential Tuple Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Original]</b></em><br>
+			A <i>Relation</i> is in <i>ETNF</i> if every tuple in every instance of a <i>Relation</i> is <i><b class="purple">essential</b></i>.<br>
+			A tuple is <i><b class="purple">essential</b></i> if it is neither <i><b class="red">partly</b></i> nor <i><b class="red">fully redundant</b></i>.
+			<div class="indent4"></div>
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="3">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						The <i>Relation</i> has <a href="#jd">JD</a> &#8904;{SP, PJ, JS}<br>
+						None of these is a <a href="#super-key">super-key</a><br>
+						Tuples are not <i><b class="purple">essential</b></i>
+						<div class="indent4"></div>
+						<table class="collapse-border padding" id="not-ETNF">
+							<tr><th>Supplier S</th><th>Part P</th><th>Project J</th></tr>
+							<tr class="back-tomato"><td class="dark-blue">S1</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr class="back-sky-blue"><td class="dark-blue">S1</td><td class="green">P1</td><td class="back-white">J2</td></tr>
+							<tr class="back-sky-blue"><td class="dark-blue">S1</td><td class="light-green back-white">P2</td><td class="purple">J1</td></tr>
+							<tr><td class="dark-blue">S1</td><td class="light-green">P2</td><td>J2</td></tr>
+							<tr class="back-sky-blue"><td class="blue back-white">S2</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr><td class="blue">S2</td><td class="green">P1</td><td>J2</td></tr>
+							<tr><td class="blue">S2</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
+							<tr><td class="blue">S2</td><td class="light-green">P2</td><td>J2</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="green">P1</td><td>J2</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="light-green">P2</td><td>J2</td></tr>
+						</table>
+						The <i>tuple</i> marked <span class="tomato">tomato-red</span> can be constructed from the <i>JD</i> marked <span class="sky-blue">sky-blue</span>,<br>
+						so it's <i>fully redundant</i>.
+					</td>
+					<td>
+						<table class="collapse-border padding" id="ETNF1">
+							<tr><th>Supplier</th><th>Part</th></tr>
+							<tr><td>S1</td><td>P1</td></tr>
+							<tr><td>S1</td><td>P2</td></tr>
+							<tr><td>S2</td><td>P1</td></tr>
+							<tr><td>S2</td><td>P2</td></tr>
+							<tr><td>S3</td><td>P1</td></tr>
+							<tr><td>S3</td><td>P2</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding" id="ETNF2">
+							<tr><th>Part</th><th>Project</th></tr>
+							<tr><td>P1</td><td>J1</td></tr>
+							<tr><td>P1</td><td>J2</td></tr>
+							<tr><td>P2</td><td>J1</td></tr>
+							<tr><td>P2</td><td>J2</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding" id="ETNF3">
+							<tr><th>Supplier</th><th>Project</th></tr>
+							<tr><td>S1</td><td>J1</td></tr>
+							<tr><td>S1</td><td>J2</td></tr>
+							<tr><td>S2</td><td>J1</td></tr>
+							<tr><td>S2</td><td>J2</td></tr>
+							<tr><td>S3</td><td>J1</td></tr>
+							<tr><td>S3</td><td>J2</td></tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Cells count: <span class="cellCount" data-ids="not-ETNF"></span></td>
+					<td colspan="3">Cells count: <span class="cellCount" data-ids="ETNF1,ETNF2,ETNF3"></span></td>
+				</tr>
+				<tr>
+					<td colspan="4"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="3">
+						The same example from above <small class="fire-brick">('not comply' column)</small>, but with the additional condition of
+						<a href="#fd">FD</a> <code class="code">SP → J</code>.<br>
+						Then, the <i>Relation</i> becomes <i>ETNF</i>, but not 5NF.
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">5NF<small>⚓ Day Expert Topic</small></h4>
+			<em class="dodger-blue">Projection-Join Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			A <i>Relation</i> is in <i>5NF</i> if it cannot have a <i>lossless decomposition</i> into any number of smaller tables.
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			No <a href="#jd">join dependencies</a> unless it implied by a <i>key</i>.
+
+			<div class="indent"></div>
+
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="3">Comply</th>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						The business rule of this <i>Relation</i> is that<br>
+						if some <b>Topic</b> is available on some <b>Day</b><br>
+						and the <b>Expert</b> is capable of that <b>Topic</b>,<br>
+						then the <b>Expert</b> is available for that <b>Day</b>s.
+						<div class="indent4"></div>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th><th>Topic</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="brown">Rie</td><td>Community</td></tr>
+						</table>
+						<div class="indent4"></div>
+						This table can be decomposed without <i>loss</i>, so it is not in 5NF.
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="brown">Rie</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th></tr>
+							<tr><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="brown">Rie</td><td>Community</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Topic</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td>Execution Plans</td></tr>
+							<tr><td class="dark-blue">Monday</td><td>Query Store</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td>Execution Plans</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="purple">Normalization</td></tr>
+							<tr><td class="blue">Wednesday</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td>Community</td></tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">These tables can be composed back to the original <i>Relation</i> without creating new (non-existing before) rows.</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="3">
+						Here we have a <i>Relation</i> from the example above but with the different business rule: <br>
+						The <b>Expert</b>s can choose the <b>Day</b>s for the <b>Topic</b> they are capable of
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th><th>Topic</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="brown">Rie</td><td>Community</td></tr>
+						</table>
+						<div class="indent4"></div>
+						For e.g. <span class="green">Hugo</span> doesn't want to talk about <span class="purple">DB Normalization</span> on <span class="dark-blue">Mondays</span>.<br>
+						In this case the backward composition of tables will create a <em class="red">phantom</em> row:
+						<span class="dark-blue">Monday</span>-<span class="green">Hugo</span>-<span class="purple">Normalization</span>.<br>
+						So, further decomposition is impossible and the table is already in 5NF according to the business rules.
+					</td>
+				</tr>
+			</table>
+		<li>
+			<h4 class="margin-bottom-3">DKNF<small>⚓ Book Thickness</small></h4>
+			<em class="dodger-blue">Domain-Key Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			Requires that the database contains no constraints other than <i>domain constraints</i> and <i>key constraints</i>.
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			<ul>
+				<li> Is <span class="red">not</span> based on dependencies.</li>
+				<li>
+					Based on:
+					<ul>
+						<li>Domains: which values are allowed in a column</li>
+						<li>Keys: all candidate keys</li>
+						<li>Constraints: Rules for valid ("business rules")</li>
+					</ul>
+				</li>
+				<li>Every constraint must be implied by the keys and domains</li>
+				<li>Often impractical, therefore, it's mostly of academic interest only</li>
+			</ul>
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<b>Thickness</b> is determined by the number of pages.
+						But <b>Pages</b> is not a <i>key</i>.
+						<table class="collapse-border padding">
+							<caption><small>Book</small></caption>
+							<tr><th>Title</th><th>Pages</th><th>Thickness</th><th>Genre</th></tr>
+							<tr><td>SQL</td><td>520</td><td>Thick</td><td>1</td></tr>
+							<tr><td>DBMS</td><td>538</td><td>Thick</td><td>2</td></tr>
+							<tr><td>Learn</td><td>338</td><td>Slim</td><td>1</td></tr>
+							<tr><td>Cookbook</td><td>636</td><td>Thick</td><td>1</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Thickness</small></caption>
+							<tr><th>Thickness</th><th>Min</th><th>Max</th></tr>
+							<tr><td>Slim</td><td>1</td><td>350</td></tr>
+							<tr><td>Thick</td><td>351</td><td>999999</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Book DKNF</small></caption>
+							<tr><th>Title</th><th>Pages</th><th>Genre</th></tr>
+							<tr><td>SQL</td><td>520</td><td>1</td></tr>
+							<tr><td>DBMS</td><td>538</td><td>2</td></tr>
+							<tr><td>Learn</td><td>338</td><td>1</td></tr>
+							<tr><td>Cookbook</td><td>636</td><td>1</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 class="margin-bottom-3">6NF<small>⚓ PrimaryKey + 1 column</small></h4>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			Simplified: a table is in 6NF when the row contains the <a href="#p-key">Primary Key</a> and at most one other attribute.
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>PublisherWithCountry</small></caption>
+							<tr><th>PublisherId</th><th>Name</th><th>Country</th></tr>
+							<tr><td>1</td><td>Pers</td><td>NL</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Publisher</small></caption>
+							<tr><th>PublisherId</th><th>Name</th></tr>
+							<tr><td>1</td><td>Pers</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>PublisherCountry</small></caption>
+							<tr><th>PublisherId</th><th>Country</th></tr>
+							<tr><td>1</td><td>NL</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+
+	<span class="warning-sign fs18 blue"></span>
+	<i><b>Notes:</b></i><br>
+	 3NF: All <span class="green">non-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+	EKNF: All <span class="dark-green">non-elementary-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+	BCNF: All columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+</div>
+<hr>
+
+<div id="diamondProblem">
+	<h3><a href="#diamondProblemUp">Diamond problem</a></h3>
+	<a href="JavaNotes.html#diamondProblem">In Java</a>
+</div>
+<hr>
+
+<div id="EHE">
+	<div class="indent"></div>
+	<table class="collapse-border padding">
+		<caption><small><a href="#EHE-up">Encoding·Hashing·Encrypting</a></small></caption>
+		<tr>
+			<th></th>
+			<th>Encoding</th>
+			<th>Hashing</th>
+			<th title="Encryption" class="pointer midnight-blue">Encrypting</th>
+		</tr>
+		<tr>
+			<th>Reversible</th>
+			<td>&#x2705;</td>
+			<td>&#x274C;</td>
+			<td>&#x2705;</td>
+		</tr>
+		<tr>
+			<th>Secure</th>
+			<td>&#x274C;</td>
+			<td>&#x2705;</td>
+			<td>&#x2705;</td>
+		</tr>
+	</table>
+</div>
+<hr>
+
+<div id="fd">
+	<h3>Functional Dependency</h3>
+	<span class="fire-brick">Determinant</span> → <span class="light-green">Dependent</span><br>
+	"<code class="code">X → Y</code>" means that <code class="code">X</code> <span class="dark-red">determines</span> the <i>value</i> of <code class="code">Y</code>,
+	where <code class="code">X</code> & <code class="code">Y</code> are the attributes of a <span class="tooltip" title="Relation">R</span>.
+
+	<ul class="ulWithMargin">
+		<li>
+			<b>Trivial FD</b><br>
+			A <i>dependent</i> is always a subset of the <i>determinant</i>.<br>
+			If <code class="code">X → Y</code> and <code class="code">Y</code> is the subset of <code class="code">X</code>,
+			then it is called trivial functional dependency.<br>
+			Examples: <code class="code">A → A</code>, <code class="code">{A,B,C} → {A,B}</code>, <code class="code">{A,B,C} → A</code>, <code class="code">{A,B,C} → {A,B,C}</code>.
+		</li>
+		<li>
+			<b>Non-Trivial FD</b><br>
+			The <i>dependent</i> is strictly not a subset of the <i>determinant</i>.<br>
+			If <code class="code">X → Y</code> and <code class="code">Y</code> is not a subset of <code class="code">X</code>,
+			then it is called <i>Non-trivial functional dependency</i>.
+		</li>
+		<li>
+			<b>Multivalued FD</b><br>
+			Entities of the <i>dependent</i> set do not depend on each other.<br>
+			<code class="code">A ↠ B</code> and <code class="code">A ↠ C</code>,
+			where is no <span class="tooltip" title="Functional Dependency">FD</span> between <code class="code">B</code> & <code class="code">C</code>.
+			<small>Alternate writing <code class="code">A → {B,C}</code></small>.
+		</li>
+		<li>
+			<b id="transitive-fd">Transitive FD </b><br>
+			<i>Dependent</i> is indirectly dependent on <span class="fire-brick">another</span> <i>determinant</i>.<br>
+			If <code class="code">A → B</code> & <code class="code">B → C</code>, then <code class="code">A → C</code>.
+		</li>
+		<li>
+			<b>Elementary FD</b><br>
+			<code class="code">X → A</code>, where<br>
+			<code class="code">X</code> is a set of one or more attributes.<br>
+			<code class="code">A</code> is a single attribute.<br>
+			<code class="code">A</code> does <b>not</b> appear in any <small><b>smaller dependency</b></small> with a proper subset of <code class="code">X</code>.
+			Means it is non-decomposable.<br>
+			Examples: <code class="code">AB → C</code>, <code class="code">A →<span class="overlap">/</span>C</code>, <code class="code">B →<span class="overlap">/</span>C</code>, then
+			<code class="code">AB → C</code> is both <i>fully</i> functional and <i>elementary</i>.
+		</li>
+		<li>
+			<b>Fully FD</b><br>
+			A <a href="#non-prime-attribute">non-prime attribute</a> depends on the whole <a href="#c-key">candidate key</a>, not only on some portion of it.<br>
+			<code class="code">{OrderID,ProductID} → Quantity</code>, where <code>Quantity</code> depends on the whole key.<br>
+			<code class="code">StudentID → StudentName</code>.<br>
+			<code class="code">AB → CD</code> can be <i>fully</i> FD, but <b>cannot</b> be <i>elementary</i> FD.
+		</li>
+		<li>
+			<b>Partial FD</b><br>
+			A <i>non key attribute</i> depends on a part of the <i>composite key</i>, rather than the whole key.<br>
+			<code class="code">X</code>, <code class="code">Y</code>, <code class="code">Z</code>
+			where <code class="code">X</code> and <code class="code">Y</code> are the <i>composite key</i> and <code class="code">Z</code> is a <i>non key attribute</i>.
+			Then <code class="code">X → Z</code> and <code class="code">Y → Z</code> are the partial <span class="tooltip" title="Functional Dependency">FD</span>.
+		</li>
+	</ul>
+</div>
+<hr>
+
+<div id="jd">
+	<h3>Join Dependency</h3>
+	<i>Join dependency</i> is a constraint.<br>
+	A table <b><i>T</i></b> has a <i>join dependency</i> if <b><i>T</i></b>
+	can always be recreated by <i class="dark-blue">joining</i> multiple tables each having a subset of the attributes of <b><i>T</i></b>.
+	<div class="indent4"></div>
+
+	<em><b>[Def. Hugo Kornelis]</b></em><br>
+	Deconstruct the table in smaller parts<br>
+	Join the smaller parts<br>
+	Guaranteed to get the original table
+</div>
+<hr>
+
+<div id="gitCredentials">
+	<h3><a href="#gitCredentialsUp">Git Credentials</a></h3>
+	<code>git credential (fill|approve|reject)</code> - Opens the credential input terminal, the list of attributes is terminated by a blank line or end-of-file.
+
+	<div class="indent"></div>
+	<span class="b">&lt;ProjectFolder&gt;\.git\config</span><br>
+	<code>
+		[credential "https://github.com/UserName/Repo.git"]<br>
+		username = nameOfGitUserForPush
+	</code>
+
+	<p>
+		After <code>git credential reject</code> and git config credential filled,
+		run <code>git push</code> and GitHub will ask for password or saved credentials choices
+	</p>
+</div>
+<hr>
+
+<div id="headlessCommerce">
+	<h3><a href="#headlessCommerceUp">Headless commerce</a></h3>
+	<b>Headless commerce</b> is an e-commerce architecture where the front-end (head) is decoupled from the back-end commerce functionality and can thus be updated or edited without interfering with the back-end, similar to a <span class="get-title">HCMS</span>.
+</div>
+<hr>
+
+<div id="highCohesion">
+	<h3><a href="#highCohesionUp">High Cohesion</a></h3>
+	High cohesion within the module means that all the parts/elements of the module are closely related and focused on a single, well-defined purpose.<br>
+	See also <a href="#looseCoupling">Loose coupling</a>
+</div>
+<hr>
+
+<div id="looseCoupling">
+	<h3><a href="#looseCouplingUp">Loose Coupling</a></h3>
+	Loose coupling between modules means that modules do not depend on each other OR this dependency is minimal.<br>
+	See also <a href="#highCohesion">High Cohesion</a>
+</div>
+<hr>
+
+
+<div id="oop">
+	<h2><a href="#oopUp">Object-Oriented Programming</a></h2>
+	Encapsulation, Abstraction, Inheritance, Polymorphism.<br>
+	<div class="indent4"></div>
+
+	Relationships:
+	<ul class="margin-top-bottom-0">
+		<li><em><b>Inheritance</b></em> uses <em class="grey"><b>is-a</b></em> relationship</li>
+		<li>
+			<em><b>Association</b></em> is a relationship between two <b class="dim-grey">independent</b> classes where objects of one class use or interact with objects of another class.<br>
+			It is a "using" relationship that can be one-to-one, one-to-many, or many-to-many, and both objects have their own lifespans.<br>
+			<em>Association</em> defines a <em>structural</em> relationship between classes of objects that allows one object instance to cause another to perform an action on its behalf.<br>
+			Key characteristics of association: Independent objects, "Using" relationship, Unidirectional or bidirectional.<br>
+			Special forms(extension) of <em>Association</em>:
+			<ul>
+				<li>
+					<em><b><a href="#compositionUp" id="composition">Composition</a></b></em> uses <em class="grey"><b>has-a</b></em> relationship.
+					Related objects are the part of the container, so with destruction of a container they will be destroyed too.
+					It is a <em class="tomato">Strong association</em>
+				</li>
+				<li>
+					<em><b>Aggregation</b></em> uses <em class="grey"><b>has-a</b></em> relationship.
+					Container only holds the references of contained objects. Destruction of a container does not affect them.
+					It is a <em class="green">Weak association</em> and <em>one-way relationship</em>.
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<br>
+	Polymorphism in Java:<br>
+	Compile Time - Static - method overloading (Early binding) <br>
+	Runtime Time - Dynamic - method overriding<br>
+</div>
+<hr>
+
+<div id="privacyByDesign">
+	<h2>Privacy by Design</h2>
+	<ol class="ol-with-margin">
+		<li>
+			<b>Principle #1: Proactive, Not Reactive; Preventive, Not Remedial</b><br>
+			No number of privacy measures <b><i>post factum</i></b> can really keep a fundamentally non-private technology or system from enabling the misuse of personal data.
+		</li>
+		<li>
+			<b>Principle #2: User Privacy as the Default Setting</b><br>
+
+			User should already have the highest privacy by default.
+		</li>
+		<li>
+			<b>Principle #3: Privacy Embedded Into Design</b><br>
+			Start the privacy and security conversation when planning your system.
+			You will find that it’s quite challenging and inefficient to try and add these features later in an already-built technology.
+		</li>
+		<li>
+			<b>Principle #4: Full Functionality—Positive-Sum, Not Zero-Sum</b><br>
+			Privacy doesn’t have to come at the expense of product benefits.
+			If done properly, privacy-by-design principles could help you create a better, more user-friendly product.
+		</li>
+		<li>
+			<b>Principle #5: End-to-End Security—Full Lifecycle Protection</b><br>
+			The lifecycle of personal data starts at the point of a collection and ends when it’s finally destroyed or deleted after you no longer need it.
+			Consumer data should be protected right from the start and up until it’s been deleted.
+		</li>
+		<li>
+			<b>Principle #6: Visibility and Transparency—Keep it Open</b><br>
+			You should have a well-documented privacy policy and engage in transparent communication about the data processing and privacy-protecting activities you undertake.
+		</li>
+		<li>
+			<b>Principle #7: Respect for User Privacy—Keep It User-Centric</b><br>
+			The system should have intuitive tools that enable users to manage their data.<br>
+			User should have the interface to change their consents.
+		</li>
+	</ol>
+</div>
+<hr>
+
+<div id="programming">
+	<h2><a href="#programmingUp">Programming</a></h2>
+	<table class="collapse-border padding">
+		<tr>
+			<th>Imperative</th>
+			<th>Declarative</th>
+		</tr>
+		<tr>
+			<td>Procedural</td>
+			<td id="functional">Functional</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="#reactive">Reactive</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Constraint</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="get-title">DQL</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="get-title">SQL</td>
+		</tr>
+
+	</table>
+
+	<h5 class="margin-bottom-3" id="imperative">Imperative</h5>
+	Focuses on describing <em class="green"><b>how</b></em> a program operates step by step.<br>
+	For <code class="code">c = a + b</code>, <code class="code">c</code> gets its value at the moment of assignment
+	and does <span class="green">not depend</span> on further changes of <code class="code">a</code> and <code class="code">b</code>.
+
+	<h5 class="margin-bottom-3" id="declarative">Declarative</h5>
+	Describes <em class="blue"><b>what</b></em> the program must achieve in terms of the <em>problem domain</em>,
+	and <span class="tomato">not</span> <em class="green"><b>how</b></em>.
+
+	<h5 class="margin-bottom-3" id="reactive"><a href="#reactiveUp">Reactive</a></h5>
+	Based on <em>data streams</em> and the propagation of change.
+	That is, for <code class="code">c = a + b</code>,
+	<code class="code">c</code> will be automatically updated
+	in case <code class="code">a</code> or <code class="code">b</code> are changed after the moment of <code class="code">c</code> assignment.
+</div>
+<hr>
+
+<div id="proxy">
+	<h3><a href="#proxyUp">Proxy</a></h3>
+	<b>Forward proxy</b> - before the internet, after the clients - enforce security policies, control access to websites, and mask the client's IP address to protect privacy and anonymity<br>
+	[CL1, CL2 ... CLn → FP] → Internet
+
+	<div class="indent"></div>
+	<b>Reverse proxy</b> - after the internet, before the business servers (LB etc., cache)<br>
+	Internet → [RP → S1, S2 ... Sn]
+</div>
+<hr>
+
+<div id="redBlackTree">
+	<h2 class="margin-bottom-3">
+		<span class="red">Red</span> Black <span class="dark-green">Tree</span>
+		<a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
+    <code><b>TreeMap</b></code> is based on RBT.<br>
+    RBT is a self-balancing <a href="#binarySearchTree">Binary Search Tree</a>(BST) data structure.<br><br>
+    Requirements:<br>
+    From BST:
+    <ol class="margin-top-0">
+        <li>Each key is greater than any key to the node's left subtree AND less than in its right subtree</li>
+    </ol>
+    From RBT:
+    <ol class="margin-top-0">
+        <li>Every node is either red or black</li>
+        <li>All NIL nodes are considered black</li>
+        <li>A red node does not have a red child</li>
+        <li>Every path from a given node to any of its descendant NIL nodes goes through the same number of black nodes</li>
+        <li>(Conclusion) If a node <b>N</b> has exactly one child, the child must be red.<br>
+            <small>Because if it were black, its NIL descendants would sit at a different black depth than <b>N'</b>s
+                NIL child, violating requirement 4</small>
+        </li>
+    </ol>
+    <br>
+
+    RBT is a self-balancing, that means it must rearrange itself on add and delete operations.<br>
+    The inner self-balancing operation are: left and right shift (means switching parent and child), switch colour.
+
+    <br><br>
+    Space Complexity: <b><em>O(n)</em></b> <small> The memory space that algorithm uses in the process of work, depending on amount of input data.</small>
+    <div class="indent4"></div>
+    Time complexity (Worst cases (and amortized)):<br>
+    Search, Insert and Delete: <b><em>O(log<sub>2</sub> n)</em></b><br>
+
+    <object width="1000" data="svg/RedBlackTree.svg"></object>
+</div>
+<hr>
+
+<div id="REST">
+	<h2 class="margin-bottom-3">REST (Representational State Transfer)</h2>
+	Is a <em>software architectural style</em> that was created to describe the design and guide the development of the architecture for the <span class="get-title">WWW</span>.<br>
+	REST defines a set of constraints for how the architecture of a distributed, Internet-scale <em>hypermedia</em> system, such as the Web, should behave.
+	<div class="indent"></div>
+	The REST architectural style defines <b>6</b> guiding constraints. ⚓SUL<span class="grey">3</span>C<br>
+	When these <em>constraints</em> are applied to the system architecture, it gains desirable <span class="get-title">NFR</span> properties:<br>
+	<code>performance scalability simplicity modifiability visibility portability reliability</code>.
+	<ol class="margin-top3">
+		<li><b>Client/Server</b> – clients are separated from servers by a well-defined interface</li>
+		<li><b>Stateless</b> – a specific client does not consume server storage when the client is "at rest", <small>that also means <em>sessionless</em></small></li>
+		<li>
+			<b>Cache</b> – responses indicate their own cacheability.
+			Servers specify cacheability of responses through <span class="get-title">HTTP</span> headers like <code>Cache-Control</code>, <code>Expires</code> and <code>Etag</code>.
+		</li>
+		<li>
+			<details>
+				<summary><b>Uniform interface</b></summary>
+				is fundamental to the design of any RESTful system.
+				It simplifies and decouples the architecture, which enables each part to evolve independently.
+				<ol class="margin-top-0">
+					<li><em>Resource identification in requests</em> -
+						<small>
+							resources are identified by <span class="get-title">URI</span>.<br>
+							The resources themselves are conceptually separate from the representations(<i class="get-title">HTML</i>, <i class="get-title">XML</i>, <i class="get-title">JSON</i>) that are returned to the client. <code class="code">GET /users/123</code>
+						</small>
+					</li>
+					<li>
+						<em>Resource manipulation <small>through</small> representations</em> -
+						<small>
+							When a client holds a representation of a resource, including any <i>metadata</i> attached, it has enough information to modify or delete the resource's state. <code class="code">PUT /users/123</code>
+						</small>
+					</li>
+					<li><em>Self-descriptive messages</em> - <small>Each message includes enough information to describe how to process the message. (<i>media type</i>)</small></li>
+					<li>
+						<em class="get-title">HATEOAS</em> -
+						<small>
+							a REST client should be able to use server-provided links dynamically to discover all the available resources it needs.<br>
+							The server responds with text that includes <i>hyperlinks</i> to other resources that are currently available
+						</small>
+					</li>
+				</ol>
+			</details>
+		</li>
+		<li>
+			<b>Layered system</b> – a client cannot ordinarily tell whether it is connected directly to the end server or to an intermediary along the way
+			<details>
+				<summary><small>Web app layers example</small></summary>
+				<table class="collapse-border">
+					<tr><th>Client</th><td>Web browser/Mobile App</td></tr>
+					<tr><th>Intermediary</th><td><span class="get-title">CDN</span>, <em>reverse proxy</em> for load balancing & caching</td></tr>
+					<tr><th>Server</th><td>Application server & Business logic</td></tr>
+					<tr><th>Database</th><td></td></tr>
+				</table>
+			</details>
+		</li>
+		<li>
+			<em>Code on demand</em> <small>(optional)</small> –
+			<small>servers are able to temporarily extend or customise the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine.<br>
+				Example: Javascript
+			</small>
+		</li>
+	</ol>
+	<em><b>Richardson Maturity Model</b></em>
+	<ol class="margin-top-3">
+		<li>
+			<b>Level 0: The Swamp of <span class="get-title">POX</span></b> <small>⚓ 1 URI & 1 method</small>
+			<div class="indent4"></div>
+			<span class="red">Is not RESTful</span>.
+			It is a Web <span class="get-title">API</span> with a single <span class="get-title">URI</span> accepting <span class="fire-brick">all</span> the range of operations supported by the service.<br>
+			<span class="fire-brick">Resources are not well-defined.</span><br>
+			Example: <code class="code">/bookingService POST</code> retrieve destinations/hotels/rooms; add/cancel a reservation; etc.
+			<div class="indent"></div>
+		</li>
+		<li>
+			<b>Level 1: Resources</b> <small>⚓ n URI, but still 1 method</small>
+			<div class="indent4"></div>
+			<span class="fire-brick">Still not yet RESTful</span>.
+			Introduces <em>resources</em> and allows requests for individual <span class="get-title">URI</span>s
+			<small>(still all typically POST)</small> for separate actions instead of exposing one universal endpoint (<span class="get-title">API</span>).<br>
+			The <span class="get-title">API</span> resources are still generalized, but it is possible to identify the scope of each one.
+			Example: <br>
+			<small>
+				<code class="code">/bookingDestinations POST</code> retrieve destinations<br>
+				<code class="code">/bookingReservations POST</code> add/cancel reservations<br>
+				<code class="code">/bookingRooms POST</code> add/cancel special requests to a reservation<br>
+				<code class="code">/bookingFeedback POST</code> leave feedback
+			</small>
+			<div class="indent"></div>
+		</li>
+		<li>
+			<b>Level 2: HTTP verbs <small>(HTTP request methods)</small></b> <small>⚓ n URI & n methods</small>
+			<div class="indent4"></div>
+			<span class="green">It is RESTful</span>.
+			The system starts making use of <em>HTTP Verbs</em>.
+			This allows for further specialization of the resource and thus narrows down the functionality of each individual operation within the service.
+			The principal separation at this level consists in splitting a given resource into two – one request for obtaining data only (GET), the other for modifying the data (POST).
+			Further granularization is also possible.<br>
+			Example: <br>
+			<small>
+				<code class="code">/destinations GET</code> retrieve destinations<br>
+				<code class="code">/reservations GET</code> get reservations according to certain criteria<br>
+				<code class="code">/reservations POST</code> add/cancel reservations<br>
+				<code class="code">/rooms POST</code> request room extras<br>
+				<code class="code">/rooms DELETE</code> remove room extras
+			</small>
+			<div class="indent"></div>
+		</li>
+		<li>
+			<b>Level 3: Hypermedia controls</b>
+			<div class="indent4"></div>
+			<span class="dark-green">It is RESTful</span>.
+			The last level introduces the <em>hypermedia representation</em>.
+			Also called <span class="get-title">HATEOAS</span>.
+			A client interacts with a network application whose application servers provide information dynamically through <em>hypermedia</em>.
+			A REST client needs <em>little to no</em> prior knowledge about how to interact with an application or server beyond a generic understanding of hypermedia.<br>
+			The restrictions imposed by HATEOAS decouple client and server. This enables server functionality to evolve independently.<br>
+			Example: <br>
+			<small>
+			<code class="code">GET /accounts/12345 HTTP/1.1</code></small><br>
+			<pre class="margin-top-0">{
+    "account": {
+        "account_number": 12345,
+        "balance": {
+            "currency": "usd",
+            "value": 100.00
+        },
+        "links": {
+            "deposits": "/accounts/12345/deposits",
+            "withdrawals": "/accounts/12345/withdrawals",
+            "transfers": "/accounts/12345/transfers",
+            "close-requests": "/accounts/12345/close-requests"
+        }
+    }
+}</pre>
+			<small>As an example, later, after the account has been overdrawn, there is a different set of available links:</small>
+			<pre class="margin-top-0">{
+    "account": {
+        "account_number": 12345,
+        "balance": {
+            "currency": "usd",
+            "value": -25.00
+        },
+        "links": {
+            "deposits": "/accounts/12345/deposits"
+        }
+    }
+}</pre>
+		</li>
+	</ol>
+</div>
+<hr>
+
+<div id="solid">
+	<h2><a href="#solidUp">SOLID</a></h2>
+	<ul class="ulWithMargin">
+		<li>
+			<b>Single responsibility principle</b>
+			<div class="indent4"></div>
+			There should never be more than <b class="dim-grey">one</b> <em>reason</em> for a class to be changed.
+			Means class <code>code</code> can be changed, and it should be only for 1 <em class="dark-red">type of activity</em>.<br>
+			In other words, every class should have only one responsibility.<br>
+			"God-object" is an example of the antipattern of this.
+		</li>
+		<li>
+			<b>Open–closed principle</b>
+			<div class="indent4"></div>
+			Software entities should be open for extension, but closed for modification.<br>
+			That is, such an entity can allow its behaviour to be extended without modifying its source code.<br>
+			In other words, from the very beginning, the code should be written in a <em class="green">way</em> it should not be changed in the future,
+			in case the functionality is needed to be extended.<br>
+			Pros: Less regression testing. less errors<br>
+			<details>
+				<summary>Java example</summary>
+				<iframe id="ocp" src="parts/OCPExample.html" style="width:-webkit-fill-available; height:655px;" >
+				</iframe>
+			</details>
+		</li>
+		<li>
+			<b>Liskov substitution principle</b>
+			<div class="indent4"></div>
+			Functions/methods that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
+			<details>
+				<summary>Java example</summary>
+				<iframe id="liskov" src="parts/LiskovSubstitutionExample.html" style="width:-webkit-fill-available; height:555px;" >
+				</iframe>
+			</details>
+		</li>
+		<li>
+			<b>Interface segregation principle</b>
+			<div class="indent4"></div>
+			No object/code should be forced to depend on methods it does not use.<br>
+			<details>
+				<summary>Java example</summary>
+				<iframe id="isp" src="parts/ISPExample.html" style="width:-webkit-fill-available; height:655px;" >
+				</iframe>
+			</details>
+		</li>
+		<li>
+			<b>Dependency inversion principle</b>
+			<div class="indent4"></div>
+			1. High-level modules should not depend/import on low-level modules, but both should depend on abstractions.<br>
+			2. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.<br>
+			Modules should be loosely coupled.<br>
+			The 2<small>nd</small> part means that interfaces and abstract classes should <span class="red">not</span> reference any implementations
+			but should only reference interfaces and abstract classes.<br>
+			Final Notes: <br>
+			— Implementation classes should not extend other implementations, only interfaces and abstract classes<br>
+			— Method parameter's should not reference implementations, only interfaces and abstract classes
+			<details>
+				<summary>Java example</summary>
+				<iframe id="dip" src="parts/DIPExample.html" class="iframe height-570">
+				</iframe>
+			</details>
+		</li>
+	</ul>
+</div>
+<hr>
+
+<div id="sql">
+	<h2><a href="#sqlUp">SQL</a></h2>
+	<code class="code">SELECT – FROM – JOIN – ON – WHERE – GROUP BY – HAVING – ORDER BY – LIMIT</code><br>
+
+	<h4 class="margin-bottom-3">Table Join types</h4>
+	<table>
+		<tr>
+			<td>
+				<table class="collapse-border padding">
+					<tr><th>A</th></tr>
+					<tr><td>1</td></tr>
+					<tr><td>2</td></tr>
+				</table>
+			</td>
+			<td>
+				<table class="collapse-border padding">
+					<tr><th>B</th></tr>
+					<tr><td>1</td></tr>
+					<tr><td>3</td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<ul>
+		<li>
+			<b>CROSS JOIN</b> — a <em>Cartesian product</em>, all possible combinations of all rows. A default join type
+			<table class="collapse-border padding">
+				<tr><th>A</th><th>B</th></tr>
+				<tr><td>1</td><td>1</td></tr>
+				<tr><td>1</td><td>3</td></tr>
+				<tr><td>2</td><td>1</td></tr>
+				<tr><td>2</td><td>3</td></tr>
+			</table>
+		</li>
+		<li>
+			<b>FULL OUTER JOIN</b> - returns the rows from tables matched to the <i>join</i> condition and other rows,
+			but with the <i>NULL</i> values from the opposite table
+			<table class="collapse-border padding">
+				<tr><th>A</th><th>B</th></tr>
+				<tr><td>1</td><td>1</td></tr>
+				<tr><td>2</td><td><i>NULL</i></td></tr>
+				<tr><td><i>NULL</i></td><td>3</td></tr>
+			</table>
+		</li>
+		<li>
+			<b>LEFT/RIGHT OUTER JOIN</b> - returns the rows from tables matched to the <i>join</i> condition and rows from the LEFT/RIGHT table,
+			but with the <i>NULL</i> values from the opposite table
+			<table>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>LEFT</small></caption>
+							<tr><th>A</th><th>B</th></tr>
+							<tr><td>1</td><td>1</td></tr>
+							<tr><td>2</td><td><i>NULL</i></td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>RIGHT</small></caption>
+							<tr><th>A</th><th>B</th></tr>
+							<tr><td>1</td><td>1</td></tr>
+							<tr><td><i>NULL</i></td><td>3</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<b>INNER JOIN</b> - returns only the rows from tables matched to the <i>join</i> condition
+			<table class="collapse-border padding">
+				<tr><th>A</th><th>B</th></tr>
+				<tr><td>1</td><td>1</td></tr>
+			</table>
+		</li>
+	</ul>
+	<code class="code">UNION</code> - excluding duplicates.<br>
+	<code class="code">UNION ALL</code> - <span class="green">including</span> duplicates.<br>
+	<code class="code">INTERSECT</code> to select common records from two tables.<br>
+	<code class="code">EXCEPT/MINUS</code> returns only the records obtained by the first query but not the second one.<br>
+
+	<div class="indent4"></div>
+	<code class="code">LIKE</code> <b>%</b> - any chars, <b>_</b> - strictly one char.<br>
+	<code class="code">DENSE_RANK()</code> - density/frequency ranking.<br>
+	<code class="code">RANK()</code> - ranking over partitioning(or without),
+	It's just an independent <em>row_number</em> within the partitions/groups, can be duplicated for partitioned rows with the same values.
+	<span class="warning-sign fs18 tomato"> Produces Gaps</span>: 1 1 3 - Gap is 1; 1 2 2 2 5 - Gap is 2 rows.
+	Todo example<br>
+	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code><br>
+	<code>COALESCE(v1, v2, c1)</code><br>
+
+
+	<div class="indent4"></div>
+	A <em>stored procedure</em> is a <b class="dim-grey">precompiled</b> set of SQL statements executed as a unit to perform a task.<br>
+	<em>Correlated subquery</em> - depends on its outer query, <em>non correlated</em> - is not.<br>
+	<em>Clustered index</em> forces the order of the rows in the table on physical level, therefore, can be only 1 per table.
+</div>
+<hr>
+
+<div id="transactionIsolation">
+	<h2><a href="#transactionIsolationUp">Transaction Isolation</a></h2>
+	A transaction is a set of one or more statements that is executed as a unit.
+	<h3>Read Phenomena/Issues</h3>
+	<ol>
+		<li>
+			<h4 class="margin3px" id="dirtyReads">Dirty reads</h4>
+			A <em>dirty read</em> <small>(aka <em>uncommitted dependency</em>)</small> occurs when
+			a <span class="green">transaction</span> retrieves a <span class="dark-blue">row</span> that has been
+			<span class="red">updated</span> by <span class="fire-brick">another transaction</span> that is <span class="red">not yet committed</span>.
+		</li>
+		<li>
+			<h4 class="margin3px" id="nonRepeatableReads">Non-repeatable reads</h4>
+			A <em>non-repeatable read</em> occurs when a <span class="green">transaction</span> retrieves a <span class="dark-blue">row</span> <span class="hot-pink">twice</span>
+			and that <span class="dark-blue">row</span> is <span class="red">updated</span> by <span class="fire-brick">another transaction</span> that is <span class="red">committed in between</span>.
+		</li>
+		<li>
+			<h4 class="margin3px" id="phantomReads">Phantom reads</h4>
+			A <em>phantom read</em> occurs when a <span class="green">transaction</span> retrieves a <span class="dark-blue">set of rows</span> <span class="hot-pink">twice</span>
+			and <span class="purple">new rows are inserted into or removed</span> from that <span class="dark-blue">set</span> by <span class="fire-brick">another transaction</span> that is <span class="red">committed in between</span>.
+		</li>
+	</ol>
+
+	<h3>Isolation levels <small>(SQL92 standard)</small></h3>
+	<ol>
+		<li>
+			<h4 class="margin3px">Read uncommitted</h4>
+			This is the <i>lowest</i> isolation level.
+			At this level, <a href="#dirtyReads">dirty reads</a> are allowed, so one transaction may see <i>not-yet-committed</i> changes made by other transactions.
+		</li>
+		<li id="readCommitedIsolation">
+			<h4 class="margin3px">Read committed</h4>
+			In this isolation level, a lock-based <i>concurrency control</i> <span class="get-title">DBMS</span> implementation
+			keeps write locks <small>(acquired on selected data)</small> until the end of the transaction,
+			but read locks are released as soon as the <code class="code">SELECT</code> operation is performed
+			<small>(so the <a href="#nonRepeatableReads">non-repeatable reads phenomenon</a> can occur in this isolation level)</small>.
+			<div class="indent4"></div>
+			Simpler: <i>read committed</i> is an isolation level that guarantees that any data read is committed at the moment it is read.
+			It simply restricts the reader from seeing any intermediate, uncommitted, 'dirty' read.
+		</li>
+		<li>
+			<h4 class="margin3px">Repeatable reads</h4>
+			A lock-based <i>concurrency control</i> <span class="get-title">DBMS</span> implementation
+			keeps <span class="dark-green">read</span> and <span class="dark-red">write</span> locks <small>(acquired on selected data)</small> until the end of the <span class="green">transaction</span>.
+			Range locks are not managed, so <a href="#phantomReads">phantom reads</a> can occur.
+			<div class="indent4"></div>
+			<span class="red">Write skew</span> is possible in some systems.
+			<em>Write skew</em> is a phenomenon where two writes are allowed to the same column(s) in a table by two different writers <small>(who have previously read the columns they are updating)</small>,
+			resulting in the column having data that is a mix of the two transactions.
+		</li>
+		<li>
+			<h4 class="margin3px">Serializable</h4>
+			This is the <i>highest</i> isolation level.<br>
+			With a lock-based <i>concurrency control</i> <span class="get-title">DBMS</span> implementation,
+			<em>serializability</em> requires <span class="dark-green">read</span> and <span class="dark-red">write</span> locks <small>(acquired on selected data)</small>
+			to be released at the end of the <span class="green">transaction</span>.
+			Also, <em>range-locks</em> must be acquired when a <code class="code">SELECT</code> query uses a ranged <code class="code">WHERE</code> clause,
+			especially to avoid the <a href="#phantomReads">phantom reads</a> phenomenon.
+		</li>
+	</ol>
+	<div class="indent"></div>
+	<table class="collapse-border padding border-dark-grey">
+		<tr>
+			<th style="background:linear-gradient(to top right, #eaecf0 49%, #a2a9b1 49.5%, #a2a9b1 50.5%, #eaecf0 51%);">
+				<div class="margin-left-2 text-align-right">Read phenomenon<br><br><br><br></div>
+				<div class="margin-right-2 text-align-left">Isolation level</div>
+			</th>
+			<th class="back-gainsboro">Dirty read</th>
+			<th class="back-gainsboro">Non-repeatable read</th>
+			<th class="back-gainsboro">Phantom read</th>
+		</tr>
+		<tr>
+			<td>Serializable</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-bfd">no</td>
+		</tr>
+		<tr>
+			<td>Repeatable read</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-pink">yes</td>
+		</tr>
+		<tr>
+			<td>Read committed</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-pink">yes</td>
+			<td class="text-align-center back-pink">yes</td>
+		</tr>
+		<tr>
+			<td>Read uncommitted</td>
+			<td class="text-align-center back-pink">yes</td>
+			<td class="text-align-center back-pink">yes</td>
+			<td class="text-align-center back-pink">yes</td>
+		</tr>
+	</table>
+	<div class="indent"></div>
+
+	<h3>Oracle Isolation levels</h3>
+	<ol>
+		<li>
+			<h4 class="margin3px">Read committed</h4>
+			Default. It uses <i>Snapshot semantics</i>.<br>
+			When running under <i>Snapshot isolation</i>, the current transaction cannot see the results of any other transaction that was started before the current one.
+		</li>
+		<li>
+			<h4 class="margin3px">Serializable</h4>
+		</li>
+		<li>
+			<h4 class="margin3px">Read only</h4>
+			The <i>read-only</i> isolation level is similar to the <i>serializable</i> isolation level,
+			but read-only transactions do not permit data to be modified in the transaction unless the user is <code>SYS</code>.<br>
+			Read-only transactions are useful for generating reports in which the contents must be consistent with respect to the time when the transaction began
+		</li>
+	</ol>
+	<pre><span class="bold">SET TRANSACTION</span>
+   { { <span class="bold">READ</span> { <span class="bold">ONLY</span> | <span class="bold">WRITE</span> }
+     | <span class="bold">ISOLATION LEVEL</span>
+       { <span class="bold">SERIALIZABLE</span> | <span class="bold">READ COMMITTED</span> }
+     | <span class="bold">USE ROLLBACK SEGMENT</span> rollback_segment
+     } [ <span class="bold">NAME</span> string ]
+   | <span class="bold">NAME</span> string
+   } ;</pre>
+</div>
+<hr>
+
+<div id="tree-data-structures">
+	<h2 class="margin-bottom-3">Tree Data Structures</h2>
+	<table class="collapse-border padding">
+		<tr>
+			<td class="text-align-center" colspan="2"><a href="#binaryTree">Binary Tree</a></td>
+		</tr>
+		<tr>
+			<td colspan="1"><a href="#binaryHeap">Binary Heap</a></td>
+			<td colspan="1"><a href="#binarySearchTree">Binary Search Tree</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="#redBlackTree"><span class="red">Red</span> <span class="black">Black</span> <span class="dark-green">Tree</span></a></td>
+		</tr>
+
+	</table>
+</div>
+<hr>
+
+Sources: Wikipedia. Carlo Zaniolo. Hugo Kornelis. Oracle®
+
+<div class="indent"></div>
+<a href="all.html">SiteMap</a><br>
+<iframe class="footer" src="./footer.html"></iframe>
+
+<script>
+	const cellCount = document.getElementsByClassName('cellCount');
+	Array.from(cellCount).forEach( (cellCountSpan) => {
+		const cellCountArray = cellCountSpan.dataset.ids.split(",");
+		let count = 0;
+		Array.from(cellCountArray).forEach( (tableId) => {
+			const table = document.getElementById(tableId);
+			count += table.getElementsByTagName('td').length;
+		});
+		cellCountSpan.innerHTML = count;
+	});
+</script>
+
+</body>
+</html>

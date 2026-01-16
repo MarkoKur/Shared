@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LiveLockExample</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<pre><code class="language-java">public class LiveLock extends Thread {
+
+    BlockingQueue&lt;String&gt; inbox = new LinkedBlockingQueue&lt;&gt;();
+
+    LiveLock other;
+
+    @Override
+    public void run() {
+        String threadName = Thread.currentThread().getName();
+
+        try {
+            for (int i = 0; i < 10; i++) {
+                if (inbox.isEmpty()) {
+                    System.out.println(threadName + ": Great! Inbox is empty, doing my job");
+                } else {
+                    inbox.poll();
+                    System.out.println(threadName + ": Got a message and will reply in response");
+                    other.inbox.add("New Message");
+                    Thread.sleep(100);
+                }
+            }
+        } catch (InterruptedException ex) {
+        }
+    }
+
+    public static void main(String[] args) {
+        LiveLock t1 = new LiveLock();
+        LiveLock t2 = new LiveLock();
+
+        t1.other = t2;
+        t2.other = t1;
+
+        t1.inbox.add("Initial");
+        t2.inbox.add("Initial");
+
+        t1.start();
+        t2.start();
+    }
+}</code></pre>
+
+</body>
+</html>

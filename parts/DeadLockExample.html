@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DeadLockExample</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+	<pre><code class="language-java">public class DeadLock extends Thread {
+
+    Thread other;
+
+    @Override
+    public void run() {
+        try {
+            other.join();
+        } catch (InterruptedException ex) {
+        }
+    }
+
+    public static void main(String[] args) {
+        DeadLock t1 = new DeadLock();
+        DeadLock t2 = new DeadLock();
+
+        t1.other = t2;
+        t2.other = t1;
+
+        t1.start();
+        t2.start();
+    }
+}</code></pre>
+
+</body>
+</html>

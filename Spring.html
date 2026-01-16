@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Spring Notes</title>
+	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
+	<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+
+<div class="indent"></div>
+<a href="all.html">SiteMap</a>
+<div class="indent"></div>
+
+<code class="code">@EnableAutoConfiguration</code><br>
+attempts to automatically configure your Spring application based on the jar dependencies that you have added.<br>
+Example: if <code>HSQLDB</code> is on your classpath, and you have not manually configured any database connection beans,
+then Spring Boot auto-configures an in-memory database.<br>
+Should be applied to <code class="code">@Configuration</code> class.
+<hr>
+
+<code class="code">@SpringBootApplication</code><br>
+It is <code class="code">@SpringBootConfiguration</code>,
+<code class="code">@EnableAutoConfiguration</code>
+and <code class="code">@ComponentScan(excludeFilters={...})</code>
+<hr>
+
+<code class="code">@SpringBootConfiguration</code><br>
+It is a stereotype of <code class="code">@Configuration</code>
+<hr>
+
+CommandLineRunner and ApplicationRunner interfaces<br>
+<hr>
+
+By default, Spring and Spring Boot create beans eagerly, not lazily.<br>
+<code>@Lazy @Bean</code><br>
+<code>@Lazy @Configuration { @Lazy(false) @Bean // to override for a bean }</code><br>
+<code>@Lazy @Component; @Lazy @Autowired // mandatory for lazy for autowired then</code><br>
+<code>@SpringBootApplication(lazyInitialization = true)</code>
+<hr>
+
+<code>@EnableWebSecurity</code> to use Spring Security in web applications<br>
+<code>@Bean public SecurityFilterChain securityFilterChain(HttpSecurity http)</code>
+<hr>
+
+Spring Web MVC<br>
+<code>
+	@Autowired ServletContext servletContext;<br>
+	@Autowired ServletConfig servletConfig;<br>
+</code>
+<hr>
+
+<code>@Configuration C { @Bean b1; @Bean b2(); ... @Bean bN();}</code> - "Java-based" configuration<br>
+<code>[@ComponentScan] | @Component @Service @Repository @Controller</code> - "Annotation-based" configuration<br>
+<hr>
+
+Circular dependencies actually throw an exception, but can be workaround using Setter injection or <code>@Lazy</code><br>
+<hr>
+
+<code>@DependsOn</code> - specify the order in which beans should be initialized<br>
+<hr>
+
+<code>@ConfigurationProperties</code> improvement for <code>@Value</code>
+<hr>
+
+<div>
+	<a href="all.html">SiteMap</a>
+</div>
+
+<embed class="footer" src="./footer.html">
+</body>
+</html>
