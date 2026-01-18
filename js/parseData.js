@@ -165,18 +165,18 @@ function parseGroupMap(groupMap, groupsTable, parentGroupMap, aliasMap) {
 		});
 }
 
-function addContentTables(contentTag, withNumbers) {
+function addContentTables(contentTag, th1, withNumbers) {
 	if (withNumbers)
 		for (let i = 0x30; i <= 0x39; i++) {
-			addContentTable(i);
+			addContentTable(i, th1);
 		}
 
 	for (let i = 65; i <= 90; i++) {
-		addContentTable(i);
+		addContentTable(i, th1);
 	}
 }
 
-function addContentTable(symbolCode) {
+function addContentTable(symbolCode, th1) {
 		const letter = String.fromCharCode(symbolCode);
 		const details = document.createElement("details");
 		details.setAttribute("open", "open");
@@ -191,7 +191,7 @@ function addContentTable(symbolCode) {
 		table.className = "collapse-border padding sorted";
 		details.appendChild(table);
 
-		const thsTextArray = ["Abbreviation", "Transcript", "Groups", "Notes", "Icon"];
+		const thsTextArray = [th1, "Transcript", "Groups", "Notes", "Icon"];
 		const newRow = table.insertRow(-1);
 		newRow.classList.add("table-head");
 		thsTextArray.forEach( thText => {
