@@ -141,6 +141,7 @@ rawMap.set("EPS", {title: "Encapsulated PostScript", groups: ["graphics"]});
 rawMap.set("ESG", {title: "Environmental | Social | Governance", groups: []});
 rawMap.set("et_al.", {title: "and others", th: "et al.", groups: ["latin"]});
 rawMap.set("ETA", {title: "Estimated Time of Arrival", groups: []});
+rawMap.set("ESP", {title: "Espressif Systems", groups: ["semiconductor-company"]});
 rawMap.set("EP", {title: "Extended Play", groups: []});
 
 rawMap.set("FaaS", {title: "Function as a Service", groups: ["aaS"], notes: "Serverless. #AWS Lambda"});
@@ -397,6 +398,7 @@ rawMap.set("TCP-IP", {title: "Transmission Control Protocol / Internet Protocol"
 rawMap.set("TDD", {title: "Test-Driven Development", groups: ["software", "tdd"]});
 rawMap.set("TIFF", {title: "Tagged Image File Format", groups: ["graphics"]});
 rawMap.set("TLS", {title: "Transport Layer Security", groups: ["cryptographic-protocol"]});
+rawMap.set("TSMC", {title: "Taiwan Semiconductor Manufacturing Company", groups: ["semiconductor-company"]});
 
 rawMap.set("UoW", {title: "Unit of Work", groups: ["jpa", "dp"]});
 rawMap.set("USE", {title: "Utilization, Saturation, Errors", groups: ["metrics"]});
