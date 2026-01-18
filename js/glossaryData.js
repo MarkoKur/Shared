@@ -34,6 +34,9 @@ rawMap.set("AWSCDK", { title: "#AWS Cloud Development Kit", th: "AWS CDK", group
 rawMap.set("AWSCDKCLI", { html: [{tag: "a", href: "#AWSCDK", text: "AWS CDK"}, { text: " "}, {tag: "a", href: "#CLI", text: "CLI" }], th: "AWS CDK CLI", groups: ["aws"], classes: ["nowrap"]});
 
 rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
+rawMap.set("ARM", { html: [{text: "arm"}, {tag: "hr", class: "margin-3"},
+							{tag: "small", text: "originally"}, {text: " Acorn #RISC Machine"}, {tag: "hr", class: "margin-3"},
+							{tag: "small", text: "formerly"}, {text: " Advanced #RISC Machines"}] , groups: ["processor-architecture"], svg: "arm"});
 rawMap.set("ACP", { title: "Atomic Commitment Protocol ", groups: ["commitment-protocol", "db"]});
 rawMap.set("ACID", {title: "Atomicity Consistency Isolation Durability", groups: ["db-tx"]});
 rawMap.set("ACL", {title: "Access Control List", groups: []});
@@ -82,6 +85,8 @@ rawMap.set("COO", {title: "Chief Operating Officer", groups: ["role"]});
 rawMap.set("CORBA", {title: "Common Object Request Broker Architecture", groups: []});
 rawMap.set("CORS", {title: "Cross Origin Resource Sharing", groups: []});
 rawMap.set("CPU", {title: "Central Processing Unit", groups: ["processor"]});
+rawMap.set("CISC", {title: "Complex Instruction Set Computer", groups: ["processor-architecture"]});
+rawMap.set("RISC", {title: "Reduced Instruction Set Computer", groups: ["processor-architecture"]});
 rawMap.set("CQL", {title: "Cassandra Query Language", groups: ["ql"]});
 rawMap.set("CRC", {title: "Cyclic Redundancy Check", groups: []});
 rawMap.set("CRM", {title: "Customer Relationship Management", groups: []});
@@ -295,6 +300,7 @@ rawMap.set("ORCID", {title: "Open Researcher and Contributor ID", groups: []});
 
 rawMap.set("PLC", {title: "Programmable Logic Controller", groups: ["controller"]});
 rawMap.set("POJO", {title: "Plain Old Java Object", groups: ["java"]});
+rawMap.set("PoS", {title: "Point of Sale", groups: []});
 rawMap.set("P2P", {title: "Peer-to-Peer", groups: ["network"]});
 rawMap.set("PaaS", {title: "Platform as a Service", groups: ["aaS"]});
 rawMap.set("PAM", {title: "Pluggable Authentication Module", groups: ["software"]});
@@ -424,6 +430,8 @@ rawMap.set("WYSIWYG", {title: "What You See Is What You Get", groups: []});
 
 rawMap.set("XSS", {html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
 rawMap.set("XHR", {title: "XMLHttpRequest", groups: ["javascript"]});
+rawMap.set("x86", {title: "Intel 80x86", groups: ["processor-architecture"], notes: "#CISC"});
+rawMap.set("x64", {title: "AMD64, Intel 64", groups: ["processor-architecture"], notes: "Extension of #x86"});
 rawMap.set("XDR",   {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tended Detection and Response"}], groups: ["security"]});
 rawMap.set("XHTML", {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible HyperText Markup Language"}], groups: ["ml"]});
 rawMap.set("XML",   {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible Markup Language"}], groups: ["ml"]});
@@ -440,6 +448,7 @@ glossaryGroupMap.set("aaS", {text: "[ #SaaS [ #PaaS #CaaS [ #Iaas ]]]"});
 glossaryGroupMap.set("db", {subGroups: ["db-tx"]});
 glossaryGroupMap.set("ql", {subGroups: ["sql"]});
 glossaryGroupMap.set("sql", {aliases: ["sql-subgroup"]});
+glossaryGroupMap.set("processor", {subGroups: ["processor-architecture"]});
 glossaryGroupMap.set("computer", {subGroups: ["processor", "memory", "bus", "video", "pc-interface", "persistence"]});
 glossaryGroupMap.set("protocol", {subGroups: ["communication-protocol",
 											  "cryptographic-protocol",
