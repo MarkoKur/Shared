@@ -143,10 +143,16 @@
 		}
 	}
 
-	searchInput.addEventListener("keypress", function(event) {
+	searchInput.addEventListener("keydown", function(event) {
 		if (event.key === "Enter") {
 			event.preventDefault();
 			search();
+		}
+	});
+
+	document.addEventListener("keydown", function(event) {
+		if (event.key === "Home") {
+			searchInput.focus();
 		}
 	});
 

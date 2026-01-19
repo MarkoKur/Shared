@@ -98,6 +98,7 @@ rawMap.set("CSS", {title: "Cascading Style Sheet", groups: []});
 rawMap.set("CTE", {title: "Common Table Expression", groups: ["sql"]});
 rawMap.set("CTO", {title: "Chief Technical Officer", groups: ["role"]});
 rawMap.set("CVC", {title: "Centralized Version Control", groups: ["version-control"]});
+rawMap.set("CVS", {title: "Concurrent Versions System", groups: ["version-control"]});
 rawMap.set("CoE", {title: "Contract of Employment", groups: ["business"]});
 
 rawMap.set("DaaS", {title: "Desktop as a Service", groups: ["aaS"]});
