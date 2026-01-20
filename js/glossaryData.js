@@ -157,6 +157,7 @@ rawMap.set("GDPR1", {title: "General Data Protection Regulation", th:"GDPR", cla
 rawMap.set("GIF", {title: "Graphics Interchange Format", groups: ["graphics"]});
 rawMap.set("Git", {title: "\"Git\" Linus Torvalds' #DVC", groups: ["version-control"]});
 rawMap.set("GML", {title: "Generalized Markup Language", groups: ["ml"], notes: "Extended to #SGML"});
+rawMap.set("GPA", {title: "Grade Point Average", groups: ["education"]});
 rawMap.set("GPL", {title: "General-Purpose Language", groups: ["computer-language"]});
 rawMap.set("GPL2", {title: "General Public License",th: "GPL", groups: ["software"], notes: "#GNU"});
 rawMap.set("GPS", {title: "Global Positioning System", groups: []});
