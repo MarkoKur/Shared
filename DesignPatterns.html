@@ -63,7 +63,8 @@
 				<td>
 					Object pools are primarily used for performance: in some circumstances, object pools significantly improve performance.<br>
 					<small>
-						Object pooling can offer a significant performance boost in situations where the cost of initializing a class instance is high and the rate of instantiation and destruction of a class is high – in this case objects can frequently be reused, and each reuse saves a significant amount of time.
+						Object pooling can offer a significant performance boost in situations where the cost of initializing a class instance is high and the rate of instantiation and destruction of a class is high
+						– in this case objects can frequently be reused, and each reuse saves a significant amount of time.
 					</small>
 				</td>
 			</tr>
@@ -412,18 +413,29 @@
 			</tr>
 		</table>
 	</details>
-	<details>
+	<details open>
 		<summary><b>Architectural</b> patterns</summary>
-		<ul>
-			<li id="mvc">MVC
-Old:<pre>
-User → Controller → Model
-            ↘        ↑
-              View ←─┘</pre><br>
-				New:<br>
-				User → Controller → Model → Controller → View
-			</li>
-		</ul>
+		<table class="collapse-border padding margin">
+			<tr>
+				<th>Name</th><th>Description</th><th class="width40pct">When to apply</th>
+			</tr>
+			<tr>
+				<td id="mvcUp"><a href="#mvc">MVC</a></td><td><td></td>
+			</tr>
+			<tr>
+				<td id="sagaUp"><a href="#mvcUp">SAGA</a></td>
+				<td>
+					SAGA pattern breaks down a complex transaction into a series of smaller, isolated operations, each handled by a different service.<br>
+					If it fails, then the <em>Compensation transactions</em> should be called.
+					A compensating transaction must be idempotent and retryable
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Strangler</td><td></td><td></td>
+			</tr>
+		</table>
+
 	</details>
 
 	<hr class="height2">
@@ -766,6 +778,8 @@ User → Controller → Model
 	</div>
 	<hr>
 
+	<h2>Behavioral</h2>
+
 	<div id="command">
 		<h3><a href="#commandUp">Command</a></h3>
 		<ul class="ulWithMargin">
@@ -828,8 +842,8 @@ p.add( nm, gc );
 
 /* Fluent Interface DP */
 Packer pk = new Packer( p );
-pk.pack( l ).gridx(0).gridy(0);
-pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
+pk.pack(l).gridx(0).gridy(0);
+pk.pack(nm).gridx(1).gridy(0).fillx();</code>
 		</pre>
 		</details>
 	</div>
@@ -924,6 +938,8 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	</div>
 	<hr>
 
+<h2>Concurrency</h2>
+
 	<div id="activeObject">
 		<h3><a href="#activeObjectUp">Active Object</a></h3>
 		<details>
@@ -932,6 +948,21 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	private final ForkJoinPool fjp = new ForkJoinPool(/*thread-count*/ 1, defaultForkJoinWorkerThreadFactory, null, /*async*/ true);
 	public void doValOne() { fjp.execute(() -> { val = 1.0; });}
 	public void doValTwo() { fjp.execute(() -> { val = 2.0; });}</code></pre>
+		</details>
+	</div>
+	<hr>
+
+<h2>Architectural</h2>
+
+	<div id="mvc">
+		<h3><a href="#mvcUp">MVC</a></h3>
+		<details>
+			Old:<pre>
+User → Controller → Model
+            ↘        ↑
+              View ←─┘</pre><br>
+			New:<br>
+			<code>User → Controller → Model → Controller → View</code>
 		</details>
 	</div>
 	<hr>
