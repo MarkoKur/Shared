@@ -72,10 +72,22 @@
 }
 
 .collapse-border {border-collapse: collapse}
+
+table.td-align-center td { text-align: center }
+table.th th:not(.black) { color: DarkSlateGrey }
+
+.zebra tr:nth-child(even) {
+	background-color: Beige;
+}
+.zebra tr:first-child {
+	background-color: LightBlue;
+}
+
 .padding th , .padding td {
 	padding-left : 5px;
 	padding-right: 5px;
 }
+
 .padding3, .padding-3 {
 	padding-left : 3px;
 	padding-right: 3px;
@@ -100,8 +112,6 @@
 .text-align-initial { text-align:initial}
 .padding-left, .padding-left-1em {padding-left: 1em}
 
-table.td-align-center td { text-align: center }
-
 var {color: DarkGreen}
 .code {color: DarkBlue}
 code {color: DarkSlateGrey}
@@ -116,12 +126,6 @@ code {color: DarkSlateGrey}
 	font-size: 17px;
 }
 
-.zebra tr:nth-child(even) {
-	background-color: Beige;
-}
-.zebra tr:first-child {
-	background-color: LightBlue;
-}
 
 .indent4 {height: 4px}
 .indent8, .indent {height: 8px}
@@ -205,7 +209,7 @@ ol.ol-with-margin > li {margin: 10px 0;}
 .width20pct  {width: 20%;}
 .width5pct   {width: 5%;}
 
-.height-2, height2 {height: 2px;}
+.height-2, height2 {height: 2px}
 .height-220  {height: 220px}
 .height-300  {height: 300px}
 .height-400  {height: 400px}
@@ -214,8 +218,9 @@ ol.ol-with-margin > li {margin: 10px 0;}
 .height-650  {height: 650px}
 .height-725  {height: 725px}
 
-.display-none {display: none;}
+.display-none {display: none}
 
-.iframe {width: 98vw;}
+.iframe      {width: 98vw}
+.iframe-60vw {width: 60vw}
 
 .footer {border:0; height: 35px;}

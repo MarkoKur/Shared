@@ -294,7 +294,8 @@ rawMap.set("OCI", {title: "Open Container Initiative", groups: []});
 rawMap.set("OCP", {title: "Open/Closed Principle", groups: [], notes: "#SOLID"});
 rawMap.set("OCR", {title: "Optical character recognition", groups: []});
 rawMap.set("OIDC", {title: "OpenID Connect", groups: ["authentication-protocol"], notes: "An authentication layer on top of the #OAuth 2.0"});
-rawMap.set("OLTP", {html: [{text: "On"}, {tag: "b", text: "l"}, {text: "ine Transaction Processing"}], groups: []});
+rawMap.set("OLTP", {html: [{text: "On"}, {tag: "b", text: "l"}, {text: "ine Transaction Processing"}], groups: [], notes: "Opposite to #OLAP"});
+rawMap.set("OLAP", {html: [{text: "On"}, {tag: "b", text: "l"}, {text: "ine Analytical Processing"}], groups: [], notes: "Opposite to #OLTP"});
 rawMap.set("OOP", {title: "Object Oriented Programming", groups: ["software"]});
 rawMap.set("OOTB", {title: "Out of the Box", groups: []});
 rawMap.set("OS1", {title: "Operating System", th: "OS", groups: ["OS"]});
@@ -438,6 +439,7 @@ rawMap.set("x86", {title: "Intel 80x86", groups: ["processor-architecture"], not
 rawMap.set("x64", {title: "AMD64, Intel 64", groups: ["processor-architecture"], notes: "Extension of #x86"});
 rawMap.set("XDR",   {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tended Detection and Response"}], groups: ["security"]});
 rawMap.set("XHTML", {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible HyperText Markup Language"}], groups: ["ml"]});
+rawMap.set("XSLT", {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible  Stylesheet Language Transformations"}], groups: ["language"], notes: [{tag: "a", href: "referenceBook.html#declarative", text: "Declarative"}]});
 rawMap.set("XML",   {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible Markup Language"}], groups: ["ml"]});
 rawMap.set("XMPP",  {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible Messaging and Presence Protocol"}], groups: ["communication-protocol"], notes: "Jabber"});
 

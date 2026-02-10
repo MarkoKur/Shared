@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">Example</title>
+
+	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
+	<script src="../3dparty/highligthjs/highlight.min.js"></script>
+	<script src="../js/setTitle.js" defer></script>
+	<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <pre><code class="language-java">implementation 'io.github.resilience4j:resilience4j-spring-boot3:2.0.2'
+
+resilience4j.bulkhead:
+  configs:
+    default:
+      maxConcurrentCalls: 1
+  instances:
+    backendA:
+      maxConcurrentCalls: 1
+
+@Bulkhead(name = "backendA", fallbackMethod = "getDefault")
+public Map&lt;String, String&gt; getCatalog() {
+ // Method definition
+}
+
+// fallback mechanism
+public List&lt;BaseDto&gt; getDefault(Throwable ex) {
+        log.error("Catalog service is busy : {}", ex.getLocalizedMessage());
+        log.debug("Returning default Catalog");
+        return new ArrayList<>();
+}
+	</code></pre>
+</body>
+</html>

@@ -17,7 +17,7 @@
 	<a href="all.html">SiteMap</a>
 	<div class="indent"></div>
 
-	<h3 id="monolith-microservices-up"><a href="#monolith-microservices">Monolith vs Microservices</a></h3>
+	<h3 id="monolithMicroservicesUp"><a href="#monolithMicroservices">Monolith vs Microservices</a></h3>
 
 	<p>
 		<b><em>Design pattern</em></b> is a general, <i>reusable</i> solution to a commonly occurring problem in many contexts in <i>software design</i>.
@@ -28,7 +28,7 @@
 		<summary><b>Creational</b> patterns are for object creation</summary>
 		<table class="collapse-border padding margin" >
 			<tr>
-				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+				<th>Name</th><th>Description</th><th class="width40pct">When to apply</th>
 			</tr>
 			<tr>
 				<td id="builderUp"><a href="#builder">Builder</a></td>
@@ -441,7 +441,7 @@
 	<hr class="height2">
 
 	<div>
-		<h3 id="monolith-microservices"><a href="#monolith-microservices-up">Monolith vs Microservices</a></h3>
+		<h3 id="monolithMicroservices"><a href="#monolithMicroservicesUp">Monolith vs Microservices</a></h3>
 		<table class="collapse-border padding">
 			<tr>
 				<th colspan="2">Characteristics</th>
@@ -535,6 +535,65 @@
 				<th colspan="2" class="grey">Clear ownership</th>
 				<td class="back-light-green">Yes</td>
 				<td class="back-pink">Lack</td>
+			</tr>
+		</table>
+
+		<div class="indent"></div>
+		<table class="collapse-border padding th">
+			<caption>Microservices</caption>
+			<tr><th colspan="2" class="black">Aspect</th><th class="black">Description</th><th class="black">Implementations</th></tr>
+			<tr>
+				<th colspan="2">Service Discovery/Registry</th>
+				<td>Services (that run inside the same env) can communicate with each other without Gateway, just using service discovery</td>
+				<td>Netflix Eureka</td>
+			</tr>
+			<tr>
+				<th colspan="2">API Gateway</th>
+				<td>
+					Reverse Proxy / Load Balancer / Auth<br>
+					Reverse Proxy - the entry point for the service calls from the outer network
+				</td>
+				<td>spring-cloud-starter-gateway</td>
+			</tr>
+			<tr>
+				<th rowspan="7">Fault Tolerance</th>
+			</tr>
+			<tr>
+				<th></th><td></td>
+				<td>Resilience4j, <small class="grey">Hystrix(obsolete)</small></td>
+			</tr>
+			<tr>
+				<th>Circuit Breaker</th>
+			</tr>
+			<tr>
+				<th>Retry</th>
+			</tr>
+			<tr>
+				<th>Timeout(waiting)</th>
+			</tr>
+			<tr>
+				<th>Bulkhead</th>
+				<td></td>
+				<td>
+					<details>
+						<summary>Example</summary>
+						<iframe src="parts/BulkHeadExample.html" class="iframe-60vw height-400"></iframe>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<th>Fallback</th>
+			</tr>
+
+			<tr>
+				<th colspan="2">Message Broker / Event&nbsp;Bus</th>
+				<td></td>
+				<td>Apache Kafka, Apache ActiveMQ, RabbitMQ</td>
+			</tr>
+			<tr>
+				<th colspan="2">Config Server</th>
+				<td></td>
+				<td></td>
 			</tr>
 		</table>
 	</div>
