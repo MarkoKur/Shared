@@ -51,6 +51,7 @@
 				<summary></summary>
 				<h3><a href="#dbDeadlocks" id="dbDeadlocksUp">Database Deadlocks</a></h3>
 				<h2><a href="#dbNormalForms" id="dbNormalFormsUp">Database normal forms</a></h2>
+				<h3><a href="#deployment" id="deploymentUp">Deployment</a></h3>
 				<h2>Data Structures</h2>
 					<h3 class="padding-left-1em"><a href="#tree-data-structures">Tree Data Structures</a></h3>
 				<h3><a href="#diamondProblem" id="diamondProblemUp">Diamond problem</a></h3>
@@ -1025,6 +1026,22 @@
 	 3NF: All <span class="green">non-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
 	EKNF: All <span class="dark-green">non-elementary-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
 	BCNF: All columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+</div>
+<hr>
+
+<div id="deployment">
+	<h3><a href="#deploymentUp">Deployment</a></h3>
+	<em><span class="blue">Blue</span>-<span class="green">Green</span></em>
+	<ul class="margin-top-0">
+		<li>Initial: <span class="green">Green</span> server(node) is working with old build</li>
+		<li>Phase 0: <span class="blue">Blue</span> server(node) is deployed with the new code</li>
+		<li>Phase 1: <span class="blue">Blue</span> server is tested in the internal network</li>
+		<li>Phase 2: All traffic is switched to the <span class="blue">Blue</span> Server</li>
+		<li>Phase 3: Final test on production at <span class="blue">Blue</span></li>
+		<li>Phase 4: If all is OK, then <span class="green">Green</span> server is turned off. If not, traffic is switched back to <span class="green">Green</span> server</li>
+	</ul>
+
+	<em>Canary</em> - traffic is switched step by step with observation for failures. 25%, 50%, 75%, 100%(stable).
 </div>
 <hr>
 
