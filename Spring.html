@@ -5,6 +5,8 @@
 	<title>Spring Notes</title>
 	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
 	<link rel="stylesheet" href="css/common.css">
+	<script src="js/glossaryData.js"></script>
+	<script src="js/glossary.js" async></script>
 </head>
 <body>
 
@@ -39,11 +41,23 @@ By default, Spring and Spring Boot create beans eagerly, not lazily.<br>
 <code>@SpringBootApplication(lazyInitialization = true)</code>
 <hr>
 
-<code>@EnableWebSecurity</code> to use Spring Security in web applications<br>
-<code>@Bean public SecurityFilterChain securityFilterChain(HttpSecurity http)</code>
+Spring Security in web applications (turned on by default in SB): <br>
+<code>@EnableWebSecurity</code> for <span class="get-title">MVC</span><br>
+<code>@Bean public SecurityFilterChain securityFilterChain(HttpSecurity http)</code><br>
+<div class="indent"></div>
+<code>@EnableWeb<b>Flux</b>Security</code> for reactive model <br>
+<code>@Bean public Security<b>Web</b>FilterChain securityFilterChain(Server<b>Http</b>Security http)</code><br>
+<div class="indent"></div>
+Several security configurations can be set in the same time.<br>
+Can be separated using <code>@Profile</code><br>
+or using <code>securityMatcher(..)</code>  and in case of non <code>@RestController</code> mappings (Custom servlets, H2-Console etc) - use <code>AntPathRequestMatcher</code> in addition.<br>
+Also use <code>@Order(1)</code> for method ordering.<br>
+<div class="indent"></div>
+Lambda <span class="get-title" data-id="2">DSL</span> allows to get rid of an <code>and()</code> concatenation method,
+when building <code>SecurityFilterChain</code> from <code>HttpSecurity</code>.<br>
 <hr>
 
-Spring Web MVC<br>
+Spring Web <span class="get-title">MVC</span><br>
 <code>
 	@Autowired ServletContext servletContext;<br>
 	@Autowired ServletConfig servletConfig;<br>
@@ -61,6 +75,19 @@ Circular dependencies actually throw an exception, but can be workaround using S
 <hr>
 
 <code>@ConfigurationProperties</code> improvement for <code>@Value</code>
+<hr>
+
+<code class="code">@Value</code>
+<div class="indent"></div>
+<code>@Value("${config.environment:ERROR}") String environment;</code>
+<div class="indent4"></div>
+<code>public AdyenClient() { // constructor<br>
+	<span class="padding-left-1em">log.info("Environment: " + environment); // null value!</span><br>
+	}
+</code><br>
+<em>environment</em> var is not injected simply because the injection happens <b>after</b> the instance is created using constructor.<br>
+Working variant:<br>
+<code>public AdyenClient(@Value("${config.environment:ERROR}") String environment) {}</code>
 <hr>
 
 <div>

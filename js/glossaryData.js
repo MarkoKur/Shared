@@ -40,7 +40,7 @@ rawMap.set("ARM", { html: [{text: "arm"}, {tag: "hr", class: "margin-3"},
 rawMap.set("ACP", { title: "Atomic Commitment Protocol ", groups: ["commitment-protocol", "db"]});
 rawMap.set("ACID", {title: "Atomicity Consistency Isolation Durability", groups: ["db-tx"]});
 rawMap.set("ACL", {title: "Access Control List", groups: []});
-rawMap.set("AES", {title: "Advanced Encryption Standard", groups: [], notes: "#DES"});
+rawMap.set("AES", {title: "Advanced Encryption Standard", groups: ["cryptography"], notes: "#DES"});
 rawMap.set("AJAX", {title: "Asynchronous JavaScript And XML", groups: ["javascript"]});
 rawMap.set("AKA", {title: "Also Known As", groups: []});
 rawMap.set("ANSI", {title: "American National Standards Institute", groups: []});
@@ -84,6 +84,8 @@ rawMap.set("CMS1", {title: "Content Management System", th: "CMS", groups: ["CMS
 rawMap.set("COO", {title: "Chief Operating Officer", groups: ["role"]});
 rawMap.set("CORBA", {title: "Common Object Request Broker Architecture", groups: []});
 rawMap.set("CORS", {title: "Cross Origin Resource Sharing", groups: []});
+rawMap.set("CQRS", {title: "Command Query Responsibility Segregation", groups: []});
+rawMap.set("CQS", {title: "Command Query Separation", groups: []});
 rawMap.set("CPU", {title: "Central Processing Unit", groups: ["processor"]});
 rawMap.set("CISC", {title: "Complex Instruction Set Computer", groups: ["processor-architecture"]});
 rawMap.set("RISC", {title: "Reduced Instruction Set Computer", groups: ["processor-architecture"]});
@@ -100,6 +102,7 @@ rawMap.set("CTO", {title: "Chief Technical Officer", groups: ["role"]});
 rawMap.set("CVC", {title: "Centralized Version Control", groups: ["version-control"]});
 rawMap.set("CVS", {title: "Concurrent Versions System", groups: ["version-control"]});
 rawMap.set("CoE", {title: "Contract of Employment", groups: ["business"]});
+rawMap.set("cglib", {title: "Code Generation Library", groups: ["code"]});
 
 rawMap.set("DaaS", {title: "Desktop as a Service", groups: ["aaS"]});
 rawMap.set("DRaaS", {title: "Disaster Recovery as a Service", groups: ["aaS"]});
@@ -113,7 +116,7 @@ rawMap.set("DBMS", {title: "DataBase Management System", groups: ["db"]});
 rawMap.set("DCL", {title: "Data Control Language", groups: ["sql-subgroup"]});
 rawMap.set("DDL", {title: "Data Definition Language", groups: []});
 rawMap.set("DDPA", {title: "Dutch Data Protection Authority", groups: ["GDPR"]});
-rawMap.set("DES", {title: "Data Encryption Standard", groups: [], notes: "Obsolete, see #AES"});
+rawMap.set("DES", {title: "Data Encryption Standard", groups: ["cryptography"], notes: "Obsolete, see #AES"});
 rawMap.set("DevOps", {title: "Development and Operations", groups: ["software"]});
 rawMap.set("DHCP", {title: "Dynamic Host Configuration Protocol", groups: ["communication-protocol"]});
 rawMap.set("DIMM", {title: "Dual In-line Memory Module", groups: ["memory"]});
@@ -136,6 +139,7 @@ rawMap.set("ETF", { title: "Exchange-Traded Fund", groups: []});
 rawMap.set("E2E", {title: "End to End", groups: []});
 rawMap.set("EAP", {title: "Extensible Authentication Protocol", groups: ["authentication-protocol"]});
 rawMap.set("ECMA", {title: "European Computer Manufacturers Association", groups: []});
+rawMap.set("EMEA", {title: "Europe, Middle East, Africa", groups: [], notes: "APAC todo"});
 rawMap.set("EDR", {title: "Endpoint Detection and Response", groups: ["security"]});
 rawMap.set("EEPROM", {title: "Electrically Erasable Programmable Read-Only Memory", groups: ["memory"]});
 rawMap.set("EPS", {title: "Encapsulated PostScript", groups: ["graphics"]});
@@ -209,6 +213,8 @@ rawMap.set("ISP", {title: "Internet Service Provider", groups: []});
 rawMap.set("IoCs", {title: "Indicators of Compromise", groups: ["security"]});
 
 rawMap.set("JAX-WS", { title: "Java #API for #XML Web Services", groups: ["java"], classes: ["nowrap"]});
+rawMap.set("JAX-RS", { html: [{text: "Jakarta RESTful Web Services "}, {tag: "small", class: "grey", text: "(Java #API for RESTful Web Services)"}], groups: ["java"], classes: ["nowrap"]});
+rawMap.set("JCEF", { title: "Java Chromium Embedded Framework", groups: ["java"]});
 rawMap.set("JIT", { title: "Just-In-Time", groups: ["java", "computing"]});
  rawMap.set("AOT", { title: "Ahead-Of-Time", groups: ["java", "computing"]});
 rawMap.set("JAAS", {title: "Java Authentication and Authorization Service", groups: ["java"]});
@@ -276,6 +282,7 @@ rawMap.set("MSDN", {title: "MicroSoft Developer Network", groups: [], notes: "#M
 rawMap.set("MSRP", {title: "Manufacturer's Suggested Retail Price", groups: [], notes: "List price"});
 rawMap.set("mutex", {title: "Mutual exclusion", th: "Mutex", classes: ["skip"], groups: ["concurrency"]});
 rawMap.set("MVP", {title: "Minimum Viable Product", groups: []});
+rawMap.set("MVC", {title: "Model View Controller", groups: ["design-pattern"]});
 
 rawMap.set("NaaS", {title: "Network as a Service", groups: ["aaS"]});
 rawMap.set("NAT", {title: "Network Address Translation", groups: ["network"]});
@@ -357,6 +364,7 @@ rawMap.set("RoR1", {title: "Return on Revenue", th:"RoR", groups: ["financial-me
 rawMap.set("ROR", {title: "Research Organization Registry", groups: [], svg: "ror"});
 rawMap.set("RTE", {title: "RunTime Environment", groups: ["software"]});
 rawMap.set("RTE1", {title: "RunTime Exception", th:"RTE", groups: ["java"]});
+rawMap.set("RSA", {title: "Rivest–Shamir–Adleman", groups: ["cryptography"], notes: "Asymmetric"});
 
 rawMap.set("SHA", {title: "Secure Hash Algorithms", groups: ["security"]});
 rawMap.set("SLA", {title: "Service Level Agreement", groups: ["service-level"]});
@@ -386,7 +394,7 @@ rawMap.set("SRP", {title: "Single Responsibility Principle", groups: [], notes: 
 rawMap.set("SSD", {title: "Solid State Drive", groups: ["persistence"]});
 rawMap.set("SSH", {title: "Secure Shell Protocol", groups: ["communication-protocol", "security"]});
 rawMap.set("SSID", {title: "Service Set IDentifier", groups: ["identifier"]});
-rawMap.set("SSL", {title: "Secure Sockets Layer", groups: ["protocol", "cryptographic-protocol"], notes: "Deprecated"});
+rawMap.set("SSL", {title: "Secure Sockets Layer", groups: ["cryptographic-protocol"], notes: "Deprecated"});
 rawMap.set("SSN", {title: "Social Security Number", groups: []});
 rawMap.set("SSO", {title: "Single Sign-On", groups: ["security"]});
 rawMap.set("STFU", {title: "Shut The Fuck Up", groups: ["slang"]});
@@ -454,6 +462,7 @@ glossaryGroupMap.set("aaS", {text: "[ #SaaS [ #PaaS #CaaS [ #Iaas ]]]"});
 glossaryGroupMap.set("db", {subGroups: ["db-tx"]});
 glossaryGroupMap.set("ql", {subGroups: ["sql"]});
 glossaryGroupMap.set("sql", {aliases: ["sql-subgroup"]});
+glossaryGroupMap.set("cryptography", {subGroups: ["cryptographic-protocol"]});
 glossaryGroupMap.set("processor", {subGroups: ["processor-architecture"]});
 glossaryGroupMap.set("computer", {subGroups: ["processor", "memory", "bus", "video", "pc-interface", "persistence"]});
 glossaryGroupMap.set("protocol", {subGroups: ["communication-protocol",

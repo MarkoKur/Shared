@@ -3,17 +3,19 @@ function mouseOverForTitle(event) {
 		const withId = event.target.dataset.id ? event.target.dataset.id : '';
 		const key = event.target.dataset.case == undefined ? event.target.innerHTML : event.target.innerHTML.toUpperCase();
 		const value = rawMap.get(key + withId);
-		if (value.title) {
+		if (value === undefined) {
+			console.error("No value for given key: '" + key + withId + "'");
+		} else if (value.title) {
 			event.target.title = value.title;
-			event.target.removeEventListener("mouseover", mouseOverForTitle);
+
 		} else if (value.html) {
 			let innerText = "";
 			value.html.forEach( html => {
 				innerText += html.text;
 			});
 			event.target.title = innerText;
-			event.target.removeEventListener("mouseover", mouseOverForTitle);
 		}
+		event.target.removeEventListener("mouseover", mouseOverForTitle);
 	}
 }
 
