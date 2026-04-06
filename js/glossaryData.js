@@ -103,6 +103,7 @@ rawMap.set("CVC", {title: "Centralized Version Control", groups: ["version-contr
 rawMap.set("CVS", {title: "Concurrent Versions System", groups: ["version-control"]});
 rawMap.set("CoE", {title: "Contract of Employment", groups: ["business"]});
 rawMap.set("cglib", {title: "Code Generation Library", groups: ["code"]});
+rawMap.set("C4", {title: "Context, Containers, Components, Code", groups: [], notes: "Diagram"});
 
 rawMap.set("DaaS", {title: "Desktop as a Service", groups: ["aaS"]});
 rawMap.set("DRaaS", {title: "Disaster Recovery as a Service", groups: ["aaS"]});
@@ -412,6 +413,7 @@ rawMap.set("TLS", {title: "Transport Layer Security", groups: ["cryptographic-pr
 rawMap.set("TSMC", {title: "Taiwan Semiconductor Manufacturing Company", groups: ["semiconductor-company"]});
 
 rawMap.set("UoW", {title: "Unit of Work", groups: ["jpa", "dp"]});
+rawMap.set("UAT", {title: "User Acceptance Testing", groups: ["testing"]});
 rawMap.set("USE", {title: "Utilization, Saturation, Errors", groups: ["metrics"]});
 rawMap.set("URI", {title: "Uniform Resource Identifier", groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
 rawMap.set("URL", {title: "Uniform Resource Locator",    groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});

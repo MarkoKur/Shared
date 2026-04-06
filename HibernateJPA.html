@@ -50,7 +50,7 @@
 			<details>
 				<summary></summary>
 				<h3 id="mapsIdUp"><a href="#mapsId"><code>@MapsId</code></a></h3>
-				<h3 id="mappedByUp"><a href="#mappedByUp"><code>mappedBy Todo</code></a></h3>
+				<h3 id="mappedByUp"><a href="#mappedBy"><code>mappedBy</code></a></h3>
 			</details>
 		</td>
 	</tr>
@@ -251,6 +251,23 @@
 			<b>@MapsId</b> @OneToOne private Person person;
 		}</pre>
 
+</div>
+<hr>
+
+<div id="mappedBy">
+	<h3><a href="#mappedByUp"><code>mappedBy</code></a></h3>
+	Allows to not create auxiliary connection table to make <code>@OneToMany</code> relation.<br>
+	<pre>		import jakarta.persistence.*;
+
+		public class Sku {
+			@ManyToOne
+			private ProductJpa product;
+		}
+
+		public class Product {
+			@OneToMany(<b>mappedBy</b> = "product")
+			private Set&lt;Sku> skus;
+		}</pre>
 </div>
 <hr>
 
