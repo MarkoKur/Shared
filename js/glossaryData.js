@@ -52,7 +52,7 @@ rawMap.set("ASIC", {title: "Application-Specific Integrated Circuit", groups: ["
 rawMap.set("ATG", {title: "Art Technology Group", groups: ["atg"], notes: "Oracle Commerce"});
 rawMap.set("AWT", {title: "Abstract Window Toolkit", groups: ["java"]});
 rawMap.set("AML", {title: "Anti-Money Laundering", groups: ["banking"]});
-
+rawMap.set("AMPQ", {title: "Advanced Message Queuing Protocol", groups: ["protocol"]});
 
 rawMap.set("BaaS", { title: "Backend as a Service", groups: ["aaS"]});
 rawMap.set("BCP", {title: "Business Continuity Plan", groups: []});
@@ -104,6 +104,7 @@ rawMap.set("CVS", {title: "Concurrent Versions System", groups: ["version-contro
 rawMap.set("CoE", {title: "Contract of Employment", groups: ["business"]});
 rawMap.set("cglib", {title: "Code Generation Library", groups: ["code"]});
 rawMap.set("C4", {title: "Context, Containers, Components, Code", groups: [], notes: "Diagram"});
+rawMap.set("CI/CD", {title: "Continuous Integration / Continuous (Delivery/Deployment)", groups: [], notes: "software"});
 
 rawMap.set("DaaS", {title: "Desktop as a Service", groups: ["aaS"]});
 rawMap.set("DRaaS", {title: "Disaster Recovery as a Service", groups: ["aaS"]});
@@ -130,7 +131,7 @@ rawMap.set("DOM", {title: "Document Object Model", groups: [], notes: "#XML, #W3
 rawMap.set("DP", {title: "Design Pattern", groups: ["software"]});
 rawMap.set("DQL", {title: "Data/Database Query Language", groups: ["ql"]});
 rawMap.set("DRY", {title: "Don't repeat yourself", groups: ["design"]});
-
+rawMap.set("DDD", {title: "Domain-Driven Design", groups: ["design", "software"]});
 rawMap.set("DTD", {title: "Document Type Definition", groups: ["ml"]});
 rawMap.set("DVC", {title: "Distributed Version Control", groups: ["version-control"]});
 
@@ -252,6 +253,7 @@ rawMap.set("K8s", {title: "Kubernetes", groups: ["container-orchestration"], not
 rawMap.set("KISS", {html: [{text: "Keep it simple, stupid!"}, {tag: "hr", class: "margin-3"}, {text: "Keep it short & simple"}], groups: ["design"]});
 rawMap.set("KTLO", {title: "Keeping The Lights On", groups: []});
 rawMap.set("KYC", {title: "Know Your Customer", groups: ["banking"]});
+rawMap.set("KPI", {title: "Key Performance Indicator", groups: []});
 
 rawMap.set("LED", {title: "Light Emitting Diode", groups: []});
 rawMap.set("LIFO", {title: "Last In First Out", groups: ["cache"], notes: "LIFO is a Stack"});
@@ -442,6 +444,7 @@ rawMap.set("WORE", {title: "Write Once, Run Everywhere", groups: ["java"], notes
 rawMap.set("WPA", {title: "Wi-Fi Protected Access", groups: [], notes: "WPA2, WPA3"});
 rawMap.set("WWW", {title: "World Wide Web", groups: ["internet"]});
 rawMap.set("WYSIWYG", {title: "What You See Is What You Get", groups: []});
+rawMap.set("WebDAV", {title: "Web Distributed Authoring and Versioning", groups: []});
 
 rawMap.set("XSS", {html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
 rawMap.set("XHR", {title: "XMLHttpRequest", groups: ["javascript"]});

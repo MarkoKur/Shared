@@ -19,3 +19,4 @@ referenceBookMap.set("lingua_franca", {th:"Lingua franca", html: [{text: "Bridge
 																  {tag: "span", class: "get-title", text: "LWC"}], groups: []});
 
 referenceBookMap.set("scalability", {th:"Scalability", title: "Is the property of a system to handle a growing amount of work", groups: []});
+referenceBookMap.set("one-off", {th:"One-off", title: "Made or occurring only once, independent of any pattern", groups: []});

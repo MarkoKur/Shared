@@ -14,6 +14,21 @@
 <a href="all.html">SiteMap</a>
 <div class="indent"></div>
 
+<h4>Config file merge</h4>
+<ul class="ul-with-margin">
+    <li>
+        <code class="code">src/main/application.yaml </code><br>
+        <code class="code">src/test/application.yaml</code><code>// will replace main/application.yaml</code>
+    </li>
+    <li>
+        Using profiles:<br>
+        <code class="code">src/main/application.yaml </code><br>
+        <code class="code">src/test/application-test.yaml</code><br>
+        <code class="code">@ActiveProfiles("test") </code><code>// will merge yaml files</code>
+    </li>
+</ul>
+<hr>
+
 <code class="code">@EnableAutoConfiguration</code><br>
 attempts to automatically configure your Spring application based on the jar dependencies that you have added.<br>
 Example: if <code>HSQLDB</code> is on your classpath, and you have not manually configured any database connection beans,
