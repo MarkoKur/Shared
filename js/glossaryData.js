@@ -379,6 +379,7 @@ rawMap.set("SAML", {title: "Security Assertion Markup Language", groups: ["ml", 
 rawMap.set("SASL", {title: "Simple Authentication and Security Layer", groups: ["data-security"]});
 rawMap.set("SATA", {title: "Serial Advanced Technology Attachment", groups: ["pc-interface"]});
 rawMap.set("SAX", {title: "Simple #API for #XML", groups: [], notes: "Is an alternative to #DOM"});
+rawMap.set("SRE", {title: "Site Reliability Engineer", groups: ["software", "role"]});
 rawMap.set("SDE", {title: "Software Developer Engineer", groups: ["software", "role"], notes: "Narrower than #SWE"});
 rawMap.set("SWE", {title: "SoftWare Engineer", groups: ["software", "role"], notes: "Broader than #SDE"});
 rawMap.set("SDLC", {title: "Software Development Life Cycle", groups: ["software"]});
@@ -412,6 +413,7 @@ rawMap.set("TCP-IP", {title: "Transmission Control Protocol / Internet Protocol"
 rawMap.set("TDD", {title: "Test-Driven Development", groups: ["software", "tdd"]});
 rawMap.set("TIFF", {title: "Tagged Image File Format", groups: ["graphics"]});
 rawMap.set("TLS", {title: "Transport Layer Security", groups: ["cryptographic-protocol"]});
+rawMap.set("mTLS", {title: "Mutual Transport Layer Security", groups: ["cryptographic-protocol"]});
 rawMap.set("TSMC", {title: "Taiwan Semiconductor Manufacturing Company", groups: ["semiconductor-company"]});
 
 rawMap.set("UoW", {title: "Unit of Work", groups: ["jpa", "dp"]});

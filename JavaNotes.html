@@ -10,7 +10,10 @@
 
 		<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
 		<script src="3dparty/highligthjs/highlight.min.js"></script>
-		<script>hljs.highlightAll();</script>
+		<script>
+			//noinspection JSUnresolvedVariable
+			hljs.highlightAll();
+		</script>
 	</head>
 	<body>
 	<div class="indent"></div>
@@ -833,7 +836,7 @@
 					<td>allOf</td>
 					<td><code class="code">CompletableFuture&lt;Void> allOf(CompletableFuture&lt;?>... cfs)</code></td>
 					<td colspan="3">Returns a new CompletableFuture that is completed when <b>all</b> of the given CompletableFutures complete</td>
-					<td rowspan="7" class="java8">1.8</td>
+					<td rowspan="3" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td>anyOf</td>
@@ -846,6 +849,13 @@
 					<td colspan="3">Returns a new CompletableFuture that is already completed with the given value</td>
 				</tr>
 				<tr>
+					<td>failedFuture</td>
+					<td><code>&lt;U> <span class="code">CompletableFuture</span>&lt;U> <b class="code">failedFuture</b>(<span class="code">Throwable</span> ex)</code></td>
+					<td colspan="3">Returns a new CompletableFuture that is already completed exceptionally with the given exception</td>
+					<td rowspan="1" class="java9">9</td>
+				</tr>
+
+				<tr>
 					<td rowspan="2">runAsync</td>
 					<td><code class="code">CompletableFuture&lt;Void> runAsync(Runnable runnable)</code></td>
 					<td colspan="3" rowspan="2">
@@ -853,6 +863,7 @@
 						<span class="warning-sign blue"></span> The task execution starts right after <em>runAsync/supplyAsync</em> method call,
 						it does not wait for <em>get/join</em> methods invocations to start working on the task
 					</td>
+					<td rowspan="4" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td><code class="code">CompletableFuture&lt;Void> runAsync(Runnable r, Executor e)</code></td>
@@ -981,7 +992,7 @@
 						If <span class="green">this CF</span> completes <span class="tomato">exceptionally</span>, the <em>exception</em> is passed to the provided <em>Function</em>,
 						then the <span class="blue">returned CF</span> completes with the result value of that <em>Function</em>
 					</td>
-					<td rowspan="11" class="java8 text-align-center">1.8</td>
+					<td rowspan="12" class="java8 text-align-center">1.8</td>
 				</tr>
 
 				<tr>
@@ -1051,6 +1062,21 @@
 					<td><code class="code">CompletableFuture&lt;T> toCompletableFuture()</code></td>
 					<td><code class="code">CompletionStage</code></td>
 					<td colspan="2">The purpose of the method is to get the <b><i>CF</i></b> instance from the CompletionStage</td>
+				</tr>
+
+				<tr>
+					<td>when*</td>
+					<td>
+						<code class="code">when<b>Complete</b>(BiConsumer&lt;T,<span class="exception">Throwable</span>> <span class="dark-green">action</span>)<br>
+							// + Async, + Executor
+						</code>
+					</td>
+					<td><code class="code">CompletionStage</code></td>
+					<td colspan="2">
+						1. Returns a new CF<br>
+						2. With the same result or exception as this CF<br>
+						3. When this CF completes: executes the given <code>action</code>
+					</td>
 				</tr>
 			</table>
 
