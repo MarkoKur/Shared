@@ -9,6 +9,13 @@
 	<script src="js/toc.js"></script>
 	<script src="js/glossaryData.js"></script>
 	<script src="js/glossary.js"></script>
+	<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
+
+	<script src="3dparty/highligthjs/highlight.min.js"></script>
+	<script>
+		//noinspection JSUnresolvedVariable
+		hljs.highlightAll();
+	</script>
 </head>
 <body>
 <a href="all.html">SiteMap</a>
@@ -61,6 +68,16 @@
 				<summary></summary>
 				<h3 id="mapsIdUp"><a href="#mapsId"><code>@MapsId</code></a></h3>
 				<h3 id="mappedByUp"><a href="#mappedBy"><code>mappedBy</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>N</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2 id="nPlus1Up"><a href="#nPlus1">"N + 1" Problem</a></h2>
 			</details>
 		</td>
 	</tr>
@@ -326,6 +343,72 @@
 			@OneToMany(<b>mappedBy</b> = "product")
 			private Set&lt;Sku> skus;
 		}</pre>
+</div>
+<hr>
+
+<div id="nPlus1">
+	<h2><a href="#nPlus1Up">"N + 1" Problem</a></h2>
+	Actually the better name for the problem is <b>1 + N</b>.
+	<pre><code class="language-java">		@Entity
+		class Author {
+			@ManyToMany(fetch = FetchType.LAZY)
+			Set&lt;Book> books;
+		}
+
+		List&lt;Author> authors = authorRepository.findAll();
+		for(Author a: authors) {
+			a.getBooks();
+		}</code></pre>
+
+	In this case we will get <b>1</b> SQL query to fetch <em>authors</em>
+	and <b>N</b> SQL queries to fetch theirs <em>books</em>,
+	where <b>N</b> is the number of <em>authors</em>.
+
+	<div class="indent"></div>
+
+	<table class="collapse-border padding">
+		<caption>Solutions</caption>
+		<tr>
+			<th class="green">Solution</th><th class="red">Not a solution</th>
+		</tr>
+		<tr>
+			<td>
+				<code class="code">
+					@Query("SELECT <span class="dark-orange">[DISTINCT]</span> o FROM Order o <span class="green">JOIN FETCH</span> o.customer c") // It's an INNER Join<br>
+					List&lt;Order> findAllWithCustomer();<br>
+				</code>
+				<code>DISTINCT</code> for Hibernate 4 & 5. Hibernate 6 - is OK
+			</td>
+			<td><code>FetchType.<span class="red">EAGER</span></code></td>
+		</tr>
+		<tr>
+			<td>
+				<code class="code">
+					<span class="green">@EntityGraph</span>(attributePaths = "customer")<br>
+					List&lt;Order> findAll();
+				</code>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="teal">Partial solution:</span><br>
+				<code class="code">@BatchSize(size = 50)</code><br>
+				It will replace: <br>
+				<code>
+					SELECT * FROM customers WHERE id = 1;<br>
+					SELECT * FROM customers WHERE id = 2;<br>
+					...<br>
+				</code>
+				with:
+				<code>SELECT * FROM customers WHERE id</code><code class="green"> IN (1,2,3,...,50)</code>
+			</td>
+		</tr>
+	</table>
+
+	<div class="indent4"></div>
+	<span class="warning-sign fs18 orange"></span>
+	In case of usage multiple <code>JOIN FETCH</code> clause, use <code class="code b">Set</code> on mappings:<br>
+	<code>@ManyToMany <b>Set</b>&lt;Book> books;</code> to avoid <code class="exception">MultipleBagFetchException</code>
 </div>
 <hr>
 
