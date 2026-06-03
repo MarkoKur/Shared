@@ -62,8 +62,7 @@
 
 
 .border, .border th , .border td, .collapse-border, .collapse-border th, .collapse-border td {
-	border: 1px solid;
-	border-color: LightGray;
+	border: 1px solid LightGray;
 }
 .border-dark-grey, .border-dark-grey th, .border-dark-grey td{
 	border-color: DarkGray;
@@ -105,7 +104,7 @@ table.th th:not(.black) { color: DarkSlateGrey }
 .margin-top-3    {   margin-top: 3px}
 .margin-top-0    {   margin-top: 0}
 .margin-top-bottom-3 {margin-top: 3px; margin-bottom: 3px;}
-.margin-top-bottom-0 {margin-top: 0px; margin-bottom: 0px;}
+.margin-top-bottom-0 {margin-top: 0;   margin-bottom: 0;}
 
 .text-align-center  { text-align: center }
 .text-align-left    { text-align: left }
@@ -210,7 +209,7 @@ ol.ol-with-margin > li {margin: 10px 0;}
 .width20pct  {width: 20%;}
 .width5pct   {width: 5%;}
 
-.height-2, height2 {height: 2px}
+.height-2, .height2 {height: 2px}
 .height-220  {height: 220px}
 .height-300  {height: 300px}
 .height-400  {height: 400px}

@@ -5,6 +5,7 @@
 	<title>HibernateJPA</title>
 	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
 	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/animatedTarget.css">
 	<script src="js/toc.js"></script>
 	<script src="js/glossaryData.js"></script>
 	<script src="js/glossary.js"></script>
@@ -40,6 +41,15 @@
 			<details>
 				<summary></summary>
 				<h2 id="lifecycleUp"><a href="#lifecycle">Hibernate/JPA Entity Lifecycle</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>J</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2 id="jpaRepositoryUp"><a href="#jpaRepository"><code>JpaRepository</code></a></h2>
 			</details>
 		</td>
 	</tr>
@@ -205,6 +215,54 @@
 </div>
 <hr>
 
+<div id="jpaRepository">
+	<h2><a href="#jpaRepositoryUp"><code>JpaRepository</code></a></h2>
+
+	<table class="collapse-border padding">
+		<tr><th>Method</th><th>Returns</th><th>Description</th></tr>
+		<tr>
+			<td><code class="code">findById(id)</code></td><td><code>Optional</code></td>
+			<td>Eager fetch right away</td>
+		</tr>
+		<tr>
+			<td><code class="code" id="getReferenceById">getReferenceById(id)</code></td><td>entity</td>
+			<td>
+				Lazy proxy, will make first call to database at first access of some field.
+				This is why it returns <code class="exception">LazyInitializationException</code>
+				when is not inside a <a href="#transactional">transaction</a>.
+			</td>
+		</tr>
+	</table>
+
+	<div class="indent"></div>
+	<br>
+
+	<table class="collapse-border padding">
+		<caption>Examples</caption>
+		<tr>
+			<td>
+				<code class="code">Optional&lt;Entity> optional = repository.findById(1L);</code><br>
+				<code>parentEntity.setChildEntity(optional.get())</code><br>
+				<code>parentEntityRepository.save(parentEntity);</code>
+			</td>
+			<td>
+				Makes 1 SQL Select query and 1 SQL Insert
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<code class="code">Entity entity = repository.getReferenceById(1L);</code><br>
+				<code>parentEntity.setChildEntity(entity)</code><br>
+				<code>parentEntityRepository.save(parentEntity);</code>
+			</td>
+			<td>
+				Make only 1 SQL Insert, and will throw an <code class="exception">Exception</code> if <code>id</code> does not exist
+			</td>
+		</tr>
+	</table>
+</div>
+<hr>
+
 <div id="lifecycle">
 	<h2><a href="#lifecycleUp">Hibernate/JPA Entity Lifecycle</a></h2>
 
@@ -367,7 +425,7 @@
 
 	<p>
 		<span class="green">&#8505;</span>
-		Allows to not close session while method, so <code>LazyInitializationException</code> will not occur.
+		Allows to not close session while method, so <code>LazyInitializationException</code> will not occur for <a href="#getReferenceById"><code>getReferenceById</code></a>
 	</p>
 
 	<div class="indent"></div>
