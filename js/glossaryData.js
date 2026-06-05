@@ -389,6 +389,7 @@ rawMap.set("SGML", {title: "Standard Generalized Markup Language", groups: ["ml"
 rawMap.set("SIMM", {title: "Single In-line Memory Module", groups: ["memory"]});
 rawMap.set("SLF4J", {title: "Simple Logging Facade for Java", groups: ["java"]});
 rawMap.set("SMTP", {title: "Simple mail transfer protocol", groups: ["protocol"]});
+rawMap.set("STEM", {title: "Science Technology Engineering Mathematics", groups: []});
 rawMap.set("SOAP", {html: [{tag: "small", text: "originally an acronym for"}, {text: " Simple Object Access Protocol"}], groups: ["communication-protocol"]});
 rawMap.set("SOLID", {title: "#SRP #OCP ; Liskov Substitution; Interface Segregation; Dependency Inversion", groups: ["software"]});
 rawMap.set("SPI", {title: "Service Provider Interface", groups: ["java"]});
