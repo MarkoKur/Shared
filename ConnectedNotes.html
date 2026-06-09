@@ -1249,8 +1249,27 @@
 		<tr><td colspan="2"><img src="svg/k8s/svc.svg" alt="service"></td><td>Service</td>
 			<td>
 				Expose groups of Pods over a network.
-				<em>port</em> - port to expose.
-				<em>targetPort</em> - inner port of the container
+				<div class="indent"></div>
+				spec.type:<br>
+				<ul class="margin-top-0 margin-bottom-0">
+					<li>
+						<em><b>ClusterIP</b></em> - default. Exposes the Service on a cluster-internal IP. Makes the Service only reachable from <em class="b">within</em> the cluster.
+						Across your whole cluster, every Service <code>ClusterIP</code> must be unique
+					</li>
+					<li>
+						<em><b>NodePort</b></em> - exposes the Service on each Node's IP at a static port.
+						So, it's like <em>ClusterIP</em>, but it takes Node's IP address to expose outside the cluster on <code>nodePort</code>.<br>
+						<code>port</code> is not exposed outside.
+					</li>
+					<li>
+						<em><b>LoadBalancer</b></em> - Exposes the Service externally using an external load balancer.
+						K8s does not directly offer a load balancing component;
+						you must provide one, or you can integrate with a cloud provider.<br>
+						<code>port</code> - port to expose.
+						<code>targetPort</code> - inner port of the container.
+					</li>
+					<li><em><b>ExternalName</b></em> - Maps the Service to the contents of the <code>externalName</code> field (for example, to the <em>api.foo.bar.example</em>)</li>
+				</ul>
 			</td>
 		</tr>
 		<tr><td colspan="2"><img src="svg/k8s/deploy.svg" alt="deploy"></td><td>Deployment</td><td>Creates pods and replica-sets</td></tr>
@@ -1286,6 +1305,8 @@
       name: {name}
       labels:
         app: {label}
+      annotations:
+        <em>custom/param</em>:
     spec:
       [replicas: {n}]
       selector:
@@ -1307,7 +1328,9 @@
 	kubectl create deployment <i>my-mongo-dpl</i> --image=<i>mongo</i><br>
 	kubectl delete deployment <i>my-mongo-dpl</i><br>
 	kubectl apply -f <i>mongo-secret.yaml</i><br>
-	kubectl get secret
+	kubectl get secret <br>
+	kubectl run debug --rm -it --image=busybox --restart=Never -- sh <span class="grey">// create a new pod for debug purpose, node will be selected automatically</span><br>
+	kubectl debug pod/<em>my-app</em> -it --image=busybox <span class="grey">// debug the "my-app" pod</span><br>
 	</code> <br>
 
 	<div class="indent"></div>
