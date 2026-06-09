@@ -1254,7 +1254,8 @@
 				<ul class="margin-top-0 margin-bottom-0">
 					<li>
 						<em><b>ClusterIP</b></em> - default. Exposes the Service on a cluster-internal IP. Makes the Service only reachable from <em class="b">within</em> the cluster.
-						Across your whole cluster, every Service <code>ClusterIP</code> must be unique
+						Across your whole cluster, every Service <code>ClusterIP</code> must be unique.
+						Load balancing is connection-based (not request-based) and is made across matching Pods and rely on Linux kernel.
 					</li>
 					<li>
 						<em><b>NodePort</b></em> - exposes the Service on each Node's IP at a static port.
@@ -1285,7 +1286,11 @@
 
 		<tr>
 			<td rowspan="3"><img src="svg/k8s/pod.svg" alt="pod"></td><td colspan="2">Pod</td>
-			<td>The smallest and simplest K8s object. It is a set of containers</td>
+			<td>
+				The smallest and simplest K8s object. It is a set of containers.<br>
+				<em>Horizontal Pod Autoscaling</em> - to deploy more Pods. <br>
+				<em>Vertical Pod Autoscaling</em> -  to assign more resources (RAM/CPU)
+			</td>
 		</tr>
 		<tr><td><img src="svg/k8s/pvc.svg" alt="pod"></td><td>Persistent Volume Claim</td><td>A request by a pod for storage</td></tr>
 		<tr><td><img src="svg/containerd.svg" alt="d" height="65"></td><td>Container</td><td>The lowest level of a microservice</td></tr>
@@ -1330,7 +1335,8 @@
 	kubectl apply -f <i>mongo-secret.yaml</i><br>
 	kubectl get secret <br>
 	kubectl run debug --rm -it --image=busybox --restart=Never -- sh <span class="grey">// create a new pod for debug purpose, node will be selected automatically</span><br>
-	kubectl debug pod/<em>my-app</em> -it --image=busybox <span class="grey">// debug the "my-app" pod</span><br>
+	kubectl debug pod/<em>my-app</em> -it --image=busybox <span class="grey">// debug the "my-app" pod <b class="i">by adding new container</b></span><br>
+	kubectl exec -it <em>pod</em> [-c <em>container</em>] -- bash <span class="grey">// the "log in" is being to the <em>container</em>, not to the <em>pod</em></span><br>
 	</code> <br>
 
 	<div class="indent"></div>
