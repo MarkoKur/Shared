@@ -1,7 +1,7 @@
 function mouseOverForTitle(event) {
 	if (!event.target.title) {
 		const withId = event.target.dataset.id ? event.target.dataset.id : '';
-		const key = event.target.dataset.case == undefined ? event.target.innerHTML : event.target.innerHTML.toUpperCase();
+		const key = event.target.dataset.case === undefined ? event.target.innerHTML : event.target.innerHTML.toUpperCase();
 		const value = rawMap.get(key + withId);
 		if (value === undefined) {
 			console.error("No value for given key: '" + key + withId + "'");
@@ -19,7 +19,7 @@ function mouseOverForTitle(event) {
 	}
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
 			const glossaryElements = document.getElementsByClassName('get-title');
 			Array.from(glossaryElements).forEach( glossaryElement => {
 				glossaryElement.addEventListener("mouseover", mouseOverForTitle);

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="css/common.css">
 	<script src="js/glossaryData.js"></script>
 	<script src="js/parseData.js"></script>
+	<!--suppress CssUnusedSymbol -->
 	<style>
 		th {color: DarkSlateGrey; letter-spacing: 0.0625em;}
 		summary {color: DarkSlateGrey;}
@@ -132,7 +133,7 @@
 					searchResults.appendChild(document.createTextNode(" "));
 				}
 			});
-			if (searchResults.innerHTML.length == 0) {
+			if (searchResults.innerHTML.length === 0) {
 				searchResults.appendChild(document.createTextNode("Nothing found"));
 				const c = function() {return Math.floor((Math.random() * 255))};
 				searchResults.style.color = "rgb(" + c() + "," + c() + "," + c() +")";

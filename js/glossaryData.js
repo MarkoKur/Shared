@@ -43,6 +43,7 @@ rawMap.set("ACL", {title: "Access Control List", groups: []});
 rawMap.set("AES", {title: "Advanced Encryption Standard", groups: ["cryptography"], notes: "#DES"});
 rawMap.set("AJAX", {title: "Asynchronous JavaScript And XML", groups: ["javascript"]});
 rawMap.set("AKA", {title: "Also Known As", groups: []});
+rawMap.set("AMD64", {title: "Alias of #x64", groups: ["processor-architecture"]});
 rawMap.set("ANSI", {title: "American National Standards Institute", groups: []});
 rawMap.set("AOP", {title: "Aspect Oriented Programming", groups: ["software"]});
 rawMap.set("API", {title: "Application Programming Interface", groups: ["software"]});
@@ -209,6 +210,7 @@ rawMap.set("IRQ", {title: "Interrupt ReQuest", groups: []});
 rawMap.set("ISBN", {title: "International Standard Book Number", groups: []});
 rawMap.set("ISDN", {title: "Integrated Services Digital Network", groups: ["network"]});
 rawMap.set("ISO", {title: "International Organization for Standardization", groups: [], svg: "iso"});
+rawMap.set("ISO2", {title: "#ISO 9660", th: "ISO", groups: ["file-system"]});
 rawMap.set("ISA", {title: "Industry Standard Architecture", groups: ["bus"]});
 rawMap.set("ISA1", {title: "Instruction Set Architecture", th: "ISA", groups: ["computer"]});
 rawMap.set("ISP", {title: "Internet Service Provider", groups: []});
@@ -296,6 +298,7 @@ rawMap.set("NNTP", {title: "Network News Transport Protocol", groups: ["communic
 rawMap.set("NoSQL", {html: [{text: "Non-relational "}, {tag: "span", class: "tooltip", title : "Database", text: "DB"}, {text: " | Non #SQL | Not only #SQL"}], groups: ["ql"]});
 rawMap.set("NTP", {title: "Network Time Protocol", groups: ["communication-protocol"]});
 rawMap.set("NDS", {title: "Navigation Data Standard", groups: ["automotive"]});
+rawMap.set("NFS", {title: "Network File System", groups: ["protocol"]});
 
 rawMap.set("OSGi", {title: "Open Services Gateway initiative", groups: ["java"]});
 rawMap.set("OWASP", {title: "Open Worldwide Application Security Project", groups: ["security"]});
@@ -347,7 +350,8 @@ rawMap.set("RGB", {html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, 
 rawMap.set("RGB", {html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, {text:" "}, {tag: "span", class: "blue", text: "Blue"}, {text: " Alfa"}], groups: []});
 rawMap.set("RGR", {html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, { text: " Refactor"}], groups: ["tdd"]});
 rawMap.set("RAM", {title: "Random Access Memory", groups: ["memory"]});
-rawMap.set("RBAC", {title: "Role-Based Access Control", groups: []});
+rawMap.set("ABAC", {title: "Attribute-Based Access Control", groups: ["security"]});
+rawMap.set("RBAC", {title: "Role-Based Access Control", groups: ["security"]});
 rawMap.set("RDBMS", {title: "Relational DataBase Management System", groups: ["db"]});
 rawMap.set("REST", {title: "Representational State Transfer", groups: ["restful"]});
 rawMap.set("RFC", {title: "Request for Comments", groups: ["internet"]});
@@ -452,7 +456,7 @@ rawMap.set("WebDAV", {title: "Web Distributed Authoring and Versioning", groups:
 rawMap.set("XSS", {html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
 rawMap.set("XHR", {title: "XMLHttpRequest", groups: ["javascript"]});
 rawMap.set("x86", {title: "Intel 80x86", groups: ["processor-architecture"], notes: "#CISC"});
-rawMap.set("x64", {title: "AMD64, Intel 64", groups: ["processor-architecture"], notes: "Extension of #x86"});
+rawMap.set("x64", {title: "#AMD64 , Intel 64", groups: ["processor-architecture"], notes: "Extension of #x86"});
 rawMap.set("XDR",   {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tended Detection and Response"}], groups: ["security"]});
 rawMap.set("XHTML", {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible HyperText Markup Language"}], groups: ["ml"]});
 rawMap.set("XSLT", {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible  Stylesheet Language Transformations"}], groups: ["language"], notes: [{tag: "a", href: "referenceBook.html#declarative", text: "Declarative"}]});

@@ -8,6 +8,11 @@
     <script src="js/toc.js"></script>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/animatedTarget.css">
+	<style>
+		.background-linear-gradient-1 {
+			background:linear-gradient(to top right, #eaecf0 49%, #a2a9b1 49.5%, #a2a9b1 50.5%, #eaecf0 51%)
+		}
+	</style>
 </head>
 <body>
 <a href="all.html">SiteMap</a>
@@ -1209,6 +1214,109 @@
 			<td>Software deployment <br> Scaling <br> Management</td>
 		</tr>
 	</table>
+
+	<div class="indent"></div>
+
+	<table class="collapse-border padding">
+		<caption>Kinds of K8s components</caption>
+		<tr><th colspan="2">Icon</th><th>Name</th><th>Description</th></tr>
+		<tr><td colspan="2"><img src="svg/K8s.svg" alt="k8s" height="65"></td><td>Cluster</td><td>Consists of Master Node and (or not) Worker Nodes</td></tr>
+		<tr><td colspan="2"><img src="svg/k8s/ns.svg" alt="ns"></td><td>Namespace</td><td>A virtual cluster inside a cluster</td></tr>
+		<tr>
+			<td colspan="2" rowspan="5"><img src="svg/k8s/control-plane.svg" alt="cp"></td>
+			<td><span class="nowrap">Master Node</span> / <span class="nowrap">Control plane</span></td><td></td>
+		</tr>
+		<tr><td><img src="svg/k8s/api.svg" alt="api"></td><td>Api Server</td></tr>
+		<tr><td><img src="svg/k8s/sched.svg" alt="sched"></td><td>Scheduler</td></tr>
+		<tr><td><img src="svg/k8s/c-m.svg" alt="c-m"></td><td>Controller manager</td></tr>
+		<tr><td><img src="svg/k8s/etcd.svg" alt="etcd"></td><td>Etcd. Consistent and highly-available key value store used as K8s backing store for all cluster data</td></tr>
+
+		<tr><td colspan="2"><img src="svg/k8s/node.svg" alt="node"></td><td>Node</td><td>Worker</td></tr>
+		<tr>
+			<td colspan="2"><img src="svg/k8s/kubelet.svg" alt="kubelet"></td><td>Kubelet</td>
+			<td>
+				The primary "node agent" that runs on each node.
+				Can register the node with the Api Server using hostname or specific logic
+			</td>
+		</tr>
+		<tr><td colspan="2"><img src="svg/k8s/ing.svg" alt="ingress"></td><td>Ingress</td>
+			<td>
+				Exposes HTTP/HTTPS routes from outside the cluster to services within the cluster.
+				Traffic routing is controlled by rules defined on the Ingress resource.
+				You must have an <em>Ingress controller</em> to satisfy an Ingress. Only creating an Ingress resource has no effect
+			</td>
+		</tr>
+		<tr><td colspan="2"><img src="svg/k8s/svc.svg" alt="service"></td><td>Service</td>
+			<td>
+				Expose groups of Pods over a network.
+				<em>port</em> - port to expose.
+				<em>targetPort</em> - inner port of the container
+			</td>
+		</tr>
+		<tr><td colspan="2"><img src="svg/k8s/deploy.svg" alt="deploy"></td><td>Deployment</td><td>Creates pods and replica-sets</td></tr>
+		<tr>
+			<td colspan="2"><img src="svg/k8s/cm.svg" alt="cm"></td><td>ConfigMap</td>
+			<td>An API object used to store non-confidential data in key-value pairs. Cannot exceed 1 MiB</td>
+		</tr>
+
+		<tr><td rowspan="2"><img src="svg/k8s/rs.svg" alt="rs"></td><td colspan="2">ReplicaSet</td><td>Maintains a set of replica Pods</td></tr>
+		<tr><td></td><td>Replica</td><td>A copy or duplicate of a Pod or a set of pods. A copy or duplicate of a Pod or a set of pods. Maintains multiple identical instances of a pod</td></tr>
+
+		<tr><td colspan="2"><img src="svg/k8s/pv.svg" alt="pv"></td><td>PersistentVolume</td><td>Has persistent volume lifecycle</td></tr>
+
+		<tr>
+			<td rowspan="3"><img src="svg/k8s/pod.svg" alt="pod"></td><td colspan="2">Pod</td>
+			<td>The smallest and simplest K8s object. It is a set of containers</td>
+		</tr>
+		<tr><td><img src="svg/k8s/pvc.svg" alt="pod"></td><td>Persistent Volume Claim</td><td>A request by a pod for storage</td></tr>
+		<tr><td><img src="svg/containerd.svg" alt="d" height="65"></td><td>Container</td><td>The lowest level of a microservice</td></tr>
+	</table>
+	<br>
+
+	<details>
+		<summary>K8s cluster</summary>
+		<object data="svg/k8s/components-of-kubernetes.svg"></object>
+	</details>
+
+	<br>
+	Typical config format:
+	<pre class="margin-top-3">    apiVersion: {version}
+    kind: {kind}
+    metadata:
+      name: {name}
+      labels:
+        app: {label}
+    spec:
+      [replicas: {n}]
+      selector:
+        app: {app-name}
+      template:
+        metadata:
+          labels:
+            app: {app-name}
+        spec:
+          [containers:]</pre>
+
+	<div class="indent"></div>
+	Command examples: <br>
+	<code class="code">
+	kubectl get all<br>
+	kubectl get pod<br>
+	kubectl get replicaset<br>
+	kubectl get deployment<br>
+	kubectl create deployment <i>my-mongo-dpl</i> --image=<i>mongo</i><br>
+	kubectl delete deployment <i>my-mongo-dpl</i><br>
+	kubectl apply -f <i>mongo-secret.yaml</i><br>
+	kubectl get secret
+	</code> <br>
+
+	<div class="indent"></div>
+	Notes:
+	<ul class="ul-with-margin margin-top-0">
+		<li>DB should use only Remote storages</li>
+		<li><em>Helm</em> - package manager for K8s</li>
+		<li><em>StatefulSet</em> - special type of Deployment, that maintains a sticky identity for each of its Pods, these Pods are not interchangeable</li>
+	</ul>
 </div>
 <hr>
 
@@ -1563,10 +1671,10 @@
 			That is, such an entity can allow its behaviour to be extended without modifying its source code.<br>
 			In other words, from the very beginning, the code should be written in a <em class="green">way</em> it should not be changed in the future,
 			in case the functionality is needed to be extended.<br>
-			Pros: Less regression testing. less errors<br>
+			Pros: Less regression testing, fewer errors<br>
 			<details>
 				<summary>Java example</summary>
-				<iframe id="ocp" src="parts/OCPExample.html" style="width:-webkit-fill-available; height:655px;" >
+				<iframe id="ocp" src="parts/OCPExample.html" class="iframe height-650" >
 				</iframe>
 			</details>
 		</li>
@@ -1576,7 +1684,7 @@
 			Functions/methods that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
 			<details>
 				<summary>Java example</summary>
-				<iframe id="liskov" src="parts/LiskovSubstitutionExample.html" style="width:-webkit-fill-available; height:555px;" >
+				<iframe id="liskov" src="parts/LiskovSubstitutionExample.html" class="iframe height-550" >
 				</iframe>
 			</details>
 		</li>
@@ -1586,7 +1694,7 @@
 			No object/code should be forced to depend on methods it does not use.<br>
 			<details>
 				<summary>Java example</summary>
-				<iframe id="isp" src="parts/ISPExample.html" style="width:-webkit-fill-available; height:655px;" >
+				<iframe id="isp" src="parts/ISPExample.html" class="iframe height-650" >
 				</iframe>
 			</details>
 		</li>
@@ -1773,7 +1881,7 @@
 	<div class="indent"></div>
 	<table class="collapse-border padding border-dark-grey">
 		<tr>
-			<th style="background:linear-gradient(to top right, #eaecf0 49%, #a2a9b1 49.5%, #a2a9b1 50.5%, #eaecf0 51%);">
+			<th class="background-linear-gradient-1">
 				<div class="margin-left-2 text-align-right">Read phenomenon<br><br><br><br></div>
 				<div class="margin-right-2 text-align-left">Isolation level</div>
 			</th>
