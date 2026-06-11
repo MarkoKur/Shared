@@ -34,8 +34,9 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h2><a href="#binarySearchTree">Binary Search Tree</a></h2>
-				<h2><a href="#binaryTree">Binary Tree</a></h2>
+				<h2 id="binarySearchTreeUP"><a href="#binarySearchTree">Binary Search Tree</a></h2>
+				<h2 id="binaryTreeUP"><a href="#binaryTree">Binary Tree</a></h2>
+				<h4 id="bracketsUP"><a href="#brackets">Brackets/Braces</a></h4>
 			</details>
 		</td>
 	</tr>
@@ -106,7 +107,8 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h3><a href="#jd">Join Dependency</a></h3>
+				<h3 id="jdUp"><a href="#jd">Join Dependency</a></h3>
+				<h2 id="jwtUp"><a href="#jwt">JWT</a></h2>
 			</details>
 		</td>
 	</tr>
@@ -286,6 +288,15 @@
 		<li><b>Balanced</b></li>
 		<li><b>Degenerate</b></li>
 	</ul>
+</div>
+<hr>
+
+<div id="brackets">
+	<h4><a href="#bracketsUP">Brackets/Braces</a></h4>
+	<code><b>()</b></code> round brackets, par<em>e</em>ntheses <br>
+	<code><b>[]</b></code> square brackets <br>
+	<code><b>{}</b></code> braces, curly braces, curly brackets <br>
+	<code><b><></b></code> angle brackets, <b>ch</b>evrons <small class="grey"><b>Ch</b>evrolet</small>
 </div>
 <hr>
 
@@ -1197,6 +1208,44 @@
 </div>
 <hr>
 
+<div id="jwt">
+	<h2><a href="#jwtUp" class="get-title">JWT</a></h2>
+
+	<b>Header.Payload.Signature</b><br>
+
+	<div class="indent"></div>
+	Base structure:
+
+	<div class="indent"></div>
+	Header:
+	<pre class="margin-top-0 code">	{
+	"alg": "HS256", // algorithm
+	"typ": "JWT" // type - Constant JWT
+	}</pre>
+
+	<div class="indent"></div>
+	Payload:
+	<pre class="margin-top-0 code">	{
+	"iss": "Bank"
+	"sub": "", //
+	"aud": "JWT", //
+	"exp": "", //
+	"iat": "", //
+	}</pre>
+
+	<div class="indent"></div>
+
+	Signing:
+	<ul class="margin-top-0">
+		<li>Private secret</li>
+		<li>Public/private keys</li>
+	</ul>
+
+	Refresh token.
+
+</div>
+<hr>
+
 <div id="k8s">
 	<h3><a href="#k8sUp">K8s</a></h3>
 	<table class="collapse-border padding text-align-center">
@@ -1231,7 +1280,10 @@
 		<tr><td><img src="svg/k8s/c-m.svg" alt="c-m"></td><td>Controller manager</td></tr>
 		<tr><td><img src="svg/k8s/etcd.svg" alt="etcd"></td><td>Etcd. Consistent and highly-available key value store used as K8s backing store for all cluster data</td></tr>
 
-		<tr><td colspan="2"><img src="svg/k8s/node.svg" alt="node"></td><td>Node</td><td>Worker</td></tr>
+		<tr>
+			<td colspan="2"><img src="svg/k8s/node.svg" alt="node"></td><td>Node</td>
+			<td>Worker. VM or a physical computer</td>
+		</tr>
 		<tr>
 			<td colspan="2"><img src="svg/k8s/kubelet.svg" alt="kubelet"></td><td>Kubelet</td>
 			<td>
@@ -1263,7 +1315,7 @@
 						<code>port</code> is not exposed outside.
 					</li>
 					<li>
-						<em><b>LoadBalancer</b></em> - Exposes the Service externally using an external load balancer.
+						<em><b>LoadBalancer</b></em> - Exposes the Service <b class="i">externally</b> using an external load balancer.
 						K8s does not directly offer a load balancing component;
 						you must provide one, or you can integrate with a cloud provider.<br>
 						<code>port</code> - port to expose.
@@ -1288,7 +1340,7 @@
 			<td rowspan="3"><img src="svg/k8s/pod.svg" alt="pod"></td><td colspan="2">Pod</td>
 			<td>
 				The smallest and simplest K8s object. It is a set of containers.<br>
-				<em>Horizontal Pod Autoscaling</em> - to deploy more Pods. <br>
+				<em>Horizontal Pod Autoscaling</em> - to deploy more Pods using already allocated resources config <br>
 				<em>Vertical Pod Autoscaling</em> -  to assign more resources (RAM/CPU)
 			</td>
 		</tr>
@@ -1316,14 +1368,18 @@
       [replicas: {n}]
       selector:
         app: {app-name}
-      template:
+      template: // the teplate of the pod, so in the Pod config there is no need for template
         metadata:
           labels:
             app: {app-name}
         spec:
-          [containers:]</pre>
+          [containers:]
+          [nodeSelector:]</pre>
 
 	<div class="indent"></div>
+	<code>kubectl</code> - client tool, can be installed on any PC (outside cluster also) to control cluster.
+	<code>admin.conf</code> or RBAC config should be present on PC. <br>
+
 	Command examples: <br>
 	<code class="code">
 	kubectl get all<br>
@@ -1336,7 +1392,13 @@
 	kubectl get secret <br>
 	kubectl run debug --rm -it --image=busybox --restart=Never -- sh <span class="grey">// create a new pod for debug purpose, node will be selected automatically</span><br>
 	kubectl debug pod/<em>my-app</em> -it --image=busybox <span class="grey">// debug the "my-app" pod <b class="i">by adding new container</b></span><br>
+	kubectl exec <em>pod</em> -- <em>ls</em> <span class="grey">// execute "ls" command in the pod</span><br>
 	kubectl exec -it <em>pod</em> [-c <em>container</em>] -- bash <span class="grey">// the "log in" is being to the <em>container</em>, not to the <em>pod</em></span><br>
+	kubectl delete pod <em>podName</em> --now <br>
+	kubectl delete pod <em>podName</em> --grace-period=0 --force <br>
+	kubectl get events --sort-by=".metadata.creationTimestamp" <span class="grey">// on Windows double quotes!</span><br>
+	kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.53 -- /agnhost netexec --http-port=8080 <span class="grey">// Run a test container image that includes a webserver</span><br>
+	kubectl <b><i>expose</i></b> deployment hello-node --type=LoadBalancer --port=8080 <span class="grey">// Expose the Pod to the public internet. <em>--type=LoadBalancer</em> creates service</span><br>
 	</code> <br>
 
 	<div class="indent"></div>
@@ -1345,7 +1407,18 @@
 		<li>DB should use only Remote storages</li>
 		<li><em>Helm</em> - package manager for K8s</li>
 		<li><em>StatefulSet</em> - special type of Deployment, that maintains a sticky identity for each of its Pods, these Pods are not interchangeable</li>
+		<li>On production should be minimum 3 nodes - 2 control planes and 1 worker</li>
 	</ul>
+
+	<div class="indent"></div>
+	Problems:
+	<ul class="ul-with-margin margin-top-0">
+		<li>
+			<em>WARNING: UNPROTECTED PRIVATE KEY FILE!</em> due to <em>None</em> user in <em>id_rsa</em> permissions, minicube's tunnel and services do not work.
+			<code>minicube</code> restart required after permissions fix
+		</li>
+	</ul>
+
 </div>
 <hr>
 

@@ -40,7 +40,7 @@ rawMap.set("ARM", { html: [{text: "arm"}, {tag: "hr", class: "margin-3"},
 rawMap.set("ACP", { title: "Atomic Commitment Protocol ", groups: ["commitment-protocol", "db"]});
 rawMap.set("ACID", {title: "Atomicity Consistency Isolation Durability", groups: ["db-tx"]});
 rawMap.set("ACL", {title: "Access Control List", groups: []});
-rawMap.set("AES", {title: "Advanced Encryption Standard", groups: ["cryptography"], notes: "#DES"});
+rawMap.set("AES", {title: "Advanced Encryption Standard", groups: ["cryptography"], notes: "Symmetric, #DES"});
 rawMap.set("AJAX", {title: "Asynchronous JavaScript And XML", groups: ["javascript"]});
 rawMap.set("AKA", {title: "Also Known As", groups: []});
 rawMap.set("AMD64", {title: "Alias of #x64", groups: ["processor-architecture"]});
@@ -120,7 +120,7 @@ rawMap.set("DBMS", {title: "DataBase Management System", groups: ["db"]});
 rawMap.set("DCL", {title: "Data Control Language", groups: ["sql-subgroup"]});
 rawMap.set("DDL", {title: "Data Definition Language", groups: []});
 rawMap.set("DDPA", {title: "Dutch Data Protection Authority", groups: ["GDPR"]});
-rawMap.set("DES", {title: "Data Encryption Standard", groups: ["cryptography"], notes: "Obsolete, see #AES"});
+rawMap.set("DES", {title: "Data Encryption Standard", groups: ["cryptography"], notes: "Symmetric, obsolete, see #AES"});
 rawMap.set("DevOps", {title: "Development and Operations", groups: ["software"]});
 rawMap.set("DHCP", {title: "Dynamic Host Configuration Protocol", groups: ["communication-protocol"]});
 rawMap.set("DIMM", {title: "Dual In-line Memory Module", groups: ["memory"]});
@@ -460,6 +460,7 @@ rawMap.set("WebDAV", {title: "Web Distributed Authoring and Versioning", groups:
 
 rawMap.set("XSS", {html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
 rawMap.set("XHR", {title: "XMLHttpRequest", groups: ["javascript"]});
+rawMap.set("XSRF", {title: "alias of #CSRF", groups: []});
 rawMap.set("x86", {title: "Intel 80x86", groups: ["processor-architecture"], notes: "#CISC"});
 rawMap.set("x64", {title: "#AMD64 , Intel 64", groups: ["processor-architecture"], notes: "Extension of #x86"});
 rawMap.set("XDR",   {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tended Detection and Response"}], groups: ["security"]});
