@@ -81,6 +81,7 @@ Spring Web <span class="get-title">MVC</span><br>
 
 <code>@Configuration C { @Bean b1; @Bean b2(); ... @Bean bN();}</code> - "Java-based" configuration<br>
 <code>[@ComponentScan] | @Component @Service @Repository @Controller</code> - "Annotation-based" configuration<br>
+<code>@NoRepositoryBean</code> - to prevent automatic component creation of <code>Repository</code> classes<br>
 <hr>
 
 Circular dependencies actually throw an exception, but can be workaround using Setter injection or <code>@Lazy</code><br>
@@ -103,6 +104,17 @@ Circular dependencies actually throw an exception, but can be workaround using S
 <em>environment</em> var is not injected simply because the injection happens <b>after</b> the instance is created using constructor.<br>
 Working variant:<br>
 <code>public AdyenClient(@Value("${config.environment:ERROR}") String environment) {}</code>
+<hr>
+
+CORS enabling: <br>
+The <code>@CrossOrigin</code> annotation enables cross-origin requests on annotated controller methods <br>
+<code>@CrossOrigin</code> is supported at the class level, too <br>
+<pre>@CrossOrigin(origins = "https://domain2.com", maxAge = 3600)
+@RestController
+@RequestMapping("/account")
+public class AccountController</pre>
+
+<code>maxAge</code> - cache of preflight-request <code>OPTIONS</code>. Browser will decide exact time, no longer than <i>maxAge</i>
 <hr>
 
 <div>

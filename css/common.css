@@ -47,16 +47,18 @@
 
 .back-white {background-color: white}
 .back-red {background-color: red}
-.back-pink {background-color: pink}
-.back-green {background-color: green}
-.back-light-green {background-color: LightGreen}
-.back-lime-green {background-color: LimeGreen}
-.back-yellow {background-color: yellow}
-.back-orange {background-color: orange}
 .back-tomato {background-color: tomato}
-.back-sky-blue {background-color: SkyBlue}
+.back-dark-salmon {background-color: DarkSalmon}
+.back-pink {background-color: pink}
+.back-orange {background-color: orange}
+.back-yellow {background-color: yellow}
+.back-green {background-color: green}
+.back-lime-green {background-color: LimeGreen}
+.back-light-green {background-color: LightGreen}
+.back-pale-green {background-color: PaleGreen}
 .back-medium-spring-green {background-color: MediumSpringGreen}
 .back-medium-aqua-marine {background-color: MediumAquaMarine}
+.back-sky-blue {background-color: SkyBlue}
 .back-bfd {background-color: #BFD}
 .back-gainsboro {background-color: Gainsboro}
 
@@ -221,6 +223,7 @@ ol.ol-with-margin > li {margin: 10px 0;}
 .display-none {display: none}
 
 .iframe      {width: 98vw}
+.iframe-95vw {width: 95vw}
 .iframe-60vw {width: 60vw}
 
 .footer {border:0; height: 35px;}

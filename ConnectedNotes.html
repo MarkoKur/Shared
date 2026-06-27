@@ -26,6 +26,7 @@
 				<summary></summary>
 				<h2><a href="#aop" id="aop-up">Aspect Oriented Programming</a></h2>
 				<h4>active-passive vs active-active Todo</h4>
+				<h2><a href="#authenticationAndAuthorization" id="authenticationAndAuthorizationUp">Authentication & Authorization</a></h2>
 			</details>
 		</td>
 	</tr>
@@ -61,6 +62,7 @@
 				<h2>Data Structures</h2>
 					<h3 class="padding-left-1em"><a href="#tree-data-structures">Tree Data Structures</a></h3>
 				<h3><a href="#diamondProblem" id="diamondProblemUp">Diamond problem</a></h3>
+				<h3><a href="#docker" id="dockerUp">Docker</a></h3>
 			</details>
 		</td>
 	</tr>
@@ -69,7 +71,7 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h3><a href="#EHE" id="EHE-up">Encoding·Hashing·Encrypting</a></h3>
+				<h3><a href="#EHE" id="eheUp">Encoding·Hashing·Encrypting</a></h3>
 			</details>
 		</td>
 	</tr>
@@ -145,6 +147,7 @@
 		<td>
 			<details>
 				<summary></summary>
+				<h3><a href="#postgreSql" id="postgreSqlUp">PostgreSql</a></h3>
 				<h2><a href="#privacyByDesign" id="privacyByDesignUp">Privacy by Design</a></h2>
 				<h2><a href="#programming" id="programmingUp">Programming</a></h2>
 				<h3><a href="#proxy" id="proxyUp">Proxy</a></h3>
@@ -169,6 +172,7 @@
 				<summary></summary>
 				<h2><a href="#solid" id="solidUp">SOLID</a></h2>
 				<h2><a href="#sql" id="sqlUp">SQL</a></h2>
+					<h3 class="padding-left-1em"><a href="#postgreSql">PostgreSql</a></h3>
 			</details>
 		</td>
 	</tr>
@@ -237,6 +241,15 @@
 			int methodJoinPoint() {return 0;}
 		}
 	</pre>
+</div>
+<hr>
+
+<div id="authenticationAndAuthorization">
+	<h2><a href="#authenticationAndAuthorizationUp">Authentication & Authorization</a></h2>
+
+	<em class="b">Authorization Server</em> - the server that gives authorization tokens (JWT)<br>
+	<em class="b">Resource Server</em> - the server that contains requested functionality, for e.g. <small>order-service</small>,
+		it can verify the provided token (JWT) by the user's request<br>
 </div>
 <hr>
 
@@ -1077,10 +1090,19 @@
 </div>
 <hr>
 
+<div id="docker">
+	<h3><a href="#dockerUp">Docker</a></h3>
+	To push local image to the hub - first you need to <em>tag</em> the local image<br>
+	<code class="code">docker tag <em>image</em>:latest <em>dockerHubAccount</em>/<em>image</em>:latest</code><br>
+	Then <br>
+	<code class="code">docker push <em>dockerHubAccount</em>/<em>image</em>:latest</code>
+</div>
+<hr>
+
 <div id="EHE">
 	<div class="indent"></div>
 	<table class="collapse-border padding">
-		<caption><small><a href="#EHE-up">Encoding·Hashing·Encrypting</a></small></caption>
+		<caption><small><a href="#eheUp">Encoding·Hashing·Encrypting</a></small></caption>
 		<tr>
 			<th></th>
 			<th>Encoding</th>
@@ -1241,8 +1263,9 @@
 		<li>Public/private keys</li>
 	</ul>
 
-	Refresh token.
+	Refresh token. <br><br>
 
+	See also <a href="#authenticationAndAuthorization">Authentication And Authorization</a>
 </div>
 <hr>
 
@@ -1463,6 +1486,30 @@
 	Polymorphism in Java:<br>
 	Compile Time - Static - method overloading (Early binding) <br>
 	Runtime Time - Dynamic - method overriding<br>
+</div>
+<hr>
+
+<div id="postgreSql">
+	<h3><a href="#postgreSqlUp">PostgreSql</a></h3>
+	Types:
+
+	INSERT ... ON CONFLICT <br>
+	EXCLUDED <br>
+	RETURNING <br>
+	DISTINCT ON <br>
+	ILIKE <br>
+	ANY / ALL [arrays]
+	ARRAY type
+	JSONB ! <br>
+	WITH (CTE) <br>
+	generate_series() <br>
+	FILTER/ CASE <br>
+	SKIP LOCKED <br>
+	Advisory Locks <br>
+	MATERIALIZED VIEW <br>
+	Window Functions <br>
+
+
 </div>
 <hr>
 
@@ -1776,7 +1823,7 @@
 			Pros: Less regression testing, fewer errors<br>
 			<details>
 				<summary>Java example</summary>
-				<iframe id="ocp" src="parts/OCPExample.html" class="iframe height-650" >
+				<iframe id="ocp" src="parts/OCPExample.html" class="iframe-95vw height-650" >
 				</iframe>
 			</details>
 		</li>
@@ -1786,7 +1833,7 @@
 			Functions/methods that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
 			<details>
 				<summary>Java example</summary>
-				<iframe id="liskov" src="parts/LiskovSubstitutionExample.html" class="iframe height-550" >
+				<iframe id="liskov" src="parts/LiskovSubstitutionExample.html" class="iframe-95vw height-550" >
 				</iframe>
 			</details>
 		</li>
@@ -1796,7 +1843,7 @@
 			No object/code should be forced to depend on methods it does not use.<br>
 			<details>
 				<summary>Java example</summary>
-				<iframe id="isp" src="parts/ISPExample.html" class="iframe height-650" >
+				<iframe id="isp" src="parts/ISPExample.html" class="iframe-95vw height-650" >
 				</iframe>
 			</details>
 		</li>
@@ -1813,7 +1860,7 @@
 			— Method parameter's should not reference implementations, only interfaces and abstract classes
 			<details>
 				<summary>Java example</summary>
-				<iframe id="dip" src="parts/DIPExample.html" class="iframe height-570">
+				<iframe id="dip" src="parts/DIPExample.html" class="iframe-95vw height-570">
 				</iframe>
 			</details>
 		</li>
@@ -1905,15 +1952,20 @@
 	<div class="indent4"></div>
 	<code class="code">LIKE</code> <b>%</b> - any chars, <b>_</b> - strictly one char.<br>
 	<code class="code">DENSE_RANK()</code> - density/frequency ranking.<br>
-	<code class="code">RANK()</code> - ranking over partitioning(or without),
-	It's just an independent <em>row_number</em> within the partitions/groups, can be duplicated for partitioned rows with the same values.
-	<span class="warning-sign fs18 tomato"> Produces Gaps</span>: 1 1 3 - Gap is 1; 1 2 2 2 5 - Gap is 2 rows.
-	Todo example<br>
-	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code><br>
-	<code>COALESCE(v1, v2, c1)</code><br>
-
 
 	<div class="indent4"></div>
+	<code class="code">RANK()</code> - ranking over partitioning(or without),
+	It's just an independent <em>row_number</em> within the partitions/groups, can be duplicated for partitioned rows with the same values.<br>
+	<span class="warning-sign fs18 tomato"> Produces Gaps</span>: 1 1 3 - Gap is 1; 1 2 2 2 5 - Gap is 2 rows.
+	Todo example<br>
+
+	<div class="indent4"></div>
+	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code><br>
+
+	<div class="indent4"></div>
+	<code>COALESCE(v1, v2, c1)</code> - first non-null value <small class="grey">[Oracle, MsSql(+Azure)]</small><br>
+
+	<div class="indent"></div>
 	A <em>stored procedure</em> is a <b class="dim-grey">precompiled</b> set of SQL statements executed as a unit to perform a task.<br>
 	<em>Correlated subquery</em> - depends on its outer query, <em>non correlated</em> - is not.<br>
 	<em>Clustered index</em> forces the order of the rows in the table on physical level, therefore, can be only 1 per table.

@@ -38,6 +38,7 @@ rawMap.set("ARM", { html: [{text: "arm"}, {tag: "hr", class: "margin-3"},
 							{tag: "small", text: "originally"}, {text: " Acorn #RISC Machine"}, {tag: "hr", class: "margin-3"},
 							{tag: "small", text: "formerly"}, {text: " Advanced #RISC Machines"}] , groups: ["processor-architecture"], svg: "arm"});
 rawMap.set("ACP", { title: "Atomic Commitment Protocol ", groups: ["commitment-protocol", "db"]});
+rawMap.set("ACP2", {title: "Agent Client Protocol", th: "ACP", groups: ["ai", "protocol"]});
 rawMap.set("ACID", {title: "Atomicity Consistency Isolation Durability", groups: ["db-tx"]});
 rawMap.set("ACL", {title: "Access Control List", groups: []});
 rawMap.set("AES", {title: "Advanced Encryption Standard", groups: ["cryptography"], notes: "Symmetric, #DES"});
@@ -68,6 +69,7 @@ rawMap.set("B2C", {title: "Business to Customer", groups: ["business"]});
 rawMap.set("CaaS", {title: "Container as a Service", groups: ["aaS"]});
 rawMap.set("CaaS1", {title: "Content as a Service", th: "CaaS", groups: ["aaS"]});
 rawMap.set("CAD", { title: "Computer-Aided Design", groups: ["design"]});
+rawMap.set("CDI", { title: "Contexts and Dependency Injection", groups: ["java"]});
 rawMap.set("CAN", { title: "Controller Area Network", groups: ["automotive", "network"]});
 rawMap.set("CJK", { title: "Chinese Japanese Korean", groups: []});
 rawMap.set("CMT", { title: "Container Managed Transaction", groups: ["jta"]});

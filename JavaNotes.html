@@ -74,6 +74,7 @@
 			<td>
 				<details>
 					<summary></summary>
+					<h3><a href="#enum" id="enumUp"><code>enum</code></a></h3>
 					<h3><a href="#exceptions" id="exceptionsUp">Exceptions</a></h3>
 					<h3><a href="#executors" id="executorsUp">Executors</a></h3>
 				</details>
@@ -1193,6 +1194,15 @@
 		</div>
 		<hr>
 
+		<div id="enum"></div>
+			<h3><a href="#enumUp"><code>enum</code></a> <small class="java5">(Since 1.5)</small></h3>
+			<em>Enums</em> by default have empty private constructor, so it can instantiate it values. <br>
+			can be changed to package-private.
+
+		<div class="indent"></div>
+		See also EnumSet, EnumMap
+		<hr>
+
 		<div id="exceptions">
 			<h3 class="margin-bottom-3"><a href="#exceptionsUp">Exceptions</a></h3>
 			<code>Throwable -> [Error, Exception ->[Checked, RuntimeException -> [UnChecked]]]</code><br>
@@ -1790,8 +1800,8 @@
 								<td><code><em>ClassName</em>::<em>instanceMethodName</em></code></td>
 								<td><code>Arrays.sort(stringArray, String::compareToIgnoreCase)</code><br>
 										where <code>static &lt;T&gt; void sort(T[] array, Comparator&lt;? <a href="#genericsWildcards">super</a> T&gt; c)</code><br>
-										<em>Comparator</em> is a Functional interface with method <code>int compare(<span class="back-green">T o1, T o2</span>)</code>,<br>
-										while <em>String</em> <code>int compareToIgnoreCase(<span class="back-red">String str</span>)</code><br>
+										<em>Comparator</em> is a Functional interface with method <code>int compare(<span class="back-pale-green">T o1, T o2</span>)</code>,<br>
+										while <em>String</em> <code>int compareToIgnoreCase(<span class="back-dark-salmon">String str</span>)</code><br>
 									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span class="back-sky-blue">formal parameter list</span> <code class="back-light-green nowrap">(String a, String b)</code>.
 									The method reference would invoke the method <code>a.compareToIgnoreCase(b)</code>.
 								</td>
