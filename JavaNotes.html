@@ -1837,12 +1837,12 @@
 			A Module is a group of closely related packages and resources along with a new module descriptor file.<br>
 			<em>module-info.java</em><br>
 			<code class="code">
-				<span class="help navy" title="allows reflection of private types">[open]</span> <b>module</b> com.example.module.name {<br>
+				<span class="help navy" title="allows reflection of private types">[open]</span> <b>module</b> <em>com.example.module.name</em> { <span class="grey">// grants access to types in all its packages at <span title="Run Time">RT</span></span><br>
 				<span class="margin-left">requires [<span class="help navy" title="force downstream">transitive</span>/<span class="help navy" title="compile-time-only dependency">static</span>] moduleName;</span><br>
-				<span class="margin-left">exports packageName [to moduleName [, moduleNameN]];</span><br>
-				<span class="margin-left help navy" title="allows reflection of private types">opens packageName [to moduleName [, moduleNameN]];</span><br>
-				<span class="margin-left">uses TypeName;</span><br>
-				<span class="margin-left">provides TypeName with ImplName [, ImplNameN]; // implementations</span><br>
+				<span class="margin-left">exports packageName [to moduleName [, moduleNameN]];</span> <span class="grey"> // grants access at <span title="Compile Time">CT</span> and <span title="Run Time">RT</span></span><br>
+				<span class="margin-left help navy" title="allows reflection of private types">opens packageName [to moduleName [, moduleNameN]];</span> <span class="grey"> // grants access at <span title="Run Time">RT</span> with reflective access even to private fields</span><br>
+				<span class="margin-left">uses <em>ServiceTypeName</em>;</span> <span class="grey">// for loading services using java.util.ServiceLoader.load(<em>ServiceTypeName</em>.class).stream()</span><br>
+				<span class="margin-left">provides <em>ServiceTypeName</em> with <em>ImplName</em> [, <em>ImplNameN</em>]; <span class="grey">// implementations for ServiceLoader <b>uses</b></span></span><br>
 				}
 			</code>
 
