@@ -344,7 +344,7 @@
 			The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>,
 			<code>iterator</code>, and <code>listIterator</code> operations run in constant time.
 			The <code>add</code> operation runs in <i>amortized constant time</i> - adding <i>n</i> elements requires O(n) time.
-			All of the other operations run in linear time (roughly speaking).
+			All the other operations run in linear time (roughly speaking).
 			The constant factor is low compared to that for the <code>LinkedList</code> implementation.<br>
 			<code>contains</code> requires <var>O(n)</var> time. It uses the <code>indexOf(object)</code> method to check if the object is in the list.
 			That means it should iterate all elements in a worse case.<br>
@@ -1569,7 +1569,38 @@
 				<em>Distributed</em>, <em>Logic</em>, <em>Pipeline</em>, <em>Visual</em> <small>and</small> <em>Rule-based</em><br>
 			The fact that Java supports primitive types makes it <span class="tomato">not pure</span> <em class="get-title">OOP</em>.<br>
 			Type System: <b class="dim-grey">Static</b> and <b class="dim-grey">Strong</b><br>
-			Data is strictly <em>passed by value</em> <small class="grey">(not by reference)</small>
+			Data is strictly <em>passed by value</em> <small class="grey">(not by reference)</small><br>
+
+			<div class="indent4"></div>
+			Java <span class="red">does not</span> support:
+			<ul class="margin-top-0">
+				<li>"Duck Typing"</li>
+			</ul>
+
+			<div class="indent4"></div>
+			Java features:
+			<ul class="ul-with-margin margin-top-0">
+				<li><b class="grey">Simplicity</b> - beginner-friendly, easy to learn, C-like syntax, no pointers, no operator overloading, good ootb library</li>
+				<li><b class="grey">Object-Oriented</b></li>
+				<li><b class="grey">Portable</b> - programs written in Java are compiled into bytecode, which a JVM can run on any platform</li>
+				<li><b class="grey">Platform independent</b> - WORA. Java offers a software-based platform.</li>
+				<li><b class="grey">Secured</b> - The language was crafted with security as a priority, incorporating features such as bytecode verification, secure class loading, and a robust security manager that sets access controls for Java classes.<br>
+					These measures serve to safeguard against code and unauthorized access, establishing Java as a choice for building secure applications. <br>
+					Security is one of the core features of Java, making it suitable for network-based applications. <br>
+					Building a product on Java <span class="tomato">does not make</span> it virus-free or immune to malware.<br>
+					Java gives you some security advantages: memory safety compared with C/C++, bytecode verification, managed memory, class loading controls, and generally fewer classic memory-corruption bugs.<br>
+					Built-in Security Manager.
+				</li>
+				<li><b class="grey">Robust</b></li>
+				<li><b class="grey">Architecture neutral</b> //todo</li>
+				<li><b class="grey">Interpreted</b></li>
+				<li><b class="grey">High Performance</b> - Java achieves performance levels through optimization techniques.<br>
+					JIT compilation plays a role in enhancing execution speed by converting bytecode into machine code on the fly.
+				</li>
+				<li><b class="grey">Multithreaded</b></li>
+				<li><b class="grey">Distributed</b> - It means that Java was designed from the beginning with built-in facilities for creating applications whose components communicate over a network.</li>
+				<li><b class="grey">Dynamic</b> - It allows classes to load dynamically.</li>
+			</ul>
 
 			<div class="indent"></div>
 			Java 17:

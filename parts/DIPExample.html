@@ -6,7 +6,10 @@
 
 	<link rel="stylesheet" href="../3dparty/highligthjs/styles/default.min.css">
 	<script src="../3dparty/highligthjs/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
+	<script>
+		//noinspection JSUnresolvedVariable
+		hljs.highlightAll();
+	</script>
 </head>
 <body>
 	<pre><code class="language-java">public class DIP {
@@ -31,14 +34,14 @@
 
     abstract class ABS {
         abstract void method(Interface i); // OK
-        abstract void method(ABS i); // OK
-        abstract void method(ClassI i); // Violation DIP#2
+        abstract void method(ABS a); // OK
+        abstract void method(ClassI c); // Violation DIP#2
     }
 
     class ClassImpl extends ABS { // OK
-        void method(Interface i){}
-        void method(ABS i){}
-        void method(ClassI i){}
+        void method(Interface i) {}
+        void method(ABS a) {}
+        void method(ClassI c) {}
     }
 
     class ClassIsOK7 extends ClassImpl {} // OK, it is just an inheritance ?

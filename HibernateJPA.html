@@ -211,12 +211,14 @@
 			but not the best for performance, in particular for Hibernate
 		</li>
 		<li>
-			<b class="green">GenerationType.SEQUENCE</b> - the best choice for performance.
+			<b class="green">GenerationType.SEQUENCE</b> - the best choice for performance.<br>
 			<code>
 				@Id<br>
 				@GeneratedValue(strategy = GenerationType.SEQUENCE)<br>
 				private Long id;<br>
 			</code>
+
+			<div class="indent4"></div>
 			If nothing is specified, Hibernate will request the next value from its default sequence.<br>
 			Use <code>@SequenceGenerator</code> and <code>generator</code> property in <code>@GeneratedValue</code> if you need custom.
 		</li>
@@ -285,10 +287,10 @@
 
 	<h4 class="margin-bottom-3">Transient <small>(new)</small></h4>
 	An <em>entity</em> object that has <b>no</b> representation in the persistent store(DB) and is not managed by any <em>Session/EM</em>.<br>
-	<code>em.persist(entity)</code>
 
 	<h4 class="margin-bottom-3">Managed</h4>
-	A <em>managed entity</em> is a representation of a database table row <small>(can bew a new that does not yet exist in DB)</small>.<br>
+	<code>em.persist(entity)</code><br>
+	A <em>managed entity</em> is a representation of a database table row <small>(can be a new that does not yet exist in DB)</small>.<br>
 	This is managed by the currently running <em>Session</em> or <em>Entity Manager</em>.<br>
 	Every change made on it will be tracked to the <em>persistence context</em> as a <em>Dirty Entity</em>.<br>
 	It will be Propagated to the database automatically depending on the <code>FlushMode</code>.

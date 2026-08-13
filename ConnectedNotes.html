@@ -1455,7 +1455,48 @@
 
 <div id="oop">
 	<h2><a href="#oopUp">Object-Oriented Programming</a></h2>
-	Encapsulation, Abstraction, Inheritance, Polymorphism.<br>
+
+	<ol class="ol-with-margin">
+		<li>
+			<b>Encapsulation</b> -
+			the object contains not only <em>data</em>, but also the rules of its processing,
+			decorated as executable fragments (methods).<br>
+			The direct access to the state of the object is <em class="tomato">restricted</em>,
+			and interaction with that state is only allowed through provided interface.<br>
+			That allows to reduce <em>coupling</em>.<br>
+			Thus, the inner structure of a class can be changed completely, including the deletions of existing private fields and methods,
+			without affecting the <em>provided interface</em>.
+		</li>
+		<li>
+			<b>Abstraction</b> -
+			is about hiding complex implementation details while exposing only the <span class="blue">essential features</span> of an object.
+		</li>
+		<li><b>Inheritance</b></li>
+		<li>
+			<b>Polymorphism</b>
+			<ul>
+				<li>allows a variable to have more than one type</li>
+				<li>
+					allows a given operation to be performed on values of more than one type: <br>
+					<code>method(ClassA classA, ClassB classB)</code> - <code>classA</code> can be an instance of <code>ClassA1</code>, <code>classB</code> - <code>AnySubTypeOfClassB</code>
+				</li>
+			</ul>
+
+			<div class="indent4"></div>
+			Polymorphism has 3 major forms:
+			<ul>
+				<li><em>Ad hoc</em> - fuction(method) overloading and <span class="grey">operator overloading <small>(Java does not have)</small></span></li>
+				<li><em>Parametric</em> - abstract symbols as a parameters can substitute for any type. Generics in Java.</li>
+				<li>
+					<em>Subtype</em> -
+					is a datatype that is <em>inherited</em> from another datatype (the supertype),
+					in the way that program elements(methods/functions) written to operate on elements of the supertype,
+					can also operate on elements of the subtype. Java <code>extends</code> and <code>method(ClassA classA, ClassB classB)</code> example above.
+				</li>
+			</ul>
+
+		</li>
+	</ol>
 	<div class="indent4"></div>
 
 	Relationships:
@@ -1960,7 +2001,7 @@
 	Todo example<br>
 
 	<div class="indent4"></div>
-	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code><br>
+	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code>, CTE cannot be indexed and good for tree hierarchy i.e. recursive<br>
 
 	<div class="indent4"></div>
 	<code>COALESCE(v1, v2, c1)</code> - first non-null value <small class="grey">[Oracle, MsSql(+Azure)]</small><br>

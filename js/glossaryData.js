@@ -31,6 +31,7 @@ rawMap.set("AWSKMS", { title: "#AWS Key Management Service", th: "AWS KMS", grou
 rawMap.set("AWSSAM", { title: "#AWS Serverless Application Model", th: "AWS SAM", groups: ["aws"], classes: [["skip", "nowrap"]]});
 rawMap.set("AWSCLI", { title: "#AWS #CLI", th: "AWS CLI", groups: ["aws"], classes: [["skip", "nowrap"]]});
 rawMap.set("AWSCDK", { title: "#AWS Cloud Development Kit", th: "AWS CDK", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AWSSTS", { title: "#AWS Security Token Service", th: "AWS STS", groups: ["aws"], classes: [["skip", "nowrap"]]});
 rawMap.set("AWSCDKCLI", { html: [{tag: "a", href: "#AWSCDK", text: "AWS CDK"}, { text: " "}, {tag: "a", href: "#CLI", text: "CLI" }], th: "AWS CDK CLI", groups: ["aws"], classes: ["nowrap"]});
 
 rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
@@ -41,6 +42,7 @@ rawMap.set("ACP", { title: "Atomic Commitment Protocol ", groups: ["commitment-p
 rawMap.set("ACP2", {title: "Agent Client Protocol", th: "ACP", groups: ["ai", "protocol"]});
 rawMap.set("ACID", {title: "Atomicity Consistency Isolation Durability", groups: ["db-tx"]});
 rawMap.set("ACL", {title: "Access Control List", groups: []});
+rawMap.set("ACL2", {title: "Anti-Corruption Layer", th: "ACL", groups: []});
 rawMap.set("AES", {title: "Advanced Encryption Standard", groups: ["cryptography"], notes: "Symmetric, #DES"});
 rawMap.set("AJAX", {title: "Asynchronous JavaScript And XML", groups: ["javascript"]});
 rawMap.set("AKA", {title: "Also Known As", groups: []});
@@ -83,6 +85,7 @@ rawMap.set("CEO", {title: "Chief Executive Officer", groups: ["role"]});
 rawMap.set("CGI", {title: "Computer-Generated Imagery", groups: []});
 rawMap.set("CGI1",{title: "Common Gateway Interface", th: "CGI", groups: []});
 rawMap.set("CIDR", {title: "Classless Inter-Domain Routing", groups: [], notes: "#IP"});
+rawMap.set("CIAM", {title: "Customer Identity and Access Management", groups: [], notes: ""});
 rawMap.set("CMS1", {title: "Content Management System", th: "CMS", groups: ["CMS"]});
 rawMap.set("COO", {title: "Chief Operating Officer", groups: ["role"]});
 rawMap.set("CORBA", {title: "Common Object Request Broker Architecture", groups: []});
@@ -137,6 +140,7 @@ rawMap.set("DQL", {title: "Data/Database Query Language", groups: ["ql"]});
 rawMap.set("DRY", {title: "Don't repeat yourself", groups: ["design"]});
 rawMap.set("DDD", {title: "Domain-Driven Design", groups: ["design", "software"]});
 rawMap.set("DTD", {title: "Document Type Definition", groups: ["ml"]});
+rawMap.set("DoD", {title: "Definition of Done", groups: ["software"]});
 rawMap.set("DVC", {title: "Distributed Version Control", groups: ["version-control"]});
 
 rawMap.set("ECM", { title: "Enterprise Content Management", groups: ["CMS"]});
@@ -147,6 +151,7 @@ rawMap.set("EAP", {title: "Extensible Authentication Protocol", groups: ["authen
 rawMap.set("ECMA", {title: "European Computer Manufacturers Association", groups: []});
 rawMap.set("EMEA", {title: "Europe, Middle East, Africa", groups: [], notes: "APAC todo"});
 rawMap.set("EDR", {title: "Endpoint Detection and Response", groups: ["security"]});
+rawMap.set("ELK", {title: "ElasticSearch LogStash Kibana", groups: ["software"], notes: "Elastic Stack"});
 rawMap.set("EEPROM", {title: "Electrically Erasable Programmable Read-Only Memory", groups: ["memory"]});
 rawMap.set("EPS", {title: "Encapsulated PostScript", groups: ["graphics"]});
 rawMap.set("ESG", {title: "Environmental | Social | Governance", groups: []});
@@ -274,6 +279,7 @@ rawMap.set("LTS", {title: "Long-Term Support", groups: ["software"]});
 rawMap.set("LWC", {title: "Language of Wider Communication", groups: [], notes: [{tag: "a", href: "referenceBook.html#lingua_franca", text: "Lingua franca"}]});
 rawMap.set("LXC", {title: "LinuX Containers", groups: ["OS"]});
 rawMap.set("LLM", {title: "Large Language Model", groups: ["ai"]});
+rawMap.set("LLVM", {title: "Low Level Virtual Machine", groups: [], notes: "No longer an acronym"});
 
 rawMap.set("MD", {title: "Markdown Documentation", groups: []});
 rawMap.set("MCQ", {title: "Multiple Choice Question", groups: []});
@@ -313,6 +319,7 @@ rawMap.set("OCR", {title: "Optical character recognition", groups: []});
 rawMap.set("OIDC", {title: "OpenID Connect", groups: ["authentication-protocol"], notes: "An authentication layer on top of the #OAuth 2.0"});
 rawMap.set("OLTP", {html: [{text: "On"}, {tag: "b", text: "l"}, {text: "ine Transaction Processing"}], groups: [], notes: "Opposite to #OLAP"});
 rawMap.set("OLAP", {html: [{text: "On"}, {tag: "b", text: "l"}, {text: "ine Analytical Processing"}], groups: [], notes: "Opposite to #OLTP"});
+rawMap.set("OTLP", {title: "OpenTelemetry Protocol", groups: ["software", "protocol"]});
 rawMap.set("OOP", {title: "Object Oriented Programming", groups: ["software"]});
 rawMap.set("OOTB", {title: "Out of the Box", groups: []});
 rawMap.set("OS1", {title: "Operating System", th: "OS", groups: ["OS"]});
@@ -412,6 +419,7 @@ rawMap.set("SSH", {title: "Secure Shell Protocol", groups: ["communication-proto
 rawMap.set("SSID", {title: "Service Set IDentifier", groups: ["identifier"]});
 rawMap.set("SSL", {title: "Secure Sockets Layer", groups: ["cryptographic-protocol"], notes: "Deprecated"});
 rawMap.set("SSN", {title: "Social Security Number", groups: []});
+rawMap.set("SSE", {title: "Server Side Encryption", groups: []});
 rawMap.set("SSO", {title: "Single Sign-On", groups: ["security"]});
 rawMap.set("STFU", {title: "Shut The Fuck Up", groups: ["slang"]});
 rawMap.set("SVG", {title: "Scalable Vector Graphics", groups: ["graphics"], svg: "svg"});
