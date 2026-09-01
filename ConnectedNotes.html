@@ -1355,7 +1355,7 @@
 		</tr>
 
 		<tr><td rowspan="2"><img src="svg/k8s/rs.svg" alt="rs"></td><td colspan="2">ReplicaSet</td><td>Maintains a set of replica Pods</td></tr>
-		<tr><td></td><td>Replica</td><td>A copy or duplicate of a Pod or a set of pods. A copy or duplicate of a Pod or a set of pods. Maintains multiple identical instances of a pod</td></tr>
+		<tr><td></td><td>Replica</td><td>A copy or duplicate of a Pod or a set of pods. Maintains multiple identical instances of a pod</td></tr>
 
 		<tr><td colspan="2"><img src="svg/k8s/pv.svg" alt="pv"></td><td>PersistentVolume</td><td>Has persistent volume lifecycle</td></tr>
 
@@ -2001,7 +2001,10 @@
 	Todo example<br>
 
 	<div class="indent4"></div>
-	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code>, CTE cannot be indexed and good for tree hierarchy i.e. recursive<br>
+	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View <small>(but not stored as a View)</small>. <code>WITH cte_name AS (SELECT ...)</code>, CTE cannot be indexed and good for tree hierarchy i.e. recursive.
+	Use CTE if you need logical steps, make it easy to debug. So, CTE is just a convenience for sub-querying. CTE can query itself, i.e. be recursive.<br>
+	Use <em>VIEW</em> to reuse logic across multiple queries or areas of the DB.
+	<br>
 
 	<div class="indent4"></div>
 	<code>COALESCE(v1, v2, c1)</code> - first non-null value <small class="grey">[Oracle, MsSql(+Azure)]</small><br>

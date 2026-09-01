@@ -47,7 +47,8 @@
 						<h2><a href="#classes" id="classesUp">Classes</a></h2>
 							<h3 class="padding-left-1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
 							<h3 class="padding-left-1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
-						<h2><a href="#collections" id="collectionsUP">Collections</a></h2>
+						<h3><a href="#cleaner" id="cleanerUp"><code>Cleaner</code></a></h3>
+						<h2><a href="#collections" id="collectionsUp">Collections</a></h2>
 							<h4 class="padding-left-1em"><a href="#comparator" id="comparatorUp">Comparator</a></h4>
 							<h4 class="padding-left-1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
 							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
@@ -197,14 +198,15 @@
 						<summary></summary>
 						<h3><a href="#sealed" id="sealedUp">Sealed classes</a></h3>
 						<h2><a href="#streams" id="streamsUp">Streams</a></h2>
-						<h3><a href="#servlets">Servlets</a></h3>
-						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
+						<h3><a href="#servlets" id="servletsUp2">Servlets</a></h3>
+						<h3><a href="#safevarargs" id="safevarargsUp">@SafeVarargs</a></h3>
 						<h3><a href="#methodSignature" id="signatureMethodUp">Signature of a Method</a></h3>
-						<h3 class="code-a"><a href="#spliterator" id="spliteratorUp"><code>Spliterator</code></a></h3>
-						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
-						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
-						<h4><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+						<h3><a href="#spliterator" id="spliteratorUp"><code>Spliterator</code></a></h3>
+						<h3><a href="#strictfp" id="strictfp" title="Only header">strictfp (versions from 1.2 to 16)</a></h3>
+						<h3><a href="#synchronized" id="#synchronizedUp" class="code-a"><code>synchronized</code></a></h3>
+						<h4><a href="#synchronizedCollections" id="#synchronizedCollectionsUp">Synchronized Collections</a></h4>
 						<h4>Shallow copy / deep copy todo</h4>
+						<h3><a href="#switch" id="#switchUp"><code>switch</code></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -325,8 +327,30 @@
 		</div>
 		<hr>
 
+
+		<div id="cleaner">
+			<h3><a href="#cleanerUp" ><code>Cleaner</code></a></h3>
+			<code class="code">java.lang.ref.Cleaner</code> <br>
+
+			Since <span class="java9">Java 9</span>
+
+			<div class="indent4"></div>
+			<code>public class CleaningExample implements AutoCloseable { <br>
+				&nbsp;&nbsp; ... <br>
+				&nbsp;&nbsp;private final Cleaner.Cleanable cleanable;<br>
+				&nbsp;&nbsp;... this.cleanable = cleaner.register(this, runnableCleaner);<br>
+				&nbsp;&nbsp;public void close() {cleanable.clean();} <br>
+				}
+			</code><br>
+			<span class="info-sign blue b large"></span>
+			If the <code class="code">close</code> method <span class="tomato">is not called</span>,
+			the cleaning action is called by the <code>Cleaner</code> when the <em class="brown">CleaningExample</em> instance has become <em>phantom reachable</em>.
+		</div>
+		<hr>
+
+
 		<div id="collections">
-			<h2><a href="#collectionsUP">Collections</a> <small class="java2">(Since 1.2)</small></h2>
+			<h2><a href="#collectionsUp">Collections</a> <small class="java2">(Since 1.2)</small></h2>
 			<object width="700" data="svg/Collections.svg"></object>
 			<table class="border">
 				<tr><th>Feature <small>(according to the contract)</small></th><th>List</th><th>Set</th></tr>
@@ -389,7 +413,8 @@
 			<em>Capacity</em> is the <code>length</code> of the inner array table.
 
 			<div class="indent4"></div>
-			<code><b>TreeMap</b></code> is based on a <a href="ConnectedNotes.html#redBlackTree">RBT</a>
+			<code><b>TreeMap</b></code> is based on a <a href="ConnectedNotes.html#redBlackTree">RBT</a>.
+			If the map uses natural ordering or its comparator does not permit null keys, then <span class="grey">null key</span> <span class="tomato">is not allowed</span>.
 
 			<br><br>
 			<code><b>EnumMap</b></code> and <code><b>EnumSet</b></code> should be used if keys are of the enum type, for more efficiency.
@@ -715,9 +740,9 @@
 							<tbody>
 							<tr class="text-align-center italic">
 								<th></th>
-								<td>Throws exception if fail</td>
-								<td>Returns true/false</td>
-								<td class="text-align-center italic">Blocks</td>
+								<td><small>Throws exception if fail</small></td>
+								<td><small>Returns [true:false]/[E:null]</small></td>
+								<td>Blocks</td>
 								<td>Times out</td>
 							</tr>
 							<tr>
@@ -787,7 +812,12 @@
 						Like <code>Hashtable</code> but unlike <code>HashMap</code>, this class does <span class="red">not</span> allow <code>null</code> to be used as a key or value.
 						<div class="indent"></div>
 						When many threads are expected to access a given collection,
-						a <code class="code">ConcurrentHashMap</code> is normally preferable to a synchronized <code class="code">HashMap</code>.
+						a <code class="code">ConcurrentHashMap</code> is normally preferable to a synchronized <code class="code">HashMap</code>.<br>
+						<div class="indent4"></div>
+						<code>HashMap</code> - not thread-safe.<br>
+						<code class="brown">Hashtable</code> - just legacy, synchronized, thread-safe. Iterator: fail-fast.<br>
+						<code>ConcurrentHashMap</code> - thread-safe highly-concurrent implementation. Iterator: weakly consistent.
+						<small>Concurrency mechanism - locked only the part on the Map that is currently in work, not whole map like in Hashtable</small>
 					</td>
 					<td class="java5">1.5</td>
 				</tr>
@@ -1550,7 +1580,7 @@
 			- public abstract methods (they are public and abstract by default) <br>
 			- <code>public static final</code> fields (they are "psf" by default)<br>
 			<span class="java8">Since 1.8</span>:<br>
-			- Can have <code>default</code> instance methods and static methods<br>
+			- Can have <code>default</code> instance methods <small>(which has led to a <a href="#diamondProblem">Diamond problem</a>)</small> and static methods<br>
 			<span class="java9">Since 9</span>:<br>
 			- Can have private instance methods
 		</div>
@@ -1603,7 +1633,7 @@
 			</ul>
 
 			<div class="indent"></div>
-			Java 17:
+			<b class="java16">Java 17</b>:<br>
 			Release features:
 			1) Sealed classes. Constraints:<br>
 				All permitted subclasses must belong to the same module as the sealed class.<br>
@@ -1623,6 +1653,10 @@
 			<br>
 			Preview:<br>
 			1) Pattern Matching for switch (Preview).
+
+			<div class="indent"></div>
+			<b class="java21">Java 22</b>:<br>
+			1) "_" as non-functional identifier name for local var, <code>catch</code> clause, etc.
 
 		</div>
 		<hr>
@@ -2503,7 +2537,11 @@
 						<code class="code nowrap" >&lt;T,?,M> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mf, Supplier&lt;M> map)</code><br>
 						and the same for <code class="code">toConcurrentMap(..)</code>
 					</td>
-					<td>mergeFunction - a merge function, used to resolve collisions between values associated with the same key, as supplied to <code>Map.merge(Object v1, Object v2, BiFunction bf)</code></td>
+					<td>
+						For <code>toMap(km,vm)</code> <small>if the mapped keys contains duplicates (according to <code>Object.equals(Object)</code>), an <code class="exception">IllegalStateException</code> is thrown when the collection operation is performed</small>.<br>
+						<div class="indent4"></div>
+						<em>mergeFunction</em> - a merge function, used to resolve collisions between values associated with the same key, as supplied to <code class="nowrap">Map.merge(Object v1, Object v2, BiFunction bf)</code>
+					</td>
 				</tr>
 
 				<tr>
@@ -2652,6 +2690,7 @@
 			<div class="indent"></div>
 			<details>
 				<summary>Stating Some Rules to Use Parallel Streams Properly</summary>
+				<code>stream().parallel()</code> ForkJoin Common tread pool is used by default.<br>
 				<p><strong>Rule #1</strong> Do not optimize because it's fun; optimize because you have requirements, and you do not meet them</p>
 				<p><strong>Rule #2</strong> Choose your source of data with caution</p>
 				<p><strong>Rule #3</strong> Do not modify external state, and do not share mutable state</p>
@@ -2659,6 +2698,23 @@
 			</details>
 		</div>
 		<hr>
+
+
+		<div id="switch">
+			<h3><a href="##switchUp"><code>switch</code></a></h3>
+			Since <span class="java14">Java 14</span><br>
+
+			<pre><code class="language-java">			switch (object) {
+			  case val1 -> {
+			    System.out.println("...");
+			    yield result1; // need a new keyword because "return" will exit the current method
+			  }
+			  default -> result0;
+			}</code></pre>
+
+		</div>
+		<hr>
+
 
 		<div id="synchronized">
 			<h3 class="code-a"><code>synchronized</code> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
@@ -2769,6 +2825,13 @@ class ClassOne {
 			<h3><a href="#tryUp">Try catch finally</a></h3>
 			<code class="code">finally</code> will not be executed if <code class="code">System.exit()</code>,
 			fatal errors like <code class="code">java.lang.StackOverFlowError</code>, Memory access error, etc.
+
+			<div class="indent"></div>
+			<pre><code class="language-java">			try {
+				return 0; // ignored
+			} finally {
+				return 1; // retuned value here
+			}</code></pre>
 		</div>
 		<hr>
 

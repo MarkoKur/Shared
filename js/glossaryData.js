@@ -228,6 +228,7 @@ rawMap.set("IoCs", {title: "Indicators of Compromise", groups: ["security"]});
 rawMap.set("JAX-WS", { title: "Java #API for #XML Web Services", groups: ["java"], classes: ["nowrap"]});
 rawMap.set("JAX-RS", { html: [{text: "Jakarta RESTful Web Services "}, {tag: "small", class: "grey", text: "(Java #API for RESTful Web Services)"}], groups: ["java"], classes: ["nowrap"]});
 rawMap.set("JCEF", { title: "Java Chromium Embedded Framework", groups: ["java"]});
+rawMap.set("jOOQ", { title: "Java Object Oriented Querying", groups: ["java"], notes: "Java library"});
 rawMap.set("JIT", { title: "Just-In-Time", groups: ["java", "computing"]});
  rawMap.set("AOT", { title: "Ahead-Of-Time", groups: ["java", "computing"]});
 rawMap.set("JAAS", {title: "Java Authentication and Authorization Service", groups: ["java"]});
@@ -384,6 +385,7 @@ rawMap.set("RoR1", {title: "Return on Revenue", th:"RoR", groups: ["financial-me
 rawMap.set("ROR", {title: "Research Organization Registry", groups: [], svg: "ror"});
 rawMap.set("RTE", {title: "RunTime Environment", groups: ["software"]});
 rawMap.set("RTE1", {title: "RunTime Exception", th:"RTE", groups: ["java"]});
+rawMap.set("RSVP", {title: "Répondez s'il vous plaît", groups: [], notes: "Please respond"});
 rawMap.set("RSA", {title: "Rivest–Shamir–Adleman", groups: ["cryptography"], notes: "Asymmetric"});
 
 rawMap.set("SHA", {title: "Secure Hash Algorithms", groups: ["security"]});

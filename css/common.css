@@ -7,6 +7,7 @@
 .java9  {color: Magenta}
 .java10 {color: Orange}
 .java12 {color: DarkOrange}
+.java14 {color: DarkOrange}
 .java16 {color: Red}
 .java21 {color: Red}
 .exception {color: Brown}
@@ -155,6 +156,9 @@ ol.ol-with-margin > li {margin: 10px 0;}
 .warning-sign:before {
 	content: '\26A0';
 }
+.info-sign:before {
+	content: '\24D8';
+}
 .link-sign:before {
 	content: '\1F517';
 }
@@ -185,6 +189,7 @@ ol.ol-with-margin > li {margin: 10px 0;}
 	font-size: 20px;
 }
 .smaller {font-size: smaller}
+.large   {font-size: large}
 
 .bold,.b {font-weight: bold;}
 .italic, .i {font-style: italic;}
