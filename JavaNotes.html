@@ -47,6 +47,7 @@
 						<h2><a href="#classes" id="classesUp">Classes</a></h2>
 							<h3 class="padding-left-1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
 							<h3 class="padding-left-1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
+							<h3 class="padding-left-1em"><a href="#sealed">Sealed classes</a></h3>
 						<h3><a href="#cleaner" id="cleanerUp"><code>Cleaner</code></a></h3>
 						<h2><a href="#collections" id="collectionsUp">Collections</a></h2>
 							<h4 class="padding-left-1em"><a href="#comparator" id="comparatorUp">Comparator</a></h4>
@@ -88,7 +89,7 @@
 						<summary></summary>
 						<h3><a id="e-final" href="#e-final">Effectively <b>Final</b></a></h3>
 						<h3><a href="#failFast">Fail-Fast mechanism (iterator)</a></h3>
-						<h2><a href="#functionalInterfaces">Functional Interfaces</a></h2>
+						<h2><a href="#functionalInterfaces" id="functionalInterfacesUp">Functional Interfaces</a></h2>
 						<h3><a href="#forkJoin">Fork/Join</a></h3>
 					</details>
 				</td>
@@ -1633,31 +1634,116 @@
 			</ul>
 
 			<div class="indent"></div>
-			<b class="java16">Java 17</b>:<br>
-			Release features:
-			1) Sealed classes. Constraints:<br>
-				All permitted subclasses must belong to the same module as the sealed class.<br>
-				Every permitted subclass must explicitly extend the sealed class.<br>
-				Every permitted subclass must define a modifier: final, sealed, or non-sealed.<br>
-			2) New macOS Rendering Pipeline and other macOS features<br>
-			3) Enhanced Pseudo-Random Number Generators:<br>
-			Legacy random classes, such as java.util.Random, SplittableRandom and SecureRandom now extend the new RandomGenerator interface<br>
-			4) Foreign Function & Memory API (Incubator):<br>
-			efficiently invoking foreign functions (i.e., code outside the JVM), and by safely accessing foreign memory (i.e., memory not managed by the JVM)<br>
-			Replace the Java Native Interface (JNI)<br>
-			<br>
-			Removals:<br>
-			1) Strongly Encapsulate JDK Internals, with exceptions for such as sun.misc.Unsafe<br>
-			2) The Remote Method Invocation (RMI) Activation mechanism has been removed.<br>
-			3) Remove the Experimental AOT(Ahead of Time) and JIT Compiler.<br>
-			<br>
-			Preview:<br>
-			1) Pattern Matching for switch (Preview).
-
-			<div class="indent"></div>
-			<b class="java21">Java 22</b>:<br>
-			1) "_" as non-functional identifier name for local var, <code>catch</code> clause, etc.
-
+			<table class="collapse-border padding">
+				<tr>
+					<th><small>Version</small></th><th>Features</th><th>Preview</th><th>Removals/Deprecation</th>
+				</tr>
+				<tr>
+					<th class="java8" title="LTS">8 &#x2705;</th>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li><a href="#lambdas">Lambda Expressions</a></li>
+							<li><a href="#streams"><code>Streams</code></a></li>
+							<li><a href="#functionalInterfaces">Functional Interfaces</a></li>
+							<li><a href="#optional"><code>Optional</code></a></li>
+							<li>Default and Static Methods in <a href="#interface">Interfaces</a></li>
+							<li>New Date and Time API, thread-safe package <code>java.time</code> to replace <code>Date</code> and <code>Calendar</code></li>
+							<li><code>forEach()</code> method for <code>Iterable</code> interface, use in collections</li>
+						</ul>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="java9">9</th>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li><a href="#modules">Modules</a></li>
+							<li><a href="#cleaner"><code>Cleaner</code></a></li>
+							<li>Private instance Methods in <a href="#interface">Interfaces</a></li>
+							<li>JShell</li>
+							<li>The Garbage-First (G1) collector became the default choice</li>
+							<li>New HTTP Client for both HTTP/1.1 and HTTP/2</li>
+						</ul>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="java10">10</th>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li><code>var</code></li>
+							<li>Unmodifiable Collections. APIs for Creating Unmodifiable Collections</li>
+							<li>Optional <code>orElseThrow()</code> Method</li>
+							<li>Container Awareness. JVMs are now aware of being run in a Docker container.</li>
+						</ul>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="java11" title="LTS">11 &#x2705;</th>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li>New String Methods <code>isBlank(); Stream lines();</code></li>
+							<li>New File Methods <code>Files.readString(..); Files.writeString(..); </code></li>
+							<li>Collection to an Array</li>
+							<li>The Not Predicate Method</li>
+							<li>Local-Variable Syntax for Lambda <code>(@Nonnull <b>var</b> x) -> x.toUpperCase()</code></li>
+							<li>New HTTP Client for both HTTP/1.1, HTTP/2 and HTTP/3</li>
+							<li>Nest Based Access Control</li>
+							<li>Direct Java run <code>java MyClass.java</code></li>
+							<li>A <em>No-Op</em> Garbage Collector (for testing)</li>
+							<li>Flight Recorder <code>-XX:StartFlightRecording=duration=120s,settings=profile,filename=java-demo-app.jfr</code></li>
+						</ul>
+					</td>
+					<td></td>
+					<td>
+						Removed deprecated Java EE and <span class="get-title">CORBA</span> modules.<br>
+						Deprecated Nashorn JS and JSS tool, Pack200.<br>
+						JDK Mission Control (JMC) and JavaFX are no longer included in the JDK.
+					</td>
+				</tr>
+				<tr>
+					<th class="java17" title="LTS">17 &#x2705;</th>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li><a href="#sealed">Sealed classes</a></li>
+							<li>
+								Enhanced Pseudo-Random Number Generators -
+								Legacy random classes, such as java.util.Random, SplittableRandom and SecureRandom now extend the new RandomGenerator interface
+							</li>
+							<li>
+								Foreign Function & Memory API (Incubator) -
+								efficiently invoking foreign functions (i.e., code outside the JVM), and by safely accessing foreign memory (i.e., memory not managed by the JVM).
+								Replace the <span class="get-title">JNI</span>
+							</li>
+							<li>New macOS Rendering Pipeline and other macOS features</li>
+						</ul>
+					</td>
+					<td>Pattern Matching for <a href="#switch"><code>switch</code></a></td>
+					<td>
+						<ul class="margin-top-0 padding-left-1em">
+							<li>Strongly Encapsulate JDK Internals, with exceptions for such as <code>sun.misc.Unsafe</code></li>
+							<li>The Remote Method Invocation (RMI) Activation mechanism has been removed</li>
+							<li>Remove the Experimental <span class="get-title">AOT</span> and <span class="get-title">JIT</span> Compiler</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<th class="java21" title="LTS">21 &#x2705;</th>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="java22">22</th>
+					<td>"_" as non-functional identifier name for local var, <code>catch</code> clause, etc.</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
 		</div>
 		<hr>
 
@@ -1899,6 +1985,7 @@
 
 		<div id="modules">
 			<h2><a href="#modulesUp">Modules</a></h2>
+			Since <span class="java9">Java 9</span><br>
 			A Module is a group of closely related packages and resources along with a new module descriptor file.<br>
 			<em>module-info.java</em><br>
 			<code class="code">
@@ -2167,6 +2254,12 @@
 			<code>sealed ... permits ...</code><br>
 			Then the extending/implementing class should be <code>final</code>, <code>sealed</code> or <code>non-sealed</code>.<br>
 			Records can extend/implement sealed classes, and they don't need the modifier because they are already <code>final</code>.
+
+			<div class="indent4"></div>
+			Constraints:<br>
+			All permitted subclasses must belong to the same module as the sealed class.<br>
+			Every permitted subclass must explicitly extend the sealed class.<br>
+			Every permitted subclass must define a modifier: final, sealed, or non-sealed.<br>
 		</div>
 		<hr>
 
