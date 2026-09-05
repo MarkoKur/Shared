@@ -1,18 +1,22 @@
-.java1  {color: Black}
-.java2  {color: ChartReuse; background-color: Grey; border-radius: 3px}
-.java5  {color: LightGreen}
-.java6  {color: Green}
-.java7  {color: LightSeaGreen}
-.java8  {color: Blue}
+.java1  {color: DarkGray}
+.java2  {color: SlateGray}
+.java5  {color: Grey}
+.java6  {color: DimGray}
+.java7  {color: DarkSlateGray}
+.java8  {color: Red}         /* LTS */
 .java9  {color: Magenta}
-.java10 {color: Orange}
-.java11 {color: Orange}
-.java12 {color: DarkOrange}
-.java14 {color: DarkOrange}
-.java16 {color: Red}
-.java17 {color: Red}
-.java21 {color: Red}
-.java22 {color: Red}
+.java10 {color: OrangeRed}
+.java11 {color: Orange}   /* LTS */
+.java12 {color: Orange}
+.java13 {color: Orange}
+.java14 {color: Orange}
+.java15 {color: Orange}
+.java16 {color: DarkOrange}
+.java17 {color: Yellow; background-color: DarkGrey; border-radius: 3px} /* LTS */
+.java21 {color: Green}         /* LTS */
+.java22 {color: DarkGreen}
+.java25 {color: MediumTurquoise; background-color: Grey; border-radius: 3px} /* LTS */
+
 .exception {color: Brown}
 
 .red                {color: Red}       /* Red */
@@ -173,6 +177,9 @@ ol.ol-with-margin > li {margin: 10px 0;}
 }
 .green-check-mark-sign:before {
 	content: '\2705';
+}
+.red-cross-sign:before {
+	content: '\274C';
 }
 .pause-sign:before {
 	content: '\23F8';

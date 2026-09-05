@@ -87,10 +87,10 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a id="e-final" href="#e-final">Effectively <b>Final</b></a></h3>
-						<h3><a href="#failFast">Fail-Fast mechanism (iterator)</a></h3>
+						<h3><a>Effectively <b>Final</b></a></h3>
+						<h3><a href="#failFast" id="failFastUp">Fail-Fast mechanism (iterator)</a></h3>
 						<h2><a href="#functionalInterfaces" id="functionalInterfacesUp">Functional Interfaces</a></h2>
-						<h3><a href="#forkJoin">Fork/Join</a></h3>
+						<h3><a href="#forkJoin" id="forkJoinUp">Fork/Join</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -141,7 +141,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a href="#lambdas">Lambda Expressions</a></h2>
+						<h2><a href="#lambdas" id="lambdasUp">Lambda Expressions</a></h2>
 						<h3 class="padding-left-1em"><a href="#lambdas-basis">Basis</a></h3>
 						<h3 class="padding-left-1em"><a href="#lambdas-mr">Method references</a></h3>
 						<h3><a href="#loops" id="loopsUp">Loops</a></h3>
@@ -166,7 +166,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a href="#nesting">Nesting of classes</a></h2>
+						<h2><a href="#nesting" id="nestingUp">Nesting of classes</a></h2>
 					</details>
 				</td>
 			</tr>
@@ -175,7 +175,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#optional"><code>Optional</code> <small>class</small></a></h3>
+						<h3><a href="#optional" id="optionalUp"><code>Optional</code> <small>class</small></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -236,7 +236,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#weakly">Weakly consistence (iterator)</a></h3>
+						<h3><a href="#weakly" id="weaklyUp">Weakly consistence (iterator)</a></h3>
 						<h4>WeakHashMap todo</h4>
 					</details>
 				</td>
@@ -1280,7 +1280,7 @@
 		<hr>
 
 		<div id="functionalInterfaces">
-			<h2 class="margin-bottom-3">Functional Interfaces <small class="java8">(Since 1.8)</small></h2>
+			<h2 class="margin-bottom-3"><a href="#functionalInterfacesUp">Functional Interfaces</a> <small class="java8">(Since 1.8)</small></h2>
 			The <i>ootb</i> functional interfaces are annotated with <code><b>@FunctionalInterface</b></code>.
 			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.<br>
 			<i>Ootb</i> functional interfaces are located not only in <code class="code">java.util.function</code> package,
@@ -1407,7 +1407,7 @@
 		<hr>
 
 		<div id="forkJoin">
-			<h3 class="margin-bottom-3">Fork/Join <span class="java7">(Since 1.7)</span> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<h3 class="margin-bottom-3"><a href="#forkJoinUp">Fork/Join</a> <span class="java7">(Since 1.7)</span> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			The fork/join framework is an implementation of the <code class="code">ExecutorService</code> interface that helps you take advantage of multiple processors.<br>
 			It is designed for work that can be broken into smaller pieces recursively.<br>
 			The goal is to use all the available processing power to enhance the performance of your application.
@@ -1645,8 +1645,9 @@
 							<li><a href="#lambdas">Lambda Expressions</a></li>
 							<li><a href="#streams"><code>Streams</code></a></li>
 							<li><a href="#functionalInterfaces">Functional Interfaces</a></li>
-							<li><a href="#optional"><code>Optional</code></a></li>
 							<li>Default and Static Methods in <a href="#interface">Interfaces</a></li>
+							<li><a href="#optional"><code>Optional</code></a></li>
+							<li><a href="#completableFuture"><code>CompletableFuture</code></a></li>
 							<li>New Date and Time API, thread-safe package <code>java.time</code> to replace <code>Date</code> and <code>Calendar</code></li>
 							<li><code>forEach()</code> method for <code>Iterable</code> interface, use in collections</li>
 						</ul>
@@ -1706,7 +1707,28 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="java17" title="LTS">17 &#x2705;</th>
+					<th class="java15">15</th>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li>String text block</li>
+						</ul>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="java16">16</th>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li><a href="#record">Records</a></li>
+							<li>Pattern Matching for <a href="#instanceof"><code>instanceof</code></a></li>
+						</ul>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th title="LTS"><span class="java17">17</span> &#x2705;</th>
 					<td>
 						<ul class="margin-top-bottom-0 padding-left-1em">
 							<li><a href="#sealed">Sealed classes</a></li>
@@ -1740,6 +1762,12 @@
 				<tr>
 					<th class="java22">22</th>
 					<td>"_" as non-functional identifier name for local var, <code>catch</code> clause, etc.</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th title="LTS"><span class="java25">25</span> &#x2705;</th>
+					<td></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -1894,29 +1922,29 @@
 		<hr>
 
 		<div id="lambdas">
-			<h2>λ Lambda Expressions <small class="java8">(Since 1.8)</small></h2>
+			<h2>λ <a href="#lambdasUp">Lambda Expressions</a> <small class="java8">(Since 1.8)</small></h2>
 			<div class="padding-left">
 			<h3 id="lambdas-basis" class="margin-bottom-0">Basis</h3>
 			<p class="margin-top-3">Syntax: <code class="dark-blue">() <b>-&gt;</b> {}</code>
 				or <code class="dark-blue">ClassNameOrInstance<b>::</b>methodName</code><br>
 
+				<br>
+				Evaluation of a lambda expression produces an instance of a <a href="#functionalInterfaces">functional interface</a>.<br>
 				Technically <em>lambda</em> expression becomes an anonymous method of an enclosing class.
 			</p>
-			<pre>
-	class LambdaExample {
+			<pre><code class="language-java">	class LambdaExample {
 		void methodOne(int number) {
 			Function&lt;String,String&gt; f = value -&gt; value + number;
 			f.apply("str");
 		}
-	}
-			</pre>
+	}</code></pre>
+
 			Bytecode form:
-			<pre>
-	class LambdaExample {
+			<pre><code class="language-java">	class LambdaExample {
 		...
 		private java.lang.String lambda$methodOne$0(int, java.lang.String);
-	}
-			</pre>
+	}</code></pre>
+
 			The <code>int</code> parameter is a parameter <b>captured</b> from the <code>methodOne()</code>
 			</div>
 
@@ -2128,7 +2156,7 @@
 		<hr>
 
 		<div id="record">
-			<h3 class="margin-bottom-3"><a href="#recordUp">Record</a></h3>
+			<h3 class="margin-bottom-3"><a href="#recordUp">Record</a> <small class="java16">(Since 16)</small></h3>
 			<code class="code">record Triangle&lt;C extends Coordinate> (C top, C left, C right) implements Shape {</code><br>
 			<code class="code margin-left">Triangle {</code><br>
 			<code class="code margin-left-2">// compact constructor</code><br>
@@ -2250,7 +2278,7 @@
 		<hr>
 
 		<div id="sealed">
-			<h3><a href="#sealedUp">Sealed classes/interfaces</a></h3>
+			<h3><a href="#sealedUp">Sealed classes/interfaces</a> <small class="java17">(Since 17)</small></h3>
 			<code>sealed ... permits ...</code><br>
 			Then the extending/implementing class should be <code>final</code>, <code>sealed</code> or <code>non-sealed</code>.<br>
 			Records can extend/implement sealed classes, and they don't need the modifier because they are already <code>final</code>.

@@ -153,6 +153,7 @@ rawMap.set("EMEA", {title: "Europe, Middle East, Africa", groups: [], notes: "AP
 rawMap.set("EDR", {title: "Endpoint Detection and Response", groups: ["security"]});
 rawMap.set("ELK", {title: "ElasticSearch LogStash Kibana", groups: ["software"], notes: "Elastic Stack"});
 rawMap.set("EEPROM", {title: "Electrically Erasable Programmable Read-Only Memory", groups: ["memory"]});
+rawMap.set("ERP", {title: "Enterprise Resource Planning", groups: []});
 rawMap.set("EPS", {title: "Encapsulated PostScript", groups: ["graphics"]});
 rawMap.set("ESG", {title: "Environmental | Social | Governance", groups: []});
 rawMap.set("et_al.", {title: "and others", th: "et al.", groups: ["latin"]});
@@ -299,6 +300,10 @@ rawMap.set("MSRP", {title: "Manufacturer's Suggested Retail Price", groups: [], 
 rawMap.set("mutex", {title: "Mutual exclusion", th: "Mutex", classes: ["skip"], groups: ["concurrency"]});
 rawMap.set("MVP", {title: "Minimum Viable Product", groups: []});
 rawMap.set("MVC", {title: "Model View Controller", groups: ["design-pattern"]});
+rawMap.set("MVCC", {title: "Multi-Version concurrency control", groups: ["software", "db"]});
+rawMap.set("MQTT", {title: "Message Queuing Telemetry Transport", groups: ["software"]});
+rawMap.set("MTTR", {title: "Mean Time to Repair/Recovery", groups: ["metrics"]});
+rawMap.set("MITM", {title: "Man In The Middle", groups: ["vulnerability"]});
 
 rawMap.set("NaaS", {title: "Network as a Service", groups: ["aaS"]});
 rawMap.set("NAT", {title: "Network Address Translation", groups: ["network"]});
@@ -440,6 +445,7 @@ rawMap.set("TSMC", {title: "Taiwan Semiconductor Manufacturing Company", groups:
 
 rawMap.set("UoW", {title: "Unit of Work", groups: ["jpa", "dp"]});
 rawMap.set("UAT", {title: "User Acceptance Testing", groups: ["testing"]});
+rawMap.set("UEL", {title: "Unified Expression Language", groups: ["java"]});
 rawMap.set("USE", {title: "Utilization, Saturation, Errors", groups: ["metrics"]});
 rawMap.set("URI", {title: "Uniform Resource Identifier", groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
 rawMap.set("URL", {title: "Uniform Resource Locator",    groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});

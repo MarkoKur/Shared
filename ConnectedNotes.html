@@ -101,6 +101,7 @@
 				<summary></summary>
 				<h3><a href="#headlessCommerce" id="headlessCommerceUp">Headless commerce</a></h3>
 				<h3><a href="#highCohesion" id="highCohesionUp">High Cohesion</a></h3>
+				<h3><a href="#httpMethods" id="httpMethodsUp">HTTP Methods</a></h3>
 			</details>
 		</td>
 	</tr>
@@ -1230,6 +1231,74 @@
 </div>
 <hr>
 
+<div id="httpMethods">
+	<h3><a href="#httpMethodsUp">HTTP Methods</a></h3>
+
+	<table class="collapse-border padding">
+		<tr><th>Method</th><th>Description</th><th>Idempotent</th><th>Safe/Read-Only</th></tr>
+		<tr>
+			<th>GET</th>
+			<td>Requests a representation of the specified resource</td>
+			<td class="text-align-center green-check-mark-sign"></td>
+			<td class="text-align-center green-check-mark-sign"></td>
+		</tr>
+		<tr>
+			<th>POST</th>
+			<td>
+				Submits an entity to the specified resource.<br>
+				<small>Often causing a change in state or side effects on the server</small>
+			</td>
+			<td class="text-align-center red-cross-sign"></td>
+			<td class="text-align-center red-cross-sign"></td>
+		</tr>
+		<tr>
+			<th>PUT</th>
+			<td>Replaces all current representations of the target resource with the request content</td>
+			<td class="text-align-center green-check-mark-sign"></td>
+			<td class="text-align-center red-cross-sign"></td>
+		</tr>
+		<tr>
+			<th>PATCH</th>
+			<td>Applies partial modifications to a resource</td>
+			<td class="text-align-center red-cross-sign"></td>
+			<td class="text-align-center red-cross-sign"></td>
+		</tr>
+		<tr>
+			<th>DELETE</th>
+			<td>Deletes the specified resource</td>
+			<td class="text-align-center green-check-mark-sign"></td>
+			<td class="text-align-center red-cross-sign"></td>
+		</tr>
+
+		<tr><td colspan="4" class="text-align-center">Additional</td></tr>
+		<tr>
+			<td class="text-align-center">HEAD</td>
+			<td>Asks for a response identical to a <b>GET</b> request, but without a response body</td>
+			<td class="text-align-center green-check-mark-sign"></td>
+			<td class="text-align-center green-check-mark-sign"></td>
+		</tr>
+		<tr>
+			<td class="text-align-center">OPTIONS</td>
+			<td>Describes the communication options for the target resource</td>
+			<td class="text-align-center green-check-mark-sign"></td>
+			<td class="text-align-center green-check-mark-sign"></td>
+		</tr>
+		<tr>
+			<td class="text-align-center">TRACE</td>
+			<td>Performs a message loop-back test along the path to the target resource</td>
+			<td class="text-align-center green-check-mark-sign"></td>
+			<td class="text-align-center green-check-mark-sign"></td>
+		</tr>
+		<tr>
+			<td class="text-align-center">CONNECT</td>
+			<td>Establishes a 2-way tunnel to the server identified by the target resource</td>
+			<td class="text-align-center red-cross-sign"></td>
+			<td class="text-align-center red-cross-sign"></td>
+		</tr>
+	</table>
+</div>
+<hr>
+
 <div id="jwt">
 	<h2><a href="#jwtUp" class="get-title">JWT</a></h2>
 
@@ -1485,7 +1554,7 @@
 			<div class="indent4"></div>
 			Polymorphism has 3 major forms:
 			<ul>
-				<li><em>Ad hoc</em> - fuction(method) overloading and <span class="grey">operator overloading <small>(Java does not have)</small></span></li>
+				<li><em>Ad hoc</em> - function(method) overloading and <span class="grey">operator overloading <small>(Java does not have)</small></span></li>
 				<li><em>Parametric</em> - abstract symbols as a parameters can substitute for any type. Generics in Java.</li>
 				<li>
 					<em>Subtype</em> -
