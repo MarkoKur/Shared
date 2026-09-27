@@ -8,11 +8,6 @@
         rx: 1;
       }
 
-      .fill-white { fill: white }
-      .fill-green { fill: green }
-      .fill-light-green { fill: LightGreen }
-      .fill-blue  { fill: blue  }
-
       .line {
         stroke: black;
         stroke-width:1;
@@ -31,12 +26,20 @@
       .text25 {font-size: 25px;}
       .text30 {font-size: 30px;}
 
+      .fill-white { fill: white }
+      .fill-grey  { fill: grey }
+      .fill-green { fill: green }
+      .fill-light-green { fill: LightGreen }
+      .fill-blue  { fill: blue  }
+
       .i {font-style: italic;}
     </style>
   </defs>
 
+    <!-- Threads Memory -->
     <rect x="10"  y="130" class="base fill-light-green" width="1070" height="340"/>
     <text x="545" y="160" class="text30 fill-green" text-anchor="middle">Threads Memory</text>
+    <text x="655" y="160" class="text14 fill-green" >(Not shared among all JVM threads)</text>
 
     <rect x="20"  y="210" class="base" width="620" height="240"/>
     <text x="330" y="200" class="text22" text-anchor="middle">JVM Stacks</text>
@@ -97,6 +100,7 @@
     <!-- Heap -->
     <rect x="10" y="510" class="base" style="fill: SkyBlue" width="1070" height="340"/>
     <text class="text30 fill-green" x="545" y="540" text-anchor="middle">Heap Memory</text>
+    <text x="635" y="540" class="text14 fill-green">(Shared among all JVM threads)</text>
 
     <rect x="20"  y="570" class="base" style="fill: PaleGreen" width="260" height="40"/>
     <text x="150" y="600" class="text22 fill-green" text-anchor="middle">Young</text>
@@ -117,8 +121,9 @@
     <rect x="20"  y="710" class="base" style="fill: LightBlue" width="520" height="30"/>
     <text x="35"  y="730" class="text19 fill-green i">Default Arrangement of Generations in the Serial Collector</text>
 
-    <rect x="580" y="570" class="base" style="fill: BurlyWood" width="490" height="170"/>
-    <text x="590" y="600" class="text22 fill-green">Method Area</text>
+    <rect x="580" y="570" class="base" style="fill: BurlyWood; stroke-dasharray:5" width="490" height="170"/>
+    <text x="590" y="600" class="text22 fill-grey">Method Area</text>
+    <text x="590" y="620" class="text14 fill-grey i">(JVM Spec: Method area is logically part of the heap)</text>
     <rect x="810" y="630" class="base" style="fill: Tan" width="250" height="100"/>
     <text x="825" y="685" class="text20">Run-Time Constant Pool</text>
 
@@ -132,8 +137,11 @@
     <rect x="10"  y="890" class="base" style="fill: LightSalmon" width="1070" height="380"/>
     <text x="545" y="920" class="text30 fill-green" text-anchor="middle">Native Memory</text>
 
+    <!-- Metaspace -->
     <rect x="30"  y="980"  class="base" style="fill: DarkSalmon" width="1030" height="280"/>
-    <text x="545" y="1010" class="text25 fill-green" text-anchor="middle">Metaspace / Class Metadata</text>
+    <text x="75"  y="1010" class="text25 fill-green">Metaspace / Class Metadata</text>
+    <text x="375" y="1010" class="text16 fill-green">[The "Hot-Spot" implementation of the "Method Area"]</text>
+    <text x="775" y="1010" class="text14 fill-green">(Shared among all JVM threads)</text>
 
     <text x="50"  y="1040" class="text22" id="constantPool">• Constant Pool (symbolic info)</text>
     <text x="360" y="1040" class="text19">[Class names, Field names and descriptors, Method names and descriptors ...]</text>
