@@ -35,6 +35,7 @@ rawMap.set("AWSSTS", { title: "#AWS Security Token Service", th: "AWS STS", grou
 rawMap.set("AWSCDKCLI", { html: [{tag: "a", href: "#AWSCDK", text: "AWS CDK"}, { text: " "}, {tag: "a", href: "#CLI", text: "CLI" }], th: "AWS CDK CLI", groups: ["aws"], classes: ["nowrap"]});
 
 rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
+rawMap.set("APM", { title: "Application Performance Monitoring", groups: ["software"]});
 rawMap.set("ARM", { html: [{text: "arm"}, {tag: "hr", class: "margin-3"},
 							{tag: "small", text: "originally"}, {text: " Acorn #RISC Machine"}, {tag: "hr", class: "margin-3"},
 							{tag: "small", text: "formerly"}, {text: " Advanced #RISC Machines"}] , groups: ["processor-architecture"], svg: "arm"});
@@ -67,6 +68,7 @@ rawMap.set("BOM", {title: "Bill Of Materials", groups: ["maven"]});
 rawMap.set("BYOD", {title: "Bring Your Own Device", groups: []});
 rawMap.set("B2B", {title: "Business to Business", groups: ["business"]});
 rawMap.set("B2C", {title: "Business to Customer", groups: ["business"]});
+rawMap.set("BPMN", {title: "Business Process Model and Notation", groups: ["business"]});
 
 rawMap.set("CaaS", {title: "Container as a Service", groups: ["aaS"]});
 rawMap.set("CaaS1", {title: "Content as a Service", th: "CaaS", groups: ["aaS"]});
@@ -135,13 +137,15 @@ rawMap.set("DML", {title: "Data Manipulation Language", groups: ["sql-subgroup"]
 rawMap.set("DMS", {title: "Document Management System", groups: []});
 rawMap.set("DNS", {title: "Domain Name System", groups: ["communication-protocol"]});
 rawMap.set("DOM", {title: "Document Object Model", groups: [], notes: "#XML, #W3C"});
-rawMap.set("DP", {title: "Design Pattern", groups: ["software"]});
+rawMap.set("DP",  {title: "Design Pattern", groups: ["software"]});
 rawMap.set("DQL", {title: "Data/Database Query Language", groups: ["ql"]});
 rawMap.set("DRY", {title: "Don't repeat yourself", groups: ["design"]});
 rawMap.set("DDD", {title: "Domain-Driven Design", groups: ["design", "software"]});
 rawMap.set("DTD", {title: "Document Type Definition", groups: ["ml"]});
 rawMap.set("DoD", {title: "Definition of Done", groups: ["software"]});
 rawMap.set("DVC", {title: "Distributed Version Control", groups: ["version-control"]});
+rawMap.set("DI",  {title: "Dependency Injection", groups: ["software"], notes: "Also #DIP"});
+rawMap.set("DIP", {title: "Dependency Inversion Principle", groups: [], notes: "#SOLID"});
 
 rawMap.set("ECM", { title: "Enterprise Content Management", groups: ["CMS"]});
 rawMap.set("EMS", {title: "Enterprise Messaging System", groups: ["software"]});
@@ -198,6 +202,7 @@ rawMap.set("HVAC", {title: "Heating Ventilation and Air Conditioning", groups: [
 rawMap.set("IDE2", { title: "Integrated Drive Electronics", th: "IDE", groups: ["pc-interface"], notes: "The same as #PATA", classes: ["skip"]});
  rawMap.set("PATA", { title: "Parallel Advanced Technology Attachment", groups: ["pc-interface"], notes: "The same as #IDE2"});
 rawMap.set("I/O", {title: "Input/Output", groups: []});
+rawMap.set("IoC", {title: "Inversion of Control", groups: []});
 rawMap.set("IaaS", {title: "Infrastructure as a Service", groups: ["aaS"]});
 rawMap.set("IaC", {title: "Infrastructure as Code", groups: ["cloud"]});
 rawMap.set("IAM", {title: "Identity and Access Management", groups: ["security", "aws"]});
@@ -240,6 +245,7 @@ rawMap.set("JDMK", {title: "Java Development Management Kit", groups: ["java"]})
 rawMap.set("JDWP", {title: "Java Debug Wire Protocol", groups: ["java"]});
 rawMap.set("JEP", {title: "#JDK Enhancement Proposal", groups: ["java"]});
 rawMap.set("JFC", {title: "Java Foundation Classes", groups: ["java"]});
+rawMap.set("JKS", {title: "Java KeyStore", groups: ["java"]});
 rawMap.set("JLS", {title: "Java Language Specification", groups: ["java"]});
 rawMap.set("JMM", {title: "Java Memory Model", groups: ["java"]});
 rawMap.set("JMS", {html: [{text: "Jakarta Messaging "}, {tag: "small", class: "grey", text: "(Java Message Service)"}], groups: ["java"]});
@@ -347,6 +353,7 @@ rawMap.set("PDF", {title: "Portable Document Format", groups: ["format"]});
 rawMap.set("PCD", {title: "Pointcut designator", groups: ["java"], notes: "#AOP"});
 rawMap.set("PECS", {title: "Producer Extends Consumer Super", groups: ["java"]});
 rawMap.set("PED", {title: "#PIN Entry Device", groups: []});
+rawMap.set("PEM", {title: "Privacy-Enhanced Mail", groups: ["format"]});
 rawMap.set("PEMDAS", {title: "Parentheses, Exponents, Multiplication/Division, Addition/Subtraction", groups: []});
 rawMap.set("PGP", {title: "Pretty Good Privacy", groups: []});
 rawMap.set("PHI", {title: "Protected Health Information", groups: ["GDPR"]});
@@ -416,7 +423,7 @@ rawMap.set("SMTP", {title: "Simple mail transfer protocol", groups: ["protocol"]
 rawMap.set("STEM", {title: "Science Technology Engineering Mathematics", groups: []});
 rawMap.set("SOA", {title: "Service-Oriented Architecture", groups: ["software"]});
 rawMap.set("SOAP", {html: [{tag: "small", text: "originally an acronym for"}, {text: " Simple Object Access Protocol"}], groups: ["communication-protocol"]});
-rawMap.set("SOLID", {title: "#SRP #OCP ; Liskov Substitution; Interface Segregation; Dependency Inversion", groups: ["software"]});
+rawMap.set("SOLID", {title: "#SRP #OCP ; Liskov Substitution; Interface Segregation; #DIP", groups: ["software"]});
 rawMap.set("SPI", {title: "Service Provider Interface", groups: ["java"]});
 rawMap.set("SPA", {title: "Single Page Application", groups: ["software"]});
 rawMap.set("SQL", {title: "Structured Query Language", groups: ["sql"], notes: [{tag: "a", href: "referenceBook.html#declarative", text: "Declarative"}, {text: ""}, {text: "#DSL2.DSL"}]});
@@ -488,6 +495,7 @@ rawMap.set("XML",   {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible
 rawMap.set("XMPP",  {html: [{text: "E"}, {tag: "b", text: "x"}, {text: "tensible Messaging and Presence Protocol"}], groups: ["communication-protocol"], notes: "Jabber"});
 
 rawMap.set("YAGNI", {title: "You aren't gonna need it", groups: ["design"]});
+rawMap.set("YKWIM", {title: "You know what I mean", groups: []});
 rawMap.set("YAML", {html: [{text: "YAML Ain't Markup Language™ "}, {tag: "small", clas: "grey", text: "(Yet Another Markup Language)"}], groups: ["ml"]});
 
 rawMap.set("ZTNA", {title: "Zero Trust Network Access", groups: []});

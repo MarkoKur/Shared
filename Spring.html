@@ -7,14 +7,102 @@
 	<link rel="stylesheet" href="css/common.css">
 	<script src="js/glossaryData.js"></script>
 	<script src="js/glossary.js" async></script>
+
+	<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
+	<script src="3dparty/highligthjs/highlight.min.js"></script>
+	<script>
+		//noinspection JSUnresolvedVariable
+		hljs.highlightAll();
+	</script>
 </head>
 <body>
 
 <div class="indent"></div>
 <a href="all.html">SiteMap</a>
 <div class="indent"></div>
+<table id="toc">
+	<tr>
+		<td><h1>B</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#beans" id="beansUp">Beans</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>C</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#configuration" id="configurationUp">Configuration</a></h3>
+				<h4><a href="#configFileMerge" id="configFileMergeUp">Config file merge</a></h4>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>D</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#di" id="diUp">Dependency Injection</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>L</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#lazy" id="lazyUp">Lazy</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>S</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#springBootApplication" id="springBootApplicationUp"><code>@SpringBootApplication</code></a></h3>
+				<h3><a href="#springSecurity" id="springSecurityUp">Spring Security</a></h3>
+			</details>
+		</td>
+	</tr>
+</table>
 
-<h4>Config file merge</h4>
+<hr class="height2">
+
+<h3><a href="#beansUp" id="beans">Beans</a></h3>
+todo Lazy <br><br>
+
+By default, Spring and Spring Boot create beans <b>eagerly</b>, not <span class="grey b">lazily</span>.<br>
+<code>@Lazy @Bean</code><br>
+<code>@Lazy @Configuration { @Lazy(false) @Bean // to override for a bean }</code><br>
+<code>@Lazy @Component; @Lazy @Autowired // mandatory for lazy for autowired then</code><br>
+<code>@SpringBootApplication(lazyInitialization = true)</code><br>
+
+<div class="indent"></div>
+<code>@Bean</code> can be declared inside a <code>@Component</code>, this is <em>lite configuration</em><br>
+<hr>
+
+<h3><a href="#configurationUp" id="configuration">Configuration</a></h3>
+<code class="code">@Configuration</code><br>
+
+<div class="indent"></div>
+<code class="code">@EnableAutoConfiguration</code><br>
+attempts to automatically configure your Spring application based on the jar dependencies that you have added.<br>
+Example: if <code>HSQLDB</code> is on your classpath, and you have not manually configured any database connection beans,
+then Spring Boot auto-configures an in-memory database.<br>
+Should be applied to <code class="code">@Configuration</code> class.
+
+<div class="indent"></div>
+<code class="code">@SpringBootConfiguration</code><br>
+It is a stereotype of <code class="code">@Configuration</code><br>
+<code class="code">@Configuration</code> is a stereotype of <code class="code">@Component</code><br>
+
+<hr>
+
+<h4 id="configFileMerge"><a href="#configFileMergeUp">Config file merge</a></h4>
 <ul class="ul-with-margin">
     <li>
         <code class="code">src/main/application.yaml </code><br>
@@ -29,39 +117,67 @@
 </ul>
 <hr>
 
-<code class="code">@EnableAutoConfiguration</code><br>
-attempts to automatically configure your Spring application based on the jar dependencies that you have added.<br>
-Example: if <code>HSQLDB</code> is on your classpath, and you have not manually configured any database connection beans,
-then Spring Boot auto-configures an in-memory database.<br>
-Should be applied to <code class="code">@Configuration</code> class.
-<hr>
+<h3><a href="#diUp" id="di">Dependency Injection</a></h3>
+<b>Dependency Injection</b> (DI) is a design technique where an object <b class="tomato">does not create</b> its own dependencies. <br>
+Instead, those dependencies are provided (“injected”) from the outside. <br>
 
-<code class="code">@SpringBootApplication</code><br>
-It is <code class="code">@SpringBootConfiguration</code>,
-<code class="code">@EnableAutoConfiguration</code>
-and <code class="code">@ComponentScan(excludeFilters={...})</code>
-<hr>
+<div class="indent4"></div>
+Spring’s <span class="get-title">IoC</span> container is the component that creates objects, connects them together, and manages their lifecycle.
 
-<code class="code">@SpringBootConfiguration</code><br>
-It is a stereotype of <code class="code">@Configuration</code>
+<div class="indent4"></div>
+Spring Boot uses the same Spring DI mechanism; it mainly simplifies bootstrapping and bean configuration through component scanning, autoconfiguration and sensible defaults.
 <hr>
 
 CommandLineRunner and ApplicationRunner interfaces<br>
 <hr>
 
-By default, Spring and Spring Boot create beans eagerly, not lazily.<br>
-<code>@Lazy @Bean</code><br>
-<code>@Lazy @Configuration { @Lazy(false) @Bean // to override for a bean }</code><br>
-<code>@Lazy @Component; @Lazy @Autowired // mandatory for lazy for autowired then</code><br>
-<code>@SpringBootApplication(lazyInitialization = true)</code>
+<h3><a href="#lazyUp" id="lazy">Lazy</a></h3>
+<code class="code">@Lazy</code><br>
 <hr>
 
+<h3><a href="#springBootApplicationUp" id="springBootApplication"><code>@SpringBootApplication</code></a></h3>
+<code class="code">@SpringBootApplication</code><br>
+It is <code class="code">@SpringBootConfiguration</code>, <code class="code">@EnableAutoConfiguration</code>
+and <code class="code">@ComponentScan(excludeFilters={...})</code>
+<hr>
+
+<h3><a href="#springSecurityUp" id="springSecurity">Spring Security</a></h3>
 Spring Security in web applications (turned on by default in SB): <br>
 <code>@EnableWebSecurity</code> for <span class="get-title">MVC</span><br>
-<code>@Bean public SecurityFilterChain securityFilterChain(HttpSecurity http)</code><br>
+
+<pre><code class="language-java">@Bean public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+	http
+		.authorizeRequests()
+		.antMatchers("/admin/**").hasRole("ADMIN")
+		.antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
+		.antMatchers("/bober/**").hasAuthority("ROLE_BOBER")
+		.antMatchers("/bober-user-admin/**").hasAllAuthorities("A_BOBER", "A_USER", "A_ADMIN")
+		.antMatchers("/anonymous*").anonymous()
+		.antMatchers("/login*").permitAll()
+		.anyRequest().authenticated();
+}</code></pre>
+<pre><code class="language-java">@Bean public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+	http
+		.authorizeHttpRequests( (authorize) -> authorize
+			.requestMatchers(HttpMethod.GET).hasAuthority("read")
+			.requestMatchers(HttpMethod.POST).hasAuthority("write")
+			.requestMatchers("/resource/**").hasAuthority("USER")
+			.anyRequest().denyAll())
+		.httpBasic(Customizer.withDefaults()); // for Http header "Authorization: Basic Base64EncodedValueXYZ==" with 'user:password' encoded value
+}</code></pre>
+The order of the <code>antMatchers()</code> elements is significant;
+the more specific rules need to come first, followed by the more general ones.
+In other words more strict rules should come first.
+
+<div class="indent4"></div>
+<code>org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer.AuthorizedUrl</code><br>
+<code>hasRole()</code> and <code>hasAuthority()</code> methods differ in that <em>hasRole</em> does not require "ROLE_" prefix.
+<small><em>Roles</em> are a subset of <em>Authorities</em></small>
+
 <div class="indent"></div>
 <code>@EnableWeb<b>Flux</b>Security</code> for reactive model <br>
 <code>@Bean public Security<b>Web</b>FilterChain securityFilterChain(Server<b>Http</b>Security http)</code><br>
+
 <div class="indent"></div>
 Several security configurations can be set in the same time.<br>
 Can be separated using <code>@Profile</code><br>
@@ -70,7 +186,55 @@ Also use <code>@Order(1)</code> for method ordering.<br>
 <div class="indent"></div>
 Lambda <span class="get-title" data-id="2">DSL</span> allows to get rid of an <code>and()</code> concatenation method,
 when building <code>SecurityFilterChain</code> from <code>HttpSecurity</code>.<br>
+
+<h4 class="margin-bottom-0">Security Context</h4>
+Spring Security hold the principal information of each authenticated user in a <code class="code">ThreadLocal</code>
+– represented as an <code class="code">Authentication</code> object.<br>
+<code>
+	SecurityContext securityContext = SecurityContextHolder.getContext();<br>
+	... <br>
+	securityContext.setAuthentication((Authentication) authentication);<br>
+	... <br>
+	securityContext.getAuthentication().isAuthenticated();
+</code>
+
+<h4 class="get-title margin-bottom-0">CORS</h4> enabling:
+The <code>@CrossOrigin</code> annotation enables cross-origin requests on annotated controller methods <br>
+<code>@CrossOrigin</code> is supported at the class level, too <br>
+<pre><code class="language-java">@CrossOrigin(origins = "https://domain2.com", maxAge = 3600)
+@RestController
+@RequestMapping("/account")
+public class AccountController</code></pre>
+<code>maxAge</code> - cache of preflight-request <code>OPTIONS</code>. Browser will decide exact time, no longer than <i>maxAge</i>
+
+<h4 class="get-title margin-bottom-0">CSRF</h4>
+Should be turned off for stateless apps (REST), but not for session authenticated apps.
+<pre><code class="language-java">@Bean public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+	// http.csrf().disable(); // Deprecated
+	http.csrf(csrf -> csrf.disable()); // Actual
+	http.csrf(AbstractHttpConfigurer::disable); // Actual
+	http.sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // SessionManagementConfigurer&lt;H extends HttpSecurityBuilder&lt;H>>
+}</code></pre>
+
+<h4 class="margin-bottom-0">Testing</h4>
+For test methods (<code>@Test</code>):<br>
+<code>@WithAnonymousUser</code><br>
+<div class="indent4"></div>
+<code>@WithUserDetails()</code><br>
+<code>@WithUserDetails(value = "admin")</code><br>
+<code>@WithUserDetails(value="customUsername", userDetailsServiceBeanName="myUserDetailsService")</code><br>
+<div class="indent4"></div>
+<code>@WithMockUser</code><br>
+<code>@WithMockUser(authorities="USER")</code><br>
+<code>@WithMockUser("customUser")</code><br>
+<code>@WithMockUser(username = "admin", roles = {"USER", "ADMIN"})</code><br>
+<code>@WithMockUser(username = "admin", authorities = {"ADMIN", "USER"})</code><br>
+
+<h4 class="margin-bottom-0">Disabling the Default Spring Security Auto-Configuration</h4>
+<code>@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, UserDetailsServiceAutoConfiguration.class})</code>
+
 <hr>
+
 
 Spring Web <span class="get-title">MVC</span><br>
 <code>
@@ -104,17 +268,6 @@ Circular dependencies actually throw an exception, but can be workaround using S
 <em>environment</em> var is not injected simply because the injection happens <b>after</b> the instance is created using constructor.<br>
 Working variant:<br>
 <code>public AdyenClient(@Value("${config.environment:ERROR}") String environment) {}</code>
-<hr>
-
-CORS enabling: <br>
-The <code>@CrossOrigin</code> annotation enables cross-origin requests on annotated controller methods <br>
-<code>@CrossOrigin</code> is supported at the class level, too <br>
-<pre>@CrossOrigin(origins = "https://domain2.com", maxAge = 3600)
-@RestController
-@RequestMapping("/account")
-public class AccountController</pre>
-
-<code>maxAge</code> - cache of preflight-request <code>OPTIONS</code>. Browser will decide exact time, no longer than <i>maxAge</i>
 <hr>
 
 <div>

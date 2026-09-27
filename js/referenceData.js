@@ -25,3 +25,4 @@ referenceBookMap.set("lingua_franca", {th: "Lingua franca", html: [{text: "Bridg
 
 referenceBookMap.set("scalability", {th: "Scalability", title: "Is the property of a system to handle a growing amount of work", groups: []});
 referenceBookMap.set("one-off", {th: "One-off", title: "Made or occurring only once, independent of any pattern", groups: []});
+referenceBookMap.set("one-stop", {th: "One-stop", title: "A complete range of services in a single place, so you do not have to go to different places", groups: []});
