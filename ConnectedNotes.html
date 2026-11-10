@@ -1481,6 +1481,7 @@
 	kubectl create deployment <i>my-mongo-dpl</i> --image=<i>mongo</i><br>
 	kubectl delete deployment <i>my-mongo-dpl</i><br>
 	kubectl apply -f <i>mongo-secret.yaml</i><br>
+	kubectl apply -f <i>folder</i><br>
 	kubectl get secret <br>
 	kubectl run debug --rm -it --image=busybox --restart=Never -- sh <span class="grey">// create a new pod for debug purpose, node will be selected automatically</span><br>
 	kubectl debug pod/<em>my-app</em> -it --image=busybox <span class="grey">// debug the "my-app" pod <b class="i">by adding new container</b></span><br>
@@ -1491,6 +1492,7 @@
 	kubectl get events --sort-by=".metadata.creationTimestamp" <span class="grey">// on Windows double quotes!</span><br>
 	kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.53 -- /agnhost netexec --http-port=8080 <span class="grey">// Run a test container image that includes a webserver</span><br>
 	kubectl <b><i>expose</i></b> deployment hello-node --type=LoadBalancer --port=8080 <span class="grey">// Expose the Pod to the public internet. <em>--type=LoadBalancer</em> creates service</span><br>
+	kubectl describe node <i>worker</i>class="grey">// Node information. Diagnostics</span><br>
 	</code> <br>
 
 	<div class="indent"></div>

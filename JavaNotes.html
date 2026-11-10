@@ -1181,7 +1181,7 @@
 				<tr>
 					<th>Race Condition</th>
 					<td>
-						Behavior depends on relative timing or interleaving of multiple threads or processes
+						Behavior depends on relative timing or <span class="b grey">interleaving</span> of multiple threads or processes
 					</td>
 				</tr>
 			</table>
@@ -1477,7 +1477,10 @@
 		<div id="generics">
 			<h2><a href="#genericsUp">&uarr;</a><a href="#genericsUp">Generics</a><a href="#genericsJava">&darr;</a> <small class="java5">(Since 1.5)</small></h2>
 			<ul class="ulWithMargin">
-			<li> The reason why Generics were added to the Java language — to enforce type safety at compile time</li>
+			<li>
+				The reason why Generics were added to the Java language — to enforce type safety at compile time.<br>
+				Generic type information is removed at runtime
+			</li>
 			<li>
 				<code>
 					class Foo&lt;T&gt; {} // T is the <b>type parameter</b><br>
@@ -1758,7 +1761,7 @@
 					</td>
 					<td>Pattern Matching for <a href="#switch"><code>switch</code></a></td>
 					<td>
-						<ul class="margin-top-0 padding-left-1em">
+						<ul class="margin-top-bottom-0 padding-left-1em">
 							<li>Strongly Encapsulate JDK Internals, with exceptions for such as <code>sun.misc.Unsafe</code></li>
 							<li>The Remote Method Invocation (RMI) Activation mechanism has been removed</li>
 							<li>Remove the Experimental <span class="get-title">AOT</span> and <span class="get-title">JIT</span> Compiler</li>
@@ -1767,7 +1770,11 @@
 				</tr>
 				<tr>
 					<th class="java21" title="LTS">21 &#x2705;</th>
-					<td></td>
+					<td>
+						<ul class="margin-top-bottom-0 padding-left-1em">
+							<li><a href="#record">Record</a> Patterns</li>
+						</ul>
+					</td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -2030,7 +2037,7 @@
 			<em>module-info.java</em><br>
 			<code class="code">
 				<span class="help navy" title="allows reflection of private types">[open]</span> <b>module</b> <em>com.example.module.name</em> { <span class="grey">// grants access to types in all its packages at <span title="Run Time">RT</span></span><br>
-				<span class="margin-left">requires [<span class="help navy" title="force downstream">transitive</span>/<span class="help navy" title="compile-time-only dependency">static</span>] moduleName;</span><br>
+				<span class="margin-left">requires [<span class="help navy" title="force downstream ('forward dependency')">transitive</span>/<span class="help navy" title="compile-time-only dependency ('optional dependenciy')">static</span>] moduleName;</span><br>
 				<span class="margin-left">exports packageName [to moduleName [, moduleNameN]];</span> <span class="grey"> // grants access at <span title="Compile Time">CT</span> and <span title="Run Time">RT</span></span><br>
 				<span class="margin-left help navy" title="allows reflection of private types">opens packageName [to moduleName [, moduleNameN]];</span> <span class="grey"> // grants access at <span title="Run Time">RT</span> with reflective access even to private fields</span><br>
 				<span class="margin-left">uses <em>ServiceTypeName</em>;</span> <span class="grey">// for loading services using java.util.ServiceLoader.load(<em>ServiceTypeName</em>.class).stream()</span><br>
@@ -2183,6 +2190,13 @@
 			We <b>cannot</b> add the <em>extends</em> clause to the declaration since every record class implicitly extends the <code class="code">abstract class <b>Record</b></code>, and Java doesn’t allow multiple inheritance.
 			Can have static variables and initializers, but not instance.
 			Records can be inner and local.
+
+			<div class="indent"></div>
+			Record patterns <small class="java21">(Since 21)</small>:
+			<pre><code class="language-java">		record Point(double x, double y) {}
+
+			if (obj instanceof Point(double x, double y))<br>
+				System.out.println(x + y);</code></pre>
 		</div>
 		<hr>
 
@@ -2310,7 +2324,7 @@
 			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
 			A stream is an object that does not store any data.<br>
 			The Stream <span class="get-title">API</span> has been designed in such a way that as long as you <span class="navy">do not create any non-stream object</span>
-			<small class="light-green">(means creating stream objects)</small> in a stream pattern,
+			<small class="dark-sea-green">(means creating stream objects)</small> in a stream pattern,
 			<span class="navy">no computation</span> of your data is conducted.<br>
 			<span class="warning-sign fs20 orange"></span>
 			There are several exceptions to previous rule.<br>
@@ -2920,7 +2934,7 @@ class ClassOne {
 				<li><code class="b">RUNNABLE</code> - started, running</li>
 				<li><code class="b">BLOCKED</code> - blocked waiting for a monitor lock</li>
 				<li><code class="b">WAITING</code></li>
-				<li><code class="b">TIMED_WAITING</code></li>
+				<li><code class="b">TIMED_WAITING</code> - the thread does not release any locks or monitors it holds</li>
 				<li><code class="b">TERMINATED</code> - <span class="red"> cannot be restarted</span></li>
 			</ul>
 
